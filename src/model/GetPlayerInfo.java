@@ -16,6 +16,7 @@ import view.TestFrame;
 public class GetPlayerInfo{
 	
 	TestFrame frame;
+	String playerInfo;
 	
 	public GetPlayerInfo() {
 		// TODO Auto-generated constructor stub
@@ -43,14 +44,32 @@ public class GetPlayerInfo{
 	 * @return
 	 */
 	private String getPlayerInfo(String name){
-		
+		playerInfo = "";
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("data/info/Aaron Brooks"));
-			
-		} catch (FileNotFoundException e) {
+			String data = br.readLine();
+			if(data != null){
+				playerInfo = disposeInfo(data) + ";";
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return null;
+		return playerInfo;
+	}
+	
+	/**
+	 * 处理读出的信息
+	 */
+	private String disposeInfo(String data){
+		String[] spl = new String[2];
+		String info = "";
+		//去掉║
+		data.replace("║", "");
+		//分割
+		spl = data.split("│");
+		info = info + spl[0].trim() + ":" + spl[1].trim();		
+		
+		return info;
 	}
 }
