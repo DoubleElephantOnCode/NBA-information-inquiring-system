@@ -1,5 +1,7 @@
 package control;
 
+import model.GetPlayerInfo;
+
 /**
  * 
  * @author HalaWKS
@@ -7,7 +9,8 @@ package control;
  */
 public class TestControl implements TestControlService{
 
-	@Override
+	GetPlayerInfo getInfo;
+	
 	public void showPlayerInfo() {
 		// TODO Auto-generated method stub
 		
