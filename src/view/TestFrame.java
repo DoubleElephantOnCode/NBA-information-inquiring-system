@@ -33,12 +33,12 @@ public class TestFrame extends JFrame implements ShowService{
 		sureButton.setLocation(400, 50);
 		panel.add(sureButton);
 		
-		nameLabel = new JLabel();
+		nameLabel = new JLabel("–’√˚");
 		nameLabel.setSize(100, 50);
 		nameLabel.setLocation(100, 200);
 		panel.add(nameLabel);
 		
-		photoLabel = new JLabel();
+		photoLabel = new JLabel("’’∆¨");
 		photoLabel.setSize(100, 50);
 		photoLabel.setLocation(100, 200);
 		panel.add(photoLabel);
@@ -46,12 +46,19 @@ public class TestFrame extends JFrame implements ShowService{
 		panel.setVisible(true);
 		setVisible(true);
 	}
-	public void showName(String name) {
-		// TODO Auto-generated method stub
+	
+	
+	private void showName(String name) {
 		nameLabel.setText(name);
 	}
-	public void showPhoto(ImageIcon photo) {
-		// TODO Auto-generated method stub
+	private void showPhoto(ImageIcon photo) {
 		photoLabel.setIcon(photo);
+	}
+
+
+	public void showInfo(String name, ImageIcon photo) {
+		// TODO Auto-generated method stub
+		showName(name);
+		showPhoto(photo) ;
 	}
 }
