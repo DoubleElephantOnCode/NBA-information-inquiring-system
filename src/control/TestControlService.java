@@ -7,6 +7,6 @@ package control;
  */
 public interface TestControlService {
 	
-	public void showPlayerInfo();
+	public void showPlayerInfo(String name);
 	
 }
