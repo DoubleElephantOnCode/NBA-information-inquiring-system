@@ -1,18 +1,11 @@
 package model;
 
-import control.GetPlayerInfoService;
-
 /**
  * 
  * @author HalaWKS
  *
  */
-public class GetPlayerInfo implements GetPlayerInfoService{
+public class GetPlayerInfo{
 
-	@Override
-	public void getPlayerInfo() {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
