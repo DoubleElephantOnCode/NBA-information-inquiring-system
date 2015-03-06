@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.Button;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -9,7 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import control.TestControl;
+import control.TestControlService;
+
 public class TestFrame extends JFrame implements ShowService{
+	
+	TestControlService controllerService;
 	
 	JPanel panel;
 	JLabel nameLabel;
@@ -31,6 +38,7 @@ public class TestFrame extends JFrame implements ShowService{
 		sureButton = new JButton("»∑»œ");
 		sureButton.setSize(100, 50);
 		sureButton.setLocation(400, 50);
+		sureButton.addActionListener(new SureListener());
 		panel.add(sureButton);
 		
 		nameLabel = new JLabel("–’√˚");
@@ -40,7 +48,7 @@ public class TestFrame extends JFrame implements ShowService{
 		
 		photoLabel = new JLabel("’’∆¨");
 		photoLabel.setSize(100, 50);
-		photoLabel.setLocation(100, 200);
+		photoLabel.setLocation(400, 200);
 		panel.add(photoLabel);
 		
 		panel.setVisible(true);
@@ -60,5 +68,17 @@ public class TestFrame extends JFrame implements ShowService{
 		// TODO Auto-generated method stub
 		showName(name);
 		showPhoto(photo) ;
+	}
+	
+	class SureListener implements ActionListener{
+
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO Auto-generated method stub
+			controllerService = new TestControl();
+			
+			String name = nameField.getText();
+			controllerService.showPlayerInfo(name);
+		}
+		
 	}
 }
