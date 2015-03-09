@@ -26,68 +26,68 @@ public class MatchDataPerPlayerVO {
 	/**
 	 * 投篮命中数
 	 */
-	public int shootingNumber;
+	public int scoreNum;
 	
 	/**
 	 * 投篮出手数
 	 */
-	public int shotNumber;
+	public int shootNum;
 	
 	/**
 	 * 三分命中数
 	 */
-	public int threePointShootingNumber;
+	public int threePointScoreNum;
 	
 	/**
 	 * 三分出手数
 	 */
-	public int threePointShotNumber;
+	public int threePointShootNum;
 	
 	/**
 	 * 罚球命中数
 	 */
-	public int freeThrowShootingNumber;
+	public int freeThrowScoreNum;
 	
 	/**
 	 * 罚球出手数
 	 */
-	public int freeThrowShotNumber;
+	public int freeThrowShootNum;
 	
 	/**
 	 * 进攻篮板数
 	 */
-	public int offensiveReboundsNumber;
+	public int offensiveReboundsNum;
 
 	
 	/**
 	 * 防守篮板数
 	 */
-	public int defensiveReboundsNumber;
+	public int defensiveReboundsNum;
 	
 	/**
 	 * 总篮板数
 	 */
-	public int totalReboundsNumber;
+	public int totalReboundsNum;
 	
 	/**
 	 * 助攻数
 	 */
-	public int assistNumber;
+	public int assistNum;
 	
 	/**
 	 * 盖帽数
 	 */
-	public int blockNumber;
+	public int blockNum;
 	
 	/**
 	 * 失误数
 	 */
-	public int turnoverNumber;
+	public int turnoverNum;
 	
 	/**
 	 * 犯规数
 	 */
-	public int foulNumber;
+	public int foulNum;
 	
 	/**
 	 * 个人得分
