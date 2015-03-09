@@ -5,7 +5,7 @@ package vo;
  * @author HalaWKS
  *
  */
-public class Team {
+public class PlayerVO {
 	
 	
 	
