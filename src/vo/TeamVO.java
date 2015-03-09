@@ -177,128 +177,128 @@ public class TeamVO {
 	
 	//以下为平均数据
 	/**
-	 * 评均投篮命中数
+	 * 平均投篮命中数
 	 */
 	public double aveScoreNum;
 	
 	/**
-	 * 评均投篮出手数
+	 * 平均投篮出手数
 	 */
 	public double aveShootNum;
 	
 	/**
-	 * 评均三分命中数
+	 * 平均三分命中数
 	 */
 	public double aveThreePointScoreNum;
 	
 	/**
-	 * 评均三分出手数
+	 * 平均三分出手数
 	 */
 	public double aveThreePointShootNum;
 	
 	/**
-	 * 评均罚球命中数
+	 * 平均罚球命中数
 	 */
 	public double aveFreeThrowScoreNum;
 	
 	/**
-	 * 评均罚球出手数
+	 * 平均罚球出手数
 	 */
 	public double aveFreeThrowShootNum;
 	
 	/**
-	 * 评均进攻篮板数
+	 * 平均进攻篮板数
 	 */
 	public double aveOffensiveReboundsNum;
 
 	
 	/**
-	 * 评均防守篮板数
+	 * 平均防守篮板数
 	 */
 	public double aveDefensiveReboundsNum;
 	
 	/**
-	 * 评均总篮板数
+	 * 平均总篮板数
 	 */
 	public double aveTotalReboundsNum;
 	
 	/**
-	 * 评均助攻数
+	 * 平均助攻数
 	 */
 	public double aveAssistNum;
 	
 	/**
-	 * 评均抢断数
+	 * 平均抢断数
 	 */
 	public double aveStealNum;
 	
 	/**
-	 * 评均盖帽数
+	 * 平均盖帽数
 	 */
 	public double aveBlockNum;
 	
 	/**
-	 * 评均失误数
+	 * 平均失误数
 	 */
 	public double aveTurnoverNum;
 	
 	/**
-	 * 评均犯规数
+	 * 平均犯规数
 	 */
 	public double aveFoulNum;
 	
 	/**
-	 * 评均比赛得分
+	 * 平均比赛得分
 	 */
 	public double aveScore;
 	
-	/**
-	 * 评均投篮命中率
-	 */
+	/*
+	 * 平均投篮命中率
+	 
 	public double aveScoreRate;
-	
-	/**
-	 * 评均三分命中率
-	 */
+	*/
+	/*
+	 * 平均三分命中率
+	 
 	public double aveThreePointRate;
-	
-	/**
-	 * 评均罚球命中率
-	 */
+	*/
+	/*
+	 * 平均罚球命中率
+	 
 	public double aveFreeThrowRate;
-	
-	/**
-	 * 评均胜率
-	 */
+	*/
+	/*
+	 * 平均胜率
+	 
 	public double aveWinningRate;
-	
+	*/
 	/**
-	 * 评均进攻回合
+	 * 平均进攻回合
 	 */
 	public double aveAttackRound;
 	
 	/**
-	 * 评均进攻效率
+	 * 平均进攻效率
 	 */
 	public double aveAttackEfficiency;
 	
 	/**
-	 * 评均防守效率
+	 * 平均防守效率
 	 */
 	public double aveDefendEfficiency;
 	
 	/**
-	 * 评均篮板效率
+	 * 平均篮板效率
 	 */
 	public double aveReboundEfficiency;
 	
 	/**
-	 * 评均抢断效率
+	 * 平均抢断效率
 	 */
 	public double aveStealEfficiency;
 	
 	/**
-	 * 评均助攻率
+	 * 平均助攻率
 	 */
 	public double aveAssistRate;
 }
