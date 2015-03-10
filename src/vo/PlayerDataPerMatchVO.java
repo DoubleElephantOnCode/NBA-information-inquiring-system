@@ -91,9 +91,40 @@ public class PlayerDataPerMatchVO {
 	 */
 	double personalPoints;
 	
+	/**
+	 * 是否两双
+	 */
+	boolean isDoubleDouble;
 	
-	public PlayerDataPerMatchVO() {
+	public PlayerDataPerMatchVO(MatchDataPerPlayerVO matchData) {
 		// TODO Auto-generated constructor stub
+	}
+
+	public PlayerDataPerMatchVO(String teamName, String minutes,
+			double scoreNum, double shootNum, double threePointerScoreNum,
+			double threePointerShootNum, double freeThrowScoreNum,
+			double freeThrowShootNum, double offensiveReboundsNum,
+			double defensiveReboundsNum, double totalReboundsNum,
+			double assistNum, double blockNum, double faultNum, double foulNum,
+			double personalPoints, boolean isDoubleDouble) {
+		super();
+		this.teamName = teamName;
+		this.minutes = minutes;
+		this.scoreNum = scoreNum;
+		this.shootNum = shootNum;
+		this.threePointerScoreNum = threePointerScoreNum;
+		this.threePointerShootNum = threePointerShootNum;
+		this.freeThrowScoreNum = freeThrowScoreNum;
+		this.freeThrowShootNum = freeThrowShootNum;
+		this.offensiveReboundsNum = offensiveReboundsNum;
+		this.defensiveReboundsNum = defensiveReboundsNum;
+		this.totalReboundsNum = totalReboundsNum;
+		this.assistNum = assistNum;
+		this.blockNum = blockNum;
+		this.faultNum = faultNum;
+		this.foulNum = foulNum;
+		this.personalPoints = personalPoints;
+		this.isDoubleDouble = isDoubleDouble;
 	}
 	
 }
