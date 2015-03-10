@@ -14,142 +14,164 @@ public class PlayerVO {
 	/**
 	 * 球员全身照(图片路径)
 	 */
-	String action = "D:/data/players/action/";
+	private String action = "D:/data/players/action/";
 	
 	/**
 	 * 球员半身照(图片路径)
 	 */
-	String portrait = "D:/data/players/portrait/";
+	private String portrait = "D:/data/players/portrait/";
 	
 	/**
 	 * 球员姓名
 	 */
-	String name;
+	private String name;
 	
 	/**
 	 * 球员号码
 	 */
-	String number;
+	private String number;
 	
 	/**
 	 * 球员位置
 	 */
-	String position;
+	private String position;
 	
 	/**
 	 * 球员身高
 	 */
-	String height;
+	private String height;
 	
 	/**
 	 * 球员体重
 	 */
-	String weight;
+	private String weight;
 	
 	/**
 	 * 球员生日
 	 */
-	String birthday;
+	private String birthday;
 	
 	/**
 	 * 球员年龄
 	 */
-	String age;
+	private String age;
 	
 	/**
 	 * 球员球龄
 	 */
-	String exp;
+	private String exp;
 	
 	/**
 	 * 毕业学校
 	 */
-	String school;
+	private String school;
 	
 	/**
 	 * 球员单场数据列表
 	 */
-	ArrayList<PlayerDataPerMatchVO> dataPerMatchList;
+	private ArrayList<PlayerDataPerMatchVO> dataPerMatchList;
 	
 	/**
 	 * 两双次数(得分，篮板，助攻，抢断，盖帽中任何两项)
 	 */
-	int doubleDouble;
+	private int doubleDouble = 0;
 	
 	/**
 	 * 场均上场时间
 	 */
-	String aveMinutes;
+	private String aveMinutes;
 	
 	/**
 	 * 场均投篮命中数
 	 */
-	double aveScoreNum;
+	private double aveScoreNum = 0;
 	
 	/**
 	 * 场均投篮出手数
 	 */
-	double aveShootNum;
+	private double aveShootNum = 0;
 	
 	/**
 	 * 场均三分命中数
 	 */
-	double aveThreePointerScoreNum;
+	private double aveThreePointerScoreNum = 0;
 	
 	/**
 	 * 场均三分出手数
 	 */
-	double aveThreePointerShootNum;
+	private double aveThreePointerShootNum = 0;
 	
 	/**
 	 * 场均罚球命中数
 	 */
-	double aveFreeThrowScoreNum;
+	private double aveFreeThrowScoreNum = 0;
 	
 	/**
 	 * 场均罚球出手数
 	 */
-	double aveFreeThrowShootNum;
+	private double aveFreeThrowShootNum = 0;
 	
 	/**
 	 * 场均进攻篮板数
 	 */
-	double aveOffensiveReboundsNum;
+	private double aveOffensiveReboundsNum = 0;
 	
 	/**
 	 * 场均防守篮板数
 	 */
-	double aveDefensiveReboundsNum;
+	private double aveDefensiveReboundsNum = 0;
 	
 	/**
 	 * 场均总篮板数
 	 */
-	double aveTotalReboundsNum;
+	private double aveTotalReboundsNum = 0;
 	
 	/**
 	 * 场均助攻数
 	 */
-	double aveAssistNum;
+	private double aveAssistNum = 0;
+	
+	/**
+	 * 场均抢断数
+	 */
+	private double aveStealNum = 0;
 	
 	/**
 	 * 场均盖帽数
 	 */
-	double aveBlockNum;
+	private double aveBlockNum = 0;
 
 	/**
 	 * 场均失误数
 	 */
-	double aveFaultNum;
+	private double aveFaultNum = 0;
 	
 	/**
 	 * 场均犯规数
 	 */
-	double aveFoulNum;
+	private double aveFoulNum = 0;
 	
 	/**
 	 * 场均个人得分
 	 */
-	double avePersonalPoints;
+	private double avePersonalPoints = 0;
+	
+	//计算场均数据
+	private double scoreNum = 0;
+	private double shootNum = 0;
+	private double threePointerScoreNum = 0;
+	private double threePointerShootNum = 0;
+	private double freeThrowScoreNum = 0;
+	private double freeThrowShootNum = 0;
+	private double offensiveReboundsNum = 0;
+	private double defensiveReboundsNum = 0;
+	private double totalReboundsNum = 0;
+	private double assistNum = 0;
+	private double stealNum = 0;
+	private double blockNum = 0;
+	private double faultNum = 0;
+	private double foulNum = 0;
+	private double personalPoints = 0;
 	
 	public PlayerVO() {
 		// TODO Auto-generated constructor stub
@@ -172,6 +194,7 @@ public class PlayerVO {
 		this.age = age;
 		this.exp = exp;
 		this.school = school;
+
 		
 	}
 
@@ -187,17 +210,48 @@ public class PlayerVO {
 	/**
 	 * 计算两双次数、各种场均数据
 	 */
-	public void setDoubleDouble() {
-		//TODO
+	public void calAveData() {
+		//TODO 平均上场时间还未计算
 		doubleDouble = 0;
+		
 		for (PlayerDataPerMatchVO pvo : dataPerMatchList){
-			if(pvo.isDoubleDouble){
+			if(pvo.isDoubleDouble()){
 				//两双次数
 				doubleDouble++;
 			}
-			//总上场时间
-			
+			//总投篮命中数
+			scoreNum = scoreNum + pvo.getScoreNum();
+			//总出手数
+			shootNum = shootNum + pvo.getShootNum();
+			//总三分命中数
+			threePointerScoreNum = threePointerScoreNum + pvo.getThreePointerScoreNum();
+			//总三分出手数
+			threePointerShootNum = threePointerShootNum + pvo.getThreePointerShootNum();
+			//总罚球命中数
+			freeThrowScoreNum = freeThrowScoreNum + pvo.getFreeThrowScoreNum();
+			//总罚球出手数
+			freeThrowShootNum = freeThrowShootNum + pvo.getFreeThrowShootNum();
+			//总进攻篮板数
+			offensiveReboundsNum = offensiveReboundsNum + pvo.getOffensiveReboundsNum();
+			//总防守篮板数
+			defensiveReboundsNum = defensiveReboundsNum + pvo.getDefensiveReboundsNum();
+			//总篮板数
+			totalReboundsNum = totalReboundsNum + pvo.getTotalReboundsNum();
+			//总助攻数
+			assistNum = assistNum + pvo.getAssistNum();
+			//总抢断数
+			stealNum = stealNum + pvo.getStealNum();
+			//总盖帽数
+			blockNum = blockNum + pvo.getBlockNum();
+			//总犯规数
+			faultNum = faultNum + pvo.getFaultNum();
+			//总失误数
+			foulNum = foulNum + pvo.getFoulNum();
+			//个人总得分
+			personalPoints = personalPoints + pvo.getPersonalPoints();
 		}
+		
+		
 	}
 
 	public void setAveMinutes(String aveMinutes) {
@@ -370,6 +424,14 @@ public class PlayerVO {
 
 	public double getAvePersonalPoints() {
 		return avePersonalPoints;
+	}
+
+	public double getAveStealNum() {
+		return aveStealNum;
+	}
+
+	public void setAveStealNum(double aveStealNum) {
+		this.aveStealNum = aveStealNum;
 	}
 
 	
