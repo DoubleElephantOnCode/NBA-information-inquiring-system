@@ -1,6 +1,5 @@
 package vo;
 
-import java.sql.Time;
 
 /**
  * 一场比赛里一个球员的数据
@@ -93,4 +92,33 @@ public class MatchDataPerPlayerVO {
 	 * 个人得分
 	 */
 	public int personalScore;
+
+	public MatchDataPerPlayerVO(String playerName, String position,
+			MyPresentTime presentTime, int scoreNum, int shootNum,
+			int threePointScoreNum, int threePointShootNum,
+			int freeThrowScoreNum, int freeThrowShootNum,
+			int offensiveReboundsNum, int defensiveReboundsNum,
+			int totalReboundsNum, int assistNum, int blockNum, int turnoverNum,
+			int foulNum, int personalScore) {
+		super();
+		this.playerName = playerName;
+		this.position = position;
+		this.presentTime = presentTime;
+		this.scoreNum = scoreNum;
+		this.shootNum = shootNum;
+		this.threePointScoreNum = threePointScoreNum;
+		this.threePointShootNum = threePointShootNum;
+		this.freeThrowScoreNum = freeThrowScoreNum;
+		this.freeThrowShootNum = freeThrowShootNum;
+		this.offensiveReboundsNum = offensiveReboundsNum;
+		this.defensiveReboundsNum = defensiveReboundsNum;
+		this.totalReboundsNum = totalReboundsNum;
+		this.assistNum = assistNum;
+		this.blockNum = blockNum;
+		this.turnoverNum = turnoverNum;
+		this.foulNum = foulNum;
+		this.personalScore = personalScore;
+	}
+	
+	
 }
