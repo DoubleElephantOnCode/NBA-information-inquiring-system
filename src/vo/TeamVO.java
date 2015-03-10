@@ -1,5 +1,7 @@
 package vo;
 
+import java.util.ArrayList;
+
 /**
  * 
  * @author HalaWKS
@@ -301,4 +303,29 @@ public class TeamVO {
 	 * 平均助攻率
 	 */
 	public double aveAssistRate;
+	
+	//以上为平均数据
+	
+	/**
+	 * 球队比赛列表
+	 */
+	public ArrayList<MatchVO> matchVOList;
+
+	public TeamVO(String name, String abbreviation, String location,
+			String competion, String partition, String homeCourt,
+			String buildTime) {
+		super();
+		this.name = name;
+		this.abbreviation = abbreviation;
+		this.location = location;
+		this.competion = competion;
+		this.partition = partition;
+		this.homeCourt = homeCourt;
+		this.buildTime = buildTime;
+		matchVOList = new ArrayList<MatchVO>();
+	}
+	
+	public void addMatchVO(MatchVO matchVO){
+		matchVOList.add(matchVO);
+	}
 }

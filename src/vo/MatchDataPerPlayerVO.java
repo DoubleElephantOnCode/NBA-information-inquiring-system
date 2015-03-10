@@ -8,6 +8,11 @@ package vo;
  */
 public class MatchDataPerPlayerVO {
 	/**
+	 * 比赛双方
+	 */
+	public String teamName;
+	
+	/**
 	 * 球员名称
 	 */
 	public String playerName;
@@ -93,7 +98,7 @@ public class MatchDataPerPlayerVO {
 	 */
 	public int personalScore;
 
-	public MatchDataPerPlayerVO(String playerName, String position,
+	public MatchDataPerPlayerVO(String teamName,String playerName, String position,
 			MyPresentTime presentTime, int scoreNum, int shootNum,
 			int threePointScoreNum, int threePointShootNum,
 			int freeThrowScoreNum, int freeThrowShootNum,
@@ -101,6 +106,7 @@ public class MatchDataPerPlayerVO {
 			int totalReboundsNum, int assistNum, int blockNum, int turnoverNum,
 			int foulNum, int personalScore) {
 		super();
+		this.teamName = teamName;
 		this.playerName = playerName;
 		this.position = position;
 		this.presentTime = presentTime;
