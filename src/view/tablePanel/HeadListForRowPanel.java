@@ -16,7 +16,7 @@ public class HeadListForRowPanel extends JPanel{
 		list.setRowHeight(height / pageRow);
 		list.setColumnWidth(width);
 		list.addToPanel(this);
-		this.setSize(width, height);
+		this.setSize(width, height-height / (2*pageRow));
 		this.setLayout(null);
 	}
 	

@@ -16,9 +16,14 @@ import javax.swing.JTextArea;
 
 public class TestFrame {
 	
-	static String[] headC = {"0", "1", "2", "3", "4", "5", "6"};
-	static String[] headR = {"0", "1", "2", "3", "4", "5", "6", "7"};
+	static String[] headC;
+	static String[] headR;
 	static int width = 500, height = 250;
+	static int column = 23;
+	static int row = 50;
+	
+	static int prow = 12;
+	static int pcolumn = 10;
 	
 	static TablePanel p;
 	static HeadListForColumnPanel hpC;
@@ -28,24 +33,32 @@ public class TestFrame {
 	static JTextArea field;
 	
 	public static void main(String[] args){
-		String[][] s = new String[8][7];
-		for(int i = 0; i < 8; i++){
-			for(int j = 0; j < 7; j++){
+		headC = new String[column];
+		headR = new String[row];
+		for(int i = 0; i < row; i++){
+			headR[i] = i+"";
+		}
+		for(int i = 0; i < column; i++){
+			headC[i] = i+"";
+		}
+		String[][] s = new String[row][column];
+		for(int i = 0; i < row; i++){
+			for(int j = 0; j < column; j++){
 				s[i][j] = new String(i + "  " + j);
 			}
 		}
 		f = new JFrame();
 		JPanel panel = new JPanel();
-		p = new TablePanel(8,7,4,5,headC, width, height);
+		p = new TablePanel(row,column,prow,pcolumn,headC, width, height);
 		p.setContent(s);
 		p.setTableContent();
 		p.setLocation(100, 50);
 		
-		hpC = new HeadListForColumnPanel(headC, 5, width, height/4);
+		hpC = new HeadListForColumnPanel(headC, pcolumn, width, height/prow);
 		hpC.setLocation(100, 0);
 		
-		hpR = new HeadListForRowPanel(headR, 4, width/5, height);
-		hpR.setLocation(0, 50);
+		hpR = new HeadListForRowPanel(headR, prow, width/pcolumn, height);
+		hpR.setLocation(50, 50);
 		
 		JButton left = new JButton("left");
 		left.setSize(100, 30);
@@ -152,7 +165,7 @@ public class TestFrame {
 		    			origin.x = e.getX();
 		                origin.y = e.getY();
 		            }
-		            //ÉèÖÃ¹Ø±Õ³ÌÐòËùÓÃ£¬¹Ø±Õ°´Å¥ÉèÖÃ
+		            //ï¿½ï¿½ï¿½Ã¹Ø±Õ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ø±Õ°ï¿½Å¥ï¿½ï¿½ï¿½ï¿½
 		            public void mouseClicked(MouseEvent e) {
 		            	//TODO
 		            }
