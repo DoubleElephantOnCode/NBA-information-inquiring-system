@@ -79,6 +79,11 @@ public class MatchDataPerPlayerVO {
 	public int assistNum;
 	
 	/**
+	 * 抢断数
+	 */
+	public int stealNum;
+	
+	/**
 	 * 盖帽数
 	 */
 	public int blockNum;
@@ -103,7 +108,7 @@ public class MatchDataPerPlayerVO {
 			int threePointScoreNum, int threePointShootNum,
 			int freeThrowScoreNum, int freeThrowShootNum,
 			int offensiveReboundsNum, int defensiveReboundsNum,
-			int totalReboundsNum, int assistNum, int blockNum, int turnoverNum,
+			int totalReboundsNum, int assistNum, int stealNum,int blockNum, int turnoverNum,
 			int foulNum, int personalScore) {
 		super();
 		this.teamName = teamName;
@@ -120,9 +125,162 @@ public class MatchDataPerPlayerVO {
 		this.defensiveReboundsNum = defensiveReboundsNum;
 		this.totalReboundsNum = totalReboundsNum;
 		this.assistNum = assistNum;
+		this.stealNum = stealNum;
 		this.blockNum = blockNum;
 		this.turnoverNum = turnoverNum;
 		this.foulNum = foulNum;
+		this.personalScore = personalScore;
+	}
+
+	public String getTeamName() {
+		return teamName;
+	}
+
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
+
+	public String getPlayerName() {
+		return playerName;
+	}
+
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
+	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public MyPresentTime getPresentTime() {
+		return presentTime;
+	}
+
+	public void setPresentTime(MyPresentTime presentTime) {
+		this.presentTime = presentTime;
+	}
+
+	public int getScoreNum() {
+		return scoreNum;
+	}
+
+	public void setScoreNum(int scoreNum) {
+		this.scoreNum = scoreNum;
+	}
+
+	public int getShootNum() {
+		return shootNum;
+	}
+
+	public void setShootNum(int shootNum) {
+		this.shootNum = shootNum;
+	}
+
+	public int getThreePointScoreNum() {
+		return threePointScoreNum;
+	}
+
+	public void setThreePointScoreNum(int threePointScoreNum) {
+		this.threePointScoreNum = threePointScoreNum;
+	}
+
+	public int getThreePointShootNum() {
+		return threePointShootNum;
+	}
+
+	public void setThreePointShootNum(int threePointShootNum) {
+		this.threePointShootNum = threePointShootNum;
+	}
+
+	public int getFreeThrowScoreNum() {
+		return freeThrowScoreNum;
+	}
+
+	public void setFreeThrowScoreNum(int freeThrowScoreNum) {
+		this.freeThrowScoreNum = freeThrowScoreNum;
+	}
+
+	public int getFreeThrowShootNum() {
+		return freeThrowShootNum;
+	}
+
+	public void setFreeThrowShootNum(int freeThrowShootNum) {
+		this.freeThrowShootNum = freeThrowShootNum;
+	}
+
+	public int getOffensiveReboundsNum() {
+		return offensiveReboundsNum;
+	}
+
+	public void setOffensiveReboundsNum(int offensiveReboundsNum) {
+		this.offensiveReboundsNum = offensiveReboundsNum;
+	}
+
+	public int getDefensiveReboundsNum() {
+		return defensiveReboundsNum;
+	}
+
+	public void setDefensiveReboundsNum(int defensiveReboundsNum) {
+		this.defensiveReboundsNum = defensiveReboundsNum;
+	}
+
+	public int getTotalReboundsNum() {
+		return totalReboundsNum;
+	}
+
+	public void setTotalReboundsNum(int totalReboundsNum) {
+		this.totalReboundsNum = totalReboundsNum;
+	}
+
+	public int getAssistNum() {
+		return assistNum;
+	}
+
+	public void setAssistNum(int assistNum) {
+		this.assistNum = assistNum;
+	}
+
+	public int getStealNum() {
+		return stealNum;
+	}
+
+	public void setStealNum(int stealNum) {
+		this.stealNum = stealNum;
+	}
+	
+	public int getBlockNum() {
+		return blockNum;
+	}
+
+	public void setBlockNum(int blockNum) {
+		this.blockNum = blockNum;
+	}
+
+	public int getTurnoverNum() {
+		return turnoverNum;
+	}
+
+	public void setTurnoverNum(int turnoverNum) {
+		this.turnoverNum = turnoverNum;
+	}
+
+	public int getFoulNum() {
+		return foulNum;
+	}
+
+	public void setFoulNum(int foulNum) {
+		this.foulNum = foulNum;
+	}
+
+	public int getPersonalScore() {
+		return personalScore;
+	}
+
+	public void setPersonalScore(int personalScore) {
 		this.personalScore = personalScore;
 	}
 	
