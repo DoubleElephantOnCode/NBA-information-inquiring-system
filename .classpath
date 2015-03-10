@@ -2,5 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="E:/课件/软件工程与计算/大二下学期/batik-1.7/batik.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
