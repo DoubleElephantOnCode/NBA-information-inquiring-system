@@ -2,6 +2,7 @@ package model.dataLogic;
 
 import java.util.ArrayList;
 
+import vo.MatchDataPerPlayerVO;
 import vo.PlayerVO;
 
 /**
@@ -45,6 +46,16 @@ public class PlayerList {
 		}
 		
 		return pvo;
+	}
+	
+
+	/**
+	 * 添加一条比赛信息
+	 * @param matchData
+	 */
+	public void addAMatch(MatchDataPerPlayerVO matchData){
+		PlayerVO pvo = findAPlayer(matchData.getPlayerName());
+		pvo.addDataPerMatchList(matchData);
 	}
 	
 }

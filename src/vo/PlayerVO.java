@@ -144,7 +144,7 @@ public class PlayerVO {
 	/**
 	 * 场均失误数
 	 */
-	private double aveFaultNum = 0;
+	private double aveTurnoverNum = 0;
 	
 	/**
 	 * 场均犯规数
@@ -169,7 +169,7 @@ public class PlayerVO {
 	private double assistNum = 0;
 	private double stealNum = 0;
 	private double blockNum = 0;
-	private double faultNum = 0;
+	private double turnoverNum = 0;
 	private double foulNum = 0;
 	private double personalPoints = 0;
 	
@@ -202,57 +202,71 @@ public class PlayerVO {
 	 * 统计该球员赛季单场数据(向数据列表中添加一条数据)
 	 */
 	public void addDataPerMatchList(MatchDataPerPlayerVO matchData) {
-		//TODO 正在想办法
-		PlayerDataPerMatchVO dataPerMatch = new PlayerDataPerMatchVO(matchData);
-		dataPerMatchList.add(dataPerMatch);
+		//TODO
+		PlayerDataPerMatchVO pvo = new PlayerDataPerMatchVO(matchData);
+		dataPerMatchList.add(pvo);
+		
+		//两双次数
+		if(pvo.isDoubleDouble()){
+			doubleDouble++;
+		}
+		//总投篮命中数
+		scoreNum = scoreNum + pvo.getScoreNum();
+		//总出手数
+		shootNum = shootNum + pvo.getShootNum();
+		//总三分命中数
+		threePointerScoreNum = threePointerScoreNum + pvo.getThreePointerScoreNum();
+		//总三分出手数
+		threePointerShootNum = threePointerShootNum + pvo.getThreePointerShootNum();
+		//总罚球命中数
+		freeThrowScoreNum = freeThrowScoreNum + pvo.getFreeThrowScoreNum();
+		//总罚球出手数
+		freeThrowShootNum = freeThrowShootNum + pvo.getFreeThrowShootNum();
+		//总进攻篮板数
+		offensiveReboundsNum = offensiveReboundsNum + pvo.getOffensiveReboundsNum();
+		//总防守篮板数
+		defensiveReboundsNum = defensiveReboundsNum + pvo.getDefensiveReboundsNum();
+		//总篮板数
+		totalReboundsNum = totalReboundsNum + pvo.getTotalReboundsNum();
+		//总助攻数
+		assistNum = assistNum + pvo.getAssistNum();
+		//总抢断数
+		stealNum = stealNum + pvo.getStealNum();
+		//总盖帽数
+		blockNum = blockNum + pvo.getBlockNum();
+		//总犯规数
+		turnoverNum = turnoverNum + pvo.getTurnoverNum();
+		//总失误数
+		foulNum = foulNum + pvo.getFoulNum();
+		//个人总得分
+		personalPoints = personalPoints + pvo.getPersonalPoints();
+		
+		
 	}
 
 	/**
-	 * 计算两双次数、各种场均数据
+	 * 计算场均数据
 	 */
-	public void calAveData() {
-		//TODO 平均上场时间还未计算
-		doubleDouble = 0;
+	public void calAveData(){
+		double matchNum = dataPerMatchList.size();
 		
-		for (PlayerDataPerMatchVO pvo : dataPerMatchList){
-			if(pvo.isDoubleDouble()){
-				//两双次数
-				doubleDouble++;
-			}
-			//总投篮命中数
-			scoreNum = scoreNum + pvo.getScoreNum();
-			//总出手数
-			shootNum = shootNum + pvo.getShootNum();
-			//总三分命中数
-			threePointerScoreNum = threePointerScoreNum + pvo.getThreePointerScoreNum();
-			//总三分出手数
-			threePointerShootNum = threePointerShootNum + pvo.getThreePointerShootNum();
-			//总罚球命中数
-			freeThrowScoreNum = freeThrowScoreNum + pvo.getFreeThrowScoreNum();
-			//总罚球出手数
-			freeThrowShootNum = freeThrowShootNum + pvo.getFreeThrowShootNum();
-			//总进攻篮板数
-			offensiveReboundsNum = offensiveReboundsNum + pvo.getOffensiveReboundsNum();
-			//总防守篮板数
-			defensiveReboundsNum = defensiveReboundsNum + pvo.getDefensiveReboundsNum();
-			//总篮板数
-			totalReboundsNum = totalReboundsNum + pvo.getTotalReboundsNum();
-			//总助攻数
-			assistNum = assistNum + pvo.getAssistNum();
-			//总抢断数
-			stealNum = stealNum + pvo.getStealNum();
-			//总盖帽数
-			blockNum = blockNum + pvo.getBlockNum();
-			//总犯规数
-			faultNum = faultNum + pvo.getFaultNum();
-			//总失误数
-			foulNum = foulNum + pvo.getFoulNum();
-			//个人总得分
-			personalPoints = personalPoints + pvo.getPersonalPoints();
-		}
-		
-		
+		aveScoreNum = scoreNum / matchNum;
+		aveShootNum = shootNum / matchNum;
+		aveThreePointerScoreNum = threePointerScoreNum / matchNum;
+		aveThreePointerShootNum = threePointerShootNum / matchNum;
+		aveFreeThrowScoreNum = freeThrowScoreNum / matchNum;
+		aveFreeThrowShootNum = freeThrowShootNum / matchNum;
+		aveOffensiveReboundsNum = offensiveReboundsNum / matchNum;
+		aveDefensiveReboundsNum = defensiveReboundsNum / matchNum;
+		aveTotalReboundsNum = totalReboundsNum / matchNum;
+		aveAssistNum = assistNum / matchNum;
+		aveStealNum = stealNum / matchNum;
+		aveBlockNum = blockNum / matchNum;
+		aveTurnoverNum = turnoverNum / matchNum;
+		aveFoulNum = foulNum / matchNum;
+		avePersonalPoints = personalPoints / matchNum;
 	}
+	
 
 	public void setAveMinutes(String aveMinutes) {
 		this.aveMinutes = aveMinutes;
@@ -302,9 +316,7 @@ public class PlayerVO {
 		this.aveBlockNum = aveBlockNum;
 	}
 
-	public void setAveFaultNum(double aveFaultNum) {
-		this.aveFaultNum = aveFaultNum;
-	}
+
 
 	public void setAveFoulNum(double aveFoulNum) {
 		this.aveFoulNum = aveFoulNum;
@@ -414,8 +426,12 @@ public class PlayerVO {
 		return aveBlockNum;
 	}
 
-	public double getAveFaultNum() {
-		return aveFaultNum;
+	public double getAveTurnoverNum() {
+		return aveTurnoverNum;
+	}
+
+	public void setAveTurnoverNum(double aveTurnoverNum) {
+		this.aveTurnoverNum = aveTurnoverNum;
 	}
 
 	public double getAveFoulNum() {

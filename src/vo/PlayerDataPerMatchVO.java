@@ -19,7 +19,7 @@ public class PlayerDataPerMatchVO {
 	/**
 	 * 上场时间
 	 */
-	private String minutes;
+	private MyPresentTime minutes;
 	
 	/**
 	 * 投篮命中数
@@ -84,7 +84,7 @@ public class PlayerDataPerMatchVO {
 	/**
 	 * 失误数
 	 */
-	private double faultNum;
+	private double turnoverNum;
 	
 	/**
 	 * 犯规数
@@ -99,7 +99,7 @@ public class PlayerDataPerMatchVO {
 	/**
 	 * 是否两双
 	 */
-	private boolean isDoubleDouble;
+	private boolean isDoubleDouble = false;
 	
 	public PlayerDataPerMatchVO() {
 		// TODO Auto-generated constructor stub
@@ -107,8 +107,54 @@ public class PlayerDataPerMatchVO {
 	
 	public PlayerDataPerMatchVO(MatchDataPerPlayerVO matchData) {
 		// TODO Auto-generated constructor stub
+		this.teamName = matchData.getTeamName();
+		this.minutes = matchData.getPresentTime();
+		this.scoreNum = matchData.getScoreNum();
+		this.shootNum = matchData.getShootNum();
+		this.threePointerScoreNum = matchData.getThreePointScoreNum();
+		this.threePointerShootNum = matchData.getThreePointShootNum();
+		this.freeThrowScoreNum = matchData.getFreeThrowScoreNum();
+		this.freeThrowShootNum = matchData.getFreeThrowShootNum();
+		this.offensiveReboundsNum = matchData.getOffensiveReboundsNum();
+		this.defensiveReboundsNum = matchData.getDefensiveReboundsNum();
+		this.totalReboundsNum = matchData.getTotalReboundsNum();
+		this.assistNum = matchData.getAssistNum();
+		this.stealNum = matchData.getStealNum();
+		this.blockNum = matchData.getBlockNum();
+		this.turnoverNum = matchData.getTurnoverNum();
+		this.foulNum = matchData.getFoulNum();
+		this.personalPoints = matchData.getPersonalScore();
+		
+		judgeDoubleDouble();
 	}
 
+	/**
+	 * 判断该场比赛是否两双
+	 * 两双： 特指得分，篮板，助攻，抢断，盖帽中任何两项
+	 * @return
+	 */
+	private void judgeDoubleDouble(){
+		int i = 0;
+		if(personalPoints >= 10){
+			i++;
+		}
+		if(totalReboundsNum >= 10){
+			i++;
+		}
+		if(assistNum >= 10){
+			i++;
+		}
+		if(stealNum >= 10){
+			i++;
+		}
+		if(blockNum >= 10){
+			i++;
+		}
+		if(i >= 2){
+			isDoubleDouble = true;
+		}
+	}
+	
 	public double getStealNum() {
 		return stealNum;
 	}
@@ -117,7 +163,7 @@ public class PlayerDataPerMatchVO {
 		return teamName;
 	}
 
-	public String getMinutes() {
+	public MyPresentTime getMinutes() {
 		return minutes;
 	}
 
@@ -165,8 +211,8 @@ public class PlayerDataPerMatchVO {
 		return blockNum;
 	}
 
-	public double getFaultNum() {
-		return faultNum;
+	public double getTurnoverNum() {
+		return turnoverNum;
 	}
 
 	public double getFoulNum() {
