@@ -10,6 +10,16 @@ package vo;
 public class MyPresentTime{
 	int minute;
 	int second;
+	
+	/**
+	 * 
+	 * @param time 格式为 10:30
+	 */
+	public MyPresentTime(String time){
+		minute = Integer.parseInt(time.split(":")[0]);
+		second = Integer.parseInt(time.split(":")[1]);
+	}
+	
 	public MyPresentTime(int second){
 		this(second/60, second%60);
 	}

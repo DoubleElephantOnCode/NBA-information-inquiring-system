@@ -15,6 +15,15 @@ public class ScoreVO {
 	 */
 	public int latter;
 	
+	/**
+	 * 
+	 * @param score 格式为10-20
+	 */
+	public ScoreVO(String score){
+		former = Integer.parseInt(score.split("-")[0]);
+		latter = Integer.parseInt(score.split("-")[1]);
+	}
+	
 	public ScoreVO(int former,int latter){
 		this.former = former;
 		this.latter = latter;
