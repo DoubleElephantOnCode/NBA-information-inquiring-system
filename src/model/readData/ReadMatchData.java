@@ -13,11 +13,11 @@ import vo.MatchDataPerPlayerVO;
 import vo.MatchVO;
 import vo.PlayerDataPerMatchVO;
 import vo.ScoreVO;
-import constant.FileName;
+import constant.FilePath;
 
 public class ReadMatchData {
 	public void readMatchData(){
-		File matchFile = new File(FileName.fileName+"/matches");
+		File matchFile = new File(FilePath.fileName+"/matches");
 		 File[] matches = matchFile.listFiles();
 		 for(File file:matches){
 			 readMatchFile(file);

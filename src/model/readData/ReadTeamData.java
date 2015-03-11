@@ -7,11 +7,11 @@ import java.io.IOException;
 
 import model.dataLogic.TeamList;
 import vo.TeamVO;
-import constant.FileName;
+import constant.FilePath;
 
 public class ReadTeamData {
 	public void readTeamData(){
-		File teamFile = new File(FileName.fileName+"/teams/teams");
+		File teamFile = new File(FilePath.fileName+"/teams/teams");
 		BufferedReader reader = null;
 		try{
 			reader = new BufferedReader(new FileReader(teamFile));

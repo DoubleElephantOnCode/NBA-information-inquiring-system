@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
-import constant.FileName;
+import constant.FilePath;
 
 /**
  * 读取球员数据

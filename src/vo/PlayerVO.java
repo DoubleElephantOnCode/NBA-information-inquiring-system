@@ -3,7 +3,7 @@ package vo;
 import java.io.File;
 import java.util.ArrayList;
 
-import constant.FileName;
+import constant.FilePath;
 
 
 /**
@@ -17,12 +17,12 @@ public class PlayerVO {
 	/**
 	 * 球员全身照(图片路径)
 	 */
-	private String action = FileName.fileName + "/players/action/";
+	private String action = FilePath.fileName + "/players/action/";
 	
 	/**
 	 * 球员半身照(图片路径)
 	 */
-	private String portrait = FileName.fileName + "/players/portrait/";
+	private String portrait = FilePath.fileName + "/players/portrait/";
 	
 	/**
 	 * 球员姓名
