@@ -36,7 +36,7 @@ public class PlayerList {
 	 * @param playerName 球员姓名作为目前唯一的判别标准
 	 * @return
 	 */
-	public PlayerVO findAPlayer(String playerName){
+	public static PlayerVO findAPlayer(String playerName){
 		PlayerVO pvo = new PlayerVO();
 		
 		for (PlayerVO p : players){
@@ -53,7 +53,7 @@ public class PlayerList {
 	 * 添加一条比赛信息
 	 * @param matchData
 	 */
-	public void addAMatch(MatchDataPerPlayerVO matchData){
+	public static void addAMatch(MatchDataPerPlayerVO matchData){
 		PlayerVO pvo = findAPlayer(matchData.getPlayerName());
 		pvo.addDataPerMatchList(matchData);
 	}
