@@ -131,6 +131,35 @@ public class MatchDataPerPlayerVO {
 		this.foulNum = foulNum;
 		this.personalScore = personalScore;
 	}
+	
+	public MatchDataPerPlayerVO(String teamName,String playerName, String position,
+			String presentTime, String scoreNum, String shootNum,
+			String threePointScoreNum, String threePointShootNum,
+			String freeThrowScoreNum, String freeThrowShootNum,
+			String offensiveReboundsNum, String defensiveReboundsNum,
+			String totalReboundsNum, String assistNum, String stealNum,String blockNum, String turnoverNum,
+			String foulNum, String personalScore) {
+		super();
+		this.teamName = teamName;
+		this.playerName = playerName;
+		this.position = position;
+		this.presentTime = new MyPresentTime(presentTime);
+		this.scoreNum = Integer.parseInt(scoreNum);
+		this.shootNum = Integer.parseInt(shootNum);
+		this.threePointScoreNum = Integer.parseInt(threePointScoreNum);
+		this.threePointShootNum = Integer.parseInt(threePointShootNum);
+		this.freeThrowScoreNum = Integer.parseInt(freeThrowScoreNum);
+		this.freeThrowShootNum = Integer.parseInt(freeThrowShootNum);
+		this.offensiveReboundsNum = Integer.parseInt(offensiveReboundsNum);
+		this.defensiveReboundsNum = Integer.parseInt(defensiveReboundsNum);
+		this.totalReboundsNum = Integer.parseInt(totalReboundsNum);
+		this.assistNum = Integer.parseInt(assistNum);
+		this.stealNum = Integer.parseInt(stealNum);
+		this.blockNum = Integer.parseInt(blockNum);
+		this.turnoverNum = Integer.parseInt(turnoverNum);
+		this.foulNum = Integer.parseInt(foulNum);
+		this.personalScore = Integer.parseInt(personalScore);
+	}
 
 	public String getTeamName() {
 		return teamName;

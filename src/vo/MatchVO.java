@@ -314,6 +314,13 @@ public class MatchVO {
 		awayDefensiveRound = homeAttackRound;
 		homeDefensiveRound = awayAttackRound;
 	}
+	
+	/**
+	 * 计算数据
+	 */
+	public void calData(){
+		calRound();
+	}
 
 	public Date getTimeOfMatch() {
 		return timeOfMatch;
