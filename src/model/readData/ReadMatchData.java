@@ -17,7 +17,7 @@ import constant.FilePath;
 
 public class ReadMatchData {
 	public void readMatchData(){
-		File matchFile = new File(FilePath.fileName+"/matches");
+		File matchFile = new File(FilePath.matchPath);
 		 File[] matches = matchFile.listFiles();
 		 for(File file:matches){
 			 readMatchFile(file);

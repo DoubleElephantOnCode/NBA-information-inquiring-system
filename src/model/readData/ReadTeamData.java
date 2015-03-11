@@ -11,7 +11,7 @@ import constant.FilePath;
 
 public class ReadTeamData {
 	public void readTeamData(){
-		File teamFile = new File(FilePath.fileName+"/teams/teams");
+		File teamFile = new File(FilePath.teamPath+"/teams");
 		BufferedReader reader = null;
 		try{
 			reader = new BufferedReader(new FileReader(teamFile));
