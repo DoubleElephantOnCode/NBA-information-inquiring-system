@@ -105,6 +105,17 @@ public class HeadListForRow{
 			for(int i = 0; i < field.length; i++){
 				field[i].setLocation(0, field[i].getLocation().y + speed);
 			}
+			if(field[0].getLocation().x > 0){
+				for(int i = 0; i < field.length; i++){
+					field[i].setLocation(0, i*rowH);
+				}
+			}
+			else if(field[field.length-1].getLocation().x < (pageColumn-1)*columnW){
+				field[index].setLocation(0, 0);
+				for(int i = 0; i < field.length; i++){
+					field[i].setLocation(0, (i-index)*rowH);
+				}
+			}
 			updateUI();
 			try {
 				Thread.sleep(sleepTime);

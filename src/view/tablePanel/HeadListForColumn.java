@@ -1,6 +1,9 @@
 package view.tablePanel;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -83,6 +86,11 @@ public class HeadListForColumn {
 			protected Void doInBackground() throws Exception {
 				return moveHeadList();
 			}
+
+			@Override
+			protected void process(List<Void> chunks) {
+				
+			}
 		}.execute();
 	}
 	
@@ -101,16 +109,27 @@ public class HeadListForColumn {
 
 	private Void moveHeadList() {
 		while(stateTime <= moveTime){
-			for(int i = 0; i < field.length; i++){
-				field[i].setLocation(field[i].getLocation().x + speed, 0);
-			}
-			updateUI();
 			try {
 				Thread.sleep(sleepTime);
-				stateTime += sleepTime;
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			for(int i = 0; i < field.length; i++){
+				field[i].setLocation(field[i].getLocation().x + speed, 0);
+			}
+			if(field[0].getLocation().x > 0){
+				for(int i = 0; i < field.length; i++){
+					field[i].setLocation(i*columnW, 0);
+				}
+			}
+			else if(field[field.length-1].getLocation().x < (pageColumn-1)*columnW){
+				field[index].setLocation(0, 0);
+				for(int i = 0; i < field.length; i++){
+					field[i].setLocation((i-index)*columnW, 0);
+				}
+			}
+			updateUI();
+			stateTime += sleepTime;
 		}
 		if(field[index].getLocation().x != 0){
 			field[index].setLocation(0, 0);
