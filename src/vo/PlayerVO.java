@@ -1,6 +1,9 @@
 package vo;
 
+import java.io.File;
 import java.util.ArrayList;
+
+import constant.FileName;
 
 
 /**
@@ -14,12 +17,12 @@ public class PlayerVO {
 	/**
 	 * 球员全身照(图片路径)
 	 */
-	private String action = "D:/data/players/action/";
+	private String action = FileName.fileName + "/players/action/";
 	
 	/**
 	 * 球员半身照(图片路径)
 	 */
-	private String portrait = "D:/data/players/portrait/";
+	private String portrait = FileName.fileName + "/players/portrait/";
 	
 	/**
 	 * 球员姓名
@@ -267,6 +270,23 @@ public class PlayerVO {
 		avePersonalPoints = personalPoints / matchNum;
 	}
 	
+	/**
+	 * 获取球员全身照
+	 * @return
+	 */
+	public File getPlayerAction(){
+		File actionFile = new File(action);
+		return actionFile;
+	}
+	
+	/**
+	 * 获取球员半身照
+	 * @return
+	 */
+	public File getPlayerPortrait(){
+		File portraitFile = new File(portrait);
+		return portraitFile;
+	}
 
 	public void setAveMinutes(String aveMinutes) {
 		this.aveMinutes = aveMinutes;
@@ -315,8 +335,6 @@ public class PlayerVO {
 	public void setAveBlockNum(double aveBlockNum) {
 		this.aveBlockNum = aveBlockNum;
 	}
-
-
 
 	public void setAveFoulNum(double aveFoulNum) {
 		this.aveFoulNum = aveFoulNum;

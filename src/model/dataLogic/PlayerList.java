@@ -16,7 +16,7 @@ public class PlayerList {
 	/**
 	 * 所有球员列表
 	 */
-	ArrayList<PlayerVO> players;
+	static ArrayList<PlayerVO> players;
 	
 	public PlayerList() {
 		// TODO Auto-generated constructor stub
