@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
+import model.dataLogic.PlayerList;
 import vo.PlayerVO;
 import constant.FilePath;
 
@@ -16,6 +17,7 @@ import constant.FilePath;
  */
 public class ReadPlayerData {
 
+	
 	public ReadPlayerData() {
 		// TODO Auto-generated constructor stub
 	}
@@ -23,6 +25,9 @@ public class ReadPlayerData {
 	public void readPlayerData(){
 		File playerInfoFile = new File(FilePath.playerInfoPath);
 		File[] playerInfo = playerInfoFile.listFiles();
+		for(File player : playerInfo){
+			PlayerList.addPlayer(createAPlayer(readAPlayer(player)));
+		}
 	}
 
 	/**
@@ -63,10 +68,5 @@ public class ReadPlayerData {
 				playerInfo[4], playerInfo[5], playerInfo[6], playerInfo[7], playerInfo[8]);
 		return player;
 	}
-	
-	public static void main(String[] args) {
-		ReadPlayerData rpd = new ReadPlayerData();
-		rpd.readAPlayer(new File("D:/data/players/info/Alan Anderson"));
-	}
-	
+
 }
