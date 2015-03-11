@@ -19,8 +19,8 @@ public class TestFrame {
 	static String[] headC;
 	static String[] headR;
 	static int width = 500, height = 250;
-	static int column = 23;
-	static int row = 50;
+	static int column = 50;
+	static int row = 150;
 	
 	static int prow = 12;
 	static int pcolumn = 10;
@@ -28,6 +28,8 @@ public class TestFrame {
 	static TablePanel p;
 	static HeadListForColumnPanel hpC;
 	static HeadListForRowPanel hpR;
+	static BarForColumnPanel bcp;
+	static BarForRowPanel brp;
 	static Point origin = new Point();
 	static JFrame f;
 	static JTextArea field;
@@ -60,18 +62,26 @@ public class TestFrame {
 		hpR = new HeadListForRowPanel(headR, prow, width/pcolumn, height);
 		hpR.setLocation(50, 50);
 		
+		bcp = new BarForColumnPanel(row, prow, 20, height);
+		bcp.setLocation(600, 50);
+		bcp.setPosition(p.pointerRow);
+		
+		brp = new BarForRowPanel(column, pcolumn, width, 20);
+		brp.setLocation(50, 300);
+		brp.setPosition(p.pointerColumn);
+		
 		JButton left = new JButton("left");
 		left.setSize(100, 30);
-		left.setLocation(0, 300);
+		left.setLocation(0, 400);
 		JButton right = new JButton("right");
 		right.setSize(100, 30);
-		right.setLocation(200, 300);
+		right.setLocation(200, 400);
 		JButton up = new JButton("up");
 		up.setSize(100, 30);
-		up.setLocation(600, 100);
+		up.setLocation(700, 100);
 		JButton down = new JButton("down");
 		down.setSize(100, 30);
-		down.setLocation(600, 200);
+		down.setLocation(700, 200);
 		JButton close = new JButton("close");
 		close.setSize(100, 30);
 		close.setLocation(700, 400);
@@ -81,6 +91,7 @@ public class TestFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				p.changeColumn(-1);
 				hpC.moveToIndex(p.pointerColumn);
+				brp.setPosition(p.pointerColumn);
 			}
 			
 		});
@@ -91,6 +102,7 @@ public class TestFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				p.changeColumn(1);
 				hpC.moveToIndex(p.pointerColumn);
+				brp.setPosition(p.pointerColumn);
 			}
 			
 		});
@@ -100,6 +112,7 @@ public class TestFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				p.changeRow(-1);
 				hpR.moveToIndex(p.pointerRow);
+				bcp.setPosition(p.pointerRow);
 			}
 			
 		});
@@ -109,6 +122,7 @@ public class TestFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				p.changeRow(1);
 				hpR.moveToIndex(p.pointerRow);
+				bcp.setPosition(p.pointerRow);
 			}
 			
 		});
@@ -132,19 +146,56 @@ public class TestFrame {
 					p.changeRow(-1);
 				}
 				hpR.moveToIndex(p.pointerRow);
+				bcp.setPosition(p.pointerRow);
 			}
 						
 		});
 		
+		bcp.addMouseWheelListener(new MouseWheelListener(){
+
+			@Override
+			public void mouseWheelMoved(MouseWheelEvent arg0) {
+				int r = arg0.getWheelRotation();
+				if(r > 0){
+					p.changeRow(1);
+				}
+				else if(r < 0){
+					p.changeRow(-1);
+				}
+				hpR.moveToIndex(p.pointerRow);
+				bcp.setPosition(p.pointerRow);
+			}
+			
+		});
+		
+		brp.addMouseWheelListener(new MouseWheelListener(){
+			
+			@Override
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				int r = e.getWheelRotation();
+				if(r > 0){
+					p.changeColumn(1);
+				}
+				else if(r < 0){
+					p.changeColumn(-1);
+				}
+				hpC.moveToIndex(p.pointerColumn);
+				brp.setPosition(p.pointerColumn);
+			}
+			
+		});
+		
 		field = new JTextArea();
 		field.setOpaque(false);
-		field.setSize(200, 20);
+		field.setSize(100, 20);
 		field.setLocation(800, 450);
 //		field.setForeground(new Color(1, 1, 0, 0.0f));
 		panel.setLayout(null);
 		panel.add(p);
 		panel.add(hpC);
 		panel.add(hpR);
+		panel.add(bcp);
+		panel.add(brp);
 		panel.add(left);
 		panel.add(right);
 		panel.add(up);
@@ -165,9 +216,8 @@ public class TestFrame {
 		    			origin.x = e.getX();
 		                origin.y = e.getY();
 		            }
-		            //���ùرճ������ã��رհ�ť����
 		            public void mouseClicked(MouseEvent e) {
-		            	//TODO
+		            	
 		            }
 		            public void mouseReleased(MouseEvent e) {
 		            	super.mouseReleased(e);

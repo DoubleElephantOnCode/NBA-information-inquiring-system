@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.SwingWorker;
 
-public class HeadListForColumn implements Runnable{
+public class HeadListForColumn {
 	JLabel[] field;
 	int rowH, columnW;
 	int pageColumn;
@@ -77,8 +78,12 @@ public class HeadListForColumn implements Runnable{
 		if(moveLength == 0) return;
 		speed = (int) (moveLength / sleepTime);
 		this.index = index;
-		Thread t = new Thread(this);
-		t.start();
+		new SwingWorker<Void, Void>(){
+			@Override
+			protected Void doInBackground() throws Exception {
+				return moveHeadList();
+			}
+		}.execute();
 	}
 	
 	protected void addToPanel(JPanel p){
@@ -94,8 +99,7 @@ public class HeadListForColumn implements Runnable{
 		}
 	}
 
-	@Override
-	public void run() {
+	private Void moveHeadList() {
 		while(stateTime <= moveTime){
 			for(int i = 0; i < field.length; i++){
 				field[i].setLocation(field[i].getLocation().x + speed, 0);
@@ -105,7 +109,6 @@ public class HeadListForColumn implements Runnable{
 				Thread.sleep(sleepTime);
 				stateTime += sleepTime;
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -117,5 +120,7 @@ public class HeadListForColumn implements Runnable{
 			this.updateUI();
 		}
 		stateTime = 0;
+		return null;
 	}
+	
 }
