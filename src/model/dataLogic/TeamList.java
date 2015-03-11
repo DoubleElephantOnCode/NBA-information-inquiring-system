@@ -25,11 +25,11 @@ public class TeamList {
 	 * 增加一个队伍信息
 	 * @param teamVO
 	 */
-	public void addTeamVO(TeamVO teamVO){
+	public static void addTeamVO(TeamVO teamVO){
 		teamVOList.add(teamVO);
 	}
 	
-	public void addMatchVO(MatchVO matchVO){
+	public static void addMatchVO(MatchVO matchVO){
 		for(TeamVO teamVO:teamVOList){
 			if(teamVO.abbreviation.equals(matchVO.getAwayTeam())){
 				teamVO.addMatchVO(matchVO);

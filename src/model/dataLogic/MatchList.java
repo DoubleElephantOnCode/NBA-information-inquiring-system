@@ -21,7 +21,7 @@ public class MatchList {
 	public MatchList(){
 	}
 	
-	public void addMatchVO(MatchVO matchVO){
+	public static void addMatchVO(MatchVO matchVO){
 		matchVOList.add(matchVO);
 	}
 }
