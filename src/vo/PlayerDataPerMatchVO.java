@@ -14,117 +14,173 @@ public class PlayerDataPerMatchVO {
 	/**
 	 * 对阵双方
 	 */
-	String teamName;
+	private String teamName;
 	
 	/**
 	 * 上场时间
 	 */
-	String minutes;
+	private String minutes;
 	
 	/**
 	 * 投篮命中数
 	 */
-	double scoreNum;
+	private double scoreNum;
 	
 	/**
 	 * 投篮出手数
 	 */
-	double shootNum;
+	private double shootNum;
 	
 	/**
 	 * 三分命中数
 	 */
-	double threePointerScoreNum;
+	private double threePointerScoreNum;
 	
 	/**
 	 * 三分出手数
 	 */
-	double threePointerShootNum;
+	private double threePointerShootNum;
 	
 	/**
 	 * 罚球命中数
 	 */
-	double freeThrowScoreNum;
+	private double freeThrowScoreNum;
 	
 	/**
 	 * 罚球出手数
 	 */
-	double freeThrowShootNum;
+	private double freeThrowShootNum;
 	
 	/**
 	 * 进攻篮板数
 	 */
-	double offensiveReboundsNum;
+	private double offensiveReboundsNum;
 	
 	/**
 	 * 防守篮板数
 	 */
-	double defensiveReboundsNum;
+	private double defensiveReboundsNum;
 	
 	/**
 	 * 总篮板数
 	 */
-	double totalReboundsNum;
+	private double totalReboundsNum;
 	
 	/**
 	 * 助攻数
 	 */
-	double assistNum;
+	private double assistNum;
+	
+	/**
+	 * 抢断数
+	 */
+	private double stealNum;
 	
 	/**
 	 * 盖帽数
 	 */
-	double blockNum;
+	private double blockNum;
 
 	/**
 	 * 失误数
 	 */
-	double faultNum;
+	private double faultNum;
 	
 	/**
 	 * 犯规数
 	 */
-	double foulNum;
+	private double foulNum;
 	
 	/**
 	 * 个人得分
 	 */
-	double personalPoints;
+	private double personalPoints;
 	
 	/**
 	 * 是否两双
 	 */
-	boolean isDoubleDouble;
+	private boolean isDoubleDouble;
+	
+	public PlayerDataPerMatchVO() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public PlayerDataPerMatchVO(MatchDataPerPlayerVO matchData) {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PlayerDataPerMatchVO(String teamName, String minutes,
-			double scoreNum, double shootNum, double threePointerScoreNum,
-			double threePointerShootNum, double freeThrowScoreNum,
-			double freeThrowShootNum, double offensiveReboundsNum,
-			double defensiveReboundsNum, double totalReboundsNum,
-			double assistNum, double blockNum, double faultNum, double foulNum,
-			double personalPoints, boolean isDoubleDouble) {
-		super();
-		this.teamName = teamName;
-		this.minutes = minutes;
-		this.scoreNum = scoreNum;
-		this.shootNum = shootNum;
-		this.threePointerScoreNum = threePointerScoreNum;
-		this.threePointerShootNum = threePointerShootNum;
-		this.freeThrowScoreNum = freeThrowScoreNum;
-		this.freeThrowShootNum = freeThrowShootNum;
-		this.offensiveReboundsNum = offensiveReboundsNum;
-		this.defensiveReboundsNum = defensiveReboundsNum;
-		this.totalReboundsNum = totalReboundsNum;
-		this.assistNum = assistNum;
-		this.blockNum = blockNum;
-		this.faultNum = faultNum;
-		this.foulNum = foulNum;
-		this.personalPoints = personalPoints;
-		this.isDoubleDouble = isDoubleDouble;
+	public double getStealNum() {
+		return stealNum;
 	}
+
+	public String getTeamName() {
+		return teamName;
+	}
+
+	public String getMinutes() {
+		return minutes;
+	}
+
+	public double getScoreNum() {
+		return scoreNum;
+	}
+
+	public double getShootNum() {
+		return shootNum;
+	}
+
+	public double getThreePointerScoreNum() {
+		return threePointerScoreNum;
+	}
+
+	public double getThreePointerShootNum() {
+		return threePointerShootNum;
+	}
+
+	public double getFreeThrowScoreNum() {
+		return freeThrowScoreNum;
+	}
+
+	public double getFreeThrowShootNum() {
+		return freeThrowShootNum;
+	}
+
+	public double getOffensiveReboundsNum() {
+		return offensiveReboundsNum;
+	}
+
+	public double getDefensiveReboundsNum() {
+		return defensiveReboundsNum;
+	}
+
+	public double getTotalReboundsNum() {
+		return totalReboundsNum;
+	}
+
+	public double getAssistNum() {
+		return assistNum;
+	}
+
+	public double getBlockNum() {
+		return blockNum;
+	}
+
+	public double getFaultNum() {
+		return faultNum;
+	}
+
+	public double getFoulNum() {
+		return foulNum;
+	}
+
+	public double getPersonalPoints() {
+		return personalPoints;
+	}
+
+	public boolean isDoubleDouble() {
+		return isDoubleDouble;
+	}
+
+	
 	
 }
