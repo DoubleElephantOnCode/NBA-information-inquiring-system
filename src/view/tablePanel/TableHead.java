@@ -98,7 +98,6 @@ public class TableHead implements Runnable{
 		}
 	}
 
-	@Override
 	public void run() {
 		while(stateTime < moveTime){
 			for(int i = 0; i < field.length; i++){

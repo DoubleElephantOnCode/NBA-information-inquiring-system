@@ -87,7 +87,6 @@ public class TestFrame {
 		close.setLocation(700, 400);
 		left.addActionListener(new ActionListener(){
 
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				p.changeColumn(-1);
 				hpC.moveToIndex(p.pointerColumn);
@@ -98,7 +97,6 @@ public class TestFrame {
 		
 		right.addActionListener(new ActionListener(){
 
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				p.changeColumn(1);
 				hpC.moveToIndex(p.pointerColumn);
@@ -108,7 +106,6 @@ public class TestFrame {
 		});
 		up.addActionListener(new ActionListener(){
 
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				p.changeRow(-1);
 				hpR.moveToIndex(p.pointerRow);
@@ -118,7 +115,6 @@ public class TestFrame {
 		});
 		down.addActionListener(new ActionListener(){
 
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				p.changeRow(1);
 				hpR.moveToIndex(p.pointerRow);
@@ -128,7 +124,6 @@ public class TestFrame {
 		});
 		close.addActionListener(new ActionListener(){
 
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
 			}
@@ -136,7 +131,6 @@ public class TestFrame {
 		});
 		
 		p.addMouseWheelListener(new MouseWheelListener(){
-			@Override
 			public void mouseWheelMoved(MouseWheelEvent arg0) {
 				int r = arg0.getWheelRotation();
 				if(r > 0){
@@ -153,7 +147,6 @@ public class TestFrame {
 		
 		bcp.addMouseWheelListener(new MouseWheelListener(){
 
-			@Override
 			public void mouseWheelMoved(MouseWheelEvent arg0) {
 				int r = arg0.getWheelRotation();
 				if(r > 0){
@@ -170,7 +163,6 @@ public class TestFrame {
 		
 		brp.addMouseWheelListener(new MouseWheelListener(){
 			
-			@Override
 			public void mouseWheelMoved(MouseWheelEvent e) {
 				int r = e.getWheelRotation();
 				if(r > 0){
