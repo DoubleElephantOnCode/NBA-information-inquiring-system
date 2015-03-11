@@ -17,12 +17,12 @@ public class PlayerVO {
 	/**
 	 * 球员全身照(图片路径)
 	 */
-	private String action = FilePath.fileName + "/players/action/";
+	private String action = FilePath.playerActionPath;
 	
 	/**
 	 * 球员半身照(图片路径)
 	 */
-	private String portrait = FilePath.fileName + "/players/portrait/";
+	private String portrait = FilePath.playerPortaitPath;
 	
 	/**
 	 * 球员姓名

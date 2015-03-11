@@ -7,7 +7,6 @@ package constant;
  *
  */
 public class FilePath {
-	public static final String fileName = "d:/data";
 	public static final String matchPath = "D:/data/matches";
 	public static final String playerActionPath = "D:/data/players/action";
 	public static final String playerInfoPath = "D:/data/players/info";
