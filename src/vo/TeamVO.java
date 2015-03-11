@@ -311,6 +311,16 @@ public class TeamVO {
 	 */
 	public ArrayList<MatchVO> matchVOList;
 
+	/**
+	 * 构造方法
+	 * @param name
+	 * @param abbreviation
+	 * @param location
+	 * @param competion
+	 * @param partition
+	 * @param homeCourt
+	 * @param buildTime
+	 */
 	public TeamVO(String name, String abbreviation, String location,
 			String competion, String partition, String homeCourt,
 			String buildTime) {
@@ -325,10 +335,14 @@ public class TeamVO {
 		matchVOList = new ArrayList<MatchVO>();
 	}
 	
+	/**
+	 * 增加一条比赛记录并改变相关数据
+	 * @param matchVO
+	 */
 	public void addMatchVO(MatchVO matchVO){
-		matchVOList.add(matchVO);
-		matchNum++;
 		if(abbreviation.equals(matchVO.getAwayTeam())){
+			matchVOList.add(matchVO);
+			matchNum++;
 			totalScoreNum += matchVO.getAwayTotalScoreNum();
 			totalShootNum += matchVO.getAwayTotalShootNum();
 			totalThreePointScoreNum += matchVO.getAwayTotalThreePointScoreNum();
@@ -345,6 +359,26 @@ public class TeamVO {
 			totalFoulNum += matchVO.getAwayTotalFoulNum();
 			totalScore += matchVO.getTotalScore().former;
 			
+		}else if(abbreviation.equals(matchVO.getHomeTeam())){
+			matchVOList.add(matchVO);
+			matchNum++;
+			totalScoreNum += matchVO.getHomeTotalScoreNum();
+			totalShootNum += matchVO.getHomeTotalShootNum();
+			totalThreePointScoreNum += matchVO.getHomeTotalThreePointScoreNum();
+			totalThreePointShootNum += matchVO.getHomeTotalThreePointShootNum();
+			totalFreeThrowScoreNum += matchVO.getHomeTotalFreeThrowScoreNum();
+			totalFreeThrowShootNum += matchVO.getHomeTotalFreeThrowShootNum();
+			totalOffensiveReboundsNum += matchVO.getHomeTotalOffensiveReboundsNum();
+			totalDefensiveReboundsNum += matchVO.getHomeTotalDefensiveReboundsNum();
+			totalTotalReboundsNum += matchVO.getHomeTotalReboundsNum();
+			totalAssistNum += matchVO.getHomeTotalAssistNum();
+			totalStealNum += matchVO.getHomeTotalStealNum();
+			totalBlockNum += matchVO.getHomeTotalBlockNum();
+			totalTurnoverNum += matchVO.getHomeTotalTurnoverNum();
+			totalFoulNum += matchVO.getHomeTotalFoulNum();
+			totalScore += matchVO.getTotalScore().latter;
+		}else{
+			System.out.println("error in TeamVO addMatchVO");
 		}
 	}
 

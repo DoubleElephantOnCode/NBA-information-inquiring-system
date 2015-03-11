@@ -22,4 +22,14 @@ public class TeamVOList {
 	public void addTeamVO(TeamVO teamVO){
 		teamVOList.add(teamVO);
 	}
+	
+	public void addMatchVO(MatchVO matchVO){
+		for(TeamVO teamVO:teamVOList){
+			if(teamVO.abbreviation.equals(matchVO.getAwayTeam())){
+				teamVO.addMatchVO(matchVO);
+			}else if(teamVO.abbreviation.equals(matchVO.getHomeTeam())){
+				teamVO.addMatchVO(matchVO);
+			}
+		}
+	}
 }
