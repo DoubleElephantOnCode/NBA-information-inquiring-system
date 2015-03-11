@@ -5,7 +5,7 @@ import java.util.Date;
 
 /**
  * 
- * @author HalaWKS
+ * @author ZSK
  *
  */
 public class MatchVO {
@@ -127,6 +127,16 @@ public class MatchVO {
 	public int awayTotalFoulNum = 0;
 	
 	/**
+	 * 客场进攻回合
+	 */
+	public double awayAttackRound = 0;
+	
+	/**
+	 * 客场防守回合
+	 */
+	public double awayDefensiveRound = 0;
+	
+	/**
 	 * 客场球员得分情况列表
 	 */
 	public ArrayList<MatchDataPerPlayerVO> awayPlayerList;
@@ -205,6 +215,16 @@ public class MatchVO {
 	public int homeTotalFoulNum = 0;
 	
 	/**
+	 * 主场进攻回合
+	 */
+	public double homeAttackRound = 0;
+	
+	/**
+	 * 主场防守回合
+	 */
+	public double homeDefensiveRound = 0;
+	
+	/**
 	 * 主场球员得分情况列表
 	 */
 	public ArrayList<MatchDataPerPlayerVO> homePlayerList;
@@ -276,6 +296,23 @@ public class MatchVO {
 		homeTotalBlockNum += mdppVO.getBlockNum();
 		homeTotalTurnoverNum += mdppVO.getTurnoverNum();
 		homeTotalFoulNum += mdppVO.getFoulNum();
+	}
+	
+	
+	/**
+	 * 计算主客场进攻防守回合
+	 * 进攻回合：本队回合=投篮数+0.4*球队罚球数-1.07*（本队进攻篮板/（本队进攻篮板+对手防守篮板）*投失球数）
+	 * +1.07*失误数 
+	 */
+	public void calRound(){
+		awayAttackRound =  awayTotalShootNum + 0.4 * awayTotalFreeThrowShootNum 
+				- 1.07 *(awayTotalOffensiveReboundsNum/(double)(awayTotalOffensiveReboundsNum+homeTotalDefensiveReboundsNum)*(awayTotalShootNum - awayTotalScoreNum))
+				+ 1.07 * awayTotalTurnoverNum;
+		homeAttackRound =  homeTotalShootNum + 0.4 * homeTotalFreeThrowShootNum 
+				- 1.07 *(homeTotalOffensiveReboundsNum/(double)(homeTotalOffensiveReboundsNum+awayTotalDefensiveReboundsNum)*(homeTotalShootNum - homeTotalScoreNum))
+				+ 1.07 * homeTotalTurnoverNum;
+		awayDefensiveRound = homeAttackRound;
+		homeDefensiveRound = awayAttackRound;
 	}
 
 	public Date getTimeOfMatch() {
@@ -588,6 +625,38 @@ public class MatchVO {
 
 	public void setHomePlayerList(ArrayList<MatchDataPerPlayerVO> homePlayerList) {
 		this.homePlayerList = homePlayerList;
+	}
+
+	public double getAwayAttackRound() {
+		return awayAttackRound;
+	}
+
+	public void setAwayAttackRound(double awayAttackRound) {
+		this.awayAttackRound = awayAttackRound;
+	}
+
+	public double getAwayDefensiveRound() {
+		return awayDefensiveRound;
+	}
+
+	public void setAwayDefensiveRound(double awayDefensiveRound) {
+		this.awayDefensiveRound = awayDefensiveRound;
+	}
+
+	public double getHomeAttackRound() {
+		return homeAttackRound;
+	}
+
+	public void setHomeAttackRound(double homeAttackRound) {
+		this.homeAttackRound = homeAttackRound;
+	}
+
+	public double getHomeDefensiveRound() {
+		return homeDefensiveRound;
+	}
+
+	public void setHomeDefensiveRound(double homeDefensiveRound) {
+		this.homeDefensiveRound = homeDefensiveRound;
 	}
 
 	

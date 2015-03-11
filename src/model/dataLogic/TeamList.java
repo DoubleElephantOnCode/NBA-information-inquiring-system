@@ -1,8 +1,11 @@
-package vo;
+package model.dataLogic;
 
 import java.util.ArrayList;
 
-public class TeamVOList {
+import vo.MatchVO;
+import vo.TeamVO;
+
+public class TeamList {
 	/**
 	 * 记录所有队伍的列表
 	 */
@@ -11,7 +14,7 @@ public class TeamVOList {
 	/**
 	 * 构造方法 初始化队伍列表
 	 */
-	public TeamVOList(){
+	public TeamList(){
 		teamVOList = new ArrayList<TeamVO>();
 	}
 	

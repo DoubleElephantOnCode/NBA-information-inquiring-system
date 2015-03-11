@@ -10,8 +10,35 @@ package vo;
 public class MyPresentTime{
 	int minute;
 	int second;
+	public MyPresentTime(int second){
+		this(second/60, second%60);
+	}
+	
 	public MyPresentTime(int minute,int second){
 		this.minute = minute;
 		this.second = second;
+	}
+	
+	/**
+	 * 加法
+	 * @param anotherTime
+	 * @return
+	 */
+	public MyPresentTime add(MyPresentTime anotherTime){
+		int tempSecond = (second + anotherTime.second)%60;
+		int tempMinute = minute + anotherTime.minute + (second + anotherTime.second)/60;
+		return new MyPresentTime(tempMinute, tempSecond);
+	}
+	
+	public MyPresentTime divide(int n){
+		return new MyPresentTime(getTimeBySecond()/n);
+	}
+	
+	/**
+	 * 得到以秒为单位的时间
+	 * @return
+	 */
+	public int getTimeBySecond(){
+		return minute*60 + second;
 	}
 }

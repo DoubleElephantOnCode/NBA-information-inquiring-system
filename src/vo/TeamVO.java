@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * 
- * @author HalaWKS
+ * @author ZSK
  *
  */
 public class TeamVO {
@@ -47,7 +47,7 @@ public class TeamVO {
 	/**
 	 * 比赛场数
 	 */
-	public int matchNum = 0;
+	public double matchNum = 0.0;
 	
 	/**
 	 * 投篮命中数
@@ -86,14 +86,26 @@ public class TeamVO {
 
 	
 	/**
+	 * 对手进攻篮板数
+	 */
+	public int totalOpponentOffensiveReboundsNum = 0;
+	
+	/**
 	 * 防守篮板数
 	 */
 	public int totalDefensiveReboundsNum = 0;
 	
 	/**
+	 * 对手防守篮板数
+	 */
+	public int totalOpponentDefensiveReboundsNum = 0;
+	
+	/**
 	 * 总篮板数
 	 */
 	public int totalTotalReboundsNum = 0;
+	
+	
 	
 	/**
 	 * 助攻数
@@ -126,6 +138,11 @@ public class TeamVO {
 	public int totalScore = 0;
 	
 	/**
+	 * 对手比赛得分
+	 */
+	public int totalOpponentScore = 0;
+	
+	/**
 	 * 投篮命中率
 	 */
 	public double totalScoreRate;
@@ -141,6 +158,11 @@ public class TeamVO {
 	public double totalFreeThrowRate;
 	
 	/**
+	 * 胜的场数
+	 */
+	public int winningNum = 0;
+	
+	/**
 	 * 胜率
 	 */
 	public double totalWinningRate;
@@ -148,7 +170,12 @@ public class TeamVO {
 	/**
 	 * 进攻回合
 	 */
-	public double totalAttackRound;
+	public double totalAttackRound = 0;
+	
+	/**
+	 * 防守回合
+	 */
+	public double totalDefensiveRound = 0;
 	
 	/**
 	 * 进攻效率
@@ -164,6 +191,16 @@ public class TeamVO {
 	 * 篮板效率
 	 */
 	public double totalReboundEfficiency;
+	
+	/**
+	 * 进攻篮板效率
+	 */
+	public double totalAttackReboundEfficiency;
+	
+	/**
+	 * 防守篮板效率
+	 */
+	public double totalDefensiveReboundEfficiency;
 	
 	/**
 	 * 抢断效率
@@ -280,6 +317,11 @@ public class TeamVO {
 	public double aveAttackRound;
 	
 	/**
+	 * 平均防守回合
+	 */
+	public double aveDefensiveRound;
+	
+	/**
 	 * 平均进攻效率
 	 */
 	public double aveAttackEfficiency;
@@ -343,6 +385,9 @@ public class TeamVO {
 		if(abbreviation.equals(matchVO.getAwayTeam())){
 			matchVOList.add(matchVO);
 			matchNum++;
+			if(matchVO.getTotalScore().former > matchVO.getTotalScore().latter){
+				winningNum++;
+			}
 			totalScoreNum += matchVO.getAwayTotalScoreNum();
 			totalShootNum += matchVO.getAwayTotalShootNum();
 			totalThreePointScoreNum += matchVO.getAwayTotalThreePointScoreNum();
@@ -359,9 +404,19 @@ public class TeamVO {
 			totalFoulNum += matchVO.getAwayTotalFoulNum();
 			totalScore += matchVO.getTotalScore().former;
 			
+			totalAttackRound += matchVO.getAwayAttackRound();
+			totalDefensiveRound += matchVO.getAwayDefensiveRound();
+			
+			totalOpponentScore += matchVO.getTotalScore().latter;
+			totalOpponentOffensiveReboundsNum += matchVO.getHomeTotalOffensiveReboundsNum();
+			totalOpponentDefensiveReboundsNum += matchVO.getHomeTotalDefensiveReboundsNum();
+			
 		}else if(abbreviation.equals(matchVO.getHomeTeam())){
 			matchVOList.add(matchVO);
 			matchNum++;
+			if(matchVO.getTotalScore().former < matchVO.getTotalScore().latter){
+				winningNum++;
+			}
 			totalScoreNum += matchVO.getHomeTotalScoreNum();
 			totalShootNum += matchVO.getHomeTotalShootNum();
 			totalThreePointScoreNum += matchVO.getHomeTotalThreePointScoreNum();
@@ -377,9 +432,66 @@ public class TeamVO {
 			totalTurnoverNum += matchVO.getHomeTotalTurnoverNum();
 			totalFoulNum += matchVO.getHomeTotalFoulNum();
 			totalScore += matchVO.getTotalScore().latter;
+			
+			totalAttackRound += matchVO.getHomeAttackRound();
+			totalDefensiveRound += matchVO.getHomeDefensiveRound();
+			
+			totalOpponentScore += matchVO.getTotalScore().former;
+			totalOpponentOffensiveReboundsNum += matchVO.getAwayTotalOffensiveReboundsNum();
+			totalOpponentDefensiveReboundsNum += matchVO.getAwayTotalDefensiveReboundsNum();
 		}else{
 			System.out.println("error in TeamVO addMatchVO");
 		}
+	}
+	
+	
+	/**
+	 * 计算各种平均数
+	 * @return
+	 */
+	public void calAve(){
+		aveScoreNum = totalScoreNum/matchNum;
+		aveShootNum = totalShootNum/matchNum;
+		aveThreePointScoreNum = totalScoreNum/matchNum;
+		aveThreePointShootNum = totalShootNum/matchNum;
+		aveFreeThrowScoreNum = totalFreeThrowScoreNum/matchNum;
+		aveFreeThrowShootNum = totalFreeThrowShootNum/matchNum;
+		aveOffensiveReboundsNum = totalOffensiveReboundsNum/matchNum;
+		aveDefensiveReboundsNum = totalDefensiveReboundsNum/matchNum;
+		aveTotalReboundsNum = totalTotalReboundsNum/matchNum;
+		aveAssistNum = totalAssistNum/matchNum;
+		aveStealNum = totalStealNum/matchNum;
+		aveBlockNum = totalBlockNum/matchNum;
+		aveTurnoverNum = totalTurnoverNum/matchNum;
+		aveFoulNum = totalFoulNum/matchNum;
+		aveScore = totalScore/matchNum;
+		//关于平均进攻回合的计算有疑问
+		aveAttackRound = totalAttackRound/matchNum;
+		aveDefensiveRound = totalDefensiveRound/matchNum;
+	}
+	
+	/**
+	 * 计算各种效率
+	 * @return
+	 */
+	public void calEfficiency(){
+		totalAttackEfficiency = totalScore/totalAttackRound*100;
+		totalDefendEfficiency = totalOpponentScore/totalDefensiveRound*100;
+		totalAttackReboundEfficiency = totalOffensiveReboundsNum/(double)(totalOffensiveReboundsNum + totalOpponentDefensiveReboundsNum);
+		totalDefensiveReboundEfficiency = totalDefensiveReboundsNum/(double)(totalDefensiveReboundsNum + totalOpponentOffensiveReboundsNum);
+		totalStealEfficiency = totalStealNum/totalDefensiveRound;
+		totalAssistRate = totalAssistNum/totalAttackRound;
+	}
+	
+	/**
+	 * 计算各种率
+	 * @return
+	 */
+	public void calRate(){
+		totalScoreRate = totalScoreNum/(double)totalShootNum;
+		totalThreePointRate = totalThreePointScoreNum/(double)totalThreePointShootNum;
+		totalFreeThrowRate = totalFreeThrowScoreNum/(double)totalFreeThrowShootNum;
+		totalWinningRate = winningNum/matchNum;
 	}
 
 	public String getName() {
@@ -438,11 +550,11 @@ public class TeamVO {
 		this.buildTime = buildTime;
 	}
 
-	public int getMatchNum() {
+	public double getMatchNum() {
 		return matchNum;
 	}
 
-	public void setMatchNum(int matchNum) {
+	public void setMatchNum(double matchNum) {
 		this.matchNum = matchNum;
 	}
 
@@ -604,6 +716,14 @@ public class TeamVO {
 
 	public void setTotalAttackRound(double totalAttackRound) {
 		this.totalAttackRound = totalAttackRound;
+	}
+
+	public int getWinningNum() {
+		return winningNum;
+	}
+
+	public void setWinningNum(int winningNum) {
+		this.winningNum = winningNum;
 	}
 
 	public double getTotalAttackEfficiency() {
@@ -820,6 +940,65 @@ public class TeamVO {
 
 	public void setMatchVOList(ArrayList<MatchVO> matchVOList) {
 		this.matchVOList = matchVOList;
+	}
+
+	public double getTotalDefensiveRound() {
+		return totalDefensiveRound;
+	}
+
+	public void setTotalDefensiveRound(double totalDefensiveRound) {
+		this.totalDefensiveRound = totalDefensiveRound;
+	}
+
+	public double getAveDefensiveRound() {
+		return aveDefensiveRound;
+	}
+
+	public void setAveDefensiveRound(double aveDefensiveRound) {
+		this.aveDefensiveRound = aveDefensiveRound;
+	}
+
+	public int getTotalOpponentOffensiveReboundsNum() {
+		return totalOpponentOffensiveReboundsNum;
+	}
+
+	public void setTotalOpponentOffensiveReboundsNum(
+			int totalOpponentOffensiveReboundsNum) {
+		this.totalOpponentOffensiveReboundsNum = totalOpponentOffensiveReboundsNum;
+	}
+
+	public int getTotalOpponentDefensiveReboundsNum() {
+		return totalOpponentDefensiveReboundsNum;
+	}
+
+	public void setTotalOpponentDefensiveReboundsNum(
+			int totalOpponentDefensiveReboundsNum) {
+		this.totalOpponentDefensiveReboundsNum = totalOpponentDefensiveReboundsNum;
+	}
+
+	public int getTotalOpponentScore() {
+		return totalOpponentScore;
+	}
+
+	public void setTotalOpponentScore(int totalOpponentScore) {
+		this.totalOpponentScore = totalOpponentScore;
+	}
+
+	public double getTotalAttackReboundEfficiency() {
+		return totalAttackReboundEfficiency;
+	}
+
+	public void setTotalAttackReboundEfficiency(double totalAttackReboundEfficiency) {
+		this.totalAttackReboundEfficiency = totalAttackReboundEfficiency;
+	}
+
+	public double getTotalDefensiveReboundEfficiency() {
+		return totalDefensiveReboundEfficiency;
+	}
+
+	public void setTotalDefensiveReboundEfficiency(
+			double totalDefensiveReboundEfficiency) {
+		this.totalDefensiveReboundEfficiency = totalDefensiveReboundEfficiency;
 	}
 	
 	
