@@ -4,18 +4,21 @@ import java.util.ArrayList;
 
 import vo.MatchVO;
 import vo.TeamVO;
-
+/**
+ * 
+ * @author ZSK
+ * @date 2015年3月11日 下午11:15:53
+ */
 public class TeamList {
 	/**
 	 * 记录所有队伍的列表
 	 */
-	public ArrayList<TeamVO> teamVOList;
+	public static ArrayList<TeamVO> teamVOList = new ArrayList<TeamVO>();
 	
 	/**
 	 * 构造方法 初始化队伍列表
 	 */
 	public TeamList(){
-		teamVOList = new ArrayList<TeamVO>();
 	}
 	
 	/**

@@ -13,13 +13,12 @@ public class MatchList {
 	/**
 	 * 比赛列表
 	 */
-	ArrayList<MatchVO> matchVOList;
+	public static ArrayList<MatchVO> matchVOList = new ArrayList<MatchVO>();
 	
 	/**
 	 * 构造方法
 	 */
 	public MatchList(){
-		matchVOList = new ArrayList<MatchVO>();
 	}
 	
 	public void addMatchVO(MatchVO matchVO){
