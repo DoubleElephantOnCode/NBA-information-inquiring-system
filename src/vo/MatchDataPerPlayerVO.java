@@ -114,6 +114,21 @@ public class MatchDataPerPlayerVO {
 	 */
 	public int personalScore;
 
+	/**
+	 * 该场球队所有球员总上场时间
+	 */
+	private MyPresentTime timeOfAllPlayers;
+	
+	/**
+	 * 球队总篮板数
+	 */
+	private double allReboundNum = 0;
+	
+	/**
+	 * 对手总篮板数
+	 */
+	private double allOpponentRebondNum = 0;
+	
 	public MatchDataPerPlayerVO(String teamName,String twoSides,String playerName, String position,
 			MyPresentTime presentTime, int scoreNum, int shootNum,
 			int threePointScoreNum, int threePointShootNum,
@@ -361,6 +376,30 @@ public class MatchDataPerPlayerVO {
 
 	public void setTimeHasError(boolean timeHasError) {
 		this.timeHasError = timeHasError;
+	}
+
+	public MyPresentTime getTimeOfAllPlayers() {
+		return timeOfAllPlayers;
+	}
+
+	public void setTimeOfAllPlayers(MyPresentTime timeOfAllPlayers) {
+		this.timeOfAllPlayers = timeOfAllPlayers;
+	}
+
+	public double getAllReboundNum() {
+		return allReboundNum;
+	}
+
+	public void setAllReboundNum(double allReboundNum) {
+		this.allReboundNum = allReboundNum;
+	}
+
+	public double getAllOpponentRebondNum() {
+		return allOpponentRebondNum;
+	}
+
+	public void setAllOpponentRebondNum(double allOpponentRebondNum) {
+		this.allOpponentRebondNum = allOpponentRebondNum;
 	}
 	
 	

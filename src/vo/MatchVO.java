@@ -372,6 +372,29 @@ public class MatchVO {
 		calRound();
 	}
 
+	/**
+	 * 向每一条该场比赛的球员数据内添加一些基础数据（总上场时间之类）
+	 */
+	public void setBasicData(){
+		//TODO 尚未完成
+		//主队
+		for(MatchDataPerPlayerVO homePlayerData : homePlayerList){
+			homePlayerData.setTimeOfAllPlayers(new MyPresentTime(
+					((scoreVOList.size() - 4) * 5 +48) * 5, 0));
+			homePlayerData.setAllReboundNum(homeTotalReboundsNum);
+			homePlayerData.setAllOpponentRebondNum(awayTotalReboundsNum);
+			
+		}
+		//客队
+		for(MatchDataPerPlayerVO awayPlayerData : awayPlayerList){
+			awayPlayerData.setTimeOfAllPlayers(new MyPresentTime(
+					((scoreVOList.size() - 4) * 5 +48) * 5, 0));
+			awayPlayerData.setAllReboundNum(awayTotalReboundsNum);;
+			awayPlayerData.setAllOpponentRebondNum(homeTotalReboundsNum);
+			
+		}
+	}
+	
 	public Date getTimeOfMatch() {
 		return timeOfMatch;
 	}

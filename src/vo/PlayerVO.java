@@ -14,12 +14,6 @@ import constant.FilePath;
  */
 public class PlayerVO {
 	
-//	球员名称y，所属球队y，参赛场数，先发场数，篮板数y，助攻数y，在
-//	场时间，投篮命中率，三分命中率，罚球命中率，进攻数，防守数，抢断数，盖
-//	帽数，失误数，犯规数， 得分，效率， GmSc 效率值，真实命中率，投篮效率，
-//	篮板率，进攻篮板率，防守篮板率，助攻率，抢断率，盖帽率，失误率，使用率
-//	等， 并且可以依据以上数据中的任何一项对全部数据进行升降序操作
-	
 	/**
 	 * 参赛场数
 	 */
@@ -260,6 +254,17 @@ public class PlayerVO {
 	 * 赛季总得分
 	 */
 	private double personalPoints = 0;
+	
+	/**
+	 * 投篮命中率
+	 */
+	private double scoreRate = 0;
+	
+//	球员名称y，所属球队y，参赛场数y，先发场数y，篮板数y，助攻数y，在
+//	场时间，投篮命中率，三分命中率，罚球命中率，抢断数，盖
+//	帽数，失误数，犯规数， 得分，效率， GmSc 效率值，真实命中率，投篮效率，
+//	篮板率，进攻篮板率，防守篮板率，助攻率，抢断率，盖帽率，失误率，使用率
+//	等， 并且可以依据以上数据中的任何一项对全部数据进行升降序操作
 	
 	public PlayerVO() {
 		// TODO Auto-generated constructor stub
@@ -506,6 +511,82 @@ public class PlayerVO {
 
 	public double getAveStealNum() {
 		return aveStealNum;
+	}
+
+	public int getEntryNum() {
+		return entryNum;
+	}
+
+	public int getStartingNum() {
+		return startingNum;
+	}
+
+	public String getTeamName() {
+		return teamName;
+	}
+
+	public MyPresentTime getTotalMinutes() {
+		return totalMinutes;
+	}
+
+	public double getScoreNum() {
+		return scoreNum;
+	}
+
+	public double getShootNum() {
+		return shootNum;
+	}
+
+	public double getThreePointerScoreNum() {
+		return threePointerScoreNum;
+	}
+
+	public double getThreePointerShootNum() {
+		return threePointerShootNum;
+	}
+
+	public double getFreeThrowScoreNum() {
+		return freeThrowScoreNum;
+	}
+
+	public double getFreeThrowShootNum() {
+		return freeThrowShootNum;
+	}
+
+	public double getOffensiveReboundsNum() {
+		return offensiveReboundsNum;
+	}
+
+	public double getDefensiveReboundsNum() {
+		return defensiveReboundsNum;
+	}
+
+	public double getTotalReboundsNum() {
+		return totalReboundsNum;
+	}
+
+	public double getAssistNum() {
+		return assistNum;
+	}
+
+	public double getStealNum() {
+		return stealNum;
+	}
+
+	public double getBlockNum() {
+		return blockNum;
+	}
+
+	public double getTurnoverNum() {
+		return turnoverNum;
+	}
+
+	public double getFoulNum() {
+		return foulNum;
+	}
+
+	public double getPersonalPoints() {
+		return personalPoints;
 	}
 
 	
