@@ -7,10 +7,16 @@ package vo;
  * @data 2015年3月9日 下午4:22:06
  */
 public class MatchDataPerPlayerVO {
+	
+	/**
+	 * 所属队伍缩写
+	 */
+	public String teamName;
+	
 	/**
 	 * 比赛双方
 	 */
-	public String teamName;
+	public String twoSides;
 	
 	/**
 	 * 球员名称
@@ -103,7 +109,7 @@ public class MatchDataPerPlayerVO {
 	 */
 	public int personalScore;
 
-	public MatchDataPerPlayerVO(String teamName,String playerName, String position,
+	public MatchDataPerPlayerVO(String teamName,String twoSides,String playerName, String position,
 			MyPresentTime presentTime, int scoreNum, int shootNum,
 			int threePointScoreNum, int threePointShootNum,
 			int freeThrowScoreNum, int freeThrowShootNum,
@@ -112,6 +118,7 @@ public class MatchDataPerPlayerVO {
 			int foulNum, int personalScore) {
 		super();
 		this.teamName = teamName;
+		this.twoSides = twoSides;
 		this.playerName = playerName;
 		this.position = position;
 		this.presentTime = presentTime;
@@ -132,7 +139,7 @@ public class MatchDataPerPlayerVO {
 		this.personalScore = personalScore;
 	}
 	
-	public MatchDataPerPlayerVO(String teamName,String playerName, String position,
+	public MatchDataPerPlayerVO(String teamName,String twoSides,String playerName, String position,
 			String presentTime, String scoreNum, String shootNum,
 			String threePointScoreNum, String threePointShootNum,
 			String freeThrowScoreNum, String freeThrowShootNum,
@@ -141,6 +148,7 @@ public class MatchDataPerPlayerVO {
 			String foulNum, String personalScore) {
 		super();
 		this.teamName = teamName;
+		this.twoSides = twoSides;
 		this.playerName = playerName;
 		this.position = position;
 		this.presentTime = new MyPresentTime(presentTime);
@@ -161,12 +169,12 @@ public class MatchDataPerPlayerVO {
 		this.personalScore = Integer.parseInt(personalScore);
 	}
 
-	public String getTeamName() {
-		return teamName;
+	public String getTwoSides() {
+		return twoSides;
 	}
 
-	public void setTeamName(String teamName) {
-		this.teamName = teamName;
+	public void setTwoSides(String twoSides) {
+		this.twoSides = twoSides;
 	}
 
 	public String getPlayerName() {
@@ -311,6 +319,14 @@ public class MatchDataPerPlayerVO {
 
 	public void setPersonalScore(int personalScore) {
 		this.personalScore = personalScore;
+	}
+
+	public String getTeamName() {
+		return teamName;
+	}
+
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
 	}
 	
 	
