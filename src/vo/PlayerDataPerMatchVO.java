@@ -162,9 +162,45 @@ public class PlayerDataPerMatchVO {
 	 * 篮板率：球员篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总篮板+对手总篮板)
 	 */
 	private double reboundRate = 0;
+	
+	/**
+	 * 进攻篮板率：球员进攻篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总进攻篮板+对手总进攻篮板)
+	 */
+	private double offensiveReboundRate = 0;
+	
+	/**
+	 * 防守篮板率：球员防守篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总防守篮板+对手总防守篮板)
+	 */
+	private double defensiveReboundRate = 0;
+	
+	/**
+	 * 助攻率：球员助攻数÷(球员上场时间÷(球队所有球员上场时间÷5)×球队总进球数-球员进球数)
+	 */
+	private double assistRate = 0;
+	
+	/**
+	 * 抢断率：球员抢断数×(球队所有球员上场时间÷5)÷球员上场时间÷对手进攻次数)
+	 */
+	private double stealRate = 0;
+	
+	/**
+	 * 盖帽率：球员盖帽数×(球队所有球员上场时间÷5)÷球员上场时间÷对手两分球出手次数
+	 */
+	private double blockRate = 0;
+	
+	/**
+	 * 失误率：球员失误数÷(球员两分球出手次数+0.44×球员罚球次数+球员失误数)
+	 */
+	private double turnoverRate = 0;
+	
+	/**
+	 * 使用率：(球员出手次数+0.44×球员罚球次数+球员失误次数)×(球队所有球员上场时间÷5)÷
+	 *      球员上场时间÷(球队所有总球员出手次数+0.44×球队所有球员罚球次数+球队所有球员失误次数)
+	 */
+	private double useRate = 0;
 //	球员名称y，所属球队y，参赛场数y，先发场数y，篮板数y，助攻数y，在
 //	场时间，投篮命中率y，三分命中率y，罚球命中率y，效率y， GmSc 效率值y，真实命中率y，投篮效率y，
-//	篮板率，进攻篮板率，防守篮板率，助攻率，抢断率，盖帽率，失误率，使用率
+//	篮板率y，进攻篮板率，防守篮板率，助攻率，抢断率，盖帽率，失误率，使用率
 //	等， 并且可以依据以上数据中的任何一项对全部数据进行升降序操作
 	
 	/**
@@ -209,6 +245,9 @@ public class PlayerDataPerMatchVO {
 		this.turnoverNum = matchData.getTurnoverNum();
 		this.foulNum = matchData.getFoulNum();
 		this.personalPoints = matchData.getPersonalScore();
+		this.timeOfAllPlayers = matchData.getTimeOfAllPlayers();
+		this.allReboundNum = matchData.getAllReboundNum();
+		this.allOpponentRebondNum = matchData.getAllOpponentRebondNum();
 		
 		judgeDoubleDouble();
 		judgeStarting();
@@ -335,6 +374,66 @@ public class PlayerDataPerMatchVO {
 
 	public boolean isStarting() {
 		return isStarting;
+	}
+
+	public double getScoreRate() {
+		return scoreRate;
+	}
+
+	public double getThreePointScoreRate() {
+		return threePointScoreRate;
+	}
+
+	public double getFreeThrowScoreRate() {
+		return freeThrowScoreRate;
+	}
+
+	public double getEfficiency() {
+		return efficiency;
+	}
+
+	public double getGmSc() {
+		return GmSc;
+	}
+
+	public double getTrueShootingPercentage() {
+		return trueShootingPercentage;
+	}
+
+	public double getShootingEfficiency() {
+		return shootingEfficiency;
+	}
+
+	public double getReboundRate() {
+		return reboundRate;
+	}
+
+	public double getOffensiveReboundRate() {
+		return offensiveReboundRate;
+	}
+
+	public double getDefensiveReboundRate() {
+		return defensiveReboundRate;
+	}
+
+	public double getAssistRate() {
+		return assistRate;
+	}
+
+	public double getStealRate() {
+		return stealRate;
+	}
+
+	public double getBlockRate() {
+		return blockRate;
+	}
+
+	public double getTurnoverRate() {
+		return turnoverRate;
+	}
+
+	public double getUseRate() {
+		return useRate;
 	}
 
 	
