@@ -17,7 +17,6 @@ public class ReadTeamData {
 			reader = new BufferedReader(new FileReader(teamFile));
 			String tempString = null;
 			while((tempString = reader.readLine())!=null){
-				System.out.println(tempString);
 				if(tempString.charAt(2)=='═'){
 					continue;
 				}

@@ -47,6 +47,7 @@ public class ReadMatchData {
 	 * 读取一个match文件的数据
 	 */
 	public void readMatchFile(File file){
+		System.out.println(file.getPath());
 		BufferedReader reader = null;
 		try{
 			reader = new BufferedReader(new FileReader(file));
@@ -78,10 +79,13 @@ public class ReadMatchData {
 			tempString = reader.readLine();
 			boolean isHome = false;
 			while(tempString != null){
+				System.out.println(tempString);
 				if(tempString.equals(awayTeam)){
+					tempString = reader.readLine();
 					continue;
 				}
 				if(tempString.equals(homeTeam)){
+					tempString = reader.readLine();
 					isHome = true;
 					continue;
 				}
