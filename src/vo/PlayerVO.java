@@ -14,6 +14,22 @@ import constant.FilePath;
  */
 public class PlayerVO {
 	
+//	球员名称y，所属球队y，参赛场数，先发场数，篮板数y，助攻数y，在
+//	场时间，投篮命中率，三分命中率，罚球命中率，进攻数，防守数，抢断数，盖
+//	帽数，失误数，犯规数， 得分，效率， GmSc 效率值，真实命中率，投篮效率，
+//	篮板率，进攻篮板率，防守篮板率，助攻率，抢断率，盖帽率，失误率，使用率
+//	等， 并且可以依据以上数据中的任何一项对全部数据进行升降序操作
+	
+	/**
+	 * 参赛场数
+	 */
+	private int entryNum = 0;
+	
+	/**
+	 * 首发场数
+	 */
+	private int startingNum = 0;
+	
 	/**
 	 * 球员全身照(图片路径)
 	 */
@@ -23,6 +39,11 @@ public class PlayerVO {
 	 * 球员半身照(图片路径)
 	 */
 	private String portrait = FilePath.playerPortaitPath;
+	
+	/**
+	 * 所属球队
+	 */
+	private String teamName;
 	
 	/**
 	 * 球员姓名
@@ -82,7 +103,7 @@ public class PlayerVO {
 	/**
 	 * 场均上场时间
 	 */
-	private String aveMinutes;
+	private MyPresentTime aveMinutes;
 	
 	/**
 	 * 场均投篮命中数
@@ -159,21 +180,85 @@ public class PlayerVO {
 	 */
 	private double avePersonalPoints = 0;
 	
-	//计算场均数据
+	
+	/**
+	 * 赛季总上场时间
+	 */
+	private MyPresentTime totalMinutes;
+	
+	/**
+	 * 赛季总命中数
+	 */
 	private double scoreNum = 0;
+	
+	/**
+	 * 赛季总出手数
+	 */
 	private double shootNum = 0;
+	
+	/**
+	 * 赛季总三分命中数
+	 */
 	private double threePointerScoreNum = 0;
+	
+	/**
+	 * 赛季总三分出手数
+	 */
 	private double threePointerShootNum = 0;
+	
+	/**
+	 * 赛季总罚球命中数
+	 */
 	private double freeThrowScoreNum = 0;
+	
+	/**
+	 * 赛季总罚球出手数
+	 */
 	private double freeThrowShootNum = 0;
+	
+	/**
+	 * 赛季总进攻篮板数
+	 */
 	private double offensiveReboundsNum = 0;
+	
+	/**
+	 * 赛季总防守篮板数
+	 */
 	private double defensiveReboundsNum = 0;
+	
+	/**
+	 * 赛季总篮板数
+	 */
 	private double totalReboundsNum = 0;
+	
+	/**
+	 * 赛季总助攻数
+	 */
 	private double assistNum = 0;
+	
+	/**
+	 * 赛季总抢断数
+	 */
 	private double stealNum = 0;
+	
+	/**
+	 * 赛季总盖帽数
+	 */
 	private double blockNum = 0;
+	
+	/**
+	 * 赛季总失误数
+	 */
 	private double turnoverNum = 0;
+	
+	/**
+	 * 赛季总犯规数
+	 */
 	private double foulNum = 0;
+	
+	/**
+	 * 赛季总得分
+	 */
 	private double personalPoints = 0;
 	
 	public PlayerVO() {
@@ -243,8 +328,8 @@ public class PlayerVO {
 		foulNum = foulNum + pvo.getFoulNum();
 		//个人总得分
 		personalPoints = personalPoints + pvo.getPersonalPoints();
-		
-		
+		//计算参赛场数
+		calEntryNum();
 	}
 
 	/**
@@ -288,62 +373,24 @@ public class PlayerVO {
 		return portraitFile;
 	}
 
-	public void setAveMinutes(String aveMinutes) {
-		this.aveMinutes = aveMinutes;
+	/**
+	 * 计算参赛场数
+	 */
+	private void calEntryNum(){
+		entryNum = dataPerMatchList.size();
 	}
 
-	public void setAveScoreNum(double aveScoreNum) {
-		this.aveScoreNum = aveScoreNum;
+	/**
+	 * 计算首发场数
+	 */
+	public void calStartingNum(){
+		for(PlayerDataPerMatchVO dataPerMatch : dataPerMatchList){
+			if(dataPerMatch.isStarting()){
+				startingNum++;
+			}
+		}
 	}
-
-	public void setAveShootNum(double aveShootNum) {
-		this.aveShootNum = aveShootNum;
-	}
-
-	public void setAveThreePointerScoreNum(double aveThreePointerScoreNum) {
-		this.aveThreePointerScoreNum = aveThreePointerScoreNum;
-	}
-
-	public void setAveThreePointerShootNum(double aveThreePointerShootNum) {
-		this.aveThreePointerShootNum = aveThreePointerShootNum;
-	}
-
-	public void setAveFreeThrowScoreNum(double aveFreeThrowScoreNum) {
-		this.aveFreeThrowScoreNum = aveFreeThrowScoreNum;
-	}
-
-	public void setAveFreeThrowShootNum(double aveFreeThrowShootNum) {
-		this.aveFreeThrowShootNum = aveFreeThrowShootNum;
-	}
-
-	public void setAveOffensiveReboundsNum(double aveOffensiveReboundsNum) {
-		this.aveOffensiveReboundsNum = aveOffensiveReboundsNum;
-	}
-
-	public void setAveDefensiveReboundsNum(double aveDefensiveReboundsNum) {
-		this.aveDefensiveReboundsNum = aveDefensiveReboundsNum;
-	}
-
-	public void setAveTotalReboundsNum(double aveTotalReboundsNum) {
-		this.aveTotalReboundsNum = aveTotalReboundsNum;
-	}
-
-	public void setAveAssistNum(double aveAssistNum) {
-		this.aveAssistNum = aveAssistNum;
-	}
-
-	public void setAveBlockNum(double aveBlockNum) {
-		this.aveBlockNum = aveBlockNum;
-	}
-
-	public void setAveFoulNum(double aveFoulNum) {
-		this.aveFoulNum = aveFoulNum;
-	}
-
-	public void setAvePersonalPoints(double avePersonalPoints) {
-		this.avePersonalPoints = avePersonalPoints;
-	}
-
+	
 	public String getAction() {
 		return action;
 	}
@@ -396,7 +443,7 @@ public class PlayerVO {
 		return doubleDouble;
 	}
 
-	public String getAveMinutes() {
+	public MyPresentTime getAveMinutes() {
 		return aveMinutes;
 	}
 
@@ -448,9 +495,6 @@ public class PlayerVO {
 		return aveTurnoverNum;
 	}
 
-	public void setAveTurnoverNum(double aveTurnoverNum) {
-		this.aveTurnoverNum = aveTurnoverNum;
-	}
 
 	public double getAveFoulNum() {
 		return aveFoulNum;
@@ -464,11 +508,6 @@ public class PlayerVO {
 		return aveStealNum;
 	}
 
-	public void setAveStealNum(double aveStealNum) {
-		this.aveStealNum = aveStealNum;
-	}
-
-	
 	
 	
 }

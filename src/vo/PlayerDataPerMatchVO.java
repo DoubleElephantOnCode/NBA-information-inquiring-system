@@ -7,14 +7,30 @@ package vo;
  */
 public class PlayerDataPerMatchVO {
 	
-//	球员名 ; 位置; 在场时间; 投篮命中数; 投篮出手数; 三分命中数; 三分出手数; 罚球命中数; 罚
-//	球出手数; 进攻（ 前场）篮板数; 防守（ 后场）篮板数; 总篮板数; 助攻数; 盖帽数; 失误数; 犯规 数;
-//	个人得分;
+//	球员名y ; 位置y; 在场时间y; 投篮命中数y; 投篮出手数y; 三分命中数y; 三分出手数y; 罚球命中数y; 罚
+//	球出手数y; 进攻（ 前场）篮板数y; 防守（ 后场）篮板数y; 总篮板数y; 助攻数y; 盖帽数y; 失误数y; 犯规 数y;
+//	个人得分y;
+	
+	
+	/**
+	 * 球员姓名
+	 */
+	private String playerName;
 	
 	/**
 	 * 对阵双方
 	 */
+	private String twoSides;
+	
+	/**
+	 * 球员所属球队
+	 */
 	private String teamName;
+	
+	/**
+	 * 上场位置
+	 */
+	private String position;
 	
 	/**
 	 * 上场时间
@@ -101,13 +117,20 @@ public class PlayerDataPerMatchVO {
 	 */
 	private boolean isDoubleDouble = false;
 	
+	/**
+	 * 是否首发
+	 */
+	private boolean isStarting = false;
+	
 	public PlayerDataPerMatchVO() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	public PlayerDataPerMatchVO(MatchDataPerPlayerVO matchData) {
 		// TODO Auto-generated constructor stub
+		this.playerName = matchData.getPlayerName();
 		this.teamName = matchData.getTeamName();
+		this.position = matchData.getPosition();
 		this.minutes = matchData.getPresentTime();
 		this.scoreNum = matchData.getScoreNum();
 		this.shootNum = matchData.getShootNum();
@@ -126,12 +149,12 @@ public class PlayerDataPerMatchVO {
 		this.personalPoints = matchData.getPersonalScore();
 		
 		judgeDoubleDouble();
+		judgeStarting();
 	}
 
 	/**
 	 * 判断该场比赛是否两双
 	 * 两双： 特指得分，篮板，助攻，抢断，盖帽中任何两项
-	 * @return
 	 */
 	private void judgeDoubleDouble(){
 		int i = 0;
@@ -155,8 +178,21 @@ public class PlayerDataPerMatchVO {
 		}
 	}
 	
+	/**
+	 * 判断该场比赛是否先发
+	 */
+	private void judgeStarting(){
+		if(position != ""){
+			isStarting = true;
+		}
+	}
+	
 	public double getStealNum() {
 		return stealNum;
+	}
+
+	public String getTwoSides() {
+		return twoSides;
 	}
 
 	public String getTeamName() {
@@ -225,6 +261,18 @@ public class PlayerDataPerMatchVO {
 
 	public boolean isDoubleDouble() {
 		return isDoubleDouble;
+	}
+
+	public String getPlayerName() {
+		return playerName;
+	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public boolean isStarting() {
+		return isStarting;
 	}
 
 	
