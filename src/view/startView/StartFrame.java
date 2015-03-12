@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,7 +25,7 @@ public class StartFrame extends JFrame{
 	
 	JLabel Background;
 	JLabel BackgroundDarker;
-	
+	Icon background;
 	
 	JLabel Exit;
 	JLabel ExitEnter;
@@ -33,6 +34,9 @@ public class StartFrame extends JFrame{
 	JLabel Menu;
 	JLabel MenuEnter;
 	int menuWidth = 100, menuHeight = 50;
+	
+	JLabel Quit;
+	JLabel QuitEnter;
 	
 	JLabel TeamCount;
 	JLabel TeamCountEnter;
@@ -69,6 +73,11 @@ public class StartFrame extends JFrame{
 		Menu.setLocation(50, 30);
 		MenuEnter.setLocation(50, 30);
 		
+		Quit = setJLabelWithIcon(file+"quit.png", menuWidth, menuHeight);
+		QuitEnter = setJLabelWithIcon(file+"quit_enter.png", menuWidth, menuHeight);
+		Quit.setLocation(width-50-menuWidth, height-30-menuHeight);
+		QuitEnter.setLocation(width-50-menuWidth, height-30-menuHeight);
+		
 		TeamInfo = setJLabelWithIcon(file+"teamInfo.png", oriWidth, oriHeight);
 		TeamInfoEnter = setJLabelWithIcon(file+"teamInfo_enter.png", enterWidth, enterHeight);
 		TeamInfo.setLocation(width/2-splitX-oriWidth, height/2-splitY-oriHeight);
@@ -89,13 +98,19 @@ public class StartFrame extends JFrame{
 		PlayerCount.setLocation(width/2+splitX, height/2+splitY);
 		PlayerCountEnter.setLocation(width/2+2*splitX, height/2+2*splitY);
 		
-		panel.add(BackgroundDarker);
+		
+		panel.add(Background);
 		panel.add(Exit, 0);
 		panel.add(Menu, 0);
 		panel.add(TeamCount, 0);
 		panel.add(TeamInfo, 0);
 		panel.add(PlayerInfo, 0);
 		panel.add(PlayerCount, 0);
+		
+		TeamCount.setVisible(false);
+		TeamInfo.setVisible(false);
+		PlayerCount.setVisible(false);
+		PlayerInfo.setVisible(false);
 		
 		panel.add(ExitEnter, 0);
 		panel.add(MenuEnter, 0);
@@ -104,8 +119,10 @@ public class StartFrame extends JFrame{
 		panel.add(PlayerCountEnter, 0);
 		panel.add(PlayerInfoEnter, 0);
 		
+		
 		ExitEnter.setVisible(false);
 		MenuEnter.setVisible(false);
+		QuitEnter.setVisible(false);
 		TeamCountEnter.setVisible(false);
 		TeamInfoEnter.setVisible(false);
 		PlayerCountEnter.setVisible(false);
@@ -113,13 +130,68 @@ public class StartFrame extends JFrame{
 		
 		Exit.addMouseListener(new LabelUsualListener(Exit, ExitEnter));
 		Menu.addMouseListener(new LabelUsualListener(Menu, MenuEnter));
+		Quit.addMouseListener(new LabelUsualListener(Quit, QuitEnter));
 		TeamCount.addMouseListener(new LabelUsualListener(TeamCount, TeamCountEnter));
 		TeamInfo.addMouseListener(new LabelUsualListener(TeamInfo, TeamInfoEnter));
 		PlayerCount.addMouseListener(new LabelUsualListener(PlayerCount, PlayerCountEnter));
 		PlayerInfo.addMouseListener(new LabelUsualListener(PlayerInfo, PlayerInfoEnter));
 		
-		ExitEnter.addMouseListener(new LabelEnterListener(Exit, ExitEnter));
-		MenuEnter.addMouseListener(new LabelEnterListener(Menu, MenuEnter));
+		ExitEnter.addMouseListener(new LabelEnterListener(Exit, ExitEnter){
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.exit(0);
+			}
+		});
+		MenuEnter.addMouseListener(new LabelEnterListener(Menu, MenuEnter){
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(background == null){
+					background = Background.getIcon();
+				}
+				Background.setIcon(BackgroundDarker.getIcon());
+				Background.updateUI();
+				
+				panel.remove(Menu);
+				panel.remove(MenuEnter);
+				
+				panel.add(Quit, 0);
+				panel.add(QuitEnter, 0);
+				
+				Quit.setVisible(true);
+				QuitEnter.setVisible(false);
+				
+				TeamCount.setVisible(true);
+				TeamInfo.setVisible(true);
+				PlayerCount.setVisible(true);
+				PlayerInfo.setVisible(true);
+			}
+		});
+		QuitEnter.addMouseListener(new LabelEnterListener(Quit, QuitEnter){
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Background.setIcon(background);
+				Background.updateUI();
+				
+				panel.add(Menu, 0);
+				panel.add(MenuEnter, 0);
+				
+				Menu.setVisible(true);
+				MenuEnter.setVisible(false);
+				
+				TeamCount.setVisible(false);
+				TeamInfo.setVisible(false);
+				PlayerCount.setVisible(false);
+				PlayerInfo.setVisible(false);
+				
+				TeamCountEnter.setVisible(false);
+				TeamInfoEnter.setVisible(false);
+				PlayerCountEnter.setVisible(false);
+				PlayerInfoEnter.setVisible(false);
+				
+				panel.remove(Quit);
+				panel.remove(QuitEnter);
+			}
+		});
 		TeamCountEnter.addMouseListener(new LabelEnterListener(TeamCount, TeamCountEnter));
 		TeamInfoEnter.addMouseListener(new LabelEnterListener(TeamInfo, TeamInfoEnter));
 		PlayerCountEnter.addMouseListener(new LabelEnterListener(PlayerCount, PlayerCountEnter));
@@ -161,7 +233,6 @@ public class StartFrame extends JFrame{
               }
             }
         );
-	            
 	}
 	
 	private JLabel setJLabelWithIcon(String IconPath, int width, int height){
