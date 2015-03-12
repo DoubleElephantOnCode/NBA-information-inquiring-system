@@ -51,4 +51,13 @@ public class MyPresentTime{
 	public int getTimeBySecond(){
 		return minute*60 + second;
 	}
+	
+	/**
+	 * 得到以分钟为单位的时间
+	 * @return
+	 */
+	public double getTimeByMinute(){
+		return minute + second/60.0;
+	}
+	
 }
