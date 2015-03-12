@@ -104,6 +104,7 @@ public class ReadMatchData {
 				
 				tempString = reader.readLine();
 			}
+			matchVO.checkData();
 			matchVO.calData();
 			MatchList.addMatchVO(matchVO);
 			TeamList.addMatchVO(matchVO);

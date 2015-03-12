@@ -34,6 +34,11 @@ public class MatchDataPerPlayerVO {
 	public MyPresentTime presentTime;
 	
 	/**
+	 * 在场时间有误
+	 */
+	public boolean timeHasError = false;
+	
+	/**
 	 * 投篮命中数
 	 */
 	public int scoreNum;
@@ -151,7 +156,13 @@ public class MatchDataPerPlayerVO {
 		this.twoSides = twoSides;
 		this.playerName = playerName;
 		this.position = position;
-		this.presentTime = new MyPresentTime(presentTime);
+		//为了处理脏数据
+		if(presentTime.equals("null")||presentTime.equals("None")){
+			timeHasError = true;
+		}else{
+			this.presentTime = new MyPresentTime(presentTime);
+		}
+				
 		this.scoreNum = Integer.parseInt(scoreNum);
 		this.shootNum = Integer.parseInt(shootNum);
 		this.threePointScoreNum = Integer.parseInt(threePointScoreNum);
@@ -166,7 +177,21 @@ public class MatchDataPerPlayerVO {
 		this.blockNum = Integer.parseInt(blockNum);
 		this.turnoverNum = Integer.parseInt(turnoverNum);
 		this.foulNum = Integer.parseInt(foulNum);
-		this.personalScore = Integer.parseInt(personalScore);
+		//this.personalScore = Integer.parseInt(personalScore);
+		this.personalScore = this.threePointScoreNum * 3 + this.freeThrowScoreNum * 1 + (this.scoreNum - this.threePointScoreNum) * 2;
+		
+		//以下为寻找脏数据  最后要删除 
+		if(this.personalScore!=toInt(personalScore)){
+			System.out.println("error in MatchDataPerPlayer个人得分有问题");
+		}
+	}
+	
+	public int toInt(String s){
+		if(s.equals("null")){
+			return 0;
+		}else{
+			return Integer.parseInt(s);
+		}
 	}
 
 	public String getTwoSides() {
@@ -327,6 +352,14 @@ public class MatchDataPerPlayerVO {
 
 	public void setTeamName(String teamName) {
 		this.teamName = teamName;
+	}
+
+	public boolean isTimeHasError() {
+		return timeHasError;
+	}
+
+	public void setTimeHasError(boolean timeHasError) {
+		this.timeHasError = timeHasError;
 	}
 	
 	

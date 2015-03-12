@@ -44,6 +44,19 @@ public class MyPresentTime{
 		return new MyPresentTime(getTimeBySecond()/n);
 	}
 	
+	public MyPresentTime minus(MyPresentTime anotherTime){
+		int tempSecond = 0;
+		int tempMinute = 0;
+		if(second >= anotherTime.second){
+			tempSecond = second - anotherTime.second;
+			tempMinute = minute - anotherTime.minute;
+		}else{
+			tempSecond = 60 + second - anotherTime.second;
+			tempMinute = minute - anotherTime.minute - 1;
+		}
+		return new MyPresentTime(tempMinute, tempSecond);
+	}
+	
 	/**
 	 * 得到以秒为单位的时间
 	 * @return
@@ -60,4 +73,11 @@ public class MyPresentTime{
 		return minute + second/60.0;
 	}
 	
+	public boolean equals(MyPresentTime anotherTime){
+		if(second == anotherTime.second && minute == anotherTime.minute){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }

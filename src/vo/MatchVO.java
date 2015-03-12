@@ -298,6 +298,56 @@ public class MatchVO {
 		homeTotalFoulNum += mdppVO.getFoulNum();
 	}
 	
+	public void checkData(){
+		checkTime();
+	}
+	
+	public void checkTime(){
+		MatchDataPerPlayerVO tempVO = null;
+		MyPresentTime totalPeoPleTime = new MyPresentTime(0, 0);
+		for(MatchDataPerPlayerVO mdppVO:awayPlayerList){
+			if(mdppVO.isTimeHasError()){
+				tempVO = mdppVO;
+			}else{
+				totalPeoPleTime = totalPeoPleTime.add(mdppVO.getPresentTime());
+			}
+		}
+		int minute = (scoreVOList.size()-4) * 5 + 48;
+		MyPresentTime totalTime = new MyPresentTime(minute * 5, 0);
+		if(tempVO != null){			
+			tempVO.setPresentTime(totalTime.minus(totalPeoPleTime));
+		}else{
+			if(totalTime.equals(totalPeoPleTime)){
+				
+			}else{
+				System.out.println("totalTime: "+totalTime.minute+" : "+totalTime.second);
+				System.out.println("totalPeopleTime: "+totalPeoPleTime.minute+" : "+totalPeoPleTime.second);
+				System.out.println("error in MatchVO checkTime");
+			}
+		}
+		
+		tempVO = null;
+		totalPeoPleTime = new MyPresentTime(0, 0);
+		for(MatchDataPerPlayerVO mdppVO:homePlayerList){
+			if(mdppVO.isTimeHasError()){
+				tempVO = mdppVO;
+			}else{
+				totalPeoPleTime = totalPeoPleTime.add(mdppVO.getPresentTime());
+			}
+		}
+		if(tempVO != null){
+			tempVO.setPresentTime(totalTime.minus(totalPeoPleTime));
+		}else{
+			if(totalTime.equals(totalPeoPleTime)){
+				
+			}else{		
+				System.out.println("totalTime: "+totalTime.minute+" : "+totalTime.second);
+				System.out.println("totalPeopleTime: "+totalPeoPleTime.minute+" : "+totalPeoPleTime.second);
+				System.out.println("error in MatchVO checkTime");
+			}
+		}
+		
+	}
 	
 	/**
 	 * 计算主客场进攻防守回合
