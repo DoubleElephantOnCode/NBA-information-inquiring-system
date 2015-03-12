@@ -19,10 +19,29 @@ public class ReadMatchData {
 	public void readMatchData(){
 		File matchFile = new File(FilePath.matchPath);
 		 File[] matches = matchFile.listFiles();
-		 for(File file:matches){
-			 readMatchFile(file);
+		 
+		 //直接遍历时间顺序不对
+		// for(File file:matches){
+		//	 readMatchFile(file);
+		// }
+		 int i = 0;
+		 for(i = 0;i < matches.length;i++){
+			 String path = matches[i].getPath();
+			 String fileName = path.substring(FilePath.matchPath.length()+1);
+			 int month = Integer.parseInt(fileName.substring(6, 8));
+			 if(month > 6){
+				 break;
+			 }
+		 }
+		 for(int j = i;j<matches.length;j++){
+			 readMatchFile(matches[j]);
+		 }
+		 for(int j = 0;j < i;j++){
+			 readMatchFile(matches[j]);
 		 }
 	}
+	
+	
 	
 	/**
 	 * 读取一个match文件的数据
@@ -74,7 +93,7 @@ public class ReadMatchData {
 					matchVO.addAwayPlayerData(mdppVO);
 				}		
 				
-				PlayerDataPerMatchVO pppmVO = new PlayerDataPerMatchVO(mdppVO);
+				PlayerDataPerMatchVO pdpmVO = new PlayerDataPerMatchVO(mdppVO);
 				
 				
 				tempString = reader.readLine();
