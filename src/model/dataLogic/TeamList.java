@@ -38,4 +38,10 @@ public class TeamList {
 			}
 		}
 	}
+	
+	public static void finishRead(){
+		for(TeamVO teamVO:teamVOList){
+			teamVO.calData();
+		}
+	}
 }

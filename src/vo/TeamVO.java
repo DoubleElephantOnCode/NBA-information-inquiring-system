@@ -493,6 +493,13 @@ public class TeamVO {
 		totalFreeThrowRate = totalFreeThrowScoreNum/(double)totalFreeThrowShootNum;
 		totalWinningRate = winningNum/matchNum;
 	}
+	
+	public void calData(){
+		calAve();
+		calEfficiency();
+		calRate();
+		
+	}
 
 	public String getName() {
 		return name;

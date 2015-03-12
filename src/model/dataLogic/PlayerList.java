@@ -16,19 +16,18 @@ public class PlayerList {
 	/**
 	 * 所有球员列表
 	 */
-	static ArrayList<PlayerVO> players;
+	static ArrayList<PlayerVO> players = new ArrayList<PlayerVO>();;
 	
 	public PlayerList() {
 		// TODO Auto-generated constructor stub
-		players = new ArrayList<PlayerVO>();
 	}
 	
 	/**
 	 * 往球员列表里添加一条球员数据
 	 * @param pvo 一条球员数据
 	 */
-	public void addPlayer(PlayerVO pvo){
-		this.players.add(pvo);
+	public static void addPlayer(PlayerVO pvo){
+		players.add(pvo);
 	}
 	
 	/**
@@ -36,7 +35,7 @@ public class PlayerList {
 	 * @param playerName 球员姓名作为目前唯一的判别标准
 	 * @return
 	 */
-	public PlayerVO findAPlayer(String playerName){
+	public static PlayerVO findAPlayer(String playerName){
 		PlayerVO pvo = new PlayerVO();
 		
 		for (PlayerVO p : players){
@@ -53,7 +52,7 @@ public class PlayerList {
 	 * 添加一条比赛信息
 	 * @param matchData
 	 */
-	public void addAMatch(MatchDataPerPlayerVO matchData){
+	public static void addAMatch(MatchDataPerPlayerVO matchData){
 		PlayerVO pvo = findAPlayer(matchData.getPlayerName());
 		pvo.addDataPerMatchList(matchData);
 	}
