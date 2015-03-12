@@ -105,6 +105,25 @@ public class TeamVO {
 	 */
 	public int totalTotalReboundsNum = 0;
 	
+	/**
+	 * 对手总投篮数
+	 */
+	public int totalOpponentShootNum = 0;
+	
+	/**
+	 * 对手总罚球数
+	 */
+	public int totalOpponentFreeThrowShootNum = 0;
+	
+	/**
+	 * 对手总进球数
+	 */
+	public int totalOpponentScoreNum = 0;
+	
+	/**
+	 * 对手总失误数
+	 */
+	public int totalOpponentTurnoverNum = 0;
 	
 	
 	/**
@@ -404,12 +423,18 @@ public class TeamVO {
 			totalFoulNum += matchVO.getAwayTotalFoulNum();
 			totalScore += matchVO.getTotalScore().former;
 			
-			totalAttackRound += matchVO.getAwayAttackRound();
-			totalDefensiveRound += matchVO.getAwayDefensiveRound();
+			//关于总进攻回合的计算有疑问  暂时采用第二种方法  通过总的数据来计算 而不是通过进攻回合累加
+			//totalAttackRound += matchVO.getAwayAttackRound();
+			//totalDefensiveRound += matchVO.getAwayDefensiveRound();
 			
 			totalOpponentScore += matchVO.getTotalScore().latter;
 			totalOpponentOffensiveReboundsNum += matchVO.getHomeTotalOffensiveReboundsNum();
 			totalOpponentDefensiveReboundsNum += matchVO.getHomeTotalDefensiveReboundsNum();
+			totalOpponentShootNum += matchVO.getHomeTotalShootNum();
+			totalOpponentFreeThrowShootNum += matchVO.getHomeTotalFreeThrowShootNum();
+			totalOpponentScoreNum += matchVO.getHomeTotalScoreNum();
+			totalOpponentTurnoverNum += matchVO.getHomeTotalTurnoverNum();
+			
 			
 		}else if(abbreviation.equals(matchVO.getHomeTeam())){
 			matchVOList.add(matchVO);
@@ -433,12 +458,17 @@ public class TeamVO {
 			totalFoulNum += matchVO.getHomeTotalFoulNum();
 			totalScore += matchVO.getTotalScore().latter;
 			
-			totalAttackRound += matchVO.getHomeAttackRound();
-			totalDefensiveRound += matchVO.getHomeDefensiveRound();
+			//关于总进攻回合的计算有疑问  暂时采用第二种方法  通过总的数据来计算 而不是通过进攻回合累加
+			//totalAttackRound += matchVO.getHomeAttackRound();
+			//totalDefensiveRound += matchVO.getHomeDefensiveRound();
 			
 			totalOpponentScore += matchVO.getTotalScore().former;
 			totalOpponentOffensiveReboundsNum += matchVO.getAwayTotalOffensiveReboundsNum();
 			totalOpponentDefensiveReboundsNum += matchVO.getAwayTotalDefensiveReboundsNum();
+			totalOpponentShootNum += matchVO.getAwayTotalShootNum();
+			totalOpponentFreeThrowShootNum += matchVO.getAwayTotalFreeThrowShootNum();
+			totalOpponentScoreNum += matchVO.getAwayTotalScoreNum();
+			totalOpponentTurnoverNum += matchVO.getAwayTotalTurnoverNum();
 		}else{
 			System.out.println("error in TeamVO addMatchVO");
 		}
@@ -465,9 +495,22 @@ public class TeamVO {
 		aveTurnoverNum = totalTurnoverNum/matchNum;
 		aveFoulNum = totalFoulNum/matchNum;
 		aveScore = totalScore/matchNum;
-		//关于平均进攻回合的计算有疑问
-		aveAttackRound = totalAttackRound/matchNum;
-		aveDefensiveRound = totalDefensiveRound/matchNum;
+		//关于平均进攻回合的计算有疑问  暂时采用第二种方法  不计算平均进攻回合
+		//aveAttackRound = totalAttackRound/matchNum;
+		//aveDefensiveRound = totalDefensiveRound/matchNum;
+		
+	}
+	/**
+	 * 计算总的进攻防守回合
+	 */
+	public void calRound(){
+		
+		totalAttackRound =  totalShootNum + 0.4 * totalFreeThrowShootNum 
+				- 1.07 *(totalOffensiveReboundsNum/(double)(totalOffensiveReboundsNum+totalOpponentDefensiveReboundsNum)*(totalShootNum - totalScoreNum))
+				+ 1.07 * totalTurnoverNum;
+		totalDefensiveRound =  totalOpponentShootNum + 0.4 * totalOpponentFreeThrowShootNum 
+				- 1.07 *(totalOpponentOffensiveReboundsNum/(double)(totalOpponentOffensiveReboundsNum+totalDefensiveReboundsNum)*(totalOpponentShootNum - totalOpponentScoreNum))
+				+ 1.07 * totalOpponentTurnoverNum;
 	}
 	
 	/**
@@ -495,6 +538,7 @@ public class TeamVO {
 	}
 	
 	public void calData(){
+		calRound();
 		calAve();
 		calEfficiency();
 		calRate();
