@@ -258,33 +258,33 @@ public class StartFrame extends JFrame{
 			
 		}
 		
-		@Override
+
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
 		}
 
-		@Override
+
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
 			enter.setVisible(true);
 			usual.setVisible(false);
 		}
 
-		@Override
+
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
 			enter.setVisible(false);
 			usual.setVisible(true);
 		}
 
-		@Override
+
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
 		}
 
-		@Override
+
 		public void mouseReleased(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
@@ -301,33 +301,33 @@ public class StartFrame extends JFrame{
 			this.enter = enter;
 		}
 		
-		@Override
+
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
 		}
 
-		@Override
+
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
 			usual.setVisible(false);
 			enter.setVisible(true);
 		}
 
-		@Override
+
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
 			usual.setVisible(true);
 			enter.setVisible(false);
 		}
 
-		@Override
+
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
 		}
 
-		@Override
+
 		public void mouseReleased(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
