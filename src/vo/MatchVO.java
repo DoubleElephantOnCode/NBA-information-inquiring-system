@@ -320,9 +320,9 @@ public class MatchVO {
 			if(totalTime.equals(totalPeoPleTime)){
 				
 			}else{
-				System.out.println("totalTime: "+totalTime.minute+" : "+totalTime.second);
-				System.out.println("totalPeopleTime: "+totalPeoPleTime.minute+" : "+totalPeoPleTime.second);
-				System.out.println("error in MatchVO checkTime");
+				//System.out.println("totalTime: "+totalTime.minute+" : "+totalTime.second);
+				//System.out.println("totalPeopleTime: "+totalPeoPleTime.minute+" : "+totalPeoPleTime.second);
+				//System.out.println("error in MatchVO checkTime");
 			}
 		}
 		
@@ -341,9 +341,9 @@ public class MatchVO {
 			if(totalTime.equals(totalPeoPleTime)){
 				
 			}else{		
-				System.out.println("totalTime: "+totalTime.minute+" : "+totalTime.second);
-				System.out.println("totalPeopleTime: "+totalPeoPleTime.minute+" : "+totalPeoPleTime.second);
-				System.out.println("error in MatchVO checkTime");
+				//System.out.println("totalTime: "+totalTime.minute+" : "+totalTime.second);
+				//System.out.println("totalPeopleTime: "+totalPeoPleTime.minute+" : "+totalPeoPleTime.second);
+				//System.out.println("error in MatchVO checkTime");
 			}
 		}
 		

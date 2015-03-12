@@ -79,7 +79,6 @@ public class ReadMatchData {
 			tempString = reader.readLine();
 			boolean isHome = false;
 			while(tempString != null){
-				System.out.println(tempString);
 				if(tempString.equals(awayTeam)){
 					tempString = reader.readLine();
 					continue;

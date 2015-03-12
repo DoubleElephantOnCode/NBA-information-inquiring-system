@@ -158,6 +158,7 @@ public class MatchDataPerPlayerVO {
 		this.position = position;
 		//为了处理脏数据
 		if(presentTime.equals("null")||presentTime.equals("None")){
+			System.out.println("time has error 啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊");
 			timeHasError = true;
 		}else{
 			this.presentTime = new MyPresentTime(presentTime);
@@ -182,7 +183,7 @@ public class MatchDataPerPlayerVO {
 		
 		//以下为寻找脏数据  最后要删除 
 		if(this.personalScore!=toInt(personalScore)){
-			System.out.println("error in MatchDataPerPlayer个人得分有问题");
+			System.out.println("error in MatchDataPerPlayer个人得分有问题啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊");
 		}
 	}
 	
