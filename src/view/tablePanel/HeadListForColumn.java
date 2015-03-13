@@ -22,6 +22,8 @@ public class HeadListForColumn {
 	int speed;
 	int index;
 	
+	Timer timer = new Timer();
+	
 	public HeadListForColumn(ArrayList<String> headList, int pageColumn){
 		field = new JLabel[headList.size()];
 		this.pageColumn = pageColumn;
@@ -84,12 +86,21 @@ public class HeadListForColumn {
 		new SwingWorker<Void, Void>(){
 			@Override
 			protected Void doInBackground() throws Exception {
-				return moveHeadList();
+				publish();
+				return null;
 			}
 
 			@Override
 			protected void process(List<Void> chunks) {
-				
+				TimerTask task = new TimerTask(){
+
+					@Override
+					public void run() {
+						moveHeadList(this);
+					}
+					
+				};
+				timer.schedule(task, 0, sleepTime);
 			}
 		}.execute();
 	}
@@ -107,13 +118,8 @@ public class HeadListForColumn {
 		}
 	}
 
-	private Void moveHeadList() {
-		while(stateTime <= moveTime){
-			try {
-				Thread.sleep(sleepTime);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+	private Void moveHeadList(TimerTask task) {
+		if(stateTime <= moveTime){
 			for(int i = 0; i < field.length; i++){
 				field[i].setLocation(field[i].getLocation().x + speed, 0);
 			}
@@ -131,14 +137,17 @@ public class HeadListForColumn {
 			updateUI();
 			stateTime += sleepTime;
 		}
-		if(field[index].getLocation().x != 0){
-			field[index].setLocation(0, 0);
-			for(int i = 0; i < field.length; i++){
-				field[i].setLocation((i-index)*columnW, 0);
+		else{
+			if(field[index].getLocation().x != 0){
+				field[index].setLocation(0, 0);
+				for(int i = 0; i < field.length; i++){
+					field[i].setLocation((i-index)*columnW, 0);
+				}
+				this.updateUI();
 			}
-			this.updateUI();
+			stateTime = 0;
+			task.cancel();
 		}
-		stateTime = 0;
 		return null;
 	}
 	
