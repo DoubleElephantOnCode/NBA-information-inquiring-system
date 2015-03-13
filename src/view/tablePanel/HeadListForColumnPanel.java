@@ -1,5 +1,9 @@
 package view.tablePanel;
 
+import java.awt.Color;
+
+import javax.swing.Icon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class HeadListForColumnPanel extends JPanel{
@@ -18,9 +22,21 @@ public class HeadListForColumnPanel extends JPanel{
 		list.addToPanel(this);
 		this.setSize(width, height);
 		this.setLayout(null);
+		this.setOpaque(false);
 	}
 	
-	protected void moveToIndex(int index){
+	public void moveToIndex(int index){
 		list.moveToIndex(index);
+	}
+	
+	public void setFontColor(Color c){
+		for(int i = 0; i < list.field.length; i++){
+			list.field[i].setForeground(c);
+		}
+	}
+	
+	public void setBackground(JLabel back){
+		back.setLocation(0, 0);
+		this.add(back, list.field.length);
 	}
 }

@@ -8,9 +8,9 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingWorker;
 
 public class HeadListForRow{
-	JLabel[] field;
+	JLabel[][] field;
 	int rowH, columnW;
-	int pageColumn;
+	int pageRow;
 	
 	long moveTime = 200;
 	long sleepTime = 10;
@@ -19,21 +19,25 @@ public class HeadListForRow{
 	int speed;
 	int index;
 	
-	public HeadListForRow(ArrayList<String> headList, int pageColumn){
-		field = new JLabel[headList.size()];
-		this.pageColumn = pageColumn;
+	public HeadListForRow(ArrayList<String> headList, int pageRow){
+		field = new JLabel[headList.size()][2];
+		this.pageRow = pageRow;
 		for(int i = 0; i < field.length; i++){
-			field[i] = new JLabel(headList.get(i));
-			field[i].setHorizontalAlignment(SwingConstants.CENTER);
+			field[i][0] = new JLabel(headList.get(i));
+			field[i][1] = new JLabel(headList.get(i));
+			field[i][0].setHorizontalAlignment(SwingConstants.CENTER);
+			field[i][0].setOpaque(false);
+			field[i][1].setOpaque(false);
 		}
 	}
 	
 	public HeadListForRow(String[] headList, int pageColumn){
-		field = new JLabel[headList.length];
-		this.pageColumn = pageColumn;
+		field = new JLabel[headList.length][2];
+		this.pageRow = pageColumn;
 		for(int i = 0; i < field.length; i++){
-			field[i] = new JLabel(headList[i]);
-			field[i].setHorizontalAlignment(SwingConstants.CENTER);
+			field[i][0] = new JLabel(headList[i]);
+			field[i][1] = new JLabel(headList[i]);
+			field[i][0].setHorizontalAlignment(SwingConstants.CENTER);
 		}
 	}
 	
@@ -41,40 +45,33 @@ public class HeadListForRow{
 		rowH = height;
 		columnW = width;
 		for(int i = 0; i < field.length; i++){
-			field[i].setSize(rowH, columnW);
+			field[i][0].setSize(rowH, columnW);
+			field[i][1].setSize(rowH, columnW);
 		}
 	}
 	
 	public void setRowHeight(int height){
 		rowH = height;
 		for(int i = 0; i < field.length; i++){
-			field[i].setSize(rowH, columnW);
+			field[i][0].setSize(rowH, columnW);
+			field[i][1].setSize(rowH, columnW);
 		}
 	}
 	
 	public void setColumnWidth(int width){
 		columnW = width;
 		for(int i = 0; i < field.length; i++){
-			field[i].setSize(rowH, columnW);
+			field[i][0].setSize(rowH, columnW);
+			field[i][1].setSize(rowH, columnW);
 		}
 	}
 	
-	public void setPageColumn(int pageColumn){
-		this.pageColumn = pageColumn;
-	}
-	
-	protected void setHeadToPanel(JPanel p, int index){
-		for(int i = 0; i < field.length; i++){
-			field[i].setVisible(false);
-			field[i].setBounds(0, (i-index)*rowH, columnW, rowH);
-		}
-		for(int i = 0; i < pageColumn; i++){
-			field[(i+index)%field.length].setVisible(true);
-		}
+	public void setPageRow(int pageRow){
+		this.pageRow = pageRow;
 	}
 	
 	protected void moveToIndex(int index){
-		int moveLength = -field[index].getLocation().y;
+		int moveLength = -field[index][0].getLocation().y;
 		if(moveLength == 0) return;
 		speed = (int) (moveLength / sleepTime);
 		this.index = index;
@@ -89,31 +86,37 @@ public class HeadListForRow{
 	
 	protected void addToPanel(JPanel p){
 		for(int i = 0; i < field.length; i++){
-			p.add(field[i]);
-			field[i].setBounds(0, i*rowH, columnW, rowH);
+			p.add(field[i][1], 0);
+			p.add(field[i][0], 0);
+			field[i][0].setBounds(0, i*rowH, columnW, rowH);
+			field[i][1].setBounds(0, i*rowH, columnW, rowH);
 		}
 	}
 	
 	public void updateUI(){
 		for(int i = 0; i < field.length; i++){
-			field[i].updateUI();
+			field[i][0].updateUI();
+			field[i][1].updateUI();
 		}
 	}
 	
 	private Void moveHeadList(){
 		while(stateTime <= moveTime){
 			for(int i = 0; i < field.length; i++){
-				field[i].setLocation(0, field[i].getLocation().y + speed);
+				field[i][0].setLocation(0, field[i][0].getLocation().y + speed);
+				field[i][1].setLocation(0, field[i][0].getLocation().y + speed);
 			}
-			if(field[0].getLocation().x > 0){
+			if(field[0][0].getLocation().y > 0){
 				for(int i = 0; i < field.length; i++){
-					field[i].setLocation(0, i*rowH);
+					field[i][0].setLocation(0, i*rowH);
+					field[i][1].setLocation(0, i*rowH);
 				}
 			}
-			else if(field[field.length-1].getLocation().x < (pageColumn-1)*columnW){
-				field[index].setLocation(0, 0);
+			else if(field[field.length-1][0].getLocation().y < (pageRow-1)*rowH){
+				field[index][0].setLocation(0, 0);
 				for(int i = 0; i < field.length; i++){
-					field[i].setLocation(0, (i-index)*rowH);
+					field[i][0].setLocation(0, (i-index)*rowH);
+					field[i][1].setLocation(0, (i-index)*rowH);
 				}
 			}
 			updateUI();
@@ -124,10 +127,11 @@ public class HeadListForRow{
 				e.printStackTrace();
 			}
 		}
-		if(field[index].getLocation().y != 0){
-			field[index].setLocation(0, 0);
+		if(field[index][0].getLocation().y != 0){
+			field[index][0].setLocation(0, 0);
 			for(int i = 0; i < field.length; i++){
-				field[i].setLocation(0, (i-index)*rowH);
+				field[i][0].setLocation(0, (i-index)*rowH);
+				field[i][1].setLocation(0, (i-index)*rowH);
 			}
 			this.updateUI();
 		}

@@ -28,8 +28,8 @@ public class TestFrame {
 	static TablePanel p;
 	static HeadListForColumnPanel hpC;
 	static HeadListForRowPanel hpR;
-	static BarForColumnPanel bcp;
-	static BarForRowPanel brp;
+	static BarInColumnPanel bcp;
+	static BarInRowPanel brp;
 	static Point origin = new Point();
 	static JFrame f;
 	static JTextArea field;
@@ -51,7 +51,7 @@ public class TestFrame {
 		}
 		f = new JFrame();
 		JPanel panel = new JPanel();
-		p = new TablePanel(row,column,prow,pcolumn,headC, width, height);
+		p = new TablePanel(row,column,prow,pcolumn,width, height);
 		p.setContent(s);
 		p.setTableContent();
 		p.setLocation(100, 50);
@@ -62,11 +62,11 @@ public class TestFrame {
 		hpR = new HeadListForRowPanel(headR, prow, width/pcolumn, height);
 		hpR.setLocation(50, 50);
 		
-		bcp = new BarForColumnPanel(row, prow, 20, height);
+		bcp = new BarInColumnPanel(row, prow, 20, height);
 		bcp.setLocation(600, 50);
 		bcp.setPosition(p.pointerRow);
 		
-		brp = new BarForRowPanel(column, pcolumn, width, 20);
+		brp = new BarInRowPanel(column, pcolumn, width, 20);
 		brp.setLocation(50, 300);
 		brp.setPosition(p.pointerColumn);
 		

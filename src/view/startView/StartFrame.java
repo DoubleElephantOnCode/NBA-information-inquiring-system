@@ -58,7 +58,7 @@ public class StartFrame extends JFrame{
 	public StartFrame(){
 		panel = new JPanel();
 		
-		Background = setJLabelWithIcon(file+"main.png", width, height);
+		Background = setJLabelWithIcon(file+"main.gif", width, height);
 		BackgroundDarker = setJLabelWithIcon(file+"main_dark.png", width, height);
 		Background.setLocation(0, 0);
 		BackgroundDarker.setLocation(0, 0);

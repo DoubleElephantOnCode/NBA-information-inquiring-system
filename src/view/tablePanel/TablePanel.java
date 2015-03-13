@@ -1,9 +1,11 @@
 package view.tablePanel;
 
+import java.awt.Color;
+
+import javax.swing.Icon;
 import javax.swing.JPanel;
 
 public class TablePanel extends JPanel{
-	String[] headList;
 	
 	TableField table;
 	
@@ -13,17 +15,15 @@ public class TablePanel extends JPanel{
 	String[][] totalContent;
 	String[][] pageContent;
 	
-	int pointerRow = 0, pointerColumn = 0;//指向目前显示在table上面的最左上角的行和列，指向的列同时是headList的列
+	public int pointerRow = 0;//指向目前显示在table上面的最左上角的行和列，指向的列同时是headList的列
+
+	public int pointerColumn = 0;
 	
-	public TablePanel(int totalrow, int totalcolumn, int pagerow, int pagecolumn, String[] head, int width, int height){
+	public TablePanel(int totalrow, int totalcolumn, int pagerow, int pagecolumn, int width, int height){
 		totalRow = totalrow;
 		totalColumn = totalcolumn;
 		pageRow = pagerow;
 		pageColumn = pagecolumn;
-		headList = new String[head.length];
-		for(int i = 0; i < head.length; i++){
-			headList[i] = head[i];
-		}
 		
 		table = new TableField(pagerow, pagecolumn);
 		table.addToPanel(this);
@@ -48,6 +48,7 @@ public class TablePanel extends JPanel{
 		this.setTableLocation(0, 0);
 		
 		this.setLayout(null);
+		this.setOpaque(false);
 	}
 	
 	public void setContent(String[][] content){
@@ -56,6 +57,27 @@ public class TablePanel extends JPanel{
 				totalContent[i][j] = content[i][j];
 			}
 		}
+		this.setTableContent();
+	}
+	
+	public void setRowBackground(Icon icon, int row){
+		table.setRowBackground(icon, row);
+	}
+	
+	public void setColumnBackground(Icon icon, int column){
+		table.setColumnBackground(icon, column);
+	}
+	
+	public void setFontColor(Color c, int row){
+		table.setFontColorRow(c, row);
+	}
+	
+	public void setFontColorColumn(Color c, int column){
+		table.setFontColorColumn(c, column);
+	}
+	
+	public void setFontColor(Color c){
+		table.setFontColor(c);
 	}
 	
 	protected void setTableContent(){
@@ -76,7 +98,7 @@ public class TablePanel extends JPanel{
 		table.setLocation(x, y);
 	}
 	
-	protected void changeColumn(int change){
+	public void changeColumn(int change){
 		pointerColumn += change;
 		if(pointerColumn < 0){
 			pointerColumn = 0;
@@ -87,7 +109,7 @@ public class TablePanel extends JPanel{
 		this.setTableContent();
 	}
 	
-	protected void changeRow(int change){
+	public void changeRow(int change){
 		pointerRow += change;
 		if(pointerRow < 0){
 			pointerRow = 0;
