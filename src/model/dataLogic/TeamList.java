@@ -15,6 +15,7 @@ public class TeamList {
 	 */
 	public static ArrayList<TeamVO> teamVOList = new ArrayList<TeamVO>();
 	
+	
 	/**
 	 * 构造方法 初始化队伍列表
 	 */
@@ -43,5 +44,9 @@ public class TeamList {
 		for(TeamVO teamVO:teamVOList){
 			teamVO.calData();
 		}
+	}
+	
+	public static ArrayList<TeamVO> getTeamVOList(){
+		return teamVOList;
 	}
 }
