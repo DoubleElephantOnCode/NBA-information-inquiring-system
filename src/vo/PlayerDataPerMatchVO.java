@@ -299,6 +299,16 @@ public class PlayerDataPerMatchVO {
 		this.timeOfAllPlayers = matchData.getTimeOfAllPlayers();
 		this.allReboundNum = matchData.getAllReboundNum();
 		this.allOpponentRebondNum = matchData.getAllOpponentRebondNum();
+		this.allScoreNum = matchData.getAllScoreNum();
+		this.allOffReboundNum = matchData.getAllOffReboundNum();
+		this.allDefReboundNum = matchData.getAllDefReboundNum();
+		this.allOppOffReboundNum = matchData.getAllOppOffReboundNum();
+		this.allOppDefReboundNum = matchData.getAllOppDefReboundNum();
+		this.opponentAttackRound = matchData.getOpponentAttackRound();
+		this.oppTwoPointShootNum = matchData.getOppTwoPointShootNum();
+		this.allShootNum = matchData.getAllShootNum();
+		this.allFreeThrowShootNum = matchData.getAllFreeThrowShootNum();
+		this.allTurnoverNum = matchData.getAllTurnoverNum();
 		
 		judgeDoubleDouble();
 		judgeStarting();

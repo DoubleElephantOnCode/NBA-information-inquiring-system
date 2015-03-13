@@ -129,6 +129,56 @@ public class MatchDataPerPlayerVO {
 	 */
 	private double allOpponentRebondNum = 0;
 	
+	/**
+	 * 所属球队总进球数
+	 */
+	private double allScoreNum;
+	
+	/**
+	 * 球队总进攻篮板数
+	 */
+	private double allOffReboundNum = 0;
+	
+	/**
+	 * 球队总防守篮板数
+	 */
+	private double allDefReboundNum = 0;
+	
+	/**
+	 * 对手总进攻篮板数
+	 */
+	private double allOppOffReboundNum = 0;
+	
+	/**
+	 * 对手总防守篮板数
+	 */
+	private double allOppDefReboundNum = 0;
+	
+	/**
+	 * 对手进攻回合
+	 */
+	private double opponentAttackRound = 0;
+	
+	/**
+	 * 对手两分球出手次数
+	 */
+	private double oppTwoPointShootNum = 0;
+	
+	/**
+	 * 球队所有球员总出手数
+	 */
+	private double allShootNum = 0;
+
+	/**
+	 * 球队所有球员罚球出手数
+	 */
+	private double allFreeThrowShootNum = 0;
+
+	/**
+	 * 球队所有球员失误数
+	 */
+	private double allTurnoverNum = 0;
+	
 	public MatchDataPerPlayerVO(String teamName,String twoSides,String playerName, String position,
 			MyPresentTime presentTime, int scoreNum, int shootNum,
 			int threePointScoreNum, int threePointShootNum,
@@ -400,6 +450,86 @@ public class MatchDataPerPlayerVO {
 
 	public void setAllOpponentRebondNum(double allOpponentRebondNum) {
 		this.allOpponentRebondNum = allOpponentRebondNum;
+	}
+
+	public double getAllScoreNum() {
+		return allScoreNum;
+	}
+
+	public void setAllScoreNum(double allScoreNum) {
+		this.allScoreNum = allScoreNum;
+	}
+
+	public double getAllOffReboundNum() {
+		return allOffReboundNum;
+	}
+
+	public void setAllOffReboundNum(double allOffReboundNum) {
+		this.allOffReboundNum = allOffReboundNum;
+	}
+
+	public double getAllDefReboundNum() {
+		return allDefReboundNum;
+	}
+
+	public void setAllDefReboundNum(double allDefReboundNum) {
+		this.allDefReboundNum = allDefReboundNum;
+	}
+
+	public double getAllOppOffReboundNum() {
+		return allOppOffReboundNum;
+	}
+
+	public void setAllOppOffReboundNum(double allOppOffReboundNum) {
+		this.allOppOffReboundNum = allOppOffReboundNum;
+	}
+
+	public double getAllOppDefReboundNum() {
+		return allOppDefReboundNum;
+	}
+
+	public void setAllOppDefReboundNum(double allOppDefReboundNum) {
+		this.allOppDefReboundNum = allOppDefReboundNum;
+	}
+
+	public double getOpponentAttackRound() {
+		return opponentAttackRound;
+	}
+
+	public void setOpponentAttackRound(double opponentAttackRound) {
+		this.opponentAttackRound = opponentAttackRound;
+	}
+
+	public double getOppTwoPointShootNum() {
+		return oppTwoPointShootNum;
+	}
+
+	public void setOppTwoPointShootNum(double oppTwoPointShootNum) {
+		this.oppTwoPointShootNum = oppTwoPointShootNum;
+	}
+
+	public double getAllShootNum() {
+		return allShootNum;
+	}
+
+	public void setAllShootNum(double allShootNum) {
+		this.allShootNum = allShootNum;
+	}
+
+	public double getAllFreeThrowShootNum() {
+		return allFreeThrowShootNum;
+	}
+
+	public void setAllFreeThrowShootNum(double allFreeThrowShootNum) {
+		this.allFreeThrowShootNum = allFreeThrowShootNum;
+	}
+
+	public double getAllTurnoverNum() {
+		return allTurnoverNum;
+	}
+
+	public void setAllTurnoverNum(double allTurnoverNum) {
+		this.allTurnoverNum = allTurnoverNum;
 	}
 	
 	
