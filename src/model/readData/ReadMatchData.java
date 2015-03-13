@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import model.dataLogic.MatchList;
+import model.dataLogic.PlayerList;
 import model.dataLogic.TeamList;
 import vo.MatchDataPerPlayerVO;
 import vo.MatchVO;
@@ -98,15 +99,24 @@ public class ReadMatchData {
 					matchVO.addAwayPlayerData(mdppVO);
 				}		
 				
-				PlayerDataPerMatchVO pdpmVO = new PlayerDataPerMatchVO(mdppVO);
 				
 				
 				tempString = reader.readLine();
 			}
 			matchVO.checkData();
 			matchVO.calData();
+			matchVO.setBasicData();
+			for(MatchDataPerPlayerVO homePlayerData : matchVO.homePlayerList){
+				PlayerList.addAMatch(homePlayerData);
+			}
+			for(MatchDataPerPlayerVO awayPlayerData : matchVO.awayPlayerList){
+				PlayerList.addAMatch(awayPlayerData);
+			}
+			
 			MatchList.addMatchVO(matchVO);
 			TeamList.addMatchVO(matchVO);
+			
+			
 			
 			
 			
