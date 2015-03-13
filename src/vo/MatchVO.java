@@ -383,7 +383,16 @@ public class MatchVO {
 					((scoreVOList.size() - 4) * 5 +48) * 5, 0));
 			homePlayerData.setAllReboundNum(homeTotalReboundsNum);
 			homePlayerData.setAllOpponentRebondNum(awayTotalReboundsNum);
-			
+			homePlayerData.setAllScoreNum(homeTotalScoreNum);
+			homePlayerData.setAllOffReboundNum(homeTotalOffensiveReboundsNum);
+			homePlayerData.setAllDefReboundNum(homeTotalDefensiveReboundsNum);
+			homePlayerData.setAllOppOffReboundNum(awayTotalOffensiveReboundsNum);
+			homePlayerData.setAllOppDefReboundNum(awayTotalDefensiveReboundsNum);
+			homePlayerData.setOpponentAttackRound(awayAttackRound);
+			homePlayerData.setOppTwoPointShootNum(awayTotalShootNum - awayTotalThreePointShootNum);
+			homePlayerData.setAllShootNum(homeTotalShootNum);
+			homePlayerData.setAllFreeThrowShootNum(homeTotalFreeThrowShootNum);
+			homePlayerData.setAllTurnoverNum(homeTotalTurnoverNum);
 		}
 		//客队
 		for(MatchDataPerPlayerVO awayPlayerData : awayPlayerList){
@@ -391,7 +400,16 @@ public class MatchVO {
 					((scoreVOList.size() - 4) * 5 +48) * 5, 0));
 			awayPlayerData.setAllReboundNum(awayTotalReboundsNum);;
 			awayPlayerData.setAllOpponentRebondNum(homeTotalReboundsNum);
-			
+			awayPlayerData.setAllScoreNum(awayTotalScoreNum);
+			awayPlayerData.setAllOffReboundNum(awayTotalOffensiveReboundsNum);
+			awayPlayerData.setAllDefReboundNum(awayTotalDefensiveReboundsNum);
+			awayPlayerData.setAllOppOffReboundNum(homeTotalOffensiveReboundsNum);
+			awayPlayerData.setAllOppDefReboundNum(homeTotalDefensiveReboundsNum);
+			awayPlayerData.setOpponentAttackRound(homeAttackRound);
+			awayPlayerData.setOppTwoPointShootNum(homeTotalShootNum - homeTotalThreePointShootNum);
+			awayPlayerData.setAllShootNum(awayTotalShootNum);
+			awayPlayerData.setAllFreeThrowShootNum(awayTotalFreeThrowShootNum);
+			awayPlayerData.setAllTurnoverNum(awayTotalTurnoverNum);
 		}
 	}
 	

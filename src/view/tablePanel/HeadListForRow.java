@@ -1,6 +1,9 @@
 package view.tablePanel;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,6 +21,8 @@ public class HeadListForRow{
 	
 	int speed;
 	int index;
+	
+	Timer timer = new Timer();
 	
 	public HeadListForRow(ArrayList<String> headList, int pageRow){
 		field = new JLabel[headList.size()][2];
@@ -78,8 +83,21 @@ public class HeadListForRow{
 		new SwingWorker<Void, Void>(){
 			@Override
 			protected Void doInBackground() throws Exception {
-				moveHeadList();
+				publish();
 				return null;
+			}
+			
+			@Override
+			protected void process(List<Void> chuck){
+				TimerTask task = new TimerTask(){
+
+					@Override
+					public void run() {
+						moveHeadList(this);
+					}
+					
+				};
+				timer.schedule(task, 0, sleepTime);
 			}
 		}.execute();
 	}
@@ -100,8 +118,8 @@ public class HeadListForRow{
 		}
 	}
 	
-	private Void moveHeadList(){
-		while(stateTime <= moveTime){
+	private Void moveHeadList(TimerTask task){
+		if(stateTime <= moveTime){
 			for(int i = 0; i < field.length; i++){
 				field[i][0].setLocation(0, field[i][0].getLocation().y + speed);
 				field[i][1].setLocation(0, field[i][0].getLocation().y + speed);
@@ -120,22 +138,27 @@ public class HeadListForRow{
 				}
 			}
 			updateUI();
-			try {
-				Thread.sleep(sleepTime);
-				stateTime += sleepTime;
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			stateTime += sleepTime;
+//			try {
+//				Thread.sleep(sleepTime);
+//				
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
 		}
-		if(field[index][0].getLocation().y != 0){
-			field[index][0].setLocation(0, 0);
-			for(int i = 0; i < field.length; i++){
-				field[i][0].setLocation(0, (i-index)*rowH);
-				field[i][1].setLocation(0, (i-index)*rowH);
+		else{
+			stateTime = 0;
+			if(field[index][0].getLocation().y != 0){
+				field[index][0].setLocation(0, 0);
+				field[index][1].setLocation(0, 0);
+				for(int i = 0; i < field.length; i++){
+					field[i][0].setLocation(0, (i-index)*rowH);
+					field[i][1].setLocation(0, (i-index)*rowH);
+				}
+				this.updateUI();
 			}
-			this.updateUI();
+			task.cancel();
 		}
-		stateTime = 0;
 		return null;
 	}
 }
