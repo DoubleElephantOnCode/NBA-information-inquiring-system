@@ -80,4 +80,20 @@ public class MyPresentTime{
 			return false;
 		}
 	}
+	
+	/**
+	 * 把double形式的时间转换成“分：秒”
+	 * @param timeOfMinutes 若干分钟（double形）
+	 * @return
+	 */
+	public static MyPresentTime toTimeFormat(double timeOfMinutes){
+		String time = Double.toString(timeOfMinutes);
+		System.out.println("time = " + time);
+		String[] timeStr = time.split("\\.");
+		int min = Integer.parseInt(timeStr[0]);
+		String second = Double.toString(Double.parseDouble("0." + timeStr[1]) * 60).split("\\.")[0];
+		int sec = Integer.parseInt(second);
+		return new MyPresentTime(min, sec);
+	}
+
 }

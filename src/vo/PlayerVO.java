@@ -178,7 +178,7 @@ public class PlayerVO {
 	/**
 	 * 赛季总上场时间
 	 */
-	private MyPresentTime totalMinutes;
+	private MyPresentTime totalMinutes = new MyPresentTime(0, 0);
 	
 	/**
 	 * 赛季总命中数
@@ -260,6 +260,79 @@ public class PlayerVO {
 	 */
 	private double scoreRate = 0;
 	
+
+	/**
+	 * 单场三分命中率
+	 */
+	private double threePointScoreRate = 0;
+	
+	/**
+	 * 单场罚球命中率
+	 */
+	private double freeThrowScoreRate = 0;
+	
+	/**
+	 * 单场效率：(得分+篮板+助攻+抢断+盖帽) -（出手次数-命中次数） -（罚球次数-罚球命中次数） -失误次数
+	 */
+	private double efficiency = 0;
+	
+	/**
+	 * GmSc 效率值： 得分 + 0.4×投篮命中数 - 0.7×投篮出手数-0.4×(罚球出手数-罚球命中数) +
+	 *  0.7×前场篮板数 + 0.3×后场篮板数 + 抢断数 + 0.7×助攻数 + 0.7× 盖帽数 - 0.4×犯规数 - 失误数
+	 */
+	private double GmSc = 0;
+	
+	/**
+	 * 真实命中率: 得分÷(2×(投篮出手数+0.44×罚球出手数))
+	 */
+	private double trueShootingPercentage = 0;
+	
+	/**
+	 * 投篮效率： (投篮命中数+0.5×三分命中数)÷投篮出手数
+	 */
+	private double shootingEfficiency = 0;
+	
+	/**
+	 * 篮板率：球员篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总篮板+对手总篮板)
+	 */
+	private double reboundRate = 0;
+	
+	/**
+	 * 进攻篮板率：球员进攻篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总进攻篮板+对手总进攻篮板)
+	 */
+	private double offensiveReboundRate = 0;
+	
+	/**
+	 * 防守篮板率：球员防守篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总防守篮板+对手总防守篮板)
+	 */
+	private double defensiveReboundRate = 0;
+	
+	/**
+	 * 助攻率：球员助攻数÷(球员上场时间÷(球队所有球员上场时间÷5)×球队总进球数-球员进球数)
+	 */
+	private double assistRate = 0;
+	
+	/**
+	 * 抢断率：球员抢断数×(球队所有球员上场时间÷5)÷球员上场时间÷对手进攻次数)
+	 */
+	private double stealRate = 0;
+	
+	/**
+	 * 盖帽率：球员盖帽数×(球队所有球员上场时间÷5)÷球员上场时间÷对手两分球出手次数
+	 */
+	private double blockRate = 0;
+	
+	/**
+	 * 失误率：球员失误数÷(球员两分球出手次数+0.44×球员罚球次数+球员失误数)
+	 */
+	private double turnoverRate = 0;
+	
+	/**
+	 * 使用率：(球员出手次数+0.44×球员罚球次数+球员失误次数)×(球队所有球员上场时间÷5)÷
+	 *      球员上场时间÷(球队所有总球员出手次数+0.44×球队所有球员罚球次数+球队所有球员失误次数)
+	 */
+	private double useRate = 0;
+	
 //	球员名称y，所属球队y，参赛场数y，先发场数y，篮板数y，助攻数y，在
 //	场时间，投篮命中率，三分命中率，罚球命中率，抢断数，盖
 //	帽数，失误数，犯规数， 得分，效率， GmSc 效率值，真实命中率，投篮效率，
@@ -303,6 +376,8 @@ public class PlayerVO {
 		if(pvo.isDoubleDouble()){
 			doubleDouble++;
 		}
+		//总上场时间
+		totalMinutes = totalMinutes.add(pvo.getPlayTime());
 		//总投篮命中数
 		scoreNum = scoreNum + pvo.getScoreNum();
 		//总出手数
@@ -343,6 +418,7 @@ public class PlayerVO {
 	public void calAveData(){
 		double matchNum = dataPerMatchList.size();
 		
+		aveMinutes = MyPresentTime.toTimeFormat(totalMinutes.getTimeByMinute() / matchNum);
 		aveScoreNum = scoreNum / matchNum;
 		aveShootNum = shootNum / matchNum;
 		aveThreePointerScoreNum = threePointerScoreNum / matchNum;

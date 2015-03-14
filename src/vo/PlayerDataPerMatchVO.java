@@ -1,7 +1,5 @@
 package vo;
 
-import sun.jdbc.odbc.OdbcDef;
-
 /**
  * 
  * @author HalaWKS
