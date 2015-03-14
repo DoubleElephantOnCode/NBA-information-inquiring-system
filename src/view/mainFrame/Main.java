@@ -32,6 +32,7 @@ public class Main {
 	static TeamCountPanel teamCountPanel;
 	
 	public Main(){
+		
 		readTeam = new ReadTeamData();
 		readTeam.readTeamData();
 		
