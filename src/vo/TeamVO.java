@@ -483,8 +483,8 @@ public class TeamVO {
 	public void calAve(){
 		aveScoreNum = totalScoreNum/matchNum;
 		aveShootNum = totalShootNum/matchNum;
-		aveThreePointScoreNum = totalScoreNum/matchNum;
-		aveThreePointShootNum = totalShootNum/matchNum;
+		aveThreePointScoreNum = totalThreePointScoreNum/matchNum;
+		aveThreePointShootNum = totalThreePointShootNum/matchNum;
 		aveFreeThrowScoreNum = totalFreeThrowScoreNum/matchNum;
 		aveFreeThrowShootNum = totalFreeThrowShootNum/matchNum;
 		aveOffensiveReboundsNum = totalOffensiveReboundsNum/matchNum;
