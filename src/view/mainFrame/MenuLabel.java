@@ -29,6 +29,7 @@ public class MenuLabel {
 		menuEnter.addMouseListener(new LabelEnterListener(menu, menuEnter){
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(StartPanel.self == null) return;//TODO throw exception
 				if(StartPanel.background == null){
 					StartPanel.background = StartPanel.Background.getIcon();
 				}

@@ -36,5 +36,5 @@ public class File {
 	
 	public static String selectedColumnHeadList = "chosen_frame";
 	
-	
+	public static String teamCountBackground = "team_count_frame";
 }

@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import view.File;
 import view.tablePanel.BarInColumnPanel;
 import view.tablePanel.BarInRowPanel;
 import view.tablePanel.HeadListForColumnPanel;
@@ -19,8 +20,6 @@ import view.tablePanel.HeadListForRowPanel;
 import view.tablePanel.TablePanel;
 
 public class TeamCountTablePanel extends JPanel{
-
-	String file = "E:\\课件\\软件工程与计算\\大二下学期\\图片\\";
 	
 	int width = 1000, height = 410;
 	
@@ -30,6 +29,7 @@ public class TeamCountTablePanel extends JPanel{
 	
 	String[] headListForColumn;
 	String[] headListForRow;
+	String[][] contentInTable;
 	
 	
 	int tableWidth = 700, tableHeight = 300;
@@ -57,30 +57,21 @@ public class TeamCountTablePanel extends JPanel{
 	
 	ImageIcon head_deep, head_light;
 	
-	ImageIcon selected;
+	ImageIcon selected;//TODO 要调整图片，上下指向各一张
 	
 	Color fontColor = new Color(170, 170, 170);
 	
-	public TeamCountTablePanel(){
-		String[][] s = new String[row][column];
-		for(int i = 0; i < row; i++){
-			for(int j = 0; j < column; j++){
-				s[i][j] = new String(i + "  " + j);
-			}
-		}
+	public TeamCountTablePanel(String[][] content, String[] headListForRow, String[] headListForColumn){
+
+		contentInTable = content;
+		this.headListForColumn = headListForColumn;
+		this.headListForRow = headListForRow;
 		
-		headListForColumn = new String[column];
-		for(int i = 0; i < column; i++){
-			headListForColumn[i] = i+"";
-		}
-		
-		headListForRow = new String[row];
-		for(int i = 0; i < row; i++){
-			headListForRow[i] = i+"";
-		}
+		row = content.length;
+		column = content[0].length;
 		
 		p = new TablePanel(row, column, pageRow, pageColumn, tableWidth, tableHeight);
-		p.setContent(s);
+		p.setContent(contentInTable);
 		p.setLocation(leftSide + headListForRowPanelWidth, headListForColumnPanelHeight);
 		
 		hpC = new HeadListForColumnPanel(headListForColumn, pageColumn, tableWidth, headListForColumnPanelHeight);
@@ -97,22 +88,22 @@ public class TeamCountTablePanel extends JPanel{
 		brp.setLocation(leftSide + headListForRowPanelWidth, headListForColumnPanelHeight + tableHeight);
 		brp.setPosition(pointerColumn);
 		
-		hpcBackground = setJLabelWithIcon(file + "table_Title.png", tableWidth, headListForColumnPanelHeight);
+		hpcBackground = setJLabelWithIcon(File.file + File.backgroundForHeadListForColumn + File.PNG, tableWidth, headListForColumnPanelHeight);
 		hpC.setBackground(hpcBackground);
 		
-		grid_deep = new ImageIcon(file + "grid_deep.png");
+		grid_deep = new ImageIcon(File.file + File.grid_deep + File.PNG);
 		grid_deep.setImage(grid_deep.getImage().getScaledInstance(tableWidth / pageColumn, tableHeight / pageRow,Image.SCALE_DEFAULT));
 		
-		grid_light = new ImageIcon(file + "grid_light.png");
+		grid_light = new ImageIcon(File.file + File.grid_light + File.PNG);
 		grid_light.setImage(grid_light.getImage().getScaledInstance(tableWidth / pageColumn, tableHeight / pageRow,Image.SCALE_DEFAULT));
 		
-		head_deep = new ImageIcon(file + "grid_deep.png");
+		head_deep = new ImageIcon(File.file + File.grid_deep + File.PNG);
 		head_deep.setImage(head_deep.getImage().getScaledInstance(headListForRowPanelWidth, tableHeight / pageRow,Image.SCALE_DEFAULT));
 		
-		head_light = new ImageIcon(file + "grid_light.png");
+		head_light = new ImageIcon(File.file + File.grid_light + File.PNG);
 		head_light.setImage(head_light.getImage().getScaledInstance(headListForRowPanelWidth, tableHeight / pageRow,Image.SCALE_DEFAULT));
 		
-		selected = new ImageIcon(file + "chosen_frame.png");
+		selected = new ImageIcon(File.file + File.selectedColumnHeadList + File.PNG);
 		selected.setImage(selected.getImage().getScaledInstance(tableWidth / pageColumn, headListForColumnPanelHeight, Image.SCALE_DEFAULT));
 		
 		for(int i = 0; i < row;){
@@ -135,7 +126,7 @@ public class TeamCountTablePanel extends JPanel{
 		this.setSize(width, height);
 		this.setLocation(0, 140);
 		this.setOpaque(false);
-		//TODO 给列表头添加Listener，点击按此列数据进行排序
+		//给列表头添加Listener，点击按此列数据进行排序
 		for(int i = 0; i < hpC.list.field.length; i++){
 			hpC.list.field[i][0].addMouseListener(new HeadListLabelListener(hpC.list.field, i));
 		}
@@ -250,6 +241,7 @@ public class TeamCountTablePanel extends JPanel{
 				}
 			}
 			labelList[index][1].setIcon(selected);
+			//TODO 点击后调整排序方式，以此列排序，需要reset整个表格的行数据，发送给control，由model执行
 		}
 		public void mouseEntered(MouseEvent arg0) {}
 		public void mouseExited(MouseEvent arg0) {}

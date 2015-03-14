@@ -53,4 +53,11 @@ public class HeadListForRowPanel extends JPanel{
 //	public void setBackground(Icon icon){
 //		this.setIcon(icon);
 //	}
+	
+	public void resetInfo(String[] headList){
+		for(int i = 0; i < headList.length && i < list.field.length; i++){
+			list.field[i][0].setText(headList[i]);
+			list.field[i][0].updateUI();
+		}
+	}
 }

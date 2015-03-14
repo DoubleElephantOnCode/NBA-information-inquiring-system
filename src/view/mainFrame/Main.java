@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import view.startView.StartPanel;
+import view.teamCount.TeamCountPanel;
 
 public class Main {
 
@@ -21,6 +22,8 @@ public class Main {
 	static Point origin = new Point();//实现屏幕拖拽
 	
 	static StartPanel startPanel = new StartPanel();
+	
+	static TeamCountPanel teamCountPanel;
 	
 	public Main(){
 		mainFrame.setLayout(null);
@@ -64,6 +67,16 @@ public class Main {
 		label.setSize(width, height);
 		label.setOpaque(false);
 		return label;
+	}
+	
+	public static void newTeamCountPanel(String[][] content, String[] team, String[] headListForColumn){
+		teamCountPanel = new TeamCountPanel(content, team, headListForColumn);
+		mainFrame.remove(startPanel);
+		mainFrame.add(teamCountPanel);
+	}
+	
+	public static void resetTeamCountPanel(String[][] content, String[] team){
+		teamCountPanel.resetTableInfo(content, team);
 	}
 	
 	public static void main(String[] args){

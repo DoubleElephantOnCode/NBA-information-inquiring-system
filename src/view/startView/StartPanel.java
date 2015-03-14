@@ -137,7 +137,12 @@ public class StartPanel extends JPanel{
 				remove(QuitEnter);
 			}
 		});
-		TeamCountEnter.addMouseListener(new LabelEnterListener(TeamCount, TeamCountEnter));
+		TeamCountEnter.addMouseListener(new LabelEnterListener(TeamCount, TeamCountEnter){
+			
+			public void click(MouseEvent e){
+				
+			}
+		});
 		TeamInfoEnter.addMouseListener(new LabelEnterListener(TeamInfo, TeamInfoEnter));
 		PlayerCountEnter.addMouseListener(new LabelEnterListener(PlayerCount, PlayerCountEnter));
 		PlayerInfoEnter.addMouseListener(new LabelEnterListener(PlayerInfo, PlayerInfoEnter));

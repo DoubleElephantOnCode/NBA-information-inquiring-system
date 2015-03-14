@@ -9,7 +9,9 @@ import java.awt.event.MouseMotionAdapter;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
+
+import view.mainFrame.ExitLabel;
+import view.mainFrame.MenuLabel;
 
 public class TestFrame {
 	
@@ -18,23 +20,24 @@ public class TestFrame {
 	
 	static Point origin = new Point();
 	static JFrame f;
-	static JPanel p;
-	static JLabel background;
+	static TeamCountPanel p;
+	static String[][] content;
+	static String[] team;
+	static String[] headListForColumn;
+	
+	static int row, column;
 	
 	public static void main(String[] args){
 		f = new JFrame();
-		p = new JPanel();
 		
-		background = setJLabelWithIcon("E:\\课件\\软件工程与计算\\大二下学期\\图片\\team_count_frame.gif", width, height);
+		row = 30;
+		column = 42;
 		
-		TeamCountTablePanel tctp = new TeamCountTablePanel();
+		content = new String[row][column];
+		team = new String[row];
+		headListForColumn = new String[column];
 		
-		p.add(background);
-		p.add(tctp, 0);
-		
-		p.setLayout(null);
-		p.setSize(width, height);
-		p.setLocation(0, 0);
+		p = new TeamCountPanel(content, team, headListForColumn);
 		
 		f.setContentPane(p);
 		f.setUndecorated(true);
