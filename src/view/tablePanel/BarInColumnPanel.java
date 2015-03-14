@@ -13,8 +13,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingWorker;
 
+import view.File;
+
 public class BarInColumnPanel extends JPanel{
-	String file = "E:\\课件\\软件工程与计算\\大二下学期\\图片\\";
+	
 	public double position = 0;
 	int pageBarY;
 	
@@ -34,8 +36,8 @@ public class BarInColumnPanel extends JPanel{
 		this.width = width;
 		this.height = height;
 		
-		totalBar = setJLabelWithIcon(file+"totalBar_c.png", width, height);
-		pageBar = setJLabelWithIcon(file+"pageBar_c.png", width, (int) (((double)pageRow / totalRow) * height));
+		totalBar = setJLabelWithIcon(File.file + File.totalBar_c + File.PNG, width, height);
+		pageBar = setJLabelWithIcon(File.file + File.pageBar_c + File.PNG, width, (int) (((double)pageRow / totalRow) * height));
 		
 //		totalBar.setSize(width, height);
 //		pageBar.setSize(width, (int) (((double)pageRow / totalRow) * height));

@@ -86,7 +86,7 @@ public class Main {
 	
 	public static void newTeamCountPanel(String[][] content, String[] team, String[] headListForColumn){
 		teamCountPanel = new TeamCountPanel(content, team, headListForColumn);
-		mainFrame.remove(startPanel);
+		startPanel.setVisible(false);
 		mainFrame.add(teamCountPanel);
 	}
 	

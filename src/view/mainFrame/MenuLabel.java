@@ -18,8 +18,8 @@ public class MenuLabel {
 	public MenuLabel(){
 		menu = Main.setJLabelWithIcon(File.file + File.menu + File.PNG, width, height);
 		menuEnter = Main.setJLabelWithIcon(File.file + File.menu + File.enter + File.PNG, width, height);
-		menu.setLocation(50, 30);
-		menuEnter.setLocation(50, 30);
+		menu.setLocation(30, 15);
+		menuEnter.setLocation(30, 15);
 		menuEnter.setVisible(false);
 		
 		menu.setOpaque(false);
@@ -30,6 +30,15 @@ public class MenuLabel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(StartPanel.self == null) return;//TODO throw exception
+				StartPanel.self.setVisible(true);
+				//TODO 移除加入的界面
+				if(Main.teamCountPanel != null) Main.mainFrame.remove(Main.teamCountPanel);
+				
+				
+				StartPanel.exit = new ExitLabel();
+				StartPanel.exit.addToPanel(StartPanel.self);
+				
+				
 				if(StartPanel.background == null){
 					StartPanel.background = StartPanel.Background.getIcon();
 				}
@@ -56,6 +65,8 @@ public class MenuLabel {
 	public void addToPanel(JPanel p){
 		p.add(menu, 0);
 		p.add(menuEnter, 0);
+		menu.setVisible(true);
+		menuEnter.setVisible(false);
 	}
 	
 }

@@ -37,4 +37,12 @@ public class File {
 	public static String selectedColumnHeadList = "chosen_frame";
 	
 	public static String teamCountBackground = "team_count_frame";
+	
+	public static String pageBar_c = "pageBar_c";
+	
+	public static String totalBar_c = "totalBar_c";
+	
+	public static String pageBar_r = "pageBar_r";
+	
+	public static String totalBar_r = "totalBar_r";
 }

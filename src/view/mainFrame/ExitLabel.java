@@ -37,6 +37,8 @@ public class ExitLabel {
 	public void addToPanel(JPanel p){
 		p.add(exit, 0);
 		p.add(exitEnter, 0);
+		exit.setVisible(true);
+		exitEnter.setVisible(false);
 	}
 	
 }
