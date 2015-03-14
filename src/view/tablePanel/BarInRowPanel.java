@@ -1,16 +1,19 @@
 package view.tablePanel;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingWorker;
 
 public class BarInRowPanel extends JPanel{
+	String file = "E:\\课件\\软件工程与计算\\大二下学期\\图片\\";
 	public double position;
 	int pageBarX;
 	
@@ -30,17 +33,17 @@ public class BarInRowPanel extends JPanel{
 		this.width = width;
 		this.height = height;
 		
-		totalBar = new JLabel();
-		pageBar = new JLabel();
+		totalBar = setJLabelWithIcon(file+"totalBar_r.png", width, height);
+		pageBar = setJLabelWithIcon(file+"pageBar_r.png", (int) (((double)pageColumn / totalColumn) * width), height);
 		
-		totalBar.setSize(width, height);
-		pageBar.setSize((int) (((double)pageColumn / totalColumn) * width), height);
+//		totalBar.setSize(width, height);
+//		pageBar.setSize((int) (((double)pageColumn / totalColumn) * width), height);
 		
 		totalBar.setBackground(Color.black);
 		pageBar.setBackground(Color.white);
 		
-		totalBar.setOpaque(true);//TODO 换透明，贴图
-		pageBar.setOpaque(true);
+		totalBar.setOpaque(false);//TODO 换透明，贴图
+		pageBar.setOpaque(false);
 		
 		totalBar.setLocation(0, 0);
 		pageBar.setLocation(0, 0);
@@ -99,5 +102,14 @@ public class BarInRowPanel extends JPanel{
 	
 	public void addDragBarListener(MouseMotionListener l){
 		pageBar.addMouseMotionListener(l);
+	}
+	
+	private static JLabel setJLabelWithIcon(String IconPath, int width, int height){
+		ImageIcon icon = new ImageIcon(IconPath);
+		icon.setImage(icon.getImage().getScaledInstance(width, height,Image.SCALE_DEFAULT));
+		JLabel label = new JLabel(icon);
+		label.setSize(width, height);
+		label.setOpaque(false);
+		return label;
 	}
 }

@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 public class HeadListForColumnPanel extends JPanel{
 	int width, height;
-	HeadListForColumn list;
+	public HeadListForColumn list;
 	
 	int pageColumn;
 
@@ -31,12 +31,12 @@ public class HeadListForColumnPanel extends JPanel{
 	
 	public void setFontColor(Color c){
 		for(int i = 0; i < list.field.length; i++){
-			list.field[i].setForeground(c);
+			list.field[i][0].setForeground(c);
 		}
 	}
 	
 	public void setBackground(JLabel back){
 		back.setLocation(0, 0);
-		this.add(back, list.field.length);
+		this.add(back, list.field.length*2);
 	}
 }

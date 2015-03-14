@@ -3,6 +3,7 @@ package view.teamCount;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
@@ -39,9 +40,9 @@ public class TeamCountTablePanel extends JPanel{
 			
 	int headListForColumnPanelHeight = 45;
 	
-	int barWidth = 30;
+	int barWidth = 10;
 	
-	int leftSide = 40, rightSide = 20, downSide = 20;
+	int leftSide = 80, rightSide = 20, downSide = 20;
 	
 	TablePanel p;
 	HeadListForColumnPanel hpC;
@@ -55,6 +56,8 @@ public class TeamCountTablePanel extends JPanel{
 	ImageIcon grid_deep, grid_light;
 	
 	ImageIcon head_deep, head_light;
+	
+	ImageIcon selected;
 	
 	Color fontColor = new Color(170, 170, 170);
 	
@@ -87,11 +90,11 @@ public class TeamCountTablePanel extends JPanel{
 		hpR.setLocation(leftSide, headListForColumnPanelHeight);
 		
 		bcp = new BarInColumnPanel(row, pageRow, barWidth, tableHeight);
-		bcp.setLocation(width - rightSide - barWidth, headListForColumnPanelHeight);
+		bcp.setLocation(leftSide + headListForRowPanelWidth + tableWidth, headListForColumnPanelHeight);
 		bcp.setPosition(pointerRow);
 		
 		brp = new BarInRowPanel(column, pageColumn, tableWidth, barWidth);
-		brp.setLocation(leftSide + headListForRowPanelWidth, height - downSide - barWidth);
+		brp.setLocation(leftSide + headListForRowPanelWidth, headListForColumnPanelHeight + tableHeight);
 		brp.setPosition(pointerColumn);
 		
 		hpcBackground = setJLabelWithIcon(file + "table_Title.png", tableWidth, headListForColumnPanelHeight);
@@ -108,6 +111,9 @@ public class TeamCountTablePanel extends JPanel{
 		
 		head_light = new ImageIcon(file + "grid_light.png");
 		head_light.setImage(head_light.getImage().getScaledInstance(headListForRowPanelWidth, tableHeight / pageRow,Image.SCALE_DEFAULT));
+		
+		selected = new ImageIcon(file + "chosen_frame.png");
+		selected.setImage(selected.getImage().getScaledInstance(tableWidth / pageColumn, headListForColumnPanelHeight, Image.SCALE_DEFAULT));
 		
 		for(int i = 0; i < row;){
 			hpR.setIconInRow(head_light, i++);
@@ -129,6 +135,10 @@ public class TeamCountTablePanel extends JPanel{
 		this.setSize(width, height);
 		this.setLocation(0, 140);
 		this.setOpaque(false);
+		//TODO 给列表头添加Listener，点击按此列数据进行排序
+		for(int i = 0; i < hpC.list.field.length; i++){
+			hpC.list.field[i][0].addMouseListener(new HeadListLabelListener(hpC.list.field, i));
+		}
 		
 		p.addMouseWheelListener(new MouseWheelListener(){
 			public void mouseWheelMoved(MouseWheelEvent arg0) {
@@ -220,6 +230,31 @@ public class TeamCountTablePanel extends JPanel{
 				p.setRowBackground(grid_light, i++);
 			}
 		}
+		
+	}
+	
+	class HeadListLabelListener implements MouseListener{
+
+		JLabel[][] labelList;
+		int index;
+		
+		public HeadListLabelListener(JLabel[][] labelList, int index){
+			this.labelList = labelList;
+			this.index = index;
+		}
+		
+		public void mouseClicked(MouseEvent arg0) {
+			for(int i = 0; i < labelList.length; i++){
+				if(i != index && labelList[i][1].getIcon() != null){
+					labelList[i][1].setIcon(null);
+				}
+			}
+			labelList[index][1].setIcon(selected);
+		}
+		public void mouseEntered(MouseEvent arg0) {}
+		public void mouseExited(MouseEvent arg0) {}
+		public void mousePressed(MouseEvent arg0) {}
+		public void mouseReleased(MouseEvent arg0) {}
 		
 	}
 	

@@ -43,6 +43,8 @@ public class HeadListForRow{
 			field[i][0] = new JLabel(headList[i]);
 			field[i][1] = new JLabel(headList[i]);
 			field[i][0].setHorizontalAlignment(SwingConstants.CENTER);
+			field[i][0].setOpaque(false);
+			field[i][1].setOpaque(false);
 		}
 	}
 	
@@ -122,7 +124,7 @@ public class HeadListForRow{
 		if(stateTime <= moveTime){
 			for(int i = 0; i < field.length; i++){
 				field[i][0].setLocation(0, field[i][0].getLocation().y + speed);
-				field[i][1].setLocation(0, field[i][0].getLocation().y + speed);
+				field[i][1].setLocation(0, field[i][1].getLocation().y + speed);
 			}
 			if(field[0][0].getLocation().y > 0){
 				for(int i = 0; i < field.length; i++){
