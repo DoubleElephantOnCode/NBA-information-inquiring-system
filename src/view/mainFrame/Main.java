@@ -10,10 +10,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import model.readData.ReadMatchData;
+import model.readData.ReadPlayerData;
+import model.readData.ReadTeamData;
 import view.startView.StartPanel;
 import view.teamCount.TeamCountPanel;
 
 public class Main {
+	static ReadTeamData readTeam;
+	static ReadPlayerData readPlayer;
+	static ReadMatchData readMatch;
 
 	static JFrame mainFrame = new JFrame();
 	
@@ -26,6 +32,15 @@ public class Main {
 	static TeamCountPanel teamCountPanel;
 	
 	public Main(){
+		readTeam = new ReadTeamData();
+		readTeam.readTeamData();
+		
+//		readPlayer = new ReadPlayerData();
+//		readPlayer.readPlayerData();
+		
+		readMatch = new ReadMatchData();
+		readMatch.readMatchData();
+		
 		mainFrame.setLayout(null);
 		mainFrame.setUndecorated(true);
 		mainFrame.setSize(width, height-5);

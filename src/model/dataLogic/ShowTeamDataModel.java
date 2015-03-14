@@ -9,7 +9,7 @@ public class ShowTeamDataModel {
 	public void showTeamTable(){
 		ArrayList<TeamVO> teamVOList = TeamList.getTeamVOList();
 		TeamVO t = teamVOList.get(0);
-		String[][] content = new String[teamVOList.size()][t.toString().length()];
+		String[][] content = new String[teamVOList.size()][TeamList.getHeadListForColumn().length];
 		for(int i = 0;i<teamVOList.size();i++){
 			t=teamVOList.get(i);
 			String[] s = t.toStringArray();

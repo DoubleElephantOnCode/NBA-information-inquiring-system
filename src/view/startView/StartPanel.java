@@ -8,10 +8,11 @@ import javax.swing.JPanel;
 
 import view.File;
 import view.mainFrame.ExitLabel;
+import view.mainFrame.LabelEnterListener;
+import view.mainFrame.LabelUsualListener;
 import view.mainFrame.Main;
 import view.mainFrame.MenuLabel;
-import view.mainFrame.LabelUsualListener;
-import view.mainFrame.LabelEnterListener;
+import control.ShowTeamController;
 
 public class StartPanel extends JPanel{
 	int width = 1000, height = 550;
@@ -138,9 +139,8 @@ public class StartPanel extends JPanel{
 			}
 		});
 		TeamCountEnter.addMouseListener(new LabelEnterListener(TeamCount, TeamCountEnter){
-			
-			public void click(MouseEvent e){
-				
+			public void mouseClicked(MouseEvent e) {
+				new ShowTeamController().showTeamTable();;
 			}
 		});
 		TeamInfoEnter.addMouseListener(new LabelEnterListener(TeamInfo, TeamInfoEnter));
