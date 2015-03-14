@@ -567,17 +567,23 @@ public class TeamVO {
 			(int)matchNum+"",totalScoreNum+"",totalShootNum+"",totalThreePointScoreNum+"",
 			totalThreePointShootNum+"",totalFreeThrowScoreNum+"",totalFreeThrowShootNum+"",totalOffensiveReboundsNum+"",totalDefensiveReboundsNum+"",totalTotalReboundsNum+"",
 			totalAssistNum+"",totalStealNum+"",totalBlockNum+"",totalTurnoverNum+"",totalFoulNum+"",
-			totalScore+"",df.format(totalScoreRate),df.format(totalThreePointRate),
-			df.format(totalFreeThrowRate),df.format(totalWinningRate),df.format(totalAttackRound),df.format(totalAttackEfficiency),
-			df.format(totalDefendEfficiency),df.format(totalAttackReboundEfficiency),df.format(totalDefensiveReboundEfficiency),df.format(totalStealEfficiency),df.format(totalAssistRate),
-			df.format(aveScoreNum),df.format(aveShootNum),df.format(aveThreePointScoreNum),
-			df.format(aveThreePointShootNum),df.format(aveFreeThrowScoreNum),df.format(aveFreeThrowShootNum),df.format(aveOffensiveReboundsNum),df.format(aveDefensiveReboundsNum),df.format(aveTotalReboundsNum),
-		    df.format(aveAssistNum),df.format(aveStealNum),df.format(aveBlockNum),df.format(aveTurnoverNum),df.format(aveFoulNum),
-			df.format(aveScore)
+			totalScore+"",changeFormat(totalScoreRate),changeFormat(totalThreePointRate),
+			changeFormat(totalFreeThrowRate),changeFormat(totalWinningRate),changeFormat(totalAttackRound),changeFormat(totalAttackEfficiency),
+			changeFormat(totalDefendEfficiency),changeFormat(totalAttackReboundEfficiency),changeFormat(totalDefensiveReboundEfficiency),changeFormat(totalStealEfficiency),changeFormat(totalAssistRate),
+			changeFormat(aveScoreNum),changeFormat(aveShootNum),changeFormat(aveThreePointScoreNum),
+			changeFormat(aveThreePointShootNum),changeFormat(aveFreeThrowScoreNum),changeFormat(aveFreeThrowShootNum),changeFormat(aveOffensiveReboundsNum),changeFormat(aveDefensiveReboundsNum),changeFormat(aveTotalReboundsNum),
+			changeFormat(aveAssistNum),changeFormat(aveStealNum),changeFormat(aveBlockNum),changeFormat(aveTurnoverNum),changeFormat(aveFoulNum),
+		    changeFormat(aveScore)
 		};
 		return s;
 	}
 	
+	public String changeFormat(double d){
+		DecimalFormat df = new DecimalFormat("#.00");
+		String s = df.format(d);
+		Double m = new Double(s);
+		return m.toString();
+	}
 
 	public String getName() {
 		return name;
