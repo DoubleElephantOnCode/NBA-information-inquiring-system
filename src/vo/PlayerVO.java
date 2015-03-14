@@ -333,6 +333,21 @@ public class PlayerVO {
 	 */
 	private double useRate = 0;
 	
+	/**
+	 * 近五场得分提升
+	 */
+	private double recentPointAdvance = 0;
+	
+	/**
+	 * 近五场篮板提升
+	 */
+	private double recentReboundAdvance = 0;
+	
+	/**
+	 * 近五场助攻提升
+	 */
+	private double recentAssistAdvance = 0;
+	
 //	球员名称y，所属球队y，参赛场数y，先发场数y，篮板数y，助攻数y，在
 //	场时间，投篮命中率，三分命中率，罚球命中率，抢断数，盖
 //	帽数，失误数，犯规数， 得分，效率， GmSc 效率值，真实命中率，投篮效率，
@@ -492,6 +507,7 @@ public class PlayerVO {
 		//计算参赛场数
 		calEntryNum();
 		calAllRate();
+		calRecentAdvance();
 	}
 
 	/**
@@ -573,6 +589,57 @@ public class PlayerVO {
 		aveTurnoverNum = turnoverNum / matchNum;
 		aveFoulNum = foulNum / matchNum;
 		avePersonalPoints = personalPoints / matchNum;
+	}
+	
+	/**
+	 * 计算近五场提升
+	 * 该球员五场前的平均得分是 A，最近五场的评均得分是 B，近五场的提升为： (B-A)/A
+	 */
+	private void calRecentAdvance(){
+		//TODO: 计算近五场提升
+		double[] preAveList = null;
+		double[] nowAveList = null;
+		double preAvePoint = 0;
+		double preAveRebound = 0;
+		double preAveAssist = 0;
+		double nowAvePoint = 0;
+		double nowAveRebound = 0;
+		double nowAveAssist = 0;
+		//赛季比赛场数
+		double matchNum = dataPerMatchList.size();
+		if(matchNum > 5){
+			preAveList = aveData(0, dataPerMatchList.size() - 5);
+			nowAveList = aveData(dataPerMatchList.size() - 5, dataPerMatchList.size());
+		}
+		preAvePoint = preAveList[0];
+		preAveRebound = preAveList[1];
+		preAveAssist = preAveList[2];
+		nowAvePoint = nowAveList[0];
+		nowAveRebound = nowAveList[1];
+		nowAveAssist = nowAveList[2];
+		
+		recentPointAdvance = (nowAvePoint - preAvePoint) / preAvePoint;
+		recentReboundAdvance = (nowAveRebound - preAveRebound) / preAveRebound;
+		recentAssistAdvance = (nowAveAssist - preAveAssist) / preAveAssist;
+	}
+	
+	private double[] aveData(int low, int high){
+		double[] aveList = new double[3];
+		double avePoint = 0;
+		double aveRebound = 0;
+		double aveAssist = 0;
+		for (int i = low; i < high; i++) {
+			avePoint += dataPerMatchList.get(i).getPersonalPoints();
+			aveRebound += dataPerMatchList.get(i).getTotalReboundsNum();
+			aveAssist += dataPerMatchList.get(i).getAssistNum();
+		}
+		avePoint = avePoint / (high - low);
+		aveRebound = aveRebound / (high - low);
+		aveAssist = aveAssist / (high - low);
+		aveList[0] = avePoint;
+		aveList[1] = aveRebound;
+		aveList[2] = aveAssist;
+		return aveList;
 	}
 	
 	/**
@@ -802,6 +869,118 @@ public class PlayerVO {
 
 	public double getPersonalPoints() {
 		return personalPoints;
+	}
+
+	public double getScoreRate() {
+		return scoreRate;
+	}
+
+	public double getThreePointScoreRate() {
+		return threePointScoreRate;
+	}
+
+	public double getFreeThrowScoreRate() {
+		return freeThrowScoreRate;
+	}
+
+	public double getEfficiency() {
+		return efficiency;
+	}
+
+	public double getGmSc() {
+		return GmSc;
+	}
+
+	public double getTrueShootingPercentage() {
+		return trueShootingPercentage;
+	}
+
+	public double getShootingEfficiency() {
+		return shootingEfficiency;
+	}
+
+	public double getReboundRate() {
+		return reboundRate;
+	}
+
+	public double getOffensiveReboundRate() {
+		return offensiveReboundRate;
+	}
+
+	public double getDefensiveReboundRate() {
+		return defensiveReboundRate;
+	}
+
+	public double getAssistRate() {
+		return assistRate;
+	}
+
+	public double getStealRate() {
+		return stealRate;
+	}
+
+	public double getBlockRate() {
+		return blockRate;
+	}
+
+	public double getTurnoverRate() {
+		return turnoverRate;
+	}
+
+	public double getUseRate() {
+		return useRate;
+	}
+
+	public MyPresentTime getTimeOfAllPlayers() {
+		return timeOfAllPlayers;
+	}
+
+	public double getAllScoreNum() {
+		return allScoreNum;
+	}
+
+	public double getAllReboundNum() {
+		return allReboundNum;
+	}
+
+	public double getAllOffReboundNum() {
+		return allOffReboundNum;
+	}
+
+	public double getAllDefReboundNum() {
+		return allDefReboundNum;
+	}
+
+	public double getAllOpponentRebondNum() {
+		return allOpponentRebondNum;
+	}
+
+	public double getAllOppOffReboundNum() {
+		return allOppOffReboundNum;
+	}
+
+	public double getAllOppDefReboundNum() {
+		return allOppDefReboundNum;
+	}
+
+	public double getOpponentAttackRound() {
+		return opponentAttackRound;
+	}
+
+	public double getOppTwoPointShootNum() {
+		return oppTwoPointShootNum;
+	}
+
+	public double getAllShootNum() {
+		return allShootNum;
+	}
+
+	public double getAllFreeThrowShootNum() {
+		return allFreeThrowShootNum;
+	}
+
+	public double getAllTurnoverNum() {
+		return allTurnoverNum;
 	}
 
 	

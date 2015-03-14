@@ -56,5 +56,41 @@ public class PlayerList {
 		PlayerVO pvo = findAPlayer(matchData.getPlayerName());
 		pvo.addDataPerMatchList(matchData);
 	}
+
+	/**
+	 * 获取球员信息表—列表头
+	 * @return
+	 */
+	public static String[] getHeadForColumn(){
+		String[] s = new String[]{
+			"姓名","所属球队", "位置", "参赛场数", "先发场数", "两双次数", "总上场时间", "场均上场时间",
+			"总篮板", "场均篮板", "总进攻篮板", "场均进攻篮板", "总防守篮板", "总进攻篮板", "总助攻", "场均助攻",
+			"投篮命中率", "三分命中率", "罚球命中率", "赛季总抢断", "场均抢断", "赛季总盖帽", "场均盖帽",
+			"赛季总失误数", "场均失误数", "赛季总犯规数", "场均犯规数", "赛季总得分", "场均得分",
+			"效率", "GmSc效率值", "真实命中率", "投篮效率", "篮板率", "进攻篮板率", "防守篮板率",
+			"助攻率", "抢断率", "盖帽率", "失误率", "使用率"};
+		
+		return s;
+	}
+	
+	/**
+	 * 获取球员信息表—行表头
+	 * @return
+	 */
+	public static String[] getHeadForRow(){
+		String s[] = new String[players.size()];
+		
+		for (int i = 0; i < players.size(); i++) {
+			s[i] = players.get(i).getName();
+		}
+		
+		return s;
+	}
+	
+	public static ArrayList<PlayerVO> getPlayers() {
+		return players;
+	}
+	
+	
 	
 }
