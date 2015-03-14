@@ -1,5 +1,6 @@
 package vo;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -561,21 +562,23 @@ public class TeamVO {
 	 * @return
 	 */
 	public String[] toStringArray(){
+		DecimalFormat df = new DecimalFormat("#.00");
 		String[] s= new String[]{
-			matchNum+"",totalScoreNum+"",totalShootNum+"",totalThreePointScoreNum+"",
+			(int)matchNum+"",totalScoreNum+"",totalShootNum+"",totalThreePointScoreNum+"",
 			totalThreePointShootNum+"",totalFreeThrowScoreNum+"",totalFreeThrowShootNum+"",totalOffensiveReboundsNum+"",totalDefensiveReboundsNum+"",totalTotalReboundsNum+"",
 			totalAssistNum+"",totalStealNum+"",totalBlockNum+"",totalTurnoverNum+"",totalFoulNum+"",
-			totalScore+"",totalScoreRate+"",totalThreePointRate+"",
-			totalFreeThrowRate+"",totalWinningRate+"",totalAttackRound+"",totalAttackEfficiency+"",
-			totalDefendEfficiency+"",totalAttackReboundEfficiency+"",totalDefensiveReboundEfficiency+"",totalStealEfficiency+"",totalAssistRate+"",
-			aveScoreNum+"",aveShootNum+"",aveThreePointScoreNum+"",
-			aveThreePointShootNum+"",aveFreeThrowScoreNum+"",aveFreeThrowShootNum+"",aveAttackRound+"",aveDefensiveRound+"",aveTotalReboundsNum+"",
-			aveAssistNum+"",aveStealNum+"",aveBlockNum+"",aveTurnoverNum+"",aveFoulNum+"",
-			aveScore+""
+			totalScore+"",df.format(totalScoreRate),df.format(totalThreePointRate),
+			df.format(totalFreeThrowRate),df.format(totalWinningRate),df.format(totalAttackRound),df.format(totalAttackEfficiency),
+			df.format(totalDefendEfficiency),df.format(totalAttackReboundEfficiency),df.format(totalDefensiveReboundEfficiency),df.format(totalStealEfficiency),df.format(totalAssistRate),
+			df.format(aveScoreNum),df.format(aveShootNum),df.format(aveThreePointScoreNum),
+			df.format(aveThreePointShootNum),df.format(aveFreeThrowScoreNum),df.format(aveFreeThrowShootNum),df.format(aveOffensiveReboundsNum),df.format(aveDefensiveReboundsNum),df.format(aveTotalReboundsNum),
+		    df.format(aveAssistNum),df.format(aveStealNum),df.format(aveBlockNum),df.format(aveTurnoverNum),df.format(aveFoulNum),
+			df.format(aveScore)
 		};
 		return s;
 	}
 	
+
 	public String getName() {
 		return name;
 	}
