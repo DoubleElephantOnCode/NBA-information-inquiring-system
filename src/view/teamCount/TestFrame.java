@@ -10,9 +10,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import view.mainFrame.ExitLabel;
-import view.mainFrame.MenuLabel;
-
 public class TestFrame {
 	
 	static int width = 1000;

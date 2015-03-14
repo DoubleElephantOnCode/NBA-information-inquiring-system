@@ -11,8 +11,10 @@ import java.awt.event.MouseWheelListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import view.File;
+import view.mainFrame.Main;
 import view.tablePanel.BarInColumnPanel;
 import view.tablePanel.BarInRowPanel;
 import view.tablePanel.HeadListForColumnPanel;
@@ -22,8 +24,6 @@ import view.tablePanel.TablePanel;
 public class TeamCountTablePanel extends JPanel{
 	
 	int width = 1000, height = 410;
-	
-	int pointerRow = 0, pointerColumn = 0;
 	
 	int selectedColumn;
 	
@@ -53,6 +53,8 @@ public class TeamCountTablePanel extends JPanel{
 	JLabel hpcBackground;
 	JLabel background;
 	
+	JLabel[] teamName;
+	
 	ImageIcon grid_deep, grid_light;
 	
 	ImageIcon head_deep, head_light;
@@ -80,13 +82,23 @@ public class TeamCountTablePanel extends JPanel{
 		hpR = new HeadListForRowPanel(headListForRow, pageRow, headListForRowPanelWidth, tableHeight);
 		hpR.setLocation(leftSide, headListForColumnPanelHeight);
 		
+		teamName = new JLabel[2];
+		teamName[0] = new JLabel("球队名");
+		teamName[0].setForeground(fontColor);
+		teamName[0].setHorizontalAlignment(SwingConstants.CENTER);
+		teamName[1] = setJLabelWithIcon(File.file + File.backgroundForHeadListForColumn + File.PNG, headListForRowPanelWidth, headListForColumnPanelHeight);
+		for(int i = 0; i < 2; i++){
+			teamName[i].setSize(headListForRowPanelWidth, headListForColumnPanelHeight);
+			teamName[i].setLocation(leftSide, 0);
+		}
+		
 		bcp = new BarInColumnPanel(row, pageRow, barWidth, tableHeight);
 		bcp.setLocation(leftSide + headListForRowPanelWidth + tableWidth, headListForColumnPanelHeight);
-		bcp.setPosition(pointerRow);
+		bcp.setPosition(0);
 		
 		brp = new BarInRowPanel(column, pageColumn, tableWidth, barWidth);
 		brp.setLocation(leftSide + headListForRowPanelWidth, headListForColumnPanelHeight + tableHeight);
-		brp.setPosition(pointerColumn);
+		brp.setPosition(0);
 		
 		hpcBackground = setJLabelWithIcon(File.file + File.backgroundForHeadListForColumn + File.PNG, tableWidth, headListForColumnPanelHeight);
 		hpC.setBackground(hpcBackground);
@@ -118,6 +130,8 @@ public class TeamCountTablePanel extends JPanel{
 		hpR.setFontColor(fontColor);
 		
 		this.setLayout(null);
+		this.add(teamName[0]);
+		this.add(teamName[1]);
 		this.add(p);
 		this.add(bcp);
 		this.add(brp);

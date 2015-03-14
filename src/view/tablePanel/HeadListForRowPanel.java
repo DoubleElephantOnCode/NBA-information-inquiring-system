@@ -25,6 +25,15 @@ public class HeadListForRowPanel extends JPanel{
 		this.setOpaque(false);
 	}
 	
+	public int findIndex(String s){
+		for(int i = 0; i < list.field.length; i++){
+			if(s.equals(list.field[i][0].getText())){
+				return i;
+			}
+		}
+		return -1;
+	}
+	
 	public void moveToIndex(int index){
 		list.moveToIndex(index);
 	}
