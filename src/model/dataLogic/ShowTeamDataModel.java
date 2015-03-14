@@ -3,13 +3,15 @@ package model.dataLogic;
 import java.util.ArrayList;
 
 import view.mainFrame.Main;
+import view.mainFrame.Waiting;
 import vo.TeamVO;
 
 public class ShowTeamDataModel {
+	
 	public void showTeamTable(){
 		
-		
-		
+	
+		Waiting w = new Waiting();
 		ArrayList<TeamVO> teamVOList = TeamList.getTeamVOList();
 		TeamVO t = teamVOList.get(0);
 		String[][] content = new String[teamVOList.size()][TeamList.getHeadListForColumn().length];
@@ -23,12 +25,15 @@ public class ShowTeamDataModel {
 		
 		String[] column = TeamList.getHeadListForColumn();
 		String[] row = TeamList.getHeadListForRow();
-			
+		
+		w.cancel();
 		Main.newTeamCountPanel(content,row,column);
 		
 	}
 	
 	public void sortTeamTable(int i,boolean isPositiveSequence){
+		Waiting w = new Waiting();
+		
 		TeamList.sortTeam(i, isPositiveSequence);
 		ArrayList<TeamVO> teamVOList = TeamList.getTeamVOList();
 		TeamVO t = teamVOList.get(0);
@@ -41,6 +46,8 @@ public class ShowTeamDataModel {
 			}
 		}
 		String[] row = TeamList.getHeadListForRow();
+		
+		w.cancel();
 		Main.resetTeamCountPanel(content, row);
 	}
 }
