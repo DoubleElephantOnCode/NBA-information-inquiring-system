@@ -11,4 +11,8 @@ public class ShowTeamController {
 	public void showTeamTable(){
 		showTeamModel.showTeamTable();
 	}
+	
+	public void sortTeam(int i,boolean isPositiveSequence){
+		
+	}
 }

@@ -1,6 +1,8 @@
 package model.dataLogic;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import vo.MatchVO;
 import vo.TeamVO;
@@ -71,6 +73,11 @@ public class TeamList {
 			s[i]=teamVOList.get(i).getAbbreviation();
 		}
 		return s;
+	}
+	
+	public static void sortTeam(int i,boolean isPositiveSequence){
+		Comparator c =new CompareTeamData(i, isPositiveSequence);
+		Collections.sort(teamVOList, c);
 	}
 
 }

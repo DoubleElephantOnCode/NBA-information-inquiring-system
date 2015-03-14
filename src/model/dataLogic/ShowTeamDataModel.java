@@ -7,6 +7,9 @@ import vo.TeamVO;
 
 public class ShowTeamDataModel {
 	public void showTeamTable(){
+		
+		
+		
 		ArrayList<TeamVO> teamVOList = TeamList.getTeamVOList();
 		TeamVO t = teamVOList.get(0);
 		String[][] content = new String[teamVOList.size()][TeamList.getHeadListForColumn().length];
@@ -20,7 +23,12 @@ public class ShowTeamDataModel {
 		
 		String[] column = TeamList.getHeadListForColumn();
 		String[] row = TeamList.getHeadListForRow();
+			
 		Main.newTeamCountPanel(content,row,column);
+		
+	}
+	
+	public void sortTeamTable(int i,boolean isPositiveSequence){
 		
 	}
 }
