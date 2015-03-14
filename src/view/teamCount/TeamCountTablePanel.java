@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import control.ShowTeamController;
 import view.File;
 import view.mainFrame.Main;
 import view.tablePanel.BarInColumnPanel;
@@ -256,6 +257,7 @@ public class TeamCountTablePanel extends JPanel{
 			}
 			labelList[index][1].setIcon(selected);
 			//TODO 点击后调整排序方式，以此列排序，需要reset整个表格的行数据，发送给control，由model执行
+			new ShowTeamController().sortTeam(index, true);
 		}
 		public void mouseEntered(MouseEvent arg0) {}
 		public void mouseExited(MouseEvent arg0) {}

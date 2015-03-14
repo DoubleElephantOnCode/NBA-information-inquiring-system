@@ -37,7 +37,7 @@ public class ShowTeamDataModel {
 			t=teamVOList.get(h);
 			String[] s = t.toStringArray();
 			for(int j=0;j<s.length;j++){
-				content[i][j] = s[j];
+				content[h][j] = s[j];
 			}
 		}
 		String[] row = TeamList.getHeadListForRow();
