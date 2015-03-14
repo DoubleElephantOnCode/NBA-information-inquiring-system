@@ -137,67 +137,67 @@ public class PlayerDataPerMatchVO {
 	 */
 	private double freeThrowScoreRate = 0;
 	
-	/**
-	 * 单场效率：(得分+篮板+助攻+抢断+盖帽) -（出手次数-命中次数） -（罚球次数-罚球命中次数） -失误次数
-	 */
-	private double efficiency = 0;
-	
-	/**
-	 * GmSc 效率值： 得分 + 0.4×投篮命中数 - 0.7×投篮出手数-0.4×(罚球出手数-罚球命中数) +
-	 *  0.7×前场篮板数 + 0.3×后场篮板数 + 抢断数 + 0.7×助攻数 + 0.7× 盖帽数 - 0.4×犯规数 - 失误数
-	 */
-	private double GmSc = 0;
-	
-	/**
-	 * 真实命中率: 得分÷(2×(投篮出手数+0.44×罚球出手数))
-	 */
-	private double trueShootingPercentage = 0;
-	
-	/**
-	 * 投篮效率： (投篮命中数+0.5×三分命中数)÷投篮出手数
-	 */
-	private double shootingEfficiency = 0;
-	
-	/**
-	 * 篮板率：球员篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总篮板+对手总篮板)
-	 */
-	private double reboundRate = 0;
-	
-	/**
-	 * 进攻篮板率：球员进攻篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总进攻篮板+对手总进攻篮板)
-	 */
-	private double offensiveReboundRate = 0;
-	
-	/**
-	 * 防守篮板率：球员防守篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总防守篮板+对手总防守篮板)
-	 */
-	private double defensiveReboundRate = 0;
-	
-	/**
-	 * 助攻率：球员助攻数÷(球员上场时间÷(球队所有球员上场时间÷5)×球队总进球数-球员进球数)
-	 */
-	private double assistRate = 0;
-	
-	/**
-	 * 抢断率：球员抢断数×(球队所有球员上场时间÷5)÷球员上场时间÷对手进攻次数)
-	 */
-	private double stealRate = 0;
-	
-	/**
-	 * 盖帽率：球员盖帽数×(球队所有球员上场时间÷5)÷球员上场时间÷对手两分球出手次数
-	 */
-	private double blockRate = 0;
-	
-	/**
-	 * 失误率：球员失误数÷(球员两分球出手次数+0.44×球员罚球次数+球员失误数)
-	 */
-	private double turnoverRate = 0;
-	
-	/**
-	 * 使用率：(球员出手次数+0.44×球员罚球次数+球员失误次数)×(球队所有球员上场时间÷5)÷
-	 *      球员上场时间÷(球队所有总球员出手次数+0.44×球队所有球员罚球次数+球队所有球员失误次数)
-	 */
-	private double useRate = 0;
+//	/**
+//	 * 单场效率：(得分+篮板+助攻+抢断+盖帽) -（出手次数-命中次数） -（罚球次数-罚球命中次数） -失误次数
+//	 */
+//	private double efficiency = 0;
+//	
+//	/**
+//	 * GmSc 效率值： 得分 + 0.4×投篮命中数 - 0.7×投篮出手数-0.4×(罚球出手数-罚球命中数) +
+//	 *  0.7×前场篮板数 + 0.3×后场篮板数 + 抢断数 + 0.7×助攻数 + 0.7× 盖帽数 - 0.4×犯规数 - 失误数
+//	 */
+//	private double GmSc = 0;
+//	
+//	/**
+//	 * 真实命中率: 得分÷(2×(投篮出手数+0.44×罚球出手数))
+//	 */
+//	private double trueShootingPercentage = 0;
+//	
+//	/**
+//	 * 投篮效率： (投篮命中数+0.5×三分命中数)÷投篮出手数
+//	 */
+//	private double shootingEfficiency = 0;
+//	
+//	/**
+//	 * 篮板率：球员篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总篮板+对手总篮板)
+//	 */
+//	private double reboundRate = 0;
+//	
+//	/**
+//	 * 进攻篮板率：球员进攻篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总进攻篮板+对手总进攻篮板)
+//	 */
+//	private double offensiveReboundRate = 0;
+//	
+//	/**
+//	 * 防守篮板率：球员防守篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总防守篮板+对手总防守篮板)
+//	 */
+//	private double defensiveReboundRate = 0;
+//	
+//	/**
+//	 * 助攻率：球员助攻数÷(球员上场时间÷(球队所有球员上场时间÷5)×球队总进球数-球员进球数)
+//	 */
+//	private double assistRate = 0;
+//	
+//	/**
+//	 * 抢断率：球员抢断数×(球队所有球员上场时间÷5)÷球员上场时间÷对手进攻次数)
+//	 */
+//	private double stealRate = 0;
+//	
+//	/**
+//	 * 盖帽率：球员盖帽数×(球队所有球员上场时间÷5)÷球员上场时间÷对手两分球出手次数
+//	 */
+//	private double blockRate = 0;
+//	
+//	/**
+//	 * 失误率：球员失误数÷(球员两分球出手次数+0.44×球员罚球次数+球员失误数)
+//	 */
+//	private double turnoverRate = 0;
+//	
+//	/**
+//	 * 使用率：(球员出手次数+0.44×球员罚球次数+球员失误次数)×(球队所有球员上场时间÷5)÷
+//	 *      球员上场时间÷(球队所有总球员出手次数+0.44×球队所有球员罚球次数+球队所有球员失误次数)
+//	 */
+//	private double useRate = 0;
 //	球员名称y，所属球队y，参赛场数y，先发场数y，篮板数y，助攻数y，在
 //	场时间，投篮命中率y，三分命中率y，罚球命中率y，效率y， GmSc 效率值y，真实命中率y，投篮效率y，
 //	篮板率y，进攻篮板率，防守篮板率，助攻率，抢断率，盖帽率，失误率，使用率
@@ -310,6 +310,7 @@ public class PlayerDataPerMatchVO {
 		
 		judgeDoubleDouble();
 		judgeStarting();
+		calAllRate();
 	}
 
 	/**
@@ -358,44 +359,44 @@ public class PlayerDataPerMatchVO {
 		threePointScoreRate = threePointerScoreNum / threePointerShootNum;
 		//罚球命中率
 		freeThrowScoreRate = freeThrowScoreNum / freeThrowShootNum;
-		//效率
-		efficiency = (personalPoints + totalReboundsNum + assistNum + stealNum + blockNum) - 
-				(shootNum - scoreNum) - (freeThrowShootNum - freeThrowScoreNum) - turnoverNum;
-		//GmSc
-		GmSc = personalPoints + 0.4 * scoreNum - 0.7 * shootNum -
-				0.4 * (freeThrowShootNum - freeThrowScoreNum) + 0.7 * offensiveReboundsNum + 
-				0.3 * defensiveReboundsNum + stealNum + 0.7 * assistNum + 0.7 * blockNum - 
-				0.4 * foulNum - turnoverNum;
-		//真实投篮命中率 = 得分÷(2×(投篮出手数+0.44×罚球出手数))
-		trueShootingPercentage = personalPoints / (2 * (shootNum + 0.44 * freeThrowShootNum));
-		//投篮效率 = (投篮命中数+0.5×三分命中数)÷投篮出手数
-		shootingEfficiency = (scoreNum + 0.5 * threePointerScoreNum) / shootNum;
-		//篮板率 = 球员篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总篮板+对手总篮板)
-		reboundRate = totalReboundsNum * (timeOfAllPlayers.getTimeByMinute() / 5) / 
-				playTime.getTimeByMinute() / (allReboundNum + allOpponentRebondNum);
-		//进攻篮板率 = 球员进攻篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总进攻篮板+对手总进攻篮板)
-		offensiveReboundRate = offensiveReboundsNum * (timeOfAllPlayers.getTimeByMinute() / 5) / 
-				playTime.getTimeByMinute() / (allOffReboundNum + allOppOffReboundNum);
-		//防守篮板率 = 球员防守篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总防守篮板+对手总防守篮板)
-		defensiveReboundRate = defensiveReboundsNum * (timeOfAllPlayers.getTimeByMinute() / 5) / 
-				playTime.getTimeByMinute() / (allDefReboundNum + allOppDefReboundNum);
-		//助攻率 = 球员助攻数÷(球员上场时间÷(球队所有球员上场时间÷5)×球队总进球数-球员进球数)
-		assistRate = assistNum / (playTime.getTimeByMinute() /
-				(timeOfAllPlayers.getTimeByMinute() / 5) * allScoreNum - scoreNum);
-		//抢断率 = 球员抢断数×(球队所有球员上场时间÷5)÷球员上场时间÷对手进攻次数
-		stealRate = stealNum * (timeOfAllPlayers.getTimeByMinute() / 5) / 
-				playTime.getTimeByMinute() / opponentAttackRound;
-		//盖帽率 = 球员盖帽数×(球队所有球员上场时间÷5)÷球员上场时间÷对手两分球出手次数
-		blockRate = blockNum * (timeOfAllPlayers.getTimeByMinute() / 5) / 
-				playTime.getTimeByMinute() / oppTwoPointShootNum;
-		//失误率 = 球员失误数÷(球员两分球出手次数+0.44×球员罚球次数+球员失误数)
-		turnoverRate = turnoverNum / (shootNum - threePointerShootNum +
-				0.44 * freeThrowShootNum + turnoverNum);
-		//使用率 = (球员出手次数+0.44×球员罚球次数+球员失误次数)×(球队所有球员上场时间÷5)÷
-		//        球员上场时间÷(球队所有总球员出手次数+0.44×球队所有球员罚球次数+球队所有球员失误次数)
-		useRate = (shootNum / 0.44 * freeThrowShootNum + turnoverNum) *
-				(timeOfAllPlayers.getTimeByMinute() / 5) / playTime.getTimeByMinute() / 
-				(allShootNum + 0.44 * allFreeThrowShootNum + allTurnoverNum );
+//		//效率
+//		efficiency = (personalPoints + totalReboundsNum + assistNum + stealNum + blockNum) - 
+//				(shootNum - scoreNum) - (freeThrowShootNum - freeThrowScoreNum) - turnoverNum;
+//		//GmSc
+//		GmSc = personalPoints + 0.4 * scoreNum - 0.7 * shootNum -
+//				0.4 * (freeThrowShootNum - freeThrowScoreNum) + 0.7 * offensiveReboundsNum + 
+//				0.3 * defensiveReboundsNum + stealNum + 0.7 * assistNum + 0.7 * blockNum - 
+//				0.4 * foulNum - turnoverNum;
+//		//真实投篮命中率 = 得分÷(2×(投篮出手数+0.44×罚球出手数))
+//		trueShootingPercentage = personalPoints / (2 * (shootNum + 0.44 * freeThrowShootNum));
+//		//投篮效率 = (投篮命中数+0.5×三分命中数)÷投篮出手数
+//		shootingEfficiency = (scoreNum + 0.5 * threePointerScoreNum) / shootNum;
+//		//篮板率 = 球员篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总篮板+对手总篮板)
+//		reboundRate = totalReboundsNum * (timeOfAllPlayers.getTimeByMinute() / 5) / 
+//				playTime.getTimeByMinute() / (allReboundNum + allOpponentRebondNum);
+//		//进攻篮板率 = 球员进攻篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总进攻篮板+对手总进攻篮板)
+//		offensiveReboundRate = offensiveReboundsNum * (timeOfAllPlayers.getTimeByMinute() / 5) / 
+//				playTime.getTimeByMinute() / (allOffReboundNum + allOppOffReboundNum);
+//		//防守篮板率 = 球员防守篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总防守篮板+对手总防守篮板)
+//		defensiveReboundRate = defensiveReboundsNum * (timeOfAllPlayers.getTimeByMinute() / 5) / 
+//				playTime.getTimeByMinute() / (allDefReboundNum + allOppDefReboundNum);
+//		//助攻率 = 球员助攻数÷(球员上场时间÷(球队所有球员上场时间÷5)×球队总进球数-球员进球数)
+//		assistRate = assistNum / (playTime.getTimeByMinute() /
+//				(timeOfAllPlayers.getTimeByMinute() / 5) * allScoreNum - scoreNum);
+//		//抢断率 = 球员抢断数×(球队所有球员上场时间÷5)÷球员上场时间÷对手进攻次数
+//		stealRate = stealNum * (timeOfAllPlayers.getTimeByMinute() / 5) / 
+//				playTime.getTimeByMinute() / opponentAttackRound;
+//		//盖帽率 = 球员盖帽数×(球队所有球员上场时间÷5)÷球员上场时间÷对手两分球出手次数
+//		blockRate = blockNum * (timeOfAllPlayers.getTimeByMinute() / 5) / 
+//				playTime.getTimeByMinute() / oppTwoPointShootNum;
+//		//失误率 = 球员失误数÷(球员两分球出手次数+0.44×球员罚球次数+球员失误数)
+//		turnoverRate = turnoverNum / (shootNum - threePointerShootNum +
+//				0.44 * freeThrowShootNum + turnoverNum);
+//		//使用率 = (球员出手次数+0.44×球员罚球次数+球员失误次数)×(球队所有球员上场时间÷5)÷
+//		//        球员上场时间÷(球队所有总球员出手次数+0.44×球队所有球员罚球次数+球队所有球员失误次数)
+//		useRate = (shootNum / 0.44 * freeThrowShootNum + turnoverNum) *
+//				(timeOfAllPlayers.getTimeByMinute() / 5) / playTime.getTimeByMinute() / 
+//				(allShootNum + 0.44 * allFreeThrowShootNum + allTurnoverNum );
 	}
 	
 	public double getStealNum() {
@@ -498,52 +499,104 @@ public class PlayerDataPerMatchVO {
 		return freeThrowScoreRate;
 	}
 
-	public double getEfficiency() {
-		return efficiency;
+//	public double getEfficiency() {
+//		return efficiency;
+//	}
+//
+//	public double getGmSc() {
+//		return GmSc;
+//	}
+//
+//	public double getTrueShootingPercentage() {
+//		return trueShootingPercentage;
+//	}
+//
+//	public double getShootingEfficiency() {
+//		return shootingEfficiency;
+//	}
+//
+//	public double getReboundRate() {
+//		return reboundRate;
+//	}
+//
+//	public double getOffensiveReboundRate() {
+//		return offensiveReboundRate;
+//	}
+//
+//	public double getDefensiveReboundRate() {
+//		return defensiveReboundRate;
+//	}
+//
+//	public double getAssistRate() {
+//		return assistRate;
+//	}
+//
+//	public double getStealRate() {
+//		return stealRate;
+//	}
+//
+//	public double getBlockRate() {
+//		return blockRate;
+//	}
+//
+//	public double getTurnoverRate() {
+//		return turnoverRate;
+//	}
+//
+//	public double getUseRate() {
+//		return useRate;
+//	}
+
+	public MyPresentTime getTimeOfAllPlayers() {
+		return timeOfAllPlayers;
 	}
 
-	public double getGmSc() {
-		return GmSc;
+	public double getAllScoreNum() {
+		return allScoreNum;
 	}
 
-	public double getTrueShootingPercentage() {
-		return trueShootingPercentage;
+	public double getAllReboundNum() {
+		return allReboundNum;
 	}
 
-	public double getShootingEfficiency() {
-		return shootingEfficiency;
+	public double getAllOffReboundNum() {
+		return allOffReboundNum;
 	}
 
-	public double getReboundRate() {
-		return reboundRate;
+	public double getAllDefReboundNum() {
+		return allDefReboundNum;
 	}
 
-	public double getOffensiveReboundRate() {
-		return offensiveReboundRate;
+	public double getAllOpponentRebondNum() {
+		return allOpponentRebondNum;
 	}
 
-	public double getDefensiveReboundRate() {
-		return defensiveReboundRate;
+	public double getAllOppOffReboundNum() {
+		return allOppOffReboundNum;
 	}
 
-	public double getAssistRate() {
-		return assistRate;
+	public double getAllOppDefReboundNum() {
+		return allOppDefReboundNum;
 	}
 
-	public double getStealRate() {
-		return stealRate;
+	public double getOpponentAttackRound() {
+		return opponentAttackRound;
 	}
 
-	public double getBlockRate() {
-		return blockRate;
+	public double getOppTwoPointShootNum() {
+		return oppTwoPointShootNum;
 	}
 
-	public double getTurnoverRate() {
-		return turnoverRate;
+	public double getAllShootNum() {
+		return allShootNum;
 	}
 
-	public double getUseRate() {
-		return useRate;
+	public double getAllFreeThrowShootNum() {
+		return allFreeThrowShootNum;
+	}
+
+	public double getAllTurnoverNum() {
+		return allTurnoverNum;
 	}
 
 	

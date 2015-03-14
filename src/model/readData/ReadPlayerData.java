@@ -49,6 +49,7 @@ public class ReadPlayerData {
 				row = br.readLine();
 			}
 			System.out.println();
+			info = info + "end";
 			System.out.println(info);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -68,5 +69,10 @@ public class ReadPlayerData {
 				playerInfo[4], playerInfo[5], playerInfo[6], playerInfo[7], playerInfo[8]);
 		return player;
 	}
+//	
+//	public static void main(String[] args) {
+//		ReadPlayerData r = new ReadPlayerData();
+//		r.readPlayerData();
+//	}
 
 }

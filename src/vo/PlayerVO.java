@@ -262,17 +262,17 @@ public class PlayerVO {
 	
 
 	/**
-	 * 单场三分命中率
+	 * 三分命中率
 	 */
 	private double threePointScoreRate = 0;
 	
 	/**
-	 * 单场罚球命中率
+	 * 罚球命中率
 	 */
 	private double freeThrowScoreRate = 0;
 	
 	/**
-	 * 单场效率：(得分+篮板+助攻+抢断+盖帽) -（出手次数-命中次数） -（罚球次数-罚球命中次数） -失误次数
+	 * 效率：(得分+篮板+助攻+抢断+盖帽) -（出手次数-命中次数） -（罚球次数-罚球命中次数） -失误次数
 	 */
 	private double efficiency = 0;
 	
@@ -339,6 +339,71 @@ public class PlayerVO {
 //	篮板率，进攻篮板率，防守篮板率，助攻率，抢断率，盖帽率，失误率，使用率
 //	等， 并且可以依据以上数据中的任何一项对全部数据进行升降序操作
 	
+	/**
+	 * 该场球队所有球员总上场时间
+	 */
+	private MyPresentTime timeOfAllPlayers = new MyPresentTime(0, 0);
+	
+	/**
+	 * 球队总进球数
+	 */
+	private double allScoreNum;
+	
+	/**
+	 * 球队总篮板数
+	 */
+	private double allReboundNum = 0;
+	
+	/**
+	 * 球队总进攻篮板数
+	 */
+	private double allOffReboundNum = 0;
+	
+	/**
+	 * 球队总防守篮板数
+	 */
+	private double allDefReboundNum = 0;
+	
+	/**
+	 * 对手总篮板数
+	 */
+	private double allOpponentRebondNum = 0;
+	
+	/**
+	 * 对手总进攻篮板数
+	 */
+	private double allOppOffReboundNum = 0;
+	
+	/**
+	 * 对手总防守篮板数
+	 */
+	private double allOppDefReboundNum = 0;
+
+	/**
+	 * 对手进攻回合
+	 */
+	private double opponentAttackRound = 0;
+	
+	/**
+	 * 对手两分球出手次数
+	 */
+	private double oppTwoPointShootNum = 0;
+	
+	/**
+	 * 球队所有球员总出手数
+	 */
+	private double allShootNum = 0;
+
+	/**
+	 * 球队所有球员罚球出手数
+	 */
+	private double allFreeThrowShootNum = 0;
+
+	/**
+	 * 球队所有球员失误数
+	 */
+	private double allTurnoverNum = 0;
+	
 	public PlayerVO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -372,6 +437,8 @@ public class PlayerVO {
 		PlayerDataPerMatchVO pvo = new PlayerDataPerMatchVO(matchData);
 		dataPerMatchList.add(pvo);
 		
+		//所属球队
+		teamName = matchData.getTeamName();
 		//两双次数
 		if(pvo.isDoubleDouble()){
 			doubleDouble++;
@@ -408,10 +475,82 @@ public class PlayerVO {
 		foulNum = foulNum + pvo.getFoulNum();
 		//个人总得分
 		personalPoints = personalPoints + pvo.getPersonalPoints();
+		
+		timeOfAllPlayers = timeOfAllPlayers.add(pvo.getTimeOfAllPlayers());
+		allScoreNum += pvo.getAllScoreNum();
+		allReboundNum += pvo.getAllReboundNum();
+		allOffReboundNum += pvo.getAllOffReboundNum();
+		allDefReboundNum += pvo.getAllDefReboundNum();
+		allOpponentRebondNum += pvo.getAllOpponentRebondNum();
+		allOppOffReboundNum += pvo.getAllOppOffReboundNum();
+		allOppDefReboundNum += pvo.getAllOppDefReboundNum();
+		opponentAttackRound += pvo.getOpponentAttackRound();
+		allShootNum += pvo.getAllShootNum();
+		allFreeThrowShootNum += pvo.getAllFreeThrowShootNum();
+		allTurnoverNum = pvo.getAllTurnoverNum();
+		
 		//计算参赛场数
 		calEntryNum();
+		calAllRate();
 	}
 
+	/**
+	 * 计算各种率(所有场次)
+	 */
+	public void calAllRate(){
+		//TODO 计算各种率
+
+		//赛季投篮命中率
+		scoreRate = scoreNum / shootNum;
+		//赛季三分命中率
+		threePointScoreRate = threePointerScoreNum / threePointerShootNum;
+		//赛季罚球命中率
+		freeThrowScoreRate = freeThrowScoreNum / freeThrowShootNum;
+		//赛季效率：(得分+篮板+助攻+抢断+盖帽) -（出手次数-命中次数） -（罚球次数-罚球命中次数） -失误次数
+		efficiency = (avePersonalPoints + aveTotalReboundsNum + aveAssistNum + aveStealNum +
+				aveBlockNum) - (aveShootNum - aveScoreNum) - aveTurnoverNum;
+		//GmSc 效率值： 得分 + 0.4×投篮命中数 - 0.7×投篮出手数-0.4×(罚球出手数-罚球命中数) + 0.7×前场篮板数 +
+		//0.3×后场篮板数 + 抢断数 + 0.7×助攻数 + 0.7× 盖帽数 - 0.4×犯规数 - 失误数
+		GmSc = avePersonalPoints + 0.4 * aveScoreNum - 0.7 * aveShootNum -
+				0.4 * (aveFreeThrowShootNum - aveFreeThrowScoreNum) +
+				0.7 * aveOffensiveReboundsNum + 0.3 * aveDefensiveReboundsNum +
+				aveStealNum + 0.7 * aveAssistNum + 0.7 * aveBlockNum - aveTurnoverNum;
+		//真实命中率: 得分÷(2×(投篮出手数+0.44×罚球出手数))
+		trueShootingPercentage = avePersonalPoints / (2 * (aveShootNum + 
+				0.44 * aveFreeThrowShootNum));
+		//投篮效率： (投篮命中数+0.5×三分命中数)÷投篮出手数
+		shootingEfficiency = (aveScoreNum + 0.5 * aveThreePointerScoreNum) / aveShootNum;
+		//篮板率：球员篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总篮板+对手总篮板)
+		reboundRate = totalReboundsNum *
+				(timeOfAllPlayers.getTimeByMinute() / 5) / totalMinutes.getTimeByMinute() / 
+				(allReboundNum + allOpponentRebondNum);
+		//进攻篮板率：球员进攻篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总进攻篮板+对手总进攻篮板)
+		offensiveReboundRate = offensiveReboundsNum * 
+				(timeOfAllPlayers.getTimeByMinute() / 5) / totalMinutes.getTimeByMinute() / 
+				(allOffReboundNum + allOppOffReboundNum);
+		//防守篮板率：球员防守篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总防守篮板+对手总防守篮板)
+		defensiveReboundRate = defensiveReboundsNum * 
+				(timeOfAllPlayers.getTimeByMinute() / 5) / totalMinutes.getTimeByMinute() /
+				(allDefReboundNum + allOppDefReboundNum);
+		//助攻率：球员助攻数÷(球员上场时间÷(球队所有球员上场时间÷5)×球队总进球数-球员进球数
+		assistRate = assistNum / (totalMinutes.getTimeByMinute() /
+				(timeOfAllPlayers.getTimeByMinute() / 5)) * allScoreNum - scoreNum;
+		//抢断率：球员抢断数×(球队所有球员上场时间÷5)÷球员上场时间÷对手进攻次数
+		stealRate = stealNum * (timeOfAllPlayers.getTimeByMinute() / 5) / 
+				totalMinutes.getTimeByMinute() / opponentAttackRound;
+		//盖帽率：球员盖帽数×(球队所有球员上场时间÷5)÷球员上场时间÷对手两分球出手次数
+		blockRate = blockNum * (timeOfAllPlayers.getTimeByMinute() / 5) / 
+				totalMinutes.getTimeByMinute() / oppTwoPointShootNum;
+		//失误率：球员失误数÷(球员两分球出手次数+0.44×球员罚球次数+球员失误数)
+		turnoverRate = turnoverNum / ((shootNum - threePointerShootNum)
+				+ 0.44 * freeThrowShootNum + turnoverNum);
+		//使用率：(球员出手次数+0.44×球员罚球次数+球员失误次数)×(球队所有球员上场时间÷5)÷
+		//球员上场时间÷(球队所有总球员出手次数+0.44×球队所有球员罚球次数+球队所有球员失误次数)
+		useRate = (shootNum + 0.44 * freeThrowShootNum + turnoverNum) *
+				(timeOfAllPlayers.getTimeByMinute() / 5) / totalMinutes.getTimeByMinute() / 
+				(allShootNum + 0.44 * allFreeThrowShootNum + allTurnoverNum);
+	}
+	
 	/**
 	 * 计算场均数据
 	 */
