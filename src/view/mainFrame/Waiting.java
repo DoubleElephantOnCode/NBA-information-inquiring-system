@@ -42,7 +42,7 @@ public class Waiting{
 				};
 				timer.schedule(task, 0);
 			}
-		}.execute();;
+		}.execute();
 	}
 	
 	public void cancel(){

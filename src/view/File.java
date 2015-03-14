@@ -53,4 +53,8 @@ public class File {
 	public static String totalBar_r = "totalBar_r";
 	
 	public static String waiting = "wait";
+	
+	public static String sort_up = "sort_up";
+	
+	public static String sort_down = "sort_down";
 }

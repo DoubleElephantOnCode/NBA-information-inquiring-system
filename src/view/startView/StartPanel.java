@@ -140,7 +140,7 @@ public class StartPanel extends JPanel{
 		});
 		TeamCountEnter.addMouseListener(new LabelEnterListener(TeamCount, TeamCountEnter){
 			public void mouseClicked(MouseEvent e) {
-				new ShowTeamController().showTeamTable();;
+				new ShowTeamController().showTeamTable();
 			}
 		});
 		TeamInfoEnter.addMouseListener(new LabelEnterListener(TeamInfo, TeamInfoEnter));

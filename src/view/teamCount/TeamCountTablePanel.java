@@ -15,7 +15,6 @@ import javax.swing.SwingConstants;
 
 import control.ShowTeamController;
 import view.File;
-import view.mainFrame.Main;
 import view.tablePanel.BarInColumnPanel;
 import view.tablePanel.BarInRowPanel;
 import view.tablePanel.HeadListForColumnPanel;
@@ -60,7 +59,7 @@ public class TeamCountTablePanel extends JPanel{
 	
 	ImageIcon head_deep, head_light;
 	
-	ImageIcon selected;//TODO 要调整图片，上下指向各一张
+	ImageIcon sortUP, sortDOWN;
 	
 	Color fontColor = new Color(170, 170, 170);
 	
@@ -116,8 +115,11 @@ public class TeamCountTablePanel extends JPanel{
 		head_light = new ImageIcon(File.file + File.grid_light + File.PNG);
 		head_light.setImage(head_light.getImage().getScaledInstance(headListForRowPanelWidth, tableHeight / pageRow,Image.SCALE_DEFAULT));
 		
-		selected = new ImageIcon(File.file + File.selectedColumnHeadList + File.PNG);
-		selected.setImage(selected.getImage().getScaledInstance(tableWidth / pageColumn, headListForColumnPanelHeight, Image.SCALE_DEFAULT));
+		sortUP = new ImageIcon(File.file + File.sort_up + File.PNG);
+		sortUP.setImage(sortUP.getImage().getScaledInstance(tableWidth / pageColumn, headListForColumnPanelHeight, Image.SCALE_DEFAULT));
+		
+		sortDOWN = new ImageIcon(File.file + File.sort_down + File.PNG);
+		sortDOWN.setImage(sortDOWN.getImage().getScaledInstance(tableWidth / pageColumn, headListForColumnPanelHeight, Image.SCALE_DEFAULT));
 		
 		for(int i = 0; i < row;){
 			hpR.setIconInRow(head_light, i++);
@@ -243,6 +245,7 @@ public class TeamCountTablePanel extends JPanel{
 
 		JLabel[][] labelList;
 		int index;
+		int times = 0;
 		
 		public HeadListLabelListener(JLabel[][] labelList, int index){
 			this.labelList = labelList;
@@ -250,14 +253,22 @@ public class TeamCountTablePanel extends JPanel{
 		}
 		
 		public void mouseClicked(MouseEvent arg0) {
+			times++;
 			for(int i = 0; i < labelList.length; i++){
 				if(i != index && labelList[i][1].getIcon() != null){
 					labelList[i][1].setIcon(null);
 				}
 			}
-			labelList[index][1].setIcon(selected);
+			if(times % 2 == 0) {
+				labelList[index][1].setIcon(sortUP);
+				new ShowTeamController().sortTeam(index, true);
+			}
+			else{
+				labelList[index][1].setIcon(sortDOWN);
+				new ShowTeamController().sortTeam(index, false);
+			}
 			//TODO 点击后调整排序方式，以此列排序，需要reset整个表格的行数据，发送给control，由model执行
-			new ShowTeamController().sortTeam(index, true);
+			
 		}
 		public void mouseEntered(MouseEvent arg0) {}
 		public void mouseExited(MouseEvent arg0) {}
