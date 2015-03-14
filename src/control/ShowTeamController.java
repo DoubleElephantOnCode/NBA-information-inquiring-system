@@ -13,6 +13,6 @@ public class ShowTeamController {
 	}
 	
 	public void sortTeam(int i,boolean isPositiveSequence){
-		
+		showTeamModel.sortTeamTable(i, isPositiveSequence);
 	}
 }
