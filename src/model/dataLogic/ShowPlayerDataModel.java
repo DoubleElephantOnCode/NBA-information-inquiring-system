@@ -24,6 +24,7 @@ public class ShowPlayerDataModel {
 			@Override
 			protected Void doInBackground() throws Exception{
 				super.doInBackground();
+				try{
 				ArrayList<PlayerVO> playerList = PlayerList.getPlayers();
 				PlayerVO player = playerList.get(0);
 				String[][] content =
@@ -40,6 +41,10 @@ public class ShowPlayerDataModel {
 				String[] row = PlayerList.getHeadForRow();
 				
 				Main.newPlayerCountPanel(content, row, column);
+				}
+				catch(Exception e){
+					e.printStackTrace();
+				}
 				
 				return null;
 			}

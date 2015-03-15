@@ -108,12 +108,12 @@ public class ReadMatchData {
 			matchVO.checkData();
 			matchVO.calData();
 			matchVO.setBasicData();
-//			for(MatchDataPerPlayerVO homePlayerData : matchVO.homePlayerList){
-//				PlayerList.addAMatch(homePlayerData);
-//			}
-//			for(MatchDataPerPlayerVO awayPlayerData : matchVO.awayPlayerList){
-//				PlayerList.addAMatch(awayPlayerData);
-//			}
+			for(MatchDataPerPlayerVO homePlayerData : matchVO.homePlayerList){
+				PlayerList.addAMatch(homePlayerData);
+			}
+			for(MatchDataPerPlayerVO awayPlayerData : matchVO.awayPlayerList){
+				PlayerList.addAMatch(awayPlayerData);
+			}
 			
 			MatchList.addMatchVO(matchVO);
 			TeamList.addMatchVO(matchVO);

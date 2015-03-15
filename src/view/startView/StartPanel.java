@@ -12,6 +12,7 @@ import view.mainFrame.LabelEnterListener;
 import view.mainFrame.LabelUsualListener;
 import view.mainFrame.Main;
 import view.mainFrame.MenuLabel;
+import control.ShowPlayerController;
 import control.ShowTeamController;
 
 public class StartPanel extends JPanel{
@@ -144,7 +145,12 @@ public class StartPanel extends JPanel{
 			}
 		});
 		TeamInfoEnter.addMouseListener(new LabelEnterListener(TeamInfo, TeamInfoEnter));
-		PlayerCountEnter.addMouseListener(new LabelEnterListener(PlayerCount, PlayerCountEnter));
+		PlayerCountEnter.addMouseListener(new LabelEnterListener(PlayerCount, PlayerCountEnter){
+			public void mouseClicked(MouseEvent e) {
+				new ShowPlayerController().showPlayerInfo();
+				System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			}
+		});
 		PlayerInfoEnter.addMouseListener(new LabelEnterListener(PlayerInfo, PlayerInfoEnter));
 		
 		setLocation(0, -5);

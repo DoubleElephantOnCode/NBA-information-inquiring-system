@@ -40,8 +40,8 @@ public class Main {
 		readTeam = new ReadTeamData();
 		readTeam.readTeamData();
 		
-//		readPlayer = new ReadPlayerData();
-//		readPlayer.readPlayerData();
+		readPlayer = new ReadPlayerData();
+		readPlayer.readPlayerData();
 		
 		readMatch = new ReadMatchData();
 		readMatch.readMatchData();

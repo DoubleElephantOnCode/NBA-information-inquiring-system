@@ -508,7 +508,7 @@ public class PlayerVO {
 		//计算参赛场数
 		calEntryNum();
 		calAllRate();
-		calRecentAdvance();
+//		calRecentAdvance();
 	}
 
 	/**
