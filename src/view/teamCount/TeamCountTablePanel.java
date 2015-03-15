@@ -34,7 +34,7 @@ public class TeamCountTablePanel extends JPanel{
 	
 	int tableWidth = 700, tableHeight = 300;
 	int row = 30, column = 50;
-	int pageRow = 10, pageColumn = 5;
+	int pageRow = 6, pageColumn = 5;
 	
 	int headListForRowPanelWidth = 160;
 			
@@ -148,6 +148,7 @@ public class TeamCountTablePanel extends JPanel{
 		this.add(brp);
 		this.add(hpC);
 		this.add(hpR);
+		this.add(teamPic);
 		this.setSize(width, height);
 		this.setLocation(0, 140);
 		this.setOpaque(false);
