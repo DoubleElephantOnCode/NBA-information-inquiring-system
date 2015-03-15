@@ -98,7 +98,7 @@ public class PlayerVO {
 	/**
 	 * 场均上场时间
 	 */
-	private MyPresentTime aveMinutes;
+	private MyPresentTime aveMinutes = new MyPresentTime(0, 0);
 	
 	/**
 	 * 场均投篮命中数
@@ -501,12 +501,14 @@ public class PlayerVO {
 		allOppOffReboundNum += pvo.getAllOppOffReboundNum();
 		allOppDefReboundNum += pvo.getAllOppDefReboundNum();
 		opponentAttackRound += pvo.getOpponentAttackRound();
+		oppTwoPointShootNum += pvo.getOppTwoPointShootNum();
 		allShootNum += pvo.getAllShootNum();
 		allFreeThrowShootNum += pvo.getAllFreeThrowShootNum();
 		allTurnoverNum = pvo.getAllTurnoverNum();
 		
 		//计算参赛场数
 		calEntryNum();
+		calAveData();
 		calAllRate();
 		calRecentAdvance();
 	}
@@ -520,9 +522,13 @@ public class PlayerVO {
 		//赛季投篮命中率
 		scoreRate = scoreNum / shootNum;
 		//赛季三分命中率
-		threePointScoreRate = threePointerScoreNum / threePointerShootNum;
+		if(threePointerShootNum != 0.0){
+			threePointScoreRate = threePointerScoreNum / threePointerShootNum;
+		}
 		//赛季罚球命中率
-		freeThrowScoreRate = freeThrowScoreNum / freeThrowShootNum;
+		if(freeThrowShootNum != 0.0){
+			freeThrowScoreRate = freeThrowScoreNum / freeThrowShootNum;
+		}
 		//赛季效率：(得分+篮板+助攻+抢断+盖帽) -（出手次数-命中次数） -（罚球次数-罚球命中次数） -失误次数
 		efficiency = (avePersonalPoints + aveTotalReboundsNum + aveAssistNum + aveStealNum +
 				aveBlockNum) - (aveShootNum - aveScoreNum) - aveTurnoverNum;
@@ -691,6 +697,18 @@ public class PlayerVO {
 	 * @return
 	 */
 	public String[] getPlayerInfo(){
+		
+//		System.out.println("totalMinutes = " + this.totalMinutes.getTimeByMinute());
+//		System.out.println("matchNum = " + this.entryNum);
+//		System.out.println("aveMinutes = " + this.aveMinutes.getTimeByMinute());
+//		System.out.println("assistRate = " + this.assistRate);
+//		System.out.println("stealRate = " + this.stealRate);
+//		System.out.println("对手两分球出手  = " + this.oppTwoPointShootNum);
+//		System.out.println("blockRate = " + this.blockRate);
+		System.out.println("name:" + this.name);
+		System.out.println("三分命中率 = " + this.threePointScoreRate);
+		System.out.println("罚球命中率 = " + this.freeThrowScoreRate);
+		
 		String[] s = new String[]{
 				name, teamName, position, entryNum + "", startingNum + "", doubleDouble + "",
 				toString(totalMinutes.getTimeByMinute()), toString(aveMinutes.getTimeByMinute()),
