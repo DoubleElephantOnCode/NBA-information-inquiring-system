@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import model.readData.ReadMatchData;
 import model.readData.ReadPlayerData;
 import model.readData.ReadTeamData;
+import view.playerCount.PlayerCountPanel;
 import view.startView.StartPanel;
 import view.teamCount.TeamCountPanel;
 
@@ -30,6 +31,7 @@ public class Main {
 	static StartPanel startPanel = new StartPanel();
 	
 	static TeamCountPanel teamCountPanel;
+	static PlayerCountPanel playerCountPanel;
 	
 	public Main(){
 		
@@ -84,15 +86,49 @@ public class Main {
 		label.setOpaque(false);
 		return label;
 	}
-	
+	/**
+	 * 打开查看球队统计信息的界面
+	 * @param content
+	 * @param team
+	 * @param headListForColumn
+	 */
 	public static void newTeamCountPanel(String[][] content, String[] team, String[] headListForColumn){
 		teamCountPanel = new TeamCountPanel(content, team, headListForColumn);
 		startPanel.setVisible(false);
 		mainFrame.add(teamCountPanel);
+		
+		if(playerCountPanel != null)
+			mainFrame.remove(playerCountPanel);
 	}
-	
+	/**
+	 * 重置球队统计表格中数据，只能修改行数据
+	 * @param content
+	 * @param team
+	 */
 	public static void resetTeamCountPanel(String[][] content, String[] team){
 		teamCountPanel.resetTableInfo(content, team);
+	}
+	/**
+	 * 打开查看球员统计数据界面
+	 * @param content
+	 * @param player
+	 * @param headListForColumn
+	 */
+	public static void newPlayerCountPanel(String[][] content, String[] player, String[] headListForColumn){
+		playerCountPanel = new PlayerCountPanel(content, player, headListForColumn);
+		startPanel.setVisible(false);
+		mainFrame.add(playerCountPanel);
+		
+		if(teamCountPanel != null)
+			mainFrame.remove(teamCountPanel);
+	}
+	/**
+	 * 重置球员统计表中的数据，只能修改行数据
+	 * @param content
+	 * @param player
+	 */
+	public static void resetPlayerCountPanel(String[][] content, String[] player){
+		playerCountPanel.resetTableInfo(content, player);
 	}
 	
 	public static void main(String[] args){

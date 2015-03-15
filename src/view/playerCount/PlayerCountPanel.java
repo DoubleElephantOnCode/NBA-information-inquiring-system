@@ -27,10 +27,10 @@ public class PlayerCountPanel extends JPanel{
 	
 	static SearchPanel search;
 	
-	public PlayerCountPanel(String[][] content, String[] team, String[] headListForColumn){
+	public PlayerCountPanel(String[][] content, String[] player, String[] headListForColumn){
 		
 		background = Main.setJLabelWithIcon(File.file + File.playerCountBackground + File.GIF, width, height);
-		table = new PlayerCountTablePanel(content, team, headListForColumn);
+		table = new PlayerCountTablePanel(content, player, headListForColumn);
 		
 		search = new SearchPanel(300, 30);
 		search.setLocation(650, 100);
