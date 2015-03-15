@@ -28,10 +28,10 @@ public class TeamCountPanel extends JPanel{
 	
 	static SearchPanel search;
 	
-	public TeamCountPanel(String[][] content, String[] team, String[] headListForColumn){
+	public TeamCountPanel(String[][] content, String[] team, String[] headListForColumn, JLabel[] pic){
 		
 		background = Main.setJLabelWithIcon(File.file + File.teamCountBackground + File.GIF, width, height);
-		table = new TeamCountTablePanel(content, team, headListForColumn);
+		table = new TeamCountTablePanel(content, team, headListForColumn, pic);
 		
 		search = new SearchPanel(300, 30);
 		search.setLocation(650, 100);

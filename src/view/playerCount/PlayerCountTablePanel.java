@@ -262,7 +262,7 @@ int width = 1000, height = 410;
 			}
 			if(times % 2 == 0) {
 				labelList[index][1].setIcon(sortUP);
-				new ShowTeamController().sortTeam(index, true);
+				//TODO
 			}
 			else{
 				labelList[index][1].setIcon(sortDOWN);

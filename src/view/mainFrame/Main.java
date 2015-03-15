@@ -5,6 +5,7 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -13,6 +14,7 @@ import javax.swing.JLabel;
 import model.readData.ReadMatchData;
 import model.readData.ReadPlayerData;
 import model.readData.ReadTeamData;
+import view.SVGLabel;
 import view.playerCount.PlayerCountPanel;
 import view.startView.StartPanel;
 import view.teamCount.TeamCountPanel;
@@ -92,8 +94,12 @@ public class Main {
 	 * @param team
 	 * @param headListForColumn
 	 */
-	public static void newTeamCountPanel(String[][] content, String[] team, String[] headListForColumn){
-		teamCountPanel = new TeamCountPanel(content, team, headListForColumn);
+	public static void newTeamCountPanel(String[][] content, String[] team, String[] headListForColumn, File[] teamPic){
+		JLabel[] pic = new JLabel[teamPic.length];
+		for(int i = 0; i < pic.length; i++){
+			pic[i] = new SVGLabel(teamPic[i], 80, 30);
+		}
+		teamCountPanel = new TeamCountPanel(content, team, headListForColumn, pic);
 		startPanel.setVisible(false);
 		mainFrame.add(teamCountPanel);
 		

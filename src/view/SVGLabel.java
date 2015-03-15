@@ -23,6 +23,7 @@ public class SVGLabel extends JLabel{
 		this.setSize(width, height);
 		svgComponent.setLocation(0, 0);
 		this.setLayout(null);
+		this.setLocation(0, 0);
 	}
 	@Override
 	public void setSize(int width, int height){

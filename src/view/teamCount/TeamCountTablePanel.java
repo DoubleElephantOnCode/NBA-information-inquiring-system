@@ -47,6 +47,7 @@ public class TeamCountTablePanel extends JPanel{
 	TablePanel p;
 	HeadListForColumnPanel hpC;
 	HeadListForRowPanel hpR;
+	HeadListForRowPanel teamPic;
 	BarInColumnPanel bcp;
 	BarInRowPanel brp;
 	
@@ -63,7 +64,7 @@ public class TeamCountTablePanel extends JPanel{
 	
 	Color fontColor = new Color(170, 170, 170);
 	
-	public TeamCountTablePanel(String[][] content, String[] headListForRow, String[] headListForColumn){
+	public TeamCountTablePanel(String[][] content, String[] headListForRow, String[] headListForColumn, JLabel[] pic){
 
 		contentInTable = content;
 		this.headListForColumn = headListForColumn;
@@ -79,8 +80,15 @@ public class TeamCountTablePanel extends JPanel{
 		hpC = new HeadListForColumnPanel(headListForColumn, pageColumn, tableWidth, headListForColumnPanelHeight);
 		hpC.setLocation(leftSide + headListForRowPanelWidth, 0);
 		
-		hpR = new HeadListForRowPanel(headListForRow, pageRow, headListForRowPanelWidth, tableHeight);
-		hpR.setLocation(leftSide, headListForColumnPanelHeight);
+		hpR = new HeadListForRowPanel(headListForRow, pageRow, headListForRowPanelWidth/2, tableHeight);
+		hpR.setLocation(leftSide + headListForRowPanelWidth/2, headListForColumnPanelHeight);
+		
+		teamPic = new HeadListForRowPanel(headListForRow, pageRow, headListForRowPanelWidth/2, tableHeight);
+		teamPic.setLocation(leftSide, headListForColumnPanelHeight);
+		
+		for(int i = 0; i < pic.length; i++){
+			teamPic.setJLabelInRow(pic[i], i);
+		}
 		
 		teamName = new JLabel[2];
 		teamName[0] = new JLabel("球队名");

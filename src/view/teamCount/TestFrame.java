@@ -34,7 +34,7 @@ public class TestFrame {
 		team = new String[row];
 		headListForColumn = new String[column];
 		
-		p = new TeamCountPanel(content, team, headListForColumn);
+		p = new TeamCountPanel(content, team, headListForColumn, null);
 		
 		f.setContentPane(p);
 		f.setUndecorated(true);

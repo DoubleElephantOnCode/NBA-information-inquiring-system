@@ -59,6 +59,10 @@ public class HeadListForRowPanel extends JPanel{
 		list.field[row][1].setIcon(icon);
 	}
 	
+	public void setJLabelInRow(JLabel label, int row){
+		list.field[row][1].add(label, 0);
+	}
+	
 //	public void setBackground(Icon icon){
 //		this.setIcon(icon);
 //	}
