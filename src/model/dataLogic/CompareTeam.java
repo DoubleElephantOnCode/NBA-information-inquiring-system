@@ -5,662 +5,969 @@ import java.util.Comparator;
 import vo.TeamVO;
 
 public class CompareTeam {
-	
+	Comparator[] compartor;
+	public CompareTeam(boolean isPositiveSequence){
+	boolean b = isPositiveSequence;
+	compartor = new Comparator[]{			
+		new SortByMatchNum(b),
+		new SortByTotalScoreNum(b),
+		new SortByTotalShootNum(b),
+		new SortByTotalThreePointScoreNum(b),
+		new SortByTotalThreePointShootNum(b),
+		new SortByTotalFreeThrowScoreNum(b),
+		new SortByTotalFreeThrowShootNum(b),
+		new SortByTotalOffensiveReboundsNum(b),
+		new SortByTotalDefensiveReboundsNum(b),
+		new SortByTotalTotalReboundsNum(b),
+		new SortByTotalAssistNum(b),
+		new SortByTotalStealNum(b),
+		new SortByTotalBlockNum(b),
+		new SortByTotalTurnoverNum(b),
+		new SortByTotalFoulNum(b),
+		new SortByTotalScore(b),
+		new SortByTotalScoreRate(b),
+		new SortByTotalThreePointRate(b),
+		new SortByTotalFreeThrowRate(b),
+		new SortByTotalWinningRate(b),
+		new SortByTotalAttackRound(b),
+		new SortByTotalAttackEfficiency(b),
+		new SortByTotalDefendEfficiency(b),
+		new SortByTotalAttackReboundEfficiency(b),
+		new SortByTotalDefensiveReboundEfficiency(b),
+		new SortByTotalStealEfficiency(b),
+		new SortByTotalAssistRate(b),
+		new SortByAveScoreNum(b),
+		new SortByAveShootNum(b),
+		new SortByAveThreePointScoreNum(b),
+		new SortByAveThreePointShootNum(b),
+		new SortByAveFreeThrowScoreNum(b),
+		new SortByAveFreeThrowShootNum(b),
+		new SortByAveOffensiveReboundsNum(b),
+		new SortByAveDefensiveReboundsNum(b),
+		new SortByAveTotalReboundsNum(b),
+		new SortByAveAssistNum(b),
+		new SortByAveStealNum(b),
+		new SortByAveBlockNum(b),
+		new SortByAveTurnoverNum(b),
+		new SortByAveFoulNum(b),
+		new SortByAveScore(b),		
+	};
+	}
 	
 	public class SortByMatchNum  implements Comparator{
-		
+		boolean isPositiveSequence;
+		public SortByMatchNum(boolean isPositiveSequence){
+			this.isPositiveSequence = isPositiveSequence;
+		}
 		
 			
 		public int compare(Object o1, Object o2) {
 			// TODO Auto-generated method stub
+			int result = -1;
 			TeamVO p1 = (TeamVO) o1;
 			TeamVO p2 = (TeamVO) o2;
 			if(p1.matchNum >= p2.matchNum){
-				return 1;
-			}else{
-				return -1;
+				result = 1;
 			}
+			if(!isPositiveSequence){
+				result = -result;
+			}
+			return result;
 		}
 	
 	}
 	
 	public class SortByTotalScoreNum  implements Comparator{
+		boolean isPositiveSequence;
+		public SortByTotalScoreNum(boolean isPositiveSequence){
+			this.isPositiveSequence = isPositiveSequence;
+		}
+		
 		
 		public int compare(Object o1, Object o2) {
 			// TODO Auto-generated method stub
+			int result = -1;
 			TeamVO p1 = (TeamVO) o1;
 			TeamVO p2 = (TeamVO) o2;
 			if(p1.totalScoreNum >= p2.totalScoreNum){
-				return 1;
-			}else{
-				return -1;
+				result = 1;
 			}
+			if(!isPositiveSequence){
+				result = -result;
+			}
+			return result;
 		}
 	
 	}
 	
 	public class SortByTotalShootNum  implements Comparator{
-		
+		boolean isPositiveSequence;
+		public SortByTotalShootNum(boolean isPositiveSequence){
+			this.isPositiveSequence = isPositiveSequence;
+		}
 		public int compare(Object o1, Object o2) {
 			// TODO Auto-generated method stub
+			int result = -1;
 			TeamVO p1 = (TeamVO) o1;
 			TeamVO p2 = (TeamVO) o2;
 			if(p1.totalShootNum >= p2.totalShootNum){
-				return 1;
-			}else{
-				return -1;
+				result = 1;
 			}
+			if(!isPositiveSequence){
+				result = -result;
+			}
+			return result;
 		}
 	
 	}
 	
 	public class SortByTotalThreePointScoreNum  implements Comparator{
-		
+		boolean isPositiveSequence;
+		public SortByTotalThreePointScoreNum(boolean isPositiveSequence){
+			this.isPositiveSequence = isPositiveSequence;
+		}
 		public int compare(Object o1, Object o2) {
 			// TODO Auto-generated method stub
+			int result = -1;
 			TeamVO p1 = (TeamVO) o1;
 			TeamVO p2 = (TeamVO) o2;
 			if(p1.totalThreePointScoreNum >= p2.totalThreePointScoreNum){
-				return 1;
-			}else{
-				return -1;
+				result = 1;
 			}
+			if(!isPositiveSequence){
+				result = -result;
+			}
+			return result;
 		}
 	
 	}
 	
 	public class SortByTotalThreePointShootNum  implements Comparator{
-		
+		boolean isPositiveSequence;
+		public SortByTotalThreePointShootNum(boolean isPositiveSequence){
+			this.isPositiveSequence = isPositiveSequence;
+		}
 		public int compare(Object o1, Object o2) {
 			// TODO Auto-generated method stub
+			int result = -1;
 			TeamVO p1 = (TeamVO) o1;
 			TeamVO p2 = (TeamVO) o2;
 			if(p1.totalThreePointShootNum >= p2.totalThreePointShootNum){
-				return 1;
-			}else{
-				return -1;
+				result = 1;
 			}
+			if(!isPositiveSequence){
+				result = -result;
+			}
+			return result;
 		}
 	
 	}
 	
 	
 public class SortByTotalFreeThrowScoreNum  implements Comparator{
-		
+	boolean isPositiveSequence;
+	public SortByTotalFreeThrowScoreNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 		public int compare(Object o1, Object o2) {
 			// TODO Auto-generated method stub
+			int result = -1;
 			TeamVO p1 = (TeamVO) o1;
 			TeamVO p2 = (TeamVO) o2;
 			if(p1.totalFreeThrowScoreNum >= p2.totalFreeThrowScoreNum){
-				return 1;
-			}else{
-				return -1;
+				result = 1;
 			}
+			if(!isPositiveSequence){
+				result = -result;
+			}
+			return result;
 		}
 	
 	}
 
 public class SortByTotalFreeThrowShootNum  implements Comparator{
-	
+	boolean isPositiveSequence;
+	public SortByTotalFreeThrowShootNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalFreeThrowShootNum >= p2.totalFreeThrowShootNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
 public class SortByTotalOffensiveReboundsNum  implements Comparator{
-	
+	boolean isPositiveSequence;
+	public SortByTotalOffensiveReboundsNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalOffensiveReboundsNum >= p2.totalOffensiveReboundsNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
 public class SortByTotalDefensiveReboundsNum  implements Comparator{
-	
+	boolean isPositiveSequence;
+	public SortByTotalDefensiveReboundsNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalDefensiveReboundsNum >= p2.totalDefensiveReboundsNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
 public class SortByTotalTotalReboundsNum  implements Comparator{
-	
+	boolean isPositiveSequence;
+	public SortByTotalTotalReboundsNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalTotalReboundsNum >= p2.totalTotalReboundsNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
 
-public class SortBytotalAssistNum  implements Comparator{
-	
+public class SortByTotalAssistNum  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByTotalAssistNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalAssistNum >= p2.totalAssistNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
 
-public class SortBytotalStealNum  implements Comparator{
-	
+public class SortByTotalStealNum  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByTotalStealNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalStealNum >= p2.totalStealNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
 
 public class SortByTotalTotalThreePointShootNum  implements Comparator{
-	
+	boolean isPositiveSequence;
+	public SortByTotalTotalThreePointShootNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalThreePointShootNum >= p2.totalThreePointShootNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
 
-public class SortBytotalBlockNum  implements Comparator{
-	
+public class SortByTotalBlockNum  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByTotalBlockNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalBlockNum >= p2.totalBlockNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
 
-public class SortBytotalTurnoverNum  implements Comparator{
-	
+public class SortByTotalTurnoverNum  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByTotalTurnoverNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalTurnoverNum >= p2.totalTurnoverNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
 
-public class SortBytotalFoulNum  implements Comparator{
-	
+public class SortByTotalFoulNum  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByTotalFoulNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalFoulNum >= p2.totalFoulNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
 
-public class SortBytotalScore  implements Comparator{
-	
+public class SortByTotalScore  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByTotalScore(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalScore >= p2.totalScore){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
 
-public class SortBytotalScoreRate  implements Comparator{
-	
+public class SortByTotalScoreRate  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByTotalScoreRate(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalScoreRate >= p2.totalScoreRate){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
 
-public class SortBytotalThreePointRate  implements Comparator{
-	
+public class SortByTotalThreePointRate  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByTotalThreePointRate(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalThreePointRate >= p2.totalThreePointRate){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortBytotalFreeThrowRate  implements Comparator{
-	
+public class SortByTotalFreeThrowRate  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByTotalFreeThrowRate(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalFreeThrowRate >= p2.totalFreeThrowRate){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortBytotalWinningRate  implements Comparator{
-	
+public class SortByTotalWinningRate  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByTotalWinningRate(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalWinningRate >= p2.totalWinningRate){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortBytotalAttackRound  implements Comparator{
-	
+public class SortByTotalAttackRound  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByTotalAttackRound(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalAttackRound >= p2.totalAttackRound){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortBytotalAttackEfficiency  implements Comparator{
-	
+public class SortByTotalAttackEfficiency  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByTotalAttackEfficiency(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalAttackEfficiency >= p2.totalAttackEfficiency){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortBytotalDefendEfficiency  implements Comparator{
-	
+public class SortByTotalDefendEfficiency  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByTotalDefendEfficiency(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalDefendEfficiency >= p2.totalDefendEfficiency){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortBytotalAttackReboundEfficiency  implements Comparator{
-	
+public class SortByTotalAttackReboundEfficiency  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByTotalAttackReboundEfficiency(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalAttackReboundEfficiency >= p2.totalAttackReboundEfficiency){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortBytotalDefensiveReboundEfficiency  implements Comparator{
-	
+public class SortByTotalDefensiveReboundEfficiency  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByTotalDefensiveReboundEfficiency(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalDefensiveReboundEfficiency >= p2.totalDefensiveReboundEfficiency){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortBytotalStealEfficiency implements Comparator{
-	
+public class SortByTotalStealEfficiency implements Comparator{
+	boolean isPositiveSequence;
+	public SortByTotalStealEfficiency(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalStealEfficiency >= p2.totalStealEfficiency){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortBytotalAssistRate  implements Comparator{
-	
+public class SortByTotalAssistRate  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByTotalAssistRate(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.totalAssistRate >= p2.totalAssistRate){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortByaveScoreNum  implements Comparator{
-	
+public class SortByAveScoreNum  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByAveScoreNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.aveScoreNum >= p2.aveScoreNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortByaveShootNum  implements Comparator{
-	
+public class SortByAveShootNum  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByAveShootNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.aveShootNum >= p2.aveShootNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortByaveThreePointScoreNum  implements Comparator{
-	
+public class SortByAveThreePointScoreNum  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByAveThreePointScoreNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.aveThreePointScoreNum >= p2.aveThreePointScoreNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortByaveThreePointShootNum  implements Comparator{
-	
+public class SortByAveThreePointShootNum  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByAveThreePointShootNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.aveThreePointShootNum >= p2.aveThreePointShootNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortByaveFreeThrowScoreNum  implements Comparator{
-	
+public class SortByAveFreeThrowScoreNum  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByAveFreeThrowScoreNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.aveFreeThrowScoreNum >= p2.aveFreeThrowScoreNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortByaveFreeThrowShootNum  implements Comparator{
-	
+public class SortByAveFreeThrowShootNum  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByAveFreeThrowShootNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.aveFreeThrowShootNum >= p2.aveFreeThrowShootNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortByaveOffensiveReboundsNum  implements Comparator{
-	
+public class SortByAveOffensiveReboundsNum  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByAveOffensiveReboundsNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.aveOffensiveReboundsNum >= p2.aveOffensiveReboundsNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortByaveDefensiveReboundsNum  implements Comparator{
-	
+public class SortByAveDefensiveReboundsNum  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByAveDefensiveReboundsNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.aveDefensiveReboundsNum >= p2.aveDefensiveReboundsNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortByaveTotalReboundsNum  implements Comparator{
-	
+public class SortByAveTotalReboundsNum  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByAveTotalReboundsNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.aveTotalReboundsNum >= p2.aveTotalReboundsNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortByaveAssistNum  implements Comparator{
-	
+public class SortByAveAssistNum  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByAveAssistNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.aveAssistNum >= p2.aveAssistNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortByaveStealNum  implements Comparator{
-	
+public class SortByAveStealNum  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByAveStealNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.aveStealNum >= p2.aveStealNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortByaveBlockNum  implements Comparator{
-	
+public class SortByAveBlockNum  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByAveBlockNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.aveBlockNum >= p2.aveBlockNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortByaveTurnoverNum  implements Comparator{
-	
+public class SortByAveTurnoverNum  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByAveTurnoverNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.aveTurnoverNum >= p2.aveTurnoverNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
 
-public class SortByaveFoulNum  implements Comparator{
-	
+public class SortByAveFoulNum  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByAveFoulNum(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.aveFoulNum >= p2.aveFoulNum){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
 
-public class SortByaveScore  implements Comparator{
-	
+public class SortByAveScore  implements Comparator{
+	boolean isPositiveSequence;
+	public SortByAveScore(boolean isPositiveSequence){
+		this.isPositiveSequence = isPositiveSequence;
+	}
 	public int compare(Object o1, Object o2) {
 		// TODO Auto-generated method stub
+		int result = -1;
 		TeamVO p1 = (TeamVO) o1;
 		TeamVO p2 = (TeamVO) o2;
 		if(p1.aveScore >= p2.aveScore){
-			return 1;
-		}else{
-			return -1;
+			result = 1;
 		}
+		if(!isPositiveSequence){
+			result = -result;
+		}
+		return result;
 	}
 
 }
