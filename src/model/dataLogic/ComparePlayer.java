@@ -22,7 +22,6 @@ public class ComparePlayer {
 	
 	public class SortByName implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 球队名排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -38,7 +37,6 @@ public class ComparePlayer {
 	
 	public class SortByTeamName implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 球队名排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -54,7 +52,6 @@ public class ComparePlayer {
 	
 	public class SortByPosition implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 位置排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -70,7 +67,6 @@ public class ComparePlayer {
 	
 	public class SortByEntryNum implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 上场次数排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -86,7 +82,6 @@ public class ComparePlayer {
 	
 	public class SortByStartingNum implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 首发次数排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -102,7 +97,6 @@ public class ComparePlayer {
 	
 	public class SortByDoubleDoubleNum implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 两双次数排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -118,7 +112,6 @@ public class ComparePlayer {
 	
 	public class SortByPlayTime implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 赛季总上场时间排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -134,7 +127,6 @@ public class ComparePlayer {
 	
 	public class SortByAvePlayTime implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 场均上场时间排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -150,7 +142,6 @@ public class ComparePlayer {
 	
 	public class SortByTotalReboundsNum implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 赛季总篮板数排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -166,7 +157,6 @@ public class ComparePlayer {
 
 	public class SortByAveTotalReboundsNum implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 场均总篮板数排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -182,7 +172,6 @@ public class ComparePlayer {
 	
 	public class SortByOffReboundsNum implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 赛季总进攻篮板数排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -198,7 +187,6 @@ public class ComparePlayer {
 	
 	public class SortByAveOffReboundsNum implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 场均进攻篮板数排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -214,7 +202,6 @@ public class ComparePlayer {
 	
 	public class SortByDefReboundsNum implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 赛季总防守篮板数排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -230,7 +217,6 @@ public class ComparePlayer {
 	
 	public class SortByAveDefReboundsNum implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 场均防守篮板数排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -246,7 +232,6 @@ public class ComparePlayer {
 	
 	public class SortByAssistNum implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 赛季总助攻数排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -262,7 +247,6 @@ public class ComparePlayer {
 	
 	public class SortByAveAssistNum implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 场均助攻数排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -278,7 +262,6 @@ public class ComparePlayer {
 	
 	public class SortByScoreRate implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 投篮命中率排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -294,7 +277,6 @@ public class ComparePlayer {
 	
 	public class SortByThreePointScoreRate implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 三分命中率排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -310,7 +292,6 @@ public class ComparePlayer {
 	
 	public class SortByFreeThrowScoreRate implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 罚球命中率排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -326,7 +307,6 @@ public class ComparePlayer {
 	
 	public class SortByStealNum implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 赛季总抢断数排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -342,7 +322,6 @@ public class ComparePlayer {
 	
 	public class SortByAveStealNum implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 场均抢断数排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -358,7 +337,6 @@ public class ComparePlayer {
 	
 	public class SortByBlockNum implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 赛季总盖帽数排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -374,7 +352,6 @@ public class ComparePlayer {
 	
 	public class SortByAveBlockNum implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 场均盖帽数排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -390,7 +367,6 @@ public class ComparePlayer {
 	
 	public class SortByFoulNum implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 赛季总失误数排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -406,7 +382,6 @@ public class ComparePlayer {
 	
 	public class SortByAveFoulNum implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 场均失误数排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -422,7 +397,6 @@ public class ComparePlayer {
 	
 	public class SortByTurnoverNum implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 赛季总犯规数排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -438,7 +412,6 @@ public class ComparePlayer {
 	
 	public class SortByAveTurnoverNum implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 场均犯规数排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -454,7 +427,6 @@ public class ComparePlayer {
 	
 	public class SortByPersonalPoints implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 赛季总个人得分排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -470,7 +442,6 @@ public class ComparePlayer {
 	
 	public class SortByAvePersonalPoints implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 场均个人得分排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -486,7 +457,6 @@ public class ComparePlayer {
 	
 	public class SortByEfficienty implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 效率排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -502,7 +472,6 @@ public class ComparePlayer {
 	
 	public class SortByGmsc implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO GmSc排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -518,7 +487,6 @@ public class ComparePlayer {
 	
 	public class SortByTrueShootingPercentage implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 真实命中率排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -534,7 +502,6 @@ public class ComparePlayer {
 	
 	public class SortByShootingEfficiency implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 投篮效率排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -550,7 +517,6 @@ public class ComparePlayer {
 	
 	public class SortByTotalReboundRate implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 篮板率排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -566,7 +532,6 @@ public class ComparePlayer {
 	
 	public class SortByOffReboundRate implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 进攻篮板率排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -582,7 +547,6 @@ public class ComparePlayer {
 	
 	public class SortByDefReboundRate implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 防守篮板率排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -598,7 +562,6 @@ public class ComparePlayer {
 	
 	public class SortByAssistRate implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 助攻率排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -614,7 +577,6 @@ public class ComparePlayer {
 	
 	public class SortByStealRate implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 抢断率排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -630,7 +592,6 @@ public class ComparePlayer {
 	
 	public class SortByBlockRate implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 盖帽率排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -646,7 +607,6 @@ public class ComparePlayer {
 	
 	public class SortByTurnOverRate implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 失误率排序
 			PlayerVO p1 = (PlayerVO) o1;
@@ -662,7 +622,6 @@ public class ComparePlayer {
 	
 	public class SortByUseRate implements Comparator {
 
-		@Override
 		public int compare(Object o1, Object o2) {
 			// TODO 使用率排序
 			PlayerVO p1 = (PlayerVO) o1;
