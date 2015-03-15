@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import control.ShowPlayerController;
 import control.ShowTeamController;
 import view.File;
 import view.tablePanel.BarInColumnPanel;
@@ -262,11 +263,11 @@ int width = 1000, height = 410;
 			}
 			if(times % 2 == 0) {
 				labelList[index][1].setIcon(sortUP);
-				//TODO
+				new ShowPlayerController().sortPlayer(index, true);
 			}
 			else{
 				labelList[index][1].setIcon(sortDOWN);
-				//TODO
+				new ShowPlayerController().sortPlayer(index, false);
 			}
 			//TODO 点击后调整排序方式，以此列排序，需要reset整个表格的行数据，发送给control，由model执行
 			

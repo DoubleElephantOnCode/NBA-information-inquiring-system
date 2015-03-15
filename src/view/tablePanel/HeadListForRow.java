@@ -91,6 +91,9 @@ public class HeadListForRow{
 			
 			@Override
 			protected void process(List<Void> chuck){
+				timer.cancel();
+				stateTime = 0;
+				timer = new Timer();
 				TimerTask task = new TimerTask(){
 
 					@Override
