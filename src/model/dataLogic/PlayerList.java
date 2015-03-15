@@ -1,6 +1,8 @@
 package model.dataLogic;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import vo.MatchDataPerPlayerVO;
 import vo.PlayerVO;
@@ -16,7 +18,7 @@ public class PlayerList {
 	/**
 	 * 所有球员列表
 	 */
-	static ArrayList<PlayerVO> players = new ArrayList<PlayerVO>();;
+	static ArrayList<PlayerVO> players = new ArrayList<PlayerVO>();
 	
 	public PlayerList() {
 		// TODO Auto-generated constructor stub
@@ -91,6 +93,16 @@ public class PlayerList {
 		return players;
 	}
 	
+	/**
+	 * 根据某项球员信息排序
+	 * @param i
+	 * @param isPositiveSequence
+	 */
+	public static void sortPlayer(int i,boolean isPositiveSequence){
+		
+		Comparator c =new CompareTeamData(i, isPositiveSequence);
+		Collections.sort(players, c);;
+	}
 	
 	
 }

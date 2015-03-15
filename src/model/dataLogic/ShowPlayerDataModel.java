@@ -46,8 +46,20 @@ public class ShowPlayerDataModel {
 			
 		}.execute();
 		
+	}
+	
+	public void sortByPlayerInfo(final int i,final boolean isPositiveSequence){
 		
-		
+		new Waiting(){
+			@Override
+			protected Void doInBackground() throws Exception {
+				super.doInBackground();
+				
+				
+				
+				return null;
+			}
+		}.execute();
 		
 	}
 	
