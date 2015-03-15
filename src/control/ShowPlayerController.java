@@ -1,5 +1,7 @@
 package control;
 
+import model.dataLogic.ShowPlayerDataModel;
+
 /**
  * 
  * @author HalaWKS
@@ -8,4 +10,20 @@ package control;
  */
 public class ShowPlayerController {
 
+	ShowPlayerDataModel showPlayerModel;
+	
+	public ShowPlayerController() {
+		// TODO Auto-generated constructor stub
+		showPlayerModel = new ShowPlayerDataModel();
+	}
+	
+	public void showPlayerInfo(){
+		showPlayerModel.showPlayerInfo();
+	}
+	
+	public void sortPlayer(int i, boolean isPositiveSequence){
+		
+	}
+	
+	
 }

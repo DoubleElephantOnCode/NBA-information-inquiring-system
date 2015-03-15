@@ -2,6 +2,7 @@ package model.dataLogic;
 
 import java.util.ArrayList;
 
+import view.mainFrame.Main;
 import view.mainFrame.Waiting;
 import vo.PlayerVO;
 
@@ -35,10 +36,17 @@ public class ShowPlayerDataModel {
 					}
 				}
 				
+				String[] column = PlayerList.getHeadForColumn();
+				String[] row = PlayerList.getHeadForRow();
+				
+				Main.newPlayerCountPanel(content, row, column);
+				
 				return null;
 			}
 			
 		}.execute();
+		
+		
 		
 		
 	}
