@@ -343,7 +343,8 @@ public class PlayerDataPerMatchVO {
 	 * 判断该场比赛是否先发
 	 */
 	private void judgeStarting(){
-		if(position != ""){
+		//TODO : 是否首发
+		if(!position.equals("")){
 			isStarting = true;
 		}
 	}

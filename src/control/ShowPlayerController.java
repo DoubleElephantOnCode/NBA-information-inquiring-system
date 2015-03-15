@@ -22,7 +22,7 @@ public class ShowPlayerController {
 	}
 	
 	public void sortPlayer(int i, boolean isPositiveSequence){
-		
+		showPlayerModel.sortByPlayerInfo(i, isPositiveSequence);
 	}
 	
 	

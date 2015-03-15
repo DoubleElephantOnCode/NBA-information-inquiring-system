@@ -43,7 +43,7 @@ public class ReadPlayerData {
 				String[] temp = row.split("│");
 				temp[0] = temp[0].trim();
 				temp[1] = temp[1].trim();
-				System.out.println(temp[0] + ":" + temp[1]);
+//				System.out.println(temp[0] + ":" + temp[1]);
 				info = info + temp[1] + ";";
 				row = br.readLine();
 			}
