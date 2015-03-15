@@ -76,9 +76,9 @@ public class TeamList {
 	}
 	
 	public static void sortTeam(int i,boolean isPositiveSequence){
-		//Comparator c =new CompareTeamData(i, isPositiveSequence);
-		CompareTeam ct = new CompareTeam(isPositiveSequence);
-		Comparator c =ct.compartor[i];
+		Comparator c =new CompareTeamData(i, isPositiveSequence);
+		//CompareTeam ct = new CompareTeam(isPositiveSequence);
+		//Comparator c =ct.compartor[i];
 		Collections.sort(teamVOList, c);
 	}
 

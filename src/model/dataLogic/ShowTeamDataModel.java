@@ -56,7 +56,7 @@ public class ShowTeamDataModel {
 				for(int h = 0;h<teamVOList.size();h++){
 					t=teamVOList.get(h);
 					String[] s = t.toStringArray();
-					fs[i] = new File(t.getPath());
+					fs[h] = new File(t.getPath());
 					for(int j=0;j<s.length;j++){
 						content[h][j] = s[j];
 					}
