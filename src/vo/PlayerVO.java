@@ -88,7 +88,7 @@ public class PlayerVO {
 	/**
 	 * 球员单场数据列表
 	 */
-	private ArrayList<PlayerDataPerMatchVO> dataPerMatchList;
+	private ArrayList<PlayerDataPerMatchVO> dataPerMatchList = new ArrayList<PlayerDataPerMatchVO>();
 	
 	/**
 	 * 两双次数(得分，篮板，助攻，抢断，盖帽中任何两项)
@@ -427,7 +427,7 @@ public class PlayerVO {
 	public PlayerVO(String name, String number, String position, String height, String weight,
 			String birthday, String age, String exp, String school) {
 		// TODO Auto-generated constructor stub
-		dataPerMatchList = new ArrayList<PlayerDataPerMatchVO>();
+//		dataPerMatchList = new ArrayList<PlayerDataPerMatchVO>();
 		
 		action = action + name;
 		portrait = portrait + name;
@@ -508,7 +508,7 @@ public class PlayerVO {
 		//计算参赛场数
 		calEntryNum();
 		calAllRate();
-//		calRecentAdvance();
+		calRecentAdvance();
 	}
 
 	/**
@@ -611,17 +611,18 @@ public class PlayerVO {
 		if(matchNum > 5){
 			preAveList = aveData(0, dataPerMatchList.size() - 5);
 			nowAveList = aveData(dataPerMatchList.size() - 5, dataPerMatchList.size());
+			preAvePoint = preAveList[0];
+			preAveRebound = preAveList[1];
+			preAveAssist = preAveList[2];
+			nowAvePoint = nowAveList[0];
+			nowAveRebound = nowAveList[1];
+			nowAveAssist = nowAveList[2];
+			
+			recentPointAdvance = (nowAvePoint - preAvePoint) / preAvePoint;
+			recentReboundAdvance = (nowAveRebound - preAveRebound) / preAveRebound;
+			recentAssistAdvance = (nowAveAssist - preAveAssist) / preAveAssist;
 		}
-		preAvePoint = preAveList[0];
-		preAveRebound = preAveList[1];
-		preAveAssist = preAveList[2];
-		nowAvePoint = nowAveList[0];
-		nowAveRebound = nowAveList[1];
-		nowAveAssist = nowAveList[2];
-		
-		recentPointAdvance = (nowAvePoint - preAvePoint) / preAvePoint;
-		recentReboundAdvance = (nowAveRebound - preAveRebound) / preAveRebound;
-		recentAssistAdvance = (nowAveAssist - preAveAssist) / preAveAssist;
+
 	}
 	
 	private double[] aveData(int low, int high){
@@ -1026,6 +1027,18 @@ public class PlayerVO {
 
 	public double getAllTurnoverNum() {
 		return allTurnoverNum;
+	}
+
+	public double getRecentPointAdvance() {
+		return recentPointAdvance;
+	}
+
+	public double getRecentReboundAdvance() {
+		return recentReboundAdvance;
+	}
+
+	public double getRecentAssistAdvance() {
+		return recentAssistAdvance;
 	}
 
 	
