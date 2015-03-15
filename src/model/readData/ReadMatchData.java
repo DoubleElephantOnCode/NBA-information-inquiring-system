@@ -50,7 +50,6 @@ public class ReadMatchData {
 	 * 读取一个match文件的数据
 	 */
 	public void readMatchFile(File file){
-		System.out.println(file.getPath());
 		BufferedReader reader = null;
 		try{
 			reader = new BufferedReader(new FileReader(file));
