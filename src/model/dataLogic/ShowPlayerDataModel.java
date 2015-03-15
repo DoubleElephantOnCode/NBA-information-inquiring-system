@@ -2,6 +2,7 @@ package model.dataLogic;
 
 import java.util.ArrayList;
 
+import view.mainFrame.Waiting;
 import vo.PlayerVO;
 
 /**
@@ -17,7 +18,29 @@ public class ShowPlayerDataModel {
 	}
 	
 	public void showPlayerInfo(){
-		ArrayList<PlayerVO> playerList = PlayerList.getPlayers();
+		
+		new Waiting(){
+			@Override
+			protected Void doInBackground() throws Exception{
+				super.doInBackground();
+				ArrayList<PlayerVO> playerList = PlayerList.getPlayers();
+				PlayerVO player = playerList.get(0);
+				String[][] content =
+						new String[playerList.size()][PlayerList.getHeadForColumn().length];
+				for (int i = 0; i < playerList.size(); i++) {
+					player = playerList.get(i);
+					String[] s = player.getPlayerInfo();
+					for (int j = 0; j < s.length; j++) {
+						content[i][j] = s[j];
+					}
+				}
+				
+				return null;
+			}
+			
+		}.execute();
+		
+		
 	}
 	
 }

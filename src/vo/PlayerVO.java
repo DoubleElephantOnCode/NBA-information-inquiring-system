@@ -1,6 +1,7 @@
 package vo;
 
 import java.io.File;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import constant.FilePath;
@@ -676,6 +677,50 @@ public class PlayerVO {
 				startingNum++;
 			}
 		}
+	}
+	
+	/**
+	 * 获得String类型的球员信息
+	 * 	"姓名","所属球队", "位置", "参赛场数", "先发场数", "两双次数", "总上场时间", "场均上场时间",
+	 * "总篮板", "场均篮板", "总进攻篮板", "场均进攻篮板", "总防守篮板", "场均防守篮板", "总助攻", "场均助攻",
+	 * "投篮命中率", "三分命中率", "罚球命中率", "赛季总抢断", "场均抢断", "赛季总盖帽", "场均盖帽",
+	 * "赛季总失误数", "场均失误数", "赛季总犯规数", "场均犯规数", "赛季总得分", "场均得分",
+	 * "效率", "GmSc效率值", "真实命中率", "投篮效率", "篮板率", "进攻篮板率", "防守篮板率",
+	 * "助攻率", "抢断率", "盖帽率", "失误率", "使用率"
+	 * @return
+	 */
+	public String[] getPlayerInfo(){
+		String[] s = new String[]{
+				name, teamName, position, entryNum + "", startingNum + "", doubleDouble + "",
+				toString(totalMinutes.getTimeByMinute()), toString(aveMinutes.getTimeByMinute()),
+				toString(totalReboundsNum), toString(aveTotalReboundsNum),
+				toString(offensiveReboundsNum), toString(aveOffensiveReboundsNum),
+				toString(defensiveReboundsNum), toString(aveDefensiveReboundsNum),
+				toString(assistNum), toString(aveAssistNum), toString(scoreRate * 100),
+				toString(threePointScoreRate * 100), toString(freeThrowScoreRate * 100),
+				toString(stealNum), toString(aveStealNum), toString(blockNum), toString(aveBlockNum),
+				toString(turnoverNum), toString(aveTurnoverNum), toString(foulNum), toString(aveFoulNum),
+				toString(personalPoints), toString(avePersonalPoints), toString(efficiency),
+				toString(GmSc), toString(trueShootingPercentage), toString(shootingEfficiency),
+				toString(reboundRate), toString(offensiveReboundRate), toString(defensiveReboundRate),
+				toString(assistRate), toString(stealRate), toString(blockRate),
+				toString(turnoverRate), toString(useRate)
+				
+		};
+
+		return s;
+	}
+	
+	/**
+	 * double数据转String
+	 * @param d
+	 * @return
+	 */
+	private String toString(double d){
+		DecimalFormat df = new DecimalFormat("#.00");
+		String s = df.format(d);
+		Double dd = new Double(s);
+		return dd.toString();
 	}
 	
 	public String getAction() {
