@@ -100,8 +100,8 @@ public class PlayerList {
 	 */
 	public static void sortPlayer(int i,boolean isPositiveSequence){
 		
-		Comparator c =new CompareTeamData(i, isPositiveSequence);
-		Collections.sort(players, c);;
+		ComparePlayer c = new ComparePlayer(isPositiveSequence);
+		Collections.sort(players, c.compartor[i]);;
 	}
 	
 	
