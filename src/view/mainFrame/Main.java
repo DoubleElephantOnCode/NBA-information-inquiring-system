@@ -111,8 +111,12 @@ public class Main {
 	 * @param content
 	 * @param team
 	 */
-	public static void resetTeamCountPanel(String[][] content, String[] team){
-		teamCountPanel.resetTableInfo(content, team);
+	public static void resetTeamCountPanel(String[][] content, String[] team, File[] teamPic){
+		JLabel[] pic = new JLabel[teamPic.length];
+		for(int i = 0; i < pic.length; i++){
+			pic[i] = new SVGLabel(teamPic[i], 80, 30);
+		}
+		teamCountPanel.resetTableInfo(content, team, pic);
 	}
 	/**
 	 * 打开查看球员统计数据界面

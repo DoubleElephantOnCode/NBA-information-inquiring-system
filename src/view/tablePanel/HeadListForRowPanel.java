@@ -63,6 +63,14 @@ public class HeadListForRowPanel extends JPanel{
 		list.field[row][1].add(label, 0);
 	}
 	
+	public void resetJLabel(JLabel[] labelList){
+		for(int i = 0; i < labelList.length && i < list.field.length; i++){
+			list.field[i][1].removeAll();
+			list.field[i][1].add(labelList[i], 0);
+			list.field[i][1].updateUI();
+		}
+	}
+	
 //	public void setBackground(Icon icon){
 //		this.setIcon(icon);
 //	}

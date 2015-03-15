@@ -69,9 +69,10 @@ public class TeamCountPanel extends JPanel{
 		setLocation(0, -5);
 	}
 	
-	public void resetTableInfo(String[][] content, String[] team){
+	public void resetTableInfo(String[][] content, String[] team, JLabel[] teamPic){
 		table.p.setContent(content);
 		table.hpR.resetInfo(team);
+		table.teamPic.resetJLabel(teamPic);
 	}
 	
 }

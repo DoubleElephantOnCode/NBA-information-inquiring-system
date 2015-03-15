@@ -85,13 +85,13 @@ public class TeamCountTablePanel extends JPanel{
 		
 		teamPic = new HeadListForRowPanel(headListForRow, pageRow, headListForRowPanelWidth/2, tableHeight);
 		teamPic.setLocation(leftSide, headListForColumnPanelHeight);
-		
-		for(int i = 0; i < pic.length; i++){
-			teamPic.setJLabelInRow(pic[i], i);
-		}
+		if(pic != null)
+			for(int i = 0; i < pic.length; i++){
+				teamPic.setJLabelInRow(pic[i], i);
+			}
 		
 		teamName = new JLabel[2];
-		teamName[0] = new JLabel("球队名");
+		teamName[0] = new JLabel("球   队");
 		teamName[0].setForeground(fontColor);
 		teamName[0].setHorizontalAlignment(SwingConstants.CENTER);
 		teamName[1] = setJLabelWithIcon(File.file + File.backgroundForHeadListForColumn + File.PNG, headListForRowPanelWidth, headListForColumnPanelHeight);
@@ -166,6 +166,7 @@ public class TeamCountTablePanel extends JPanel{
 					p.changeRow(-1);
 				}
 				hpR.moveToIndex(p.pointerRow);
+				teamPic.moveToIndex(p.pointerRow);
 				bcp.setPosition(p.pointerRow);
 				setTablePanelRowIcon();
 			}
@@ -183,6 +184,7 @@ public class TeamCountTablePanel extends JPanel{
 					p.changeRow(-1);
 				}
 				hpR.moveToIndex(p.pointerRow);
+				teamPic.moveToIndex(p.pointerRow);
 				bcp.setPosition(p.pointerRow);
 				setTablePanelRowIcon();
 			}
@@ -211,6 +213,7 @@ public class TeamCountTablePanel extends JPanel{
 				int t = (int) (row * bcp.position);
 				p.changeRow(t-p.pointerRow);
 				hpR.moveToIndex(p.pointerRow);
+				teamPic.moveToIndex(p.pointerRow);
 			}
 		});
 		
