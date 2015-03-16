@@ -14,22 +14,63 @@ import vo.PlayerVO;
  */
 public class SelectPlayer {
 	
-	int i = 0;
-	ArrayList<PlayerVO> playersAfterSort;
-	
-	public SelectPlayer(int i, ArrayList<PlayerVO> players) {
-		// TODO Auto-generated constructor stub
-		this.i = i;
-		this.playersAfterSort = players;
+
+	public SelectPlayer() {
+
 	}
 	
 	/**
-	 * 排序并筛选
-	 * @return
+	 * 根据位置、赛区筛选球员
+	 * @param position
+	 * @param area
 	 */
-	public ArrayList<PlayerVO> sortAndselectPlayer(){
-		ComparePlayer c = new ComparePlayer();
-		Collections.sort(playersAfterSort, c.comparForSelect[i]);
-		return playersAfterSort;
+	public static ArrayList<PlayerVO> selectPlayer(ArrayList<PlayerVO> playerList,
+			String position, String area){
+		
+		ArrayList<PlayerVO> players = new ArrayList<PlayerVO>();
+		
+		if(position.equalsIgnoreCase("ALL") && area.equalsIgnoreCase("ALL")){
+			return playerList;
+		}
+		if(position.equalsIgnoreCase("ALL") && !area.equalsIgnoreCase("ALL")){
+			for (int i = 0; i < playerList.size(); i++) {
+				PlayerVO p = playerList.get(i);
+				if(p.getCompetion().equalsIgnoreCase(area) ||
+						p.getPartition().equalsIgnoreCase(area)){
+					players.add(p);
+				}
+			}
+			return players;
+		}
+		if(!position.equalsIgnoreCase("ALL") && area.equalsIgnoreCase("ALL")){
+			for (int i = 0; i < playerList.size(); i++) {
+				PlayerVO p = playerList.get(i);
+				if(p.getPosition().contains(position)){
+					players.add(p);
+				}
+			}
+			return players;
+		}
+		
+		for (int i = 0; i < playerList.size(); i++) {
+			PlayerVO p = playerList.get(i);
+			if(p.getPosition().contains(position) && (p.getCompetion().equalsIgnoreCase(area) ||
+					p.getPartition().equalsIgnoreCase(area))){
+				players.add(p);
+			}
+		}
+		
+		
+		return players;
 	}
+	
+//	/**
+//	 * 排序并筛选
+//	 * @return
+//	 */
+//	public ArrayList<PlayerVO> sortAndselectPlayer(){
+//		ComparePlayer c = new ComparePlayer();
+//		Collections.sort(playersAfterSort, c.comparForSelect[i]);
+//		return playersAfterSort;
+//	}
 }

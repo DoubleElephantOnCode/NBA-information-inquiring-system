@@ -41,6 +41,16 @@ public class PlayerVO {
 	private String teamName;
 	
 	/**
+	 * 赛区（东、西部）
+	 */
+	private String competion;
+	
+	/**
+	 * 各自赛区内分区
+	 */
+	private String partition;
+	
+	/**
 	 * 球员姓名
 	 */
 	private String name;
@@ -455,6 +465,10 @@ public class PlayerVO {
 		
 		//所属球队
 		teamName = matchData.getTeamName();
+		//东、西赛区
+		competion = matchData.getCompetion();
+		//赛区内分区
+		partition = matchData.getPartition();
 		//两双次数
 		if(pvo.isDoubleDouble()){
 			doubleDouble++;
@@ -1051,6 +1065,14 @@ public class PlayerVO {
 
 	public double getRecentAssistAdvance() {
 		return recentAssistAdvance;
+	}
+
+	public String getCompetion() {
+		return competion;
+	}
+
+	public String getPartition() {
+		return partition;
 	}
 
 	

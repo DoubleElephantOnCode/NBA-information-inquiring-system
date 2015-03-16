@@ -26,6 +26,7 @@ public class PlayerDataPerMatchVO {
 	 * 球员所属球队
 	 */
 	private String teamName;
+
 	
 	/**
 	 * 上场位置
