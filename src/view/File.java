@@ -57,4 +57,10 @@ public class File {
 	public static String sort_up = "sort_up";
 	
 	public static String sort_down = "sort_down";
+	
+	public static String sort_out = "sort_out";
+	
+	public static String arrowInto = "combo_enter";
+	
+	public static String arrow = "combo";
 }

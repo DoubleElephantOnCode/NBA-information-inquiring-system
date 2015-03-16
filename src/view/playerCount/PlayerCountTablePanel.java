@@ -27,6 +27,7 @@ int width = 1000, height = 410;
 	int pointerRow = 0, pointerColumn = 0;
 	
 	int selectedColumn;
+	boolean sort;
 	
 	String[] headListForColumn;
 	String[] headListForRow;
@@ -60,7 +61,7 @@ int width = 1000, height = 410;
 	
 	ImageIcon head_deep, head_light;
 	
-	ImageIcon sortUP, sortDOWN;
+	ImageIcon sortUP, sortDOWN, sortOUT;
 	
 	Color fontColor = new Color(170, 170, 170);
 	
@@ -121,6 +122,10 @@ int width = 1000, height = 410;
 		
 		sortDOWN = new ImageIcon(File.file + File.sort_down + File.PNG);
 		sortDOWN.setImage(sortDOWN.getImage().getScaledInstance(tableWidth / pageColumn, headListForColumnPanelHeight, Image.SCALE_DEFAULT));
+		
+		sortOUT = new ImageIcon(File.file + File.sort_out + File.PNG);
+		sortOUT.setImage(sortOUT.getImage().getScaledInstance(tableWidth / pageColumn, headListForColumnPanelHeight, Image.SCALE_DEFAULT));
+		
 		
 		for(int i = 0; i < row;){
 			hpR.setIconInRow(head_light, i++);
@@ -254,11 +259,17 @@ int width = 1000, height = 410;
 		}
 		
 		public void mouseClicked(MouseEvent arg0) {
-			int c = arg0.getClickCount();
-			if(c > 1){
-				System.out.println("twice");//TODO 筛选
+			if(arg0.getButton() == MouseEvent.BUTTON3){
+				for(int i = 0; i < labelList.length; i++){
+					if(i != index && labelList[i][1].getIcon() != null){
+						labelList[i][1].setIcon(null);
+					}
+				}
+				labelList[index][1].setIcon(sortOUT);
+				new ShowPlayerController().sortAndSelectPlayer(PlayerCountPanel.position.getSelectedItem(), PlayerCountPanel.area.getSelectedItem(), index);
+				selectedColumn = 0;
 			}
-			else if(c == 1){
+			else if(arg0.getButton() == MouseEvent.BUTTON1){
 				times++;
 				for(int i = 0; i < labelList.length; i++){
 					if(i != index && labelList[i][1].getIcon() != null){
@@ -267,15 +278,17 @@ int width = 1000, height = 410;
 				}
 				if(times % 2 == 0) {
 					labelList[index][1].setIcon(sortUP);
-//					new ShowPlayerController().sortPlayer(index, true);
+					sort = true;
+					selectedColumn = index;
 				}
 				else{
 					labelList[index][1].setIcon(sortDOWN);
-//					new ShowPlayerController().sortPlayer(index, false);
+					sort = false;
+					selectedColumn = index;
 				}
+				new ShowPlayerController().sortPlayer(PlayerCountPanel.position.getSelectedItem(), PlayerCountPanel.area.getSelectedItem(), selectedColumn, sort);
 			}
 			//TODO 点击后调整排序方式，以此列排序，需要reset整个表格的行数据，发送给control，由model执行
-			
 		}
 		public void mouseEntered(MouseEvent arg0) {}
 		public void mouseExited(MouseEvent arg0) {}
