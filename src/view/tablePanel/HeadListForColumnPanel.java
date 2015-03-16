@@ -39,4 +39,13 @@ public class HeadListForColumnPanel extends JPanel{
 		back.setLocation(0, 0);
 		this.add(back, list.field.length*2);
 	}
+	
+	public int findIndex(String s){
+		for(int i = 0; i < list.field.length; i++){
+			if(s.equals(list.field[i][0].getText())){
+				return i;
+			}
+		}
+		return -1;
+	}
 }

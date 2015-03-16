@@ -20,6 +20,11 @@ public class PlayerList {
 	 */
 	static ArrayList<PlayerVO> players = new ArrayList<PlayerVO>();
 	
+	/**
+	 * 筛选出的球员数量
+	 */
+	private static int selectNum = 50;
+	
 	public PlayerList() {
 		// TODO Auto-generated constructor stub
 	}
@@ -65,13 +70,28 @@ public class PlayerList {
 	 */
 	public static String[] getHeadForColumn(){
 		String[] s = new String[]{
-			"姓名","所属球队", "位置", "参赛场数", "先发场数", "两双次数", "总上场时间", "场均上场时间",
+			"姓名", "所属球队", "位置", "参赛场数", "先发场数", "两双次数", "总上场时间", "场均上场时间",
 			"总篮板", "场均篮板", "总进攻篮板", "场均进攻篮板", "总防守篮板", "场均防守篮板", "总助攻", "场均助攻",
-			"投篮命中率", "三分命中率", "罚球命中率", "赛季总抢断", "场均抢断", "赛季总盖帽", "场均盖帽",
+			"投篮命中率%", "三分命中率%", "罚球命中率%", "赛季总抢断", "场均抢断", "赛季总盖帽", "场均盖帽",
 			"赛季总失误数", "场均失误数", "赛季总犯规数", "场均犯规数", "赛季总得分", "场均得分",
 			"效率", "GmSc效率值", "真实命中率", "投篮效率", "篮板率", "进攻篮板率", "防守篮板率",
 			"助攻率", "抢断率", "盖帽率", "失误率", "使用率"};
 		
+		return s;
+	}
+	
+	/**
+	 * 获取筛选依据
+	 * @return
+	 */
+	public static String[] getSelectBasis(){
+//		得分，篮板，助攻，得分/篮板/助攻（加权比为 1:1:1），盖帽，抢断，犯规，
+//		失误，分钟，效率，投篮，三分，罚球，两双
+		String[] s = new String[]{
+				"得分", "场均得分", "篮板", "场均篮板", "助攻", "场均助攻", "得分/篮板/助攻",
+				"盖帽", "场均盖帽", "抢断", "场均抢断", "犯规", "场均犯规", "失误", "场均失误",
+				"赛季总上场时间", "效率", "投篮命中率", "三分命中率", "罚球命中率", "两双次数"
+		};
 		return s;
 	}
 	
@@ -100,9 +120,23 @@ public class PlayerList {
 	 */
 	public static void sortPlayer(int i,boolean isPositiveSequence){
 		
-		Comparator c =new CompareTeamData(i, isPositiveSequence);
-		Collections.sort(players, c);;
+		ComparePlayer c = new ComparePlayer(isPositiveSequence);
+		Collections.sort(players, c.comparator[i]);;
 	}
 	
-	
+	/**
+	 * 按照条件筛选出前50个球员
+	 * @param i
+	 */
+	public static ArrayList<PlayerVO> selectPlayer(int i){
+		SelectPlayer selectPlayer = new SelectPlayer(i, players);
+		players = selectPlayer.sortAndselectPlayer();
+		
+		ArrayList<PlayerVO> playerAfterSelect = new ArrayList<PlayerVO>(selectNum);
+		for (int j = 0; j < selectNum; j++) {
+			playerAfterSelect.add(players.get(i));
+		}
+		
+		return playerAfterSelect;
+	}
 }

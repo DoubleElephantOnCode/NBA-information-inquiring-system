@@ -1,5 +1,6 @@
 package model.dataLogic;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import view.mainFrame.Main;
@@ -59,13 +60,54 @@ public class ShowPlayerDataModel {
 			@Override
 			protected Void doInBackground() throws Exception {
 				super.doInBackground();
+				PlayerList.sortPlayer(i, isPositiveSequence);
+				ArrayList<PlayerVO> playerList = PlayerList.getPlayers();
+				PlayerVO player = playerList.get(0);
+				String[][] content = new String[playerList.size()][PlayerList.getHeadForColumn().length];
+				for (int j = 0; j < playerList.size(); j++) {
+					player = playerList.get(j);
+					String[] s = player.getPlayerInfo();
+					for (int k = 0; k < s.length; k++) {
+						content[j][k] = s[k];
+					}
+				}
+				String[] row = PlayerList.getHeadForRow();
 				
+				Main.resetPlayerCountPanel(content, row);
 				
 				
 				return null;
 			}
 		}.execute();
 		
+	}
+	
+	public void selectByPlayerInfo(final int i){
+		new Waiting(){
+			
+			protected Void doInBackground() throws Exception {
+				super.doInBackground();
+				ArrayList<PlayerVO> playerList = PlayerList.selectPlayer(i);
+				PlayerVO player = playerList.get(0);
+				String[][] content = new String[playerList.size()][PlayerList.getHeadForColumn().length];
+				for (int j = 0; j < playerList.size(); j++) {
+					player = playerList.get(j);
+					String[] s = player.getPlayerInfo();
+					for (int k = 0; k < s.length; k++) {
+						content[j][k] = s[k];
+					}
+				}
+				String[] row = new String[playerList.size()];
+				for (int i = 0; i < playerList.size(); i++) {
+					row[i] = playerList.get(i).getName();
+				}
+					
+				Main.resetPlayerCountPanel(content, row);
+				
+				return null;
+			}
+			
+		}.execute();
 	}
 	
 }

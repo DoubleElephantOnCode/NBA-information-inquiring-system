@@ -13,13 +13,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import control.ShowTeamController;
 import view.File;
 import view.tablePanel.BarInColumnPanel;
 import view.tablePanel.BarInRowPanel;
 import view.tablePanel.HeadListForColumnPanel;
 import view.tablePanel.HeadListForRowPanel;
 import view.tablePanel.TablePanel;
+import control.ShowPlayerController;
 
 public class PlayerCountTablePanel extends JPanel{
 int width = 1000, height = 410;
@@ -254,19 +254,25 @@ int width = 1000, height = 410;
 		}
 		
 		public void mouseClicked(MouseEvent arg0) {
-			times++;
-			for(int i = 0; i < labelList.length; i++){
-				if(i != index && labelList[i][1].getIcon() != null){
-					labelList[i][1].setIcon(null);
+			int c = arg0.getClickCount();
+			if(c > 1){
+				System.out.println("twice");//TODO 筛选
+			}
+			else if(c == 1){
+				times++;
+				for(int i = 0; i < labelList.length; i++){
+					if(i != index && labelList[i][1].getIcon() != null){
+						labelList[i][1].setIcon(null);
+					}
 				}
-			}
-			if(times % 2 == 0) {
-				labelList[index][1].setIcon(sortUP);
-				//TODO
-			}
-			else{
-				labelList[index][1].setIcon(sortDOWN);
-				//TODO
+				if(times % 2 == 0) {
+					labelList[index][1].setIcon(sortUP);
+//					new ShowPlayerController().sortPlayer(index, true);
+				}
+				else{
+					labelList[index][1].setIcon(sortDOWN);
+//					new ShowPlayerController().sortPlayer(index, false);
+				}
 			}
 			//TODO 点击后调整排序方式，以此列排序，需要reset整个表格的行数据，发送给control，由model执行
 			

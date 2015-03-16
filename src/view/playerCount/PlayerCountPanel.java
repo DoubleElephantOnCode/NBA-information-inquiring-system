@@ -53,7 +53,15 @@ public class PlayerCountPanel extends JPanel{
 				String temp = search.getInputText();
 				int t = table.hpR.findIndex(temp);
 				if(t < 0){
-					search.area.setText(null);
+					t = table.hpC.findIndex(temp);
+					if(t < 0){
+						search.area.setText(null);
+					}
+					else{
+						table.p.changeColumn(t-table.p.pointerColumn);
+						table.hpC.moveToIndex(table.p.pointerColumn);
+						table.brp.setPosition(table.p.pointerColumn);
+					}
 				}
 				else{
 					table.p.changeRow(t-table.p.pointerRow);

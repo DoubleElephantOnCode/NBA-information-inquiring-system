@@ -17,13 +17,28 @@ public class ShowPlayerController {
 		showPlayerModel = new ShowPlayerDataModel();
 	}
 	
+	/**
+	 * 显示球员信息
+	 */
 	public void showPlayerInfo(){
 		showPlayerModel.showPlayerInfo();
 	}
 	
+	/**
+	 * 球员排序
+	 * @param i
+	 * @param isPositiveSequence
+	 */
 	public void sortPlayer(int i, boolean isPositiveSequence){
-		
+		showPlayerModel.sortByPlayerInfo(i, isPositiveSequence);
 	}
 	
+	/**
+	 * 筛选球员
+	 * @param i
+	 */
+	public void selectPlayer(int i){
+		showPlayerModel.selectByPlayerInfo(i);
+	}
 	
 }

@@ -459,6 +459,10 @@ public class PlayerVO {
 		if(pvo.isDoubleDouble()){
 			doubleDouble++;
 		}
+		//首发次数
+		if(pvo.isStarting()){
+			startingNum++;
+		}
 		//总上场时间
 		totalMinutes = totalMinutes.add(pvo.getPlayTime());
 		//总投篮命中数
@@ -675,16 +679,6 @@ public class PlayerVO {
 		entryNum = dataPerMatchList.size();
 	}
 
-	/**
-	 * 计算首发场数
-	 */
-	public void calStartingNum(){
-		for(PlayerDataPerMatchVO dataPerMatch : dataPerMatchList){
-			if(dataPerMatch.isStarting()){
-				startingNum++;
-			}
-		}
-	}
 	
 	/**
 	 * 获得String类型的球员信息
