@@ -20,13 +20,54 @@ public class ComparePlayer {
 	// "效率", "GmSc效率值", "真实命中率", "投篮效率", "篮板率", "进攻篮板率", "防守篮板率",
 	// "助攻率", "抢断率", "盖帽率", "失误率", "使用率"
 	
-	Comparator[] compartor;
+	Comparator[] comparator;
+	Comparator[] comparForSelect;
 	
+	/**
+	 * 为筛选球员而排序的构造方法
+	 */
+	public ComparePlayer() {
+		// TODO Auto-generated constructor stub
+		boolean isPositiveSequence = true;
+		
+//		"得分", "场均得分", "篮板", "场均篮板", "助攻", "场均助攻", "得分/篮板/助攻",
+//		"盖帽", "场均盖帽", "抢断", "场均抢断", "犯规", "场均犯规", "失误", "场均失误",
+//		"赛季总上场时间", "效率", "投篮命中率", "三分命中率", "罚球命中率", "两双次数"
+		
+		comparForSelect = new Comparator[]{
+				new SortByPersonalPoints(isPositiveSequence),
+				new SortByAvePersonalPoints(isPositiveSequence),
+				new SortByTotalReboundsNum(isPositiveSequence),
+				new SortByAveTotalReboundsNum(isPositiveSequence),
+				new SortByAssistNum(isPositiveSequence),
+				new SortByAveAssistNum(isPositiveSequence),
+				new SortByPointReboundAssist(isPositiveSequence),
+				new SortByBlockNum(isPositiveSequence),
+				new SortByAveBlockNum(isPositiveSequence),
+				new SortByStealNum(isPositiveSequence),
+				new SortByAveStealNum(isPositiveSequence),
+				new SortByFoulNum(isPositiveSequence),
+				new SortByAveFoulNum(isPositiveSequence),
+				new SortByTurnoverNum(isPositiveSequence),
+				new SortByAveTurnoverNum(isPositiveSequence),
+				new SortByPlayTime(isPositiveSequence),
+				new SortByEfficienty(isPositiveSequence),
+				new SortByScoreRate(isPositiveSequence),
+				new SortByThreePointScoreRate(isPositiveSequence),
+				new SortByFreeThrowScoreRate(isPositiveSequence),
+				new SortByDoubleDoubleNum(isPositiveSequence)
+		};
+	}
+	
+	/**
+	 * 全部球员排序的构造方法
+	 * @param isPositiveSequence
+	 */
 	public ComparePlayer(boolean isPositiveSequence) {
 		// TODO Auto-generated constructor stub
 		boolean b = isPositiveSequence;
 		
-		compartor = new Comparator[]{
+		comparator = new Comparator[]{
 				new SortByName(b),
 				new SortByTeamName(b),
 				new SortByPosition(b),
@@ -1014,4 +1055,37 @@ public class ComparePlayer {
 
 	}
 
+
+	public class SortByPointReboundAssist implements Comparator {
+
+		boolean b;
+		public SortByPointReboundAssist(boolean isPositiveSequence) {
+			b = isPositiveSequence;
+		}
+		
+		public int compare(Object o1, Object o2) {
+			// TODO 得分/篮板/助攻 排序
+			int result = -1;
+			PlayerVO p1 = (PlayerVO) o1;
+			PlayerVO p2 = (PlayerVO) o2;
+			double pra1 = 0;
+			double pra2 = 0;
+			if((p1.getTotalReboundsNum()) != 0 && (p1.getAssistNum() != 0)){
+				pra1 = p1.getPersonalPoints() / p1.getTotalReboundsNum() / p1.getAssistNum();
+			}
+			if((p2.getTotalReboundsNum()) != 0 && (p2.getAssistNum() != 0)){
+				pra2 = p2.getPersonalPoints() / p2.getTotalReboundsNum() / p2.getAssistNum();
+			}
+			
+			if(pra1 >= pra2){
+				result = 1;
+			}
+			if(!b){
+				result = -result;
+			}
+			return result;
+		}
+
+	}
+	
 }

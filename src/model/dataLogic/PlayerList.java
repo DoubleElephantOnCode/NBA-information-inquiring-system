@@ -20,6 +20,11 @@ public class PlayerList {
 	 */
 	static ArrayList<PlayerVO> players = new ArrayList<PlayerVO>();
 	
+	/**
+	 * 筛选出的球员数量
+	 */
+	private static int selectNum = 50;
+	
 	public PlayerList() {
 		// TODO Auto-generated constructor stub
 	}
@@ -76,6 +81,21 @@ public class PlayerList {
 	}
 	
 	/**
+	 * 获取筛选依据
+	 * @return
+	 */
+	public static String[] getSelectBasis(){
+//		得分，篮板，助攻，得分/篮板/助攻（加权比为 1:1:1），盖帽，抢断，犯规，
+//		失误，分钟，效率，投篮，三分，罚球，两双
+		String[] s = new String[]{
+				"得分", "场均得分", "篮板", "场均篮板", "助攻", "场均助攻", "得分/篮板/助攻",
+				"盖帽", "场均盖帽", "抢断", "场均抢断", "犯规", "场均犯规", "失误", "场均失误",
+				"赛季总上场时间", "效率", "投篮命中率", "三分命中率", "罚球命中率", "两双次数"
+		};
+		return s;
+	}
+	
+	/**
 	 * 获取球员信息表—行表头
 	 * @return
 	 */
@@ -101,8 +121,22 @@ public class PlayerList {
 	public static void sortPlayer(int i,boolean isPositiveSequence){
 		
 		ComparePlayer c = new ComparePlayer(isPositiveSequence);
-		Collections.sort(players, c.compartor[i]);;
+		Collections.sort(players, c.comparator[i]);;
 	}
 	
-	
+	/**
+	 * 按照条件筛选出前50个球员
+	 * @param i
+	 */
+	public static ArrayList<PlayerVO> selectPlayer(int i){
+		SelectPlayer selectPlayer = new SelectPlayer(i, players);
+		players = selectPlayer.sortAndselectPlayer();
+		
+		ArrayList<PlayerVO> playerAfterSelect = new ArrayList<PlayerVO>(selectNum);
+		for (int j = 0; j < selectNum; j++) {
+			playerAfterSelect.add(players.get(i));
+		}
+		
+		return playerAfterSelect;
+	}
 }

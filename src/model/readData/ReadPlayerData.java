@@ -47,9 +47,9 @@ public class ReadPlayerData {
 				info = info + temp[1] + ";";
 				row = br.readLine();
 			}
-			System.out.println();
+//			System.out.println();
 			info = info + "end";
-			System.out.println(info);
+//			System.out.println(info);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
