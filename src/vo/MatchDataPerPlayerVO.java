@@ -24,6 +24,16 @@ public class MatchDataPerPlayerVO {
 	public String playerName;
 	
 	/**
+	 * 赛区
+	 */
+	public String competion;
+	
+	/**
+	 * 分区
+	 */
+	public String partition;
+	
+	/**
 	 * 位置
 	 */
 	public String position;
@@ -223,7 +233,7 @@ public class MatchDataPerPlayerVO {
 		this.position = position;
 		//为了处理脏数据
 		if(presentTime.equals("null")||presentTime.equals("None")){
-			System.out.println("time has error 啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊");
+		//	System.out.println("time has error 啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊");
 			timeHasError = true;
 		}else{
 			this.presentTime = new MyPresentTime(presentTime);
@@ -248,7 +258,7 @@ public class MatchDataPerPlayerVO {
 		
 		//以下为寻找脏数据  最后要删除 
 		if(this.personalScore!=toInt(personalScore)){
-			System.out.println("error in MatchDataPerPlayer个人得分有问题啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊");
+		//	System.out.println("error in MatchDataPerPlayer个人得分有问题啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊");
 		}
 	}
 	
@@ -530,6 +540,22 @@ public class MatchDataPerPlayerVO {
 
 	public void setAllTurnoverNum(double allTurnoverNum) {
 		this.allTurnoverNum = allTurnoverNum;
+	}
+
+	public String getCompetion() {
+		return competion;
+	}
+
+	public void setCompetion(String competion) {
+		this.competion = competion;
+	}
+
+	public String getPartition() {
+		return partition;
+	}
+
+	public void setPartition(String partition) {
+		this.partition = partition;
 	}
 	
 	

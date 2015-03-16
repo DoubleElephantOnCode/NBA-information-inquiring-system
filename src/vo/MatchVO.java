@@ -3,6 +3,8 @@ package vo;
 import java.util.ArrayList;
 import java.util.Date;
 
+import model.dataLogic.TeamList;
+
 /**
  * 
  * @author ZSK
@@ -393,6 +395,9 @@ public class MatchVO {
 			homePlayerData.setAllShootNum(homeTotalShootNum);
 			homePlayerData.setAllFreeThrowShootNum(homeTotalFreeThrowShootNum);
 			homePlayerData.setAllTurnoverNum(homeTotalTurnoverNum);
+			TeamVO teamVO = TeamList.findTeamVO(homeTeam);
+			homePlayerData.setCompetion(teamVO.competion);
+			homePlayerData.setPartition(teamVO.partition);
 		}
 		//客队
 		for(MatchDataPerPlayerVO awayPlayerData : awayPlayerList){
@@ -410,6 +415,10 @@ public class MatchVO {
 			awayPlayerData.setAllShootNum(awayTotalShootNum);
 			awayPlayerData.setAllFreeThrowShootNum(awayTotalFreeThrowShootNum);
 			awayPlayerData.setAllTurnoverNum(awayTotalTurnoverNum);
+			
+			TeamVO teamVO = TeamList.findTeamVO(awayTeam);
+			awayPlayerData.setCompetion(teamVO.competion);
+			awayPlayerData.setPartition(teamVO.partition);
 		}
 	}
 	

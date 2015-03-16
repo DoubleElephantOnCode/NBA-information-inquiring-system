@@ -81,5 +81,14 @@ public class TeamList {
 		Comparator c =ct.compartor[i];
 		Collections.sort(teamVOList, c);
 	}
+	
+	public static TeamVO findTeamVO(String abbreviation){
+		for(int i = 0;i<teamVOList.size();i++){
+			if(abbreviation.equals(teamVOList.get(i).getAbbreviation())){
+				return teamVOList.get(i);
+			}
+		}
+		return null;
+	}
 
 }
