@@ -40,4 +40,5 @@ public class ShowPlayerController {
 	public void selectPlayer(int i){
 		showPlayerModel.selectByPlayerInfo(i);
 	}
+	
 }
