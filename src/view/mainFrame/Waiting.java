@@ -39,6 +39,7 @@ public class Waiting extends SwingWorker<Void, Void>{
 	@Override
 	protected void done(){
 		Main.mainFrame.remove(panel);
+		Main.mainFrame.repaint();
 		this.cancel(true);
 	}
 	
