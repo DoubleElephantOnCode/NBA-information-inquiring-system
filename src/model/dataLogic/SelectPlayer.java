@@ -27,6 +27,12 @@ public class SelectPlayer {
 	public static ArrayList<PlayerVO> selectPlayer(ArrayList<PlayerVO> playerList,
 			String position, String area){
 		
+		String[] s1 = position.split("-");
+		String[] s2 = area.split("-");
+		
+		String pos = s1[1];
+		String are = s2[1];
+		
 		ArrayList<PlayerVO> players = new ArrayList<PlayerVO>();
 		
 		if(position.equalsIgnoreCase("ALL") && area.equalsIgnoreCase("ALL")){
@@ -35,8 +41,8 @@ public class SelectPlayer {
 		if(position.equalsIgnoreCase("ALL") && !area.equalsIgnoreCase("ALL")){
 			for (int i = 0; i < playerList.size(); i++) {
 				PlayerVO p = playerList.get(i);
-				if(p.getCompetion().equalsIgnoreCase(area) ||
-						p.getPartition().equalsIgnoreCase(area)){
+				if(p.getCompetion().equalsIgnoreCase(are) ||
+						p.getPartition().equalsIgnoreCase(are)){
 					players.add(p);
 				}
 			}
@@ -45,7 +51,7 @@ public class SelectPlayer {
 		if(!position.equalsIgnoreCase("ALL") && area.equalsIgnoreCase("ALL")){
 			for (int i = 0; i < playerList.size(); i++) {
 				PlayerVO p = playerList.get(i);
-				if(p.getPosition().contains(position)){
+				if(p.getPosition().contains(pos)){
 					players.add(p);
 				}
 			}
@@ -54,8 +60,8 @@ public class SelectPlayer {
 		
 		for (int i = 0; i < playerList.size(); i++) {
 			PlayerVO p = playerList.get(i);
-			if(p.getPosition().contains(position) && (p.getCompetion().equalsIgnoreCase(area) ||
-					p.getPartition().equalsIgnoreCase(area))){
+			if(p.getPosition().contains(pos) && (p.getCompetion().equalsIgnoreCase(are) ||
+					p.getPartition().equalsIgnoreCase(are))){
 				players.add(p);
 			}
 		}

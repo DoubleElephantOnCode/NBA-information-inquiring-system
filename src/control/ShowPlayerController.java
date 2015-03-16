@@ -37,7 +37,7 @@ public class ShowPlayerController {
 	 * 筛选球员
 	 * @param i
 	 */
-	public void selectPlayer(int i){
+	public void sortAndSelectPlayer(String position, String area, int i){
 //		showPlayerModel.selectByPlayerInfo(i);
 	}
 	
