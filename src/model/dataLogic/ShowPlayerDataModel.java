@@ -32,7 +32,7 @@ public class ShowPlayerDataModel {
 
 				try{
 				ArrayList<PlayerVO> playerList = SelectPlayer.selectPlayer(
-						PlayerList.getPlayers(), position, area);
+						PlayerList.players, position, area);
 				PlayerVO player = playerList.get(0);
 				String[][] content =
 						new String[playerList.size()][PlayerList.getHeadForColumn().length];
@@ -46,8 +46,11 @@ public class ShowPlayerDataModel {
 				
 				String[] column = PlayerList.getHeadForColumn();
 //				System.out.println("column = " + column.length);
-				String[] row = PlayerList.getHeadForRow();
 //				System.out.println("row = " + row.length);
+				String[] row = new String[playerList.size()];
+				for (int j = 0; j < playerList.size(); j++) {
+					row[j] = playerList.get(j).getName();
+				}
 				
 				Main.newPlayerCountPanel(content, row, column);
 				}
@@ -71,7 +74,7 @@ public class ShowPlayerDataModel {
 				super.doInBackground();
 				
 				ArrayList<PlayerVO> playerList = PlayerList.sortPlayer(
-						SelectPlayer.selectPlayer(PlayerList.getPlayers(), position, area),
+						SelectPlayer.selectPlayer(PlayerList.players, position, area),
 						i, isPositiveSequence);
 				PlayerVO player = playerList.get(0);
 				String[][] content =
@@ -83,7 +86,10 @@ public class ShowPlayerDataModel {
 						content[j][k] = s[k];
 					}
 				}
-				String[] row = PlayerList.getHeadForRow();
+				String[] row = new String[playerList.size()];
+				for (int j = 0; j < playerList.size(); j++) {
+					row[j] = playerList.get(j).getName();
+				}
 				
 				Main.resetPlayerCountPanel(content, row);
 				
@@ -105,9 +111,9 @@ public class ShowPlayerDataModel {
 			protected Void doInBackground() throws Exception {
 
 				try{
-				ArrayList<PlayerVO> playerList = PlayerList.sortPlayer(
-						SelectPlayer.selectPlayer(PlayerList.getPlayers(), position, area),
-						i, true);
+				ArrayList<PlayerVO> playerList = SelectPlayer.selectPlayer(
+						PlayerList.players, position, area);
+				playerList = PlayerList.sortPlayer(playerList, i, false);
 				PlayerVO player = playerList.get(0);
 				String[][] content =
 						new String[showNum][PlayerList.getHeadForColumn().length];
@@ -122,6 +128,7 @@ public class ShowPlayerDataModel {
 				for (int i = 0; i < showNum; i++) {
 					row[i] = playerList.get(i).getName();
 				}
+				System.out.println("rowLength = " + row.length);
 				
 				Main.resetPlayerCountPanel(content, row);
 				} catch(Exception e){
@@ -135,34 +142,56 @@ public class ShowPlayerDataModel {
 		
 	}
 	
-//	public void selectByPlayerInfo(final int i){
-//		new Waiting(){
-//			
-//			protected Void doInBackground() throws Exception {
-//				super.doInBackground();
-//				ArrayList<PlayerVO> playerList = PlayerList.selectPlayer(i);
-//				PlayerVO player = playerList.get(0);
-//				String[][] content =
-//	                      new String[playerList.size()][PlayerList.getHeadForColumn().length];
-//				for (int j = 0; j < playerList.size(); j++) {
-//					player = playerList.get(j);
-//					String[] s = player.getPlayerInfo();
-//					for (int k = 0; k < s.length; k++) {
-//						content[j][k] = s[k];
-//					}
-//				}
-//				String[] row = new String[playerList.size()];
-//				for (int i = 0; i < playerList.size(); i++) {
-//					row[i] = playerList.get(i).getName();
-//				}
-//					
-//				Main.resetPlayerCountPanel(content, row);
-//				
-//				return null;
-//			}
-//			
-//		}.execute();
-//	}
+	/**
+	 * 根据位置或地区筛选球员
+	 * @param position
+	 * @param area
+	 */
+	public void selectByAreaOrPosition(final String position, final String area){
+		
+		new Waiting(){
+			@Override
+			protected Void doInBackground() throws Exception{
+				super.doInBackground();
+
+				try{
+				ArrayList<PlayerVO> playerList = SelectPlayer.selectPlayer(
+						PlayerList.players, position, area);
+				PlayerVO player = playerList.get(0);
+				String[][] content =
+						new String[playerList.size()][PlayerList.getHeadForColumn().length];
+				for (int i = 0; i < playerList.size(); i++) {
+					player = playerList.get(i);
+					String[] s = player.getPlayerInfo();
+					for (int j = 0; j < s.length; j++) {
+						content[i][j] = s[j];
+					}
+				}
+				
+//				String[] column = PlayerList.getHeadForColumn();
+//				System.out.println("column = " + column.length);
+
+				String[] row = new String[playerList.size()];
+				for (int j = 0; j < playerList.size(); j++) {
+					row[j] = playerList.get(j).getName();
+				}
+
+				System.out.println("rowLength = " + row.length + "  " + content.length);
+				
+				Main.resetPlayerCountPanel(content, row);
+				
+				}
+				catch(Exception e){
+					e.printStackTrace();
+				}
+				
+				return null;
+			}
+			
+		}.execute();
+		
+	}
+	
 	
 
 }

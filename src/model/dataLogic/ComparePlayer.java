@@ -21,85 +21,84 @@ public class ComparePlayer {
 	// "助攻率", "抢断率", "盖帽率", "失误率", "使用率"
 	
 	Comparator[] comparator;
-	Comparator[] comparForSelect;
 	
-	/**
-	 * 为筛选球员而排序的构造方法
-	 */
-	public ComparePlayer() {
-		// TODO Auto-generated constructor stub
-		boolean isPositiveSequence = true;
-		
-//		"得分", "场均得分", "篮板", "场均篮板", "助攻", "场均助攻", "得分/篮板/助攻",
-//		"盖帽", "场均盖帽", "抢断", "场均抢断", "犯规", "场均犯规", "失误", "场均失误",
-//		"赛季总上场时间", "效率", "投篮命中率", "三分命中率", "罚球命中率", "两双次数"
-		
-		comparForSelect = new Comparator[]{
-				new SortByName(isPositiveSequence),
-				new SortByTeamName(isPositiveSequence),
-				new SortByPosition(isPositiveSequence),
-				new SortByEntryNum(isPositiveSequence),
-				new SortByStartingNum(isPositiveSequence),
-				new SortByDoubleDoubleNum(isPositiveSequence),
-				new SortByPlayTime(isPositiveSequence),
-				new SortByAvePlayTime(isPositiveSequence),
-				new SortByTotalReboundsNum(isPositiveSequence),
-				new SortByAveTotalReboundsNum(isPositiveSequence),
-				new SortByOffReboundsNum(isPositiveSequence),
-				new SortByAveOffReboundsNum(isPositiveSequence),
-				new SortByDefReboundsNum(isPositiveSequence),
-				new SortByAveDefReboundsNum(isPositiveSequence),
-				new SortByAssistNum(isPositiveSequence),
-				new SortByAveAssistNum(isPositiveSequence),
-				new SortByScoreRate(isPositiveSequence),
-				new SortByThreePointScoreRate(isPositiveSequence),
-				new SortByFreeThrowScoreRate(isPositiveSequence),
-				new SortByStealNum(isPositiveSequence),
-				new SortByAveStealNum(isPositiveSequence),
-				new SortByBlockNum(isPositiveSequence),
-				new SortByAveBlockNum(isPositiveSequence),
-				new SortByFoulNum(isPositiveSequence),
-				new SortByAveFoulNum(isPositiveSequence),
-				new SortByTurnoverNum(isPositiveSequence),
-				new SortByAveTurnoverNum(isPositiveSequence),
-				new SortByPersonalPoints(isPositiveSequence),
-				new SortByAvePersonalPoints(isPositiveSequence),
-				new SortByEfficienty(isPositiveSequence),
-				new SortByGmsc(isPositiveSequence),
-				new SortByTrueShootingPercentage(isPositiveSequence),
-				new SortByShootingEfficiency(isPositiveSequence),
-				new SortByTotalReboundRate(isPositiveSequence),
-				new SortByOffReboundRate(isPositiveSequence),
-				new SortByDefReboundRate(isPositiveSequence),
-				new SortByAssistRate(isPositiveSequence),
-				new SortByStealRate(isPositiveSequence),
-				new SortByBlockRate(isPositiveSequence),
-				new SortByTurnOverRate(isPositiveSequence),
-				new SortByUseRate(isPositiveSequence)
-//				new SortByPersonalPoints(isPositiveSequence),
-//				new SortByAvePersonalPoints(isPositiveSequence),
+//	/**
+//	 * 为筛选球员而排序的构造方法
+//	 */
+//	public ComparePlayer() {
+//		// TODO Auto-generated constructor stub
+//		boolean isPositiveSequence = true;
+//		
+////		"得分", "场均得分", "篮板", "场均篮板", "助攻", "场均助攻", "得分/篮板/助攻",
+////		"盖帽", "场均盖帽", "抢断", "场均抢断", "犯规", "场均犯规", "失误", "场均失误",
+////		"赛季总上场时间", "效率", "投篮命中率", "三分命中率", "罚球命中率", "两双次数"
+//		
+//		comparForSelect = new Comparator[]{
+//				new SortByName(isPositiveSequence),
+//				new SortByTeamName(isPositiveSequence),
+//				new SortByPosition(isPositiveSequence),
+//				new SortByEntryNum(isPositiveSequence),
+//				new SortByStartingNum(isPositiveSequence),
+//				new SortByDoubleDoubleNum(isPositiveSequence),
+//				new SortByPlayTime(isPositiveSequence),
+//				new SortByAvePlayTime(isPositiveSequence),
 //				new SortByTotalReboundsNum(isPositiveSequence),
 //				new SortByAveTotalReboundsNum(isPositiveSequence),
+//				new SortByOffReboundsNum(isPositiveSequence),
+//				new SortByAveOffReboundsNum(isPositiveSequence),
+//				new SortByDefReboundsNum(isPositiveSequence),
+//				new SortByAveDefReboundsNum(isPositiveSequence),
 //				new SortByAssistNum(isPositiveSequence),
 //				new SortByAveAssistNum(isPositiveSequence),
-//				new SortByPointReboundAssist(isPositiveSequence),
-//				new SortByBlockNum(isPositiveSequence),
-//				new SortByAveBlockNum(isPositiveSequence),
+//				new SortByScoreRate(isPositiveSequence),
+//				new SortByThreePointScoreRate(isPositiveSequence),
+//				new SortByFreeThrowScoreRate(isPositiveSequence),
 //				new SortByStealNum(isPositiveSequence),
 //				new SortByAveStealNum(isPositiveSequence),
+//				new SortByBlockNum(isPositiveSequence),
+//				new SortByAveBlockNum(isPositiveSequence),
 //				new SortByFoulNum(isPositiveSequence),
 //				new SortByAveFoulNum(isPositiveSequence),
 //				new SortByTurnoverNum(isPositiveSequence),
 //				new SortByAveTurnoverNum(isPositiveSequence),
-//				new SortByPlayTime(isPositiveSequence),
+//				new SortByPersonalPoints(isPositiveSequence),
+//				new SortByAvePersonalPoints(isPositiveSequence),
 //				new SortByEfficienty(isPositiveSequence),
-//				new SortByScoreRate(isPositiveSequence),
-//				new SortByThreePointScoreRate(isPositiveSequence),
-//				new SortByFreeThrowScoreRate(isPositiveSequence),
-//				new SortByDoubleDoubleNum(isPositiveSequence)
-		};
-	}
-	
+//				new SortByGmsc(isPositiveSequence),
+//				new SortByTrueShootingPercentage(isPositiveSequence),
+//				new SortByShootingEfficiency(isPositiveSequence),
+//				new SortByTotalReboundRate(isPositiveSequence),
+//				new SortByOffReboundRate(isPositiveSequence),
+//				new SortByDefReboundRate(isPositiveSequence),
+//				new SortByAssistRate(isPositiveSequence),
+//				new SortByStealRate(isPositiveSequence),
+//				new SortByBlockRate(isPositiveSequence),
+//				new SortByTurnOverRate(isPositiveSequence),
+//				new SortByUseRate(isPositiveSequence)
+////				new SortByPersonalPoints(isPositiveSequence),
+////				new SortByAvePersonalPoints(isPositiveSequence),
+////				new SortByTotalReboundsNum(isPositiveSequence),
+////				new SortByAveTotalReboundsNum(isPositiveSequence),
+////				new SortByAssistNum(isPositiveSequence),
+////				new SortByAveAssistNum(isPositiveSequence),
+////				new SortByPointReboundAssist(isPositiveSequence),
+////				new SortByBlockNum(isPositiveSequence),
+////				new SortByAveBlockNum(isPositiveSequence),
+////				new SortByStealNum(isPositiveSequence),
+////				new SortByAveStealNum(isPositiveSequence),
+////				new SortByFoulNum(isPositiveSequence),
+////				new SortByAveFoulNum(isPositiveSequence),
+////				new SortByTurnoverNum(isPositiveSequence),
+////				new SortByAveTurnoverNum(isPositiveSequence),
+////				new SortByPlayTime(isPositiveSequence),
+////				new SortByEfficienty(isPositiveSequence),
+////				new SortByScoreRate(isPositiveSequence),
+////				new SortByThreePointScoreRate(isPositiveSequence),
+////				new SortByFreeThrowScoreRate(isPositiveSequence),
+////				new SortByDoubleDoubleNum(isPositiveSequence)
+//		};
+//	}
+//	
 	/**
 	 * 全部球员排序的构造方法
 	 * @param isPositiveSequence

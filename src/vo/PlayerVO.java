@@ -38,17 +38,17 @@ public class PlayerVO {
 	/**
 	 * 所属球队
 	 */
-	private String teamName;
+	private String teamName = "";
 	
 	/**
 	 * 赛区（东、西部）
 	 */
-	private String competion;
+	private String competion = "";
 	
 	/**
 	 * 各自赛区内分区
 	 */
-	private String partition;
+	private String partition = "";
 	
 	/**
 	 * 球员姓名
@@ -713,9 +713,11 @@ public class PlayerVO {
 //		System.out.println("stealRate = " + this.stealRate);
 //		System.out.println("对手两分球出手  = " + this.oppTwoPointShootNum);
 //		System.out.println("blockRate = " + this.blockRate);
-		System.out.println("name:" + this.name);
-		System.out.println("三分命中率 = " + this.threePointScoreRate);
-		System.out.println("罚球命中率 = " + this.freeThrowScoreRate);
+//		System.out.println("name:" + this.name);
+//		System.out.println("三分命中率 = " + this.threePointScoreRate);
+//		System.out.println("罚球命中率 = " + this.freeThrowScoreRate);
+//		System.out.println("赛区 = " + this.competion);
+//		System.out.println("分区 = " + this.partition);
 		
 		String[] s = new String[]{
 				name, teamName, position, entryNum + "", startingNum + "", doubleDouble + "",

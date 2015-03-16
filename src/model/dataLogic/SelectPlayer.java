@@ -27,11 +27,16 @@ public class SelectPlayer {
 	public static ArrayList<PlayerVO> selectPlayer(ArrayList<PlayerVO> playerList,
 			String position, String area){
 		
+		System.out.println("size1 = " + playerList.size());
+		
 		String[] s1 = position.split("-");
 		String[] s2 = area.split("-");
 		
-		String pos = s1[1];
-		String are = s2[1];
+		position = s1[1];
+		area = s2[1];
+		
+		System.out.println("pos = " + position);
+		System.out.println("are = " + area);
 		
 		ArrayList<PlayerVO> players = new ArrayList<PlayerVO>();
 		
@@ -39,33 +44,43 @@ public class SelectPlayer {
 			return playerList;
 		}
 		if(position.equalsIgnoreCase("ALL") && !area.equalsIgnoreCase("ALL")){
+			
+			System.out.println("只看地区");
 			for (int i = 0; i < playerList.size(); i++) {
 				PlayerVO p = playerList.get(i);
-				if(p.getCompetion().equalsIgnoreCase(are) ||
-						p.getPartition().equalsIgnoreCase(are)){
+				if(p.getCompetion().equalsIgnoreCase(area) ||
+						p.getPartition().equalsIgnoreCase(area)){
 					players.add(p);
 				}
 			}
-			return players;
-		}
-		if(!position.equalsIgnoreCase("ALL") && area.equalsIgnoreCase("ALL")){
+//			return players;
+			
+		} else if(!position.equalsIgnoreCase("ALL") && area.equalsIgnoreCase("ALL")){
+			
+			System.out.println("只看位置");
+			System.out.println("position = " + position);
 			for (int i = 0; i < playerList.size(); i++) {
 				PlayerVO p = playerList.get(i);
-				if(p.getPosition().contains(pos)){
+				if(p.getPosition().contains(position)){
 					players.add(p);
 				}
 			}
-			return players;
-		}
-		
-		for (int i = 0; i < playerList.size(); i++) {
-			PlayerVO p = playerList.get(i);
-			if(p.getPosition().contains(pos) && (p.getCompetion().equalsIgnoreCase(are) ||
-					p.getPartition().equalsIgnoreCase(are))){
-				players.add(p);
+//			return players;
+			
+		} else {
+			
+			System.out.println("俩都看");
+			for (int i = 0; i < playerList.size(); i++) {
+				PlayerVO p = playerList.get(i);
+				if(p.getPosition().contains(position) && (p.getCompetion().equalsIgnoreCase(area) ||
+						p.getPartition().equalsIgnoreCase(area))){
+					players.add(p);
+				}
 			}
+			
 		}
-		
+
+		System.out.println("size2 = " + players.size());
 		
 		return players;
 	}

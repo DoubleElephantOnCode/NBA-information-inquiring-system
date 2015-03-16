@@ -34,11 +34,20 @@ public class ShowPlayerController {
 	}
 	
 	/**
-	 * 筛选球员
+	 * 筛选前50名球员
 	 * @param i
 	 */
 	public void sortAndSelectPlayer(String position, String area, int i){
-//		showPlayerModel.selectByPlayerInfo(i);
+		showPlayerModel.selectByPlayerInfo(position, area, i);
+	}
+	
+	/**
+	 * 根据分区、位置筛选球员
+	 * @param position
+	 * @param area
+	 */
+	public void selectByAreaOrPosition(final String position, final String area){
+		showPlayerModel.selectByAreaOrPosition(position, area);
 	}
 	
 	/**
