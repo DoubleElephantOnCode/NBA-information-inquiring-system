@@ -297,4 +297,86 @@ int width = 1000, height = 410;
 		
 	}
 	
+	protected void resetTableInfoAndSize(String[][] content, String[] player){
+		remove(p);
+		remove(hpR);
+		remove(bcp);
+		
+		int formerColumn = p.pointerColumn;
+		
+		contentInTable = content;
+		row = content.length;
+		p = new TablePanel(row, column, pageRow, pageColumn, tableWidth, tableHeight);
+		p.setContent(contentInTable);
+		p.setLocation(leftSide + headListForRowPanelWidth, headListForColumnPanelHeight);
+		setTablePanelRowIcon();
+		
+		headListForRow = player;
+		hpR = new HeadListForRowPanel(headListForRow, pageRow, headListForRowPanelWidth, tableHeight);
+		hpR.setLocation(leftSide, headListForColumnPanelHeight);
+		
+		for(int i = 0; i < row;){
+			hpR.setIconInRow(head_light, i++);
+			hpR.setIconInRow(head_deep, i++);
+		}
+		
+		bcp = new BarInColumnPanel(row, pageRow, barWidth, tableHeight);
+		bcp.setLocation(leftSide + headListForRowPanelWidth + tableWidth, headListForColumnPanelHeight);
+		bcp.setPosition(pointerRow);
+		
+		p.addMouseWheelListener(new MouseWheelListener(){
+			public void mouseWheelMoved(MouseWheelEvent arg0) {
+				int r = arg0.getWheelRotation();
+				if(r > 0){
+					p.changeRow(1);
+				}
+				else if(r < 0){
+					p.changeRow(-1);
+				}
+				hpR.moveToIndex(p.pointerRow);
+				bcp.setPosition(p.pointerRow);
+				setTablePanelRowIcon();
+			}
+						
+		});
+		
+		bcp.addMouseWheelListener(new MouseWheelListener(){
+
+			public void mouseWheelMoved(MouseWheelEvent arg0) {
+				int r = arg0.getWheelRotation();
+				if(r > 0){
+					p.changeRow(1);
+				}
+				else if(r < 0){
+					p.changeRow(-1);
+				}
+				hpR.moveToIndex(p.pointerRow);
+				bcp.setPosition(p.pointerRow);
+				setTablePanelRowIcon();
+			}
+			
+		});
+		
+		bcp.addDragBarListener(new MouseMotionAdapter(){
+			public void mouseDragged(MouseEvent e){
+				bcp.dragBarMethod(e);
+				int t = (int) (row * bcp.position);
+				p.changeRow(t-p.pointerRow);
+				hpR.moveToIndex(p.pointerRow);
+			}
+		});
+		
+		p.setFontColor(fontColor);
+		hpR.setFontColor(fontColor);
+		
+		p.changeColumn(formerColumn);
+		
+		add(p, 0);
+		add(hpR, 0);
+		add(bcp, 0);
+		p.updateUI();
+		hpR.updateUI();
+		bcp.updateUI();
+	}
+	
 }

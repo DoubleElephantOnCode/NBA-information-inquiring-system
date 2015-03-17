@@ -100,10 +100,7 @@ public class PlayerCountPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				position.action();
-				new ShowPlayerController().selectByAreaOrPosition(
-						position.getSelectedItem(), area.getSelectedItem());
-				
-//				new ShowPlayerController().sortPlayer(position.getSelectedItem(), area.getSelectedItem(), table.selectedColumn, table.sort);
+				new ShowPlayerController().sortPlayer(position.getSelectedItem(), area.getSelectedItem(), table.selectedColumn, table.sort);
 			}
 			
 		});
@@ -113,9 +110,7 @@ public class PlayerCountPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				area.action();
-				new ShowPlayerController().selectByAreaOrPosition(
-						position.getSelectedItem(), area.getSelectedItem());
-//				new ShowPlayerController().sortPlayer(position.getSelectedItem(), area.getSelectedItem(), table.selectedColumn, table.sort);
+				new ShowPlayerController().sortPlayer(position.getSelectedItem(), area.getSelectedItem(), table.selectedColumn, table.sort);
 			}
 			
 		});
@@ -125,8 +120,9 @@ public class PlayerCountPanel extends JPanel{
 		setLocation(0, -5);
 	}
 	
-	public void resetTableInfo(String[][] content, String[] team){
-		table.p.setContent(content);
-		table.hpR.resetInfo(team);
+	public void resetTableInfo(String[][] content, String[] player){
+//		table.p.setContent(content);
+//		table.hpR.resetInfo(player);
+		table.resetTableInfoAndSize(content, player);
 	}
 }
