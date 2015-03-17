@@ -88,7 +88,7 @@ public class MyPresentTime{
 	 */
 	public static MyPresentTime toTimeFormat(double timeOfMinutes){
 		String time = Double.toString(timeOfMinutes);
-		System.out.println("time = " + time);
+//		System.out.println("time = " + time);
 		String[] timeStr = time.split("\\.");
 		int min = Integer.parseInt(timeStr[0]);
 		String second = Double.toString(Double.parseDouble("0." + timeStr[1]) * 60).split("\\.")[0];

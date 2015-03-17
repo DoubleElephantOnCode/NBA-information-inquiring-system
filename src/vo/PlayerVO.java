@@ -53,7 +53,7 @@ public class PlayerVO {
 	/**
 	 * 球员姓名
 	 */
-	private String name;
+	private String name = "";
 	
 	/**
 	 * 球员号码
@@ -63,7 +63,7 @@ public class PlayerVO {
 	/**
 	 * 球员位置
 	 */
-	private String position;
+	private String position = "";
 	
 	/**
 	 * 球员身高
@@ -590,6 +590,7 @@ public class PlayerVO {
 		useRate = (shootNum + 0.44 * freeThrowShootNum + turnoverNum) *
 				(timeOfAllPlayers.getTimeByMinute() / 5) / totalMinutes.getTimeByMinute() / 
 				(allShootNum + 0.44 * allFreeThrowShootNum + allTurnoverNum);
+		
 	}
 	
 	/**
