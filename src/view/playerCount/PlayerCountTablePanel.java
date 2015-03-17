@@ -129,6 +129,7 @@ int width = 1000, height = 410;
 		
 		for(int i = 0; i < row;){
 			hpR.setIconInRow(head_light, i++);
+			if(i >= row) break;
 			hpR.setIconInRow(head_deep, i++);
 		}
 		
@@ -317,6 +318,7 @@ int width = 1000, height = 410;
 		
 		for(int i = 0; i < row;){
 			hpR.setIconInRow(head_light, i++);
+			if(i >= row) break;
 			hpR.setIconInRow(head_deep, i++);
 		}
 		

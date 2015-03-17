@@ -84,6 +84,7 @@ public class ComparePlayer {
 		}
 		
 		public int compare(Object o1, Object o2) {
+			
 			// TODO 姓名排序
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
