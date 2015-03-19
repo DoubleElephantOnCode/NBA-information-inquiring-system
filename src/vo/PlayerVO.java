@@ -366,7 +366,7 @@ public class PlayerVO {
 //	等， 并且可以依据以上数据中的任何一项对全部数据进行升降序操作
 	
 	/**
-	 * 该场球队所有球员总上场时间
+	 * 球队所有球员总上场时间
 	 */
 	private MyPresentTime timeOfAllPlayers = new MyPresentTime(0, 0);
 	
@@ -573,9 +573,9 @@ public class PlayerVO {
 		defensiveReboundRate = defensiveReboundsNum * 
 				(timeOfAllPlayers.getTimeByMinute() / 5) / totalMinutes.getTimeByMinute() /
 				(allDefReboundNum + allOppDefReboundNum);
-		//助攻率：球员助攻数÷(球员上场时间÷(球队所有球员上场时间÷5)×球队总进球数-球员进球数
+		//助攻率：球员助攻数÷(球员上场时间÷(球队所有球员上场时间÷5)×球队总进球数-球员进球数)
 		assistRate = assistNum / (totalMinutes.getTimeByMinute() /
-				(timeOfAllPlayers.getTimeByMinute() / 5)) * allScoreNum - scoreNum;
+				(timeOfAllPlayers.getTimeByMinute() / 5) * allScoreNum - scoreNum);
 		//抢断率：球员抢断数×(球队所有球员上场时间÷5)÷球员上场时间÷对手进攻次数
 		stealRate = stealNum * (timeOfAllPlayers.getTimeByMinute() / 5) / 
 				totalMinutes.getTimeByMinute() / opponentAttackRound;

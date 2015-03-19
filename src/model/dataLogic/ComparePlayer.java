@@ -89,9 +89,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getName().compareTo(p2.getName()) >= 0){
-				result = 1;
-			}
+//			if(p1.getName().compareTo(p2.getName()) >= 0){
+//				result = 1;
+//			}
+			result = p1.getName().compareTo(p2.getName());
 			if(!b){
 				result = -result;
 			}
@@ -112,9 +113,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getTeamName().compareTo(p2.getTeamName()) >= 0){
-				result = 1;
-			}
+//			if(p1.getTeamName().compareTo(p2.getTeamName()) >= 0){
+//				result = 1;
+//			}
+			result = p1.getTeamName().compareTo(p2.getTeamName());
 			if(!b){
 				result = -result;
 			}
@@ -135,9 +137,7 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getPosition().compareTo(p2.getPosition()) >= 0){
-				result = 1;
-			}
+			result = p1.getPosition().compareTo(p2.getPosition());
 			if(!b){
 				result = -result;
 			}
