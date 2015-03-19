@@ -97,7 +97,6 @@ public class PlayerCountPanel extends JPanel{
 		
 		position.box.addActionListener(new ActionListener(){
 
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				position.action();
 				new ShowPlayerController().selectByAreaOrPosition(
@@ -109,7 +108,6 @@ public class PlayerCountPanel extends JPanel{
 		
 		area.box.addActionListener(new ActionListener(){
 
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				area.action();
 				new ShowPlayerController().selectByAreaOrPosition(
