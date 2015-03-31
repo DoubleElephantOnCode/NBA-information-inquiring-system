@@ -154,7 +154,7 @@ public class PlayerCountTablePanel extends JPanel{
 		this.add(hpC);
 		this.add(hpR);
 		this.setSize(width, height);
-		this.setLocation(0, SizeAndLocationAndFont.frameHeight-height);
+		this.setLocation(SizeAndLocationAndFont.playerCountTableLocationX, SizeAndLocationAndFont.playerCountTableLocationY);
 		this.setOpaque(false);
 		//给列表头添加Listener，点击按此列数据进行排序
 		for(int i = 0; i < hpC.list.field.length; i++){

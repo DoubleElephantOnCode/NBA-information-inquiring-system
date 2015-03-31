@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import view.File;
+import view.SizeAndLocationAndFont;
 import view.mainFrame.ExitLabel;
 import view.mainFrame.LabelEnterListener;
 import view.mainFrame.LabelUsualListener;
@@ -16,7 +17,7 @@ import control.ShowPlayerController;
 import control.ShowTeamController;
 
 public class StartPanel extends JPanel{
-	int width = 1000, height = 550;
+	int width = SizeAndLocationAndFont.frameWidth, height = SizeAndLocationAndFont.frameHeight;
 	
 	public static JPanel self;
 	
@@ -42,12 +43,17 @@ public class StartPanel extends JPanel{
 	public static JLabel PlayerInfo;
 	public static JLabel PlayerInfoEnter;
 	
-	int oriWidth = 337, oriHeight = 165;
-	int enterWidth = 340, enterHeight = 175;
+	int oriWidth = SizeAndLocationAndFont.startPanelOriWidth,
+			oriHeight = SizeAndLocationAndFont.startPanelOriHeight;
 	
-	int splitX = 10, splitY = 5;
+	int enterWidth = SizeAndLocationAndFont.startPanelEnterWidth,
+			enterHeight = SizeAndLocationAndFont.startPanelEnterHeight;
 	
-	int quitWidth = 100, quitHeight = 50;
+	int splitX = SizeAndLocationAndFont.startPanelSplitX,
+			splitY = SizeAndLocationAndFont.startPanelSplitY;
+	
+	int quitWidth = SizeAndLocationAndFont.startPanelQuitWidth,
+			quitHeight = SizeAndLocationAndFont.startPanelQuitHeight;
 	
 	public StartPanel(){
 		

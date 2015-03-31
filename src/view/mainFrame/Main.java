@@ -15,10 +15,15 @@ import model.readData.ReadMatchData;
 import model.readData.ReadPlayerData;
 import model.readData.ReadTeamData;
 import view.SVGLabel;
+import view.SizeAndLocationAndFont;
 import view.playerCount.PlayerCountPanel;
 import view.startView.StartPanel;
 import view.teamCount.TeamCountPanel;
-
+/**
+ * 创建启动的frame
+ * @author WHJ
+ *
+ */
 public class Main {
 	static ReadTeamData readTeam;
 	static ReadPlayerData readPlayer;
@@ -26,8 +31,8 @@ public class Main {
 
 	static JFrame mainFrame = new JFrame();
 	
-	static int width = 1000, height = 550;
-	static int teamLabelWidth = 80, teamLabelHeight = 50;
+	static int width = SizeAndLocationAndFont.frameWidth, height = SizeAndLocationAndFont.frameHeight;
+	static int teamLabelWidth = SizeAndLocationAndFont.teamPicLabelWidth, teamLabelHeight = SizeAndLocationAndFont.teamPicLabelHeight;
 	
 	static Point origin = new Point();//实现屏幕拖拽
 	

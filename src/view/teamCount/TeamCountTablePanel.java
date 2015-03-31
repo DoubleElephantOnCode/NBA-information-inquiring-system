@@ -156,7 +156,7 @@ public class TeamCountTablePanel extends JPanel{
 		this.add(hpR);
 		this.add(teamPic);
 		this.setSize(width, height);
-		this.setLocation(0, SizeAndLocationAndFont.frameHeight-height);
+		this.setLocation(SizeAndLocationAndFont.teamCountTableLocationX, SizeAndLocationAndFont.teamCountTableLocationY);
 		this.setOpaque(false);
 		//给列表头添加Listener，点击按此列数据进行排序
 		for(int i = 0; i < hpC.list.field.length; i++){
