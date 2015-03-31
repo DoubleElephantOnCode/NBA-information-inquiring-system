@@ -81,4 +81,11 @@ public class HeadListForRowPanel extends JPanel{
 			list.field[i][0].updateUI();
 		}
 	}
+	
+	public void clearHeadListTextInfo(){
+		for(int i = 0; i < list.field.length; i++){
+			list.field[i][0].setText(null);
+			list.field[i][0].updateUI();
+		}
+	}
 }

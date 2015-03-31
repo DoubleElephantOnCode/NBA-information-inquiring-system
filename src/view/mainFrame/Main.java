@@ -27,6 +27,7 @@ public class Main {
 	static JFrame mainFrame = new JFrame();
 	
 	static int width = 1000, height = 550;
+	static int teamLabelWidth = 80, teamLabelHeight = 50;
 	
 	static Point origin = new Point();//实现屏幕拖拽
 	
@@ -97,7 +98,7 @@ public class Main {
 	public static void newTeamCountPanel(String[][] content, String[] team, String[] headListForColumn, File[] teamPic){
 		JLabel[] pic = new JLabel[teamPic.length];
 		for(int i = 0; i < pic.length; i++){
-			pic[i] = new SVGLabel(teamPic[i], 80, 50);
+			pic[i] = new SVGLabel(teamPic[i], teamLabelWidth, teamLabelHeight);
 		}
 		teamCountPanel = new TeamCountPanel(content, team, headListForColumn, pic);
 		startPanel.setVisible(false);
@@ -114,7 +115,7 @@ public class Main {
 	public static void resetTeamCountPanel(String[][] content, String[] team, File[] teamPic){
 		JLabel[] pic = new JLabel[teamPic.length];
 		for(int i = 0; i < pic.length; i++){
-			pic[i] = new SVGLabel(teamPic[i], 80, 50);
+			pic[i] = new SVGLabel(teamPic[i], teamLabelWidth, teamLabelHeight);
 		}
 		teamCountPanel.resetTableInfo(content, team, pic);
 	}

@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import view.File;
+import view.SizeAndLocationAndFont;
 import view.mainFrame.ExitLabel;
 import view.mainFrame.LabelEnterListener;
 import view.mainFrame.Main;
@@ -20,8 +21,8 @@ public class TeamCountPanel extends JPanel{
 	String[] headList;
 	static TeamCountTablePanel table;
 	
-	static int width = 1000;
-	static int height = 550;
+	static int width = SizeAndLocationAndFont.frameWidth;
+	static int height = SizeAndLocationAndFont.frameHeight;
 	
 	static ExitLabel exit = StartPanel.exit;
 	static MenuLabel menu = StartPanel.menu;
@@ -33,11 +34,11 @@ public class TeamCountPanel extends JPanel{
 		background = Main.setJLabelWithIcon(File.file + File.teamCountBackground + File.GIF, width, height);
 		table = new TeamCountTablePanel(content, team, headListForColumn, pic);
 		
-		search = new SearchPanel(300, 30);
-		search.setLocation(650, 100);
+		search = new SearchPanel(SizeAndLocationAndFont.searchPanelWidth, SizeAndLocationAndFont.searchPanelHeight);
+		search.setLocation(SizeAndLocationAndFont.searchPanelLocationX, SizeAndLocationAndFont.searchPanelLocationY);
 		
 		search.area.setForeground(table.fontColor);
-		search.area.setFont(new Font("黑体",Font.BOLD,25));
+		search.area.setFont(SizeAndLocationAndFont.searchPanelFont);
 		search.area.setCaretColor(table.fontColor);
 		
 		add(background);

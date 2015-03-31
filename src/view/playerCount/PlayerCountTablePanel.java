@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import view.File;
+import view.SizeAndLocationAndFont;
 import view.tablePanel.BarInColumnPanel;
 import view.tablePanel.BarInRowPanel;
 import view.tablePanel.HeadListForColumnPanel;
@@ -22,7 +23,8 @@ import view.tablePanel.TablePanel;
 import control.ShowPlayerController;
 
 public class PlayerCountTablePanel extends JPanel{
-int width = 1000, height = 410;
+	int width = SizeAndLocationAndFont.playerCountTablePanelWidth,
+			height = SizeAndLocationAndFont.playerCountTablePanelHeight;
 	
 	int pointerRow = 0, pointerColumn = 0;
 	
@@ -34,17 +36,21 @@ int width = 1000, height = 410;
 	String[][] contentInTable;
 	
 	
-	int tableWidth = 700, tableHeight = 300;
+	int tableWidth = SizeAndLocationAndFont.playerCountTableWidth,
+			tableHeight = SizeAndLocationAndFont.playerCountTableHeight;
 	int row = 30, column = 50;
-	int pageRow = 10, pageColumn = 5;
+	int pageRow = SizeAndLocationAndFont.playerCountPageRow,
+			pageColumn = SizeAndLocationAndFont.playerCountPageColumn;
 	
-	int headListForRowPanelWidth = 160;
+	int headListForRowPanelWidth = SizeAndLocationAndFont.playerCountHeadListForRowPanelWidth;
 			
-	int headListForColumnPanelHeight = 45;
+	int headListForColumnPanelHeight = SizeAndLocationAndFont.playerCountHeadListForColumnPanelHeight;
 	
-	int barWidth = 10;
+	int barWidth = SizeAndLocationAndFont.barWidth;
 	
-	int leftSide = 80, rightSide = 20, downSide = 20;
+	int leftSide = SizeAndLocationAndFont.playerCountLeftSide,
+			rightSide = SizeAndLocationAndFont.playerCountRightSide,
+			downSide = SizeAndLocationAndFont.playerCountDownSide;
 	
 	TablePanel p;
 	HeadListForColumnPanel hpC;
@@ -63,7 +69,7 @@ int width = 1000, height = 410;
 	
 	ImageIcon sortUP, sortDOWN, sortOUT;
 	
-	Color fontColor = new Color(170, 170, 170);
+	Color fontColor = SizeAndLocationAndFont.tableLabelColor;
 	
 	public PlayerCountTablePanel(String[][] content, String[] headListForRow, String[] headListForColumn){
 
@@ -148,7 +154,7 @@ int width = 1000, height = 410;
 		this.add(hpC);
 		this.add(hpR);
 		this.setSize(width, height);
-		this.setLocation(0, 140);
+		this.setLocation(0, SizeAndLocationAndFont.frameHeight-height);
 		this.setOpaque(false);
 		//给列表头添加Listener，点击按此列数据进行排序
 		for(int i = 0; i < hpC.list.field.length; i++){

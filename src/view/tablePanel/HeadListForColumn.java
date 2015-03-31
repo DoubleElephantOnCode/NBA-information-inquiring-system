@@ -91,6 +91,9 @@ public class HeadListForColumn {
 
 			@Override
 			protected void process(List<Void> chunks) {
+				timer.cancel();
+				stateTime = 0;
+				timer = new Timer();
 				TimerTask task = new TimerTask(){
 
 					@Override
