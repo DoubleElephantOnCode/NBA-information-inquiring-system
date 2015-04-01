@@ -63,4 +63,8 @@ public class File {
 	public static String arrowInto = "combo_enter";
 	
 	public static String arrow = "combo";
+	
+	public static String selected = "sort_out";
+	
+	public static String quickCheck = "quick_search";
 }

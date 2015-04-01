@@ -1,15 +1,17 @@
 package view.playerCount;
 
-import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import control.ShowPlayerController;
 import view.File;
+import view.QuickCheckFrame;
 import view.SizeAndLocationAndFont;
 import view.mainFrame.ExitLabel;
 import view.mainFrame.LabelEnterListener;
@@ -18,6 +20,7 @@ import view.mainFrame.MenuLabel;
 import view.searchPanel.SearchPanel;
 import view.selectedPanel.SelectPanel;
 import view.startView.StartPanel;
+import control.ShowPlayerController;
 
 public class PlayerCountPanel extends JPanel{
 	static JLabel background;
@@ -33,6 +36,10 @@ public class PlayerCountPanel extends JPanel{
 	static SearchPanel search;
 	
 	static SelectPanel position, area;
+	
+	static JLabel quickCheck, quickCheckEnter;
+	
+	static QuickCheckFrame quickCheckFrame;
 	
 	static String[] Position = {"-ALL","前锋-F", "中锋-C", "后卫-G"};
 	
@@ -62,11 +69,58 @@ public class PlayerCountPanel extends JPanel{
 		area = new SelectPanel(SizeAndLocationAndFont.selectPanelWidth, SizeAndLocationAndFont.selectPanelHeight, Area);
 		area.setLocation(SizeAndLocationAndFont.playerAreaSelectPanelLocationX, SizeAndLocationAndFont.playerAreaSelectPanelLocationY);
 		
+//		quickCheck = setJLabelWithIcon(File.file + File.quickCheck + File.PNG, SizeAndLocationAndFont.quickCheckWidth, SizeAndLocationAndFont.quickCheckHeight);
+//		quickCheck.setLocation(SizeAndLocationAndFont.quickCheckLocationX, SizeAndLocationAndFont.quickCheckLocationY);
+//		
+//		quickCheckEnter = setJLabelWithIcon(File.file + File.quickCheck + File.enter + File.PNG, SizeAndLocationAndFont.quickCheckWidth, SizeAndLocationAndFont.quickCheckHeight);
+//		quickCheckEnter.setLocation(SizeAndLocationAndFont.quickCheckLocationX, SizeAndLocationAndFont.quickCheckLocationY);
+//		
+//		quickCheckFrame = new QuickCheckFrame(headListForColumn, 640, 30, 1, 8);
+//		quickCheckFrame.setVisible(false);
+		
 		add(background);
 		add(table, 0);
 		add(search, 0);
 		add(position, 0);
 		add(area, 0);
+//		add(quickCheck, 0);
+//		add(quickCheckEnter, 0);
+//		
+//		quickCheckEnter.setVisible(false);
+//		
+//		quickCheck.addMouseListener(new MouseListener(){
+//
+//			@Override
+//			public void mouseClicked(MouseEvent arg0) {
+//				quickCheckFrame.setVisible(true);
+//			}
+//			public void mouseEntered(MouseEvent arg0) {
+//				quickCheckEnter.setVisible(true);
+//			}
+//			public void mouseExited(MouseEvent arg0) {
+//				quickCheckEnter.setVisible(false);
+//			}
+//			public void mousePressed(MouseEvent arg0) {}
+//			public void mouseReleased(MouseEvent arg0) {}
+//			
+//		});
+//		
+//		quickCheckEnter.addMouseListener(new MouseListener(){
+//
+//			@Override
+//			public void mouseClicked(MouseEvent arg0) {
+//				quickCheckFrame.setVisible(true);
+//			}
+//			public void mouseEntered(MouseEvent arg0) {
+//				quickCheckEnter.setVisible(true);
+//			}
+//			public void mouseExited(MouseEvent arg0) {
+//				quickCheckEnter.setVisible(false);
+//			}
+//			public void mousePressed(MouseEvent arg0) {}
+//			public void mouseReleased(MouseEvent arg0) {}
+//			
+//		});
 		
 		if(exit == null) exit = new ExitLabel();
 		exit.addToPanel(this);
@@ -127,5 +181,14 @@ public class PlayerCountPanel extends JPanel{
 //		table.p.setContent(content);
 //		table.hpR.resetInfo(player);
 		table.resetTableInfoAndSize(content, player);
+	}
+	
+	private JLabel setJLabelWithIcon(String IconPath, int width, int height){
+		ImageIcon icon = new ImageIcon(IconPath);
+		icon.setImage(icon.getImage().getScaledInstance(width, height,Image.SCALE_DEFAULT));
+		JLabel label = new JLabel(icon);
+		label.setSize(width, height);
+		label.setOpaque(false);
+		return label;
 	}
 }

@@ -4,10 +4,10 @@ import java.awt.Color;
 import java.awt.Font;
 
 public class SizeAndLocationAndFont {
-	static public int frameWidth = 1000, frameHeight = 600;
+	static public int frameWidth = 1000, frameHeight = 550;
 	
 	//搜索框参数
-	static public int searchPanelWidth = 300, searchPanelHeight = 30,
+	static public int searchPanelWidth = 250, searchPanelHeight = 30,
 			searchPanelLocationX = 650, searchPanelLocationY = 110;
 	static public Font searchPanelFont = new Font("黑体",Font.BOLD,25);
 	
@@ -16,6 +16,10 @@ public class SizeAndLocationAndFont {
 	static public int barWidth = 10;
 	
 	static public Color tableLabelColor = new Color(170, 170, 170);
+	
+	static public int quickCheckWidth = 30, quickCheckHeight = 30;
+	
+	static public int quickCheckLocationX = 900, quickCheckLocationY = 110;
 	
 	//开始界面
 	static public int startPanelOriWidth = 337, startPanelOriHeight = 165;
@@ -43,6 +47,8 @@ public class SizeAndLocationAndFont {
 	static public int playerCountHeadListForColumnPanelHeight = 45;
 	
 	static public int playerCountLeftSide = 80, playerCountRightSide = 20, playerCountDownSide = 20;
+	
+//	static public int playerCount
 	
 	//球队统计面板设置参数
 	static public int teamCountTablePanelWidth = frameWidth, teamCountTablePanelHeight = 410;
