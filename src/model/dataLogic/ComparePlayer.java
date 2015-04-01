@@ -618,7 +618,7 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getFoulNum() >= p2.getFoulNum()){
+			if(p1.getTurnoverNum() >= p2.getTurnoverNum()){
 				result = 1;
 			}
 			if(!b){
@@ -641,7 +641,7 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getAveFoulNum() >= p2.getAveFoulNum()){
+			if(p1.getAveTurnoverNum() >= p2.getAveTurnoverNum()){
 				result = 1;
 			}
 			if(!b){
@@ -664,7 +664,7 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getTurnoverNum() >= p2.getTurnoverNum()){
+			if(p1.getFoulNum() >= p2.getFoulNum()){
 				result = 1;
 			}
 			if(!b){
@@ -687,7 +687,7 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getAveTurnoverNum() >= p2.getAveTurnoverNum()){
+			if(p1.getAveFoulNum() >= p2.getAveFoulNum()){
 				result = 1;
 			}
 			if(!b){
