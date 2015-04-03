@@ -18,7 +18,7 @@ public class ComparePlayer {
 	// "投篮命中率", "三分命中率", "罚球命中率", "赛季总抢断", "场均抢断", "赛季总盖帽", "场均盖帽",
 	// "赛季总失误数", "场均失误数", "赛季总犯规数", "场均犯规数", "赛季总得分", "场均得分",
 	// "效率", "GmSc效率值", "真实命中率", "投篮效率", "篮板率", "进攻篮板率", "防守篮板率",
-	// "助攻率", "抢断率", "盖帽率", "失误率", "使用率"
+	// "助攻率", "抢断率", "盖帽率", "失误率", "使用率", "近五场得分提升", "近五场助攻提升", "近五场篮板提升"
 	
 	Comparator[] comparator;
 	
@@ -72,7 +72,10 @@ public class ComparePlayer {
 				new SortByStealRate(b),
 				new SortByBlockRate(b),
 				new SortByTurnOverRate(b),
-				new SortByUseRate(b)
+				new SortByUseRate(b),
+				new SortByRecentPoints(b),
+				new SortByRecentAssist(b),
+				new SortByRecentRebound(b)
 		};
 	}
 	
@@ -1020,6 +1023,74 @@ public class ComparePlayer {
 
 	}
 
+	public class SortByRecentPoints implements Comparator {
+
+		boolean b;
+		public SortByRecentPoints(boolean isPositiveSequence) {
+			b = isPositiveSequence;
+		}
+		
+		public int compare(Object o1, Object o2) {
+			// TODO 近五场得分提升排序
+			int result = -1;
+			PlayerVO p1 = (PlayerVO) o1;
+			PlayerVO p2 = (PlayerVO) o2;
+			if(p1.getRecentPointAdvance() >= p2.getRecentPointAdvance()){
+				result = 1;
+			}
+			if(!b){
+				result = -result;
+			}
+			return result;
+		}
+
+	}
+	
+	public class SortByRecentAssist implements Comparator {
+
+		boolean b;
+		public SortByRecentAssist(boolean isPositiveSequence) {
+			b = isPositiveSequence;
+		}
+		
+		public int compare(Object o1, Object o2) {
+			// TODO 近五场助攻提升排序
+			int result = -1;
+			PlayerVO p1 = (PlayerVO) o1;
+			PlayerVO p2 = (PlayerVO) o2;
+			if(p1.getRecentAssistAdvance() >= p2.getRecentAssistAdvance()){
+				result = 1;
+			}
+			if(!b){
+				result = -result;
+			}
+			return result;
+		}
+
+	}
+	
+	public class SortByRecentRebound implements Comparator {
+
+		boolean b;
+		public SortByRecentRebound(boolean isPositiveSequence) {
+			b = isPositiveSequence;
+		}
+		
+		public int compare(Object o1, Object o2) {
+			// TODO 近五场篮板提升排序
+			int result = -1;
+			PlayerVO p1 = (PlayerVO) o1;
+			PlayerVO p2 = (PlayerVO) o2;
+			if(p1.getRecentReboundAdvance() >= p2.getRecentReboundAdvance()){
+				result = 1;
+			}
+			if(!b){
+				result = -result;
+			}
+			return result;
+		}
+
+	}
 
 	public class SortByPointReboundAssist implements Comparator {
 
@@ -1050,7 +1121,7 @@ public class ComparePlayer {
 			}
 			return result;
 		}
-
 	}
 	
+
 }

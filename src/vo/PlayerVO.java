@@ -643,9 +643,15 @@ public class PlayerVO {
 			nowAveRebound = nowAveList[1];
 			nowAveAssist = nowAveList[2];
 			
-			recentPointAdvance = (nowAvePoint - preAvePoint) / preAvePoint;
-			recentReboundAdvance = (nowAveRebound - preAveRebound) / preAveRebound;
-			recentAssistAdvance = (nowAveAssist - preAveAssist) / preAveAssist;
+			if(preAvePoint != 0){
+				recentPointAdvance = (nowAvePoint - preAvePoint) / preAvePoint;
+			}
+			if(preAveRebound != 0){
+				recentReboundAdvance = (nowAveRebound - preAveRebound) / preAveRebound;
+			}
+			if(preAveAssist != 0){
+				recentAssistAdvance = (nowAveAssist - preAveAssist) / preAveAssist;
+			}
 		}
 
 	}
@@ -702,7 +708,7 @@ public class PlayerVO {
 	 * "投篮命中率", "三分命中率", "罚球命中率", "赛季总抢断", "场均抢断", "赛季总盖帽", "场均盖帽",
 	 * "赛季总失误数", "场均失误数", "赛季总犯规数", "场均犯规数", "赛季总得分", "场均得分",
 	 * "效率", "GmSc效率值", "真实命中率", "投篮效率", "篮板率", "进攻篮板率", "防守篮板率",
-	 * "助攻率", "抢断率", "盖帽率", "失误率", "使用率"
+	 * "助攻率", "抢断率", "盖帽率", "失误率", "使用率", "近五场得分提升", "近五场助攻提升", "近五场篮板提升"
 	 * @return
 	 */
 	public String[] getPlayerInfo(){
@@ -734,7 +740,8 @@ public class PlayerVO {
 				toString(GmSc), toString(trueShootingPercentage), toString(shootingEfficiency),
 				toString(reboundRate), toString(offensiveReboundRate), toString(defensiveReboundRate),
 				toString(assistRate), toString(stealRate), toString(blockRate),
-				toString(turnoverRate), toString(useRate)
+				toString(turnoverRate), toString(useRate), toString(recentPointAdvance), 
+				toString(recentAssistAdvance), toString(recentReboundAdvance)
 				
 		};
 
