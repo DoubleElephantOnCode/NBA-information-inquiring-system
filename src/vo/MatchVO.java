@@ -381,6 +381,7 @@ public class MatchVO {
 		//TODO 尚未完成
 		//主队
 		for(MatchDataPerPlayerVO homePlayerData : homePlayerList){
+			homePlayerData.setTimeOfMatch(timeOfMatch);
 			homePlayerData.setTimeOfAllPlayers(new MyPresentTime(
 					((scoreVOList.size() - 4) * 5 +48) * 5, 0));
 			homePlayerData.setAllReboundNum(homeTotalReboundsNum);
@@ -401,6 +402,7 @@ public class MatchVO {
 		}
 		//客队
 		for(MatchDataPerPlayerVO awayPlayerData : awayPlayerList){
+			awayPlayerData.setTimeOfMatch(timeOfMatch);
 			awayPlayerData.setTimeOfAllPlayers(new MyPresentTime(
 					((scoreVOList.size() - 4) * 5 +48) * 5, 0));
 			awayPlayerData.setAllReboundNum(awayTotalReboundsNum);;

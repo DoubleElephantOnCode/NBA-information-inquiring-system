@@ -1,5 +1,7 @@
 package vo;
 
+import java.util.Date;
+
 
 /**
  * 一场比赛里一个球员的数据
@@ -7,7 +9,10 @@ package vo;
  * @data 2015年3月9日 下午4:22:06
  */
 public class MatchDataPerPlayerVO {
-	
+	/**
+	 * 比赛时间
+	 */
+	public Date timeOfMatch;
 	/**
 	 * 所属队伍缩写
 	 */
@@ -556,6 +561,14 @@ public class MatchDataPerPlayerVO {
 
 	public void setPartition(String partition) {
 		this.partition = partition;
+	}
+
+	public Date getTimeOfMatch() {
+		return timeOfMatch;
+	}
+
+	public void setTimeOfMatch(Date timeOfMatch) {
+		this.timeOfMatch = timeOfMatch;
 	}
 	
 	
