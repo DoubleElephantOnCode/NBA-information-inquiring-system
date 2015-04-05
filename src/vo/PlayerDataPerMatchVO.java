@@ -281,6 +281,7 @@ public class PlayerDataPerMatchVO {
 		// TODO Auto-generated constructor stub
 		this.playerName = matchData.getPlayerName();
 		this.teamName = matchData.getTeamName();
+//		this.matchDate = matchData
 		this.twoSides = matchData.getTwoSides();
 		this.position = matchData.getPosition();
 		this.playTime = matchData.getPresentTime();
@@ -603,6 +604,10 @@ public class PlayerDataPerMatchVO {
 
 	public double getAllTurnoverNum() {
 		return allTurnoverNum;
+	}
+
+	public String getMatchDate() {
+		return matchDate;
 	}
 
 	

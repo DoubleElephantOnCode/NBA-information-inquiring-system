@@ -87,17 +87,23 @@ public class SelectPlayer {
 	
 	
 	/**
-	 * 根据近五场提升筛选球员
+	 * 根据近五场提升筛选球员 
+	 * @return
 	 */
-	public void selectByRecentAdvance(){
-		//TODO
+	public ArrayList<PlayerVO> selectByRecentAdvance(){
+		//TODO 根据近五场提升筛选球员
+		return null;
 	}
 	
 	/**
 	 * 筛选热点球员
+	 * @param isSeason 是否筛选赛季热点球员
+	 * @param selectNum 筛选人数
+	 * @return
 	 */
-	public void selectHotPlayers(){
-		//TODO
+	public ArrayList<PlayerVO> selectHotPlayers(boolean isSeason, int selectNum){
+		//TODO 是否筛选赛季热点球员
+		return null;
 	}
 	
 //	/**
