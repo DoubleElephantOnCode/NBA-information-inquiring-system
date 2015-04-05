@@ -221,6 +221,7 @@ public class TeamCountTablePanel extends JPanel{
 				p.changeRow(t-p.pointerRow);
 				hpR.moveToIndex(p.pointerRow);
 				teamPic.moveToIndex(p.pointerRow);
+				setTablePanelRowIcon();
 			}
 		});
 		

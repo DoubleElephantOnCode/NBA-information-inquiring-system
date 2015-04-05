@@ -6,9 +6,11 @@ import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
 
 public class IComboBox extends JComboBox{  
-   
- public IComboBox(){  
+ int width, height;
+ public IComboBox(int width, int height){  
   super();  
+  this.width = width;
+  this.height = height;
   init();  
  }  
  public IComboBox(ComboBoxModel model){  
@@ -25,7 +27,7 @@ public class IComboBox extends JComboBox{
  }  
  private void init(){  
   setOpaque(false);  
-  setUI(new IComboBoxUI());  
+  setUI(new IComboBoxUI(width, height));  
   setRenderer(new IComboBoxRenderer());  
   setBackground(XUtil.defaultComboBoxColor);
  }  

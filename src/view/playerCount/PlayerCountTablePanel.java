@@ -216,6 +216,7 @@ public class PlayerCountTablePanel extends JPanel{
 				int t = (int) (row * bcp.position);
 				p.changeRow(t-p.pointerRow);
 				hpR.moveToIndex(p.pointerRow);
+				setTablePanelRowIcon();
 			}
 		});
 		

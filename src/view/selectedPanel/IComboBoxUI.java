@@ -28,12 +28,12 @@ public class IComboBoxUI extends BasicComboBoxUI {
  private static ImageIcon arrowIconInto;
  private static ImageIcon arrowIcon;
  
- public IComboBoxUI() {  
+ public IComboBoxUI(int width, int height) {  
   super();  
   arrowIconInto = new ImageIcon(File.file + File.arrowInto + File.PNG);
   arrowIcon = new ImageIcon(File.file + File.arrow + File.PNG);
-  arrowIcon.setImage(arrowIcon.getImage().getScaledInstance(30, 30,Image.SCALE_DEFAULT));
-  arrowIconInto.setImage(arrowIconInto.getImage().getScaledInstance(30, 30,Image.SCALE_DEFAULT));
+  arrowIcon.setImage(arrowIcon.getImage().getScaledInstance(width, height,Image.SCALE_DEFAULT));
+  arrowIconInto.setImage(arrowIconInto.getImage().getScaledInstance(width, height,Image.SCALE_DEFAULT));
  } 
  
  protected JButton createArrowButton() {  
