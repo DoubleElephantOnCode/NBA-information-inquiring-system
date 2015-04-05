@@ -85,6 +85,21 @@ public class SelectPlayer {
 		return players;
 	}
 	
+	
+	/**
+	 * 根据近五场提升筛选球员
+	 */
+	public void selectByRecentAdvance(){
+		//TODO
+	}
+	
+	/**
+	 * 筛选热点球员
+	 */
+	public void selectHotPlayers(){
+		//TODO
+	}
+	
 //	/**
 //	 * 排序并筛选
 //	 * @return
