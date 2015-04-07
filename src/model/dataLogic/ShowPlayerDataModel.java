@@ -192,6 +192,28 @@ public class ShowPlayerDataModel {
 		
 	}
 	
-	
+	/**
+	 * 筛选热点球员
+	 * @param isSeason 是否筛选赛季热点球员
+	 * @param selectNum 筛选数目
+	 * @param selectItem 筛选依据项
+	 */
+	public void selectHotPlayer(final boolean isSeason,final String presentDate, final int selectNum, final int selectItem){
+		new Waiting(){
+			@Override
+			protected Void doInBackground() throws Exception{
+				super.doInBackground();
+
+//				ArrayList<PlayerVO> playerList = SelectPlayer.selectHotPlayers(
+//						SelectPlayer.selectPlayer(PlayerList.players, "-ALL", "-ALL"),
+//						isSeason, selectNum, selectItem);
+//
+//				PlayerVO player = playerList.get(0);
+				
+				return null;
+			}
+			
+		}.execute();
+	}
 
 }

@@ -1,8 +1,8 @@
 package model.dataLogic;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
+import vo.PlayerDataPerMatchVO;
 import vo.PlayerVO;
 
 
@@ -14,6 +14,8 @@ import vo.PlayerVO;
  */
 public class SelectPlayer {
 	
+	private String defualtPosition = "-ALL";
+	private String defaultArea = "-ALL";
 
 	public SelectPlayer() {
 
@@ -97,13 +99,34 @@ public class SelectPlayer {
 	
 	/**
 	 * 筛选热点球员
+	 * @param playerList 待筛选的球员列表
 	 * @param isSeason 是否筛选赛季热点球员
+	 * @param presentDate 当前日期
 	 * @param selectNum 筛选人数
-	 * @return
+	 * @param selectItem 筛选依据项
+	 * @return 
 	 */
-	public ArrayList<PlayerVO> selectHotPlayers(boolean isSeason, int selectNum){
+	public static ArrayList<PlayerVO> selectHotPlayers(ArrayList<PlayerVO> playerList,
+			boolean isSeason, String presentDate, int selectNum, int selectItem){
 		//TODO 是否筛选赛季热点球员
-		return null;
+		ArrayList<PlayerVO> players = new ArrayList<PlayerVO>();
+		
+		if(!isSeason){	//筛选的是当天热点球员
+			for (int i = 0; i < playerList.size(); i++) {
+				PlayerVO pvo = playerList.get(i);
+				ArrayList<PlayerDataPerMatchVO> matchDataList = pvo.getDataPerMatchList();
+				//最后一场比赛的数据
+				PlayerDataPerMatchVO latestMatchData = matchDataList.get(matchDataList.size() - 1);
+				if(presentDate.equals( latestMatchData.getMatchDate() )){
+					//如果最后一场比赛的日期是当前日期
+				}
+			}
+		} else {	//筛选赛季热点球员
+			
+		}
+		
+		
+		return players;
 	}
 	
 //	/**

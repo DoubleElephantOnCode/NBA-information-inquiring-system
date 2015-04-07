@@ -17,6 +17,9 @@ import vo.ScoreVO;
 import constant.FilePath;
 
 public class ReadMatchData {
+	
+	private final int datePadding = 1900;
+	
 	public void readMatchData(){
 		File matchFile = new File(FilePath.matchPath);
 		 File[] matches = matchFile.listFiles();
@@ -60,11 +63,11 @@ public class ReadMatchData {
 			int day = Integer.parseInt(strings[0].split("-")[1]);
 			int year = 0;
 			if(month > 6){
-				year = 2013;
+				year = 2013 - datePadding;
 			}else{
-				year = 2014;
+				year = 2014 - datePadding;
 			}
-			Date timeOfMatch = new Date(year,month,day);
+			Date timeOfMatch = new Date(year,month - 1,day);
 			String awayTeam = strings[1].split("-")[0];
 			String homeTeam = strings[1].split("-")[1];
 			ScoreVO totalScore = new ScoreVO(strings[2]);

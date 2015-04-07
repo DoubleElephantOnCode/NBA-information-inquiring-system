@@ -1,5 +1,7 @@
 package vo;
 
+import java.text.SimpleDateFormat;
+
 /**
  * 
  * @author HalaWKS
@@ -21,6 +23,12 @@ public class PlayerDataPerMatchVO {
 	 * 对阵双方
 	 */
 	private String twoSides;
+	
+	
+	/**
+	 * 对手球队名
+	 */
+	private String rivalTeam;
 	
 	/**
 	 * 球员所属球队
@@ -279,9 +287,11 @@ public class PlayerDataPerMatchVO {
 	
 	public PlayerDataPerMatchVO(MatchDataPerPlayerVO matchData) {
 		// TODO Auto-generated constructor stub
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
 		this.playerName = matchData.getPlayerName();
 		this.teamName = matchData.getTeamName();
-//		this.matchDate = matchData
+		this.matchDate = sdf.format(matchData.getTimeOfMatch());
 		this.twoSides = matchData.getTwoSides();
 		this.position = matchData.getPosition();
 		this.playTime = matchData.getPresentTime();
@@ -313,6 +323,13 @@ public class PlayerDataPerMatchVO {
 		this.allShootNum = matchData.getAllShootNum();
 		this.allFreeThrowShootNum = matchData.getAllFreeThrowShootNum();
 		this.allTurnoverNum = matchData.getAllTurnoverNum();
+		
+		String[] bothTeam = this.twoSides.split("-");
+		if(bothTeam[0].equalsIgnoreCase(this.teamName)){
+			rivalTeam = bothTeam[1];
+		} else {
+			rivalTeam = bothTeam[0];
+		}
 		
 		judgeDoubleDouble();
 		judgeStarting();
