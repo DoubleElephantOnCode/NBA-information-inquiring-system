@@ -198,17 +198,54 @@ public class ShowPlayerDataModel {
 	 * @param selectNum 筛选数目
 	 * @param selectItem 筛选依据项
 	 */
-	public void selectHotPlayer(final boolean isSeason,final String presentDate, final int selectNum, final int selectItem){
+	public void selectHotPlayer(final boolean isSeason,
+			final String presentDate, final int selectNum, final int selectItem){
 		new Waiting(){
 			@Override
 			protected Void doInBackground() throws Exception{
 				super.doInBackground();
 
-//				ArrayList<PlayerVO> playerList = SelectPlayer.selectHotPlayers(
-//						SelectPlayer.selectPlayer(PlayerList.players, "-ALL", "-ALL"),
-//						isSeason, selectNum, selectItem);
-//
-//				PlayerVO player = playerList.get(0);
+				ArrayList<PlayerVO> playerList = SelectPlayer.selectHotPlayers(
+						PlayerList.players, isSeason, presentDate, selectNum, selectItem);
+				
+				PlayerVO player = playerList.get(0);
+				
+				if(!isSeason){	//筛选的是当天热点球员
+					String[][] content =
+							new String[playerList.size()][PlayerList.getHeadForDailyHotPlayers().length];
+					//给要显示的表格填上内容
+					for (int i = 0; i < playerList.size(); i++) {
+						player = playerList.get(i);
+						String[] s = player.getDailyHotPlayerInfo();
+						for (int j = 0; j < s.length; j++) {
+							content[i][j] = s[j];
+						}
+					}
+					//球员姓名列
+					String[] row = new String[playerList.size()];
+					for (int i = 0; i < playerList.size(); i++) {
+						row[i] = playerList.get(i).getName();
+					}
+					//TODO 调用界面层方法，重设界面
+					
+				} else {	//筛选的是赛季热点球员
+					String[][] content =
+							new String[playerList.size()][PlayerList.getHeadForColumn().length];
+					//给要显示的表格填上内容
+					for (int i = 0; i < playerList.size(); i++) {
+						player = playerList.get(i);
+						String[] s = player.getPlayerInfo();
+						for (int j = 0; j < s.length; j++) {
+							content[i][j] = s[j];
+						}
+					}
+					//球员姓名列
+					String[] row = new String[playerList.size()];
+					for (int i = 0; i < playerList.size(); i++) {
+						row[i] = playerList.get(i).getName();
+					}
+					//TODO 调用界面层方法，重设界面
+				}
 				
 				return null;
 			}
@@ -216,4 +253,10 @@ public class ShowPlayerDataModel {
 		}.execute();
 	}
 
+	/**
+	 * 筛选进步最快球员
+	 */
+	public void selectProgressPlayer(){
+		
+	}
 }
