@@ -22,8 +22,8 @@ public class SizeAndLocationAndFont {
 	static public int quickCheckLocationX = 1080, quickCheckLocationY = 130;
 	
 	//开始界面
-	static public int startPanelOriWidth = 404, startPanelOriHeight = 195;
-	static public int startPanelEnterWidth = 408, startPanelEnterHeight = 206;
+	static public int startPanelOriWidth = 404, startPanelOriHeight = 198;
+	static public int startPanelEnterWidth = 428, startPanelEnterHeight = 221;
 	
 	static public int startPanelSplitX = 12, startPanelSplitY = 6;
 	
