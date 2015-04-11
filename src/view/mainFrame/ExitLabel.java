@@ -18,8 +18,8 @@ public class ExitLabel {
 	public ExitLabel(){
 		exit = Main.setJLabelWithIcon(File.file + File.exit + File.PNG, width, height);
 		exitEnter = Main.setJLabelWithIcon(File.file + File.exit + File.enter + File.PNG, width, height);
-		exit.setLocation(Main.width - width - 10, 10);
-		exitEnter.setLocation(Main.width - width - 10, 10);
+		exit.setLocation(Main.width - width - 25, 25);
+		exitEnter.setLocation(Main.width - width - 25, 25);
 		exitEnter.setVisible(false);
 		
 		exit.setOpaque(false);

@@ -73,4 +73,10 @@ public class File {
 	public static String quickCheck = "quick_search";
 	
 	public static String infomationFrame = "information_frame";
+	
+	public static String teamChosenPaneTitle = "WE";
+	
+	public static String teamLogoFrame = "teamLogo_frame";
+	
+	public static String teamLogoFrameLight = "teamLogo_frame_light";
 }

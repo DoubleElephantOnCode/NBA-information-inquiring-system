@@ -18,8 +18,8 @@ public class MenuLabel {
 	public MenuLabel(){
 		menu = Main.setJLabelWithIcon(File.file + File.menu + File.PNG, width, height);
 		menuEnter = Main.setJLabelWithIcon(File.file + File.menu + File.enter + File.PNG, width, height);
-		menu.setLocation(30, 15);
-		menuEnter.setLocation(30, 15);
+		menu.setLocation(25, 20);
+		menuEnter.setLocation(25, 20);
 		menuEnter.setVisible(false);
 		
 		menu.setOpaque(false);

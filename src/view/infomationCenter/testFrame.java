@@ -27,6 +27,7 @@ public class testFrame {
 		t.updateUI();
 		bg.add(t);
 		bg.updateUI();
+		bg.repaint();
 		test.setContentPane(bg);
 	    test.repaint();
 	
