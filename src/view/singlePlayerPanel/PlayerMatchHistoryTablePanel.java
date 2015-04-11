@@ -90,7 +90,7 @@ public class PlayerMatchHistoryTablePanel extends JPanel{
 		matchTime[0] = new JLabel("比赛时间");
 		matchTime[0].setForeground(fontColor);
 		matchTime[0].setHorizontalAlignment(SwingConstants.CENTER);
-		matchTime[1] = setJLabelWithIcon(File.file + File.backgroundForHeadListForColumn + File.PNG, headListForRowPanelWidth, headListForColumnPanelHeight);
+		matchTime[1] = setJLabelWithIcon(File.file + File.table_cell2_light + File.PNG, headListForRowPanelWidth, headListForColumnPanelHeight);
 		for(int i = 0; i < 2; i++){
 			matchTime[i].setSize(headListForRowPanelWidth, headListForColumnPanelHeight);
 			matchTime[i].setLocation(leftSide, 0);
@@ -104,7 +104,7 @@ public class PlayerMatchHistoryTablePanel extends JPanel{
 		brp.setLocation(leftSide + headListForRowPanelWidth, headListForColumnPanelHeight + tableHeight);
 		brp.setPosition(pointerColumn);
 		
-		hpcBackground = setJLabelWithIcon(File.file + File.backgroundForHeadListForColumn + File.PNG, tableWidth, headListForColumnPanelHeight);
+		hpcBackground = setJLabelWithIcon(File.file + File.table_cell2_light + File.PNG, tableWidth, headListForColumnPanelHeight);
 		hpC.setBackground(hpcBackground);
 		
 		grid_deep = new ImageIcon(File.file + File.table_cell2_deep + File.PNG);

@@ -16,6 +16,7 @@ import model.readData.ReadPlayerData;
 import model.readData.ReadTeamData;
 import view.SVGLabel;
 import view.SizeAndLocationAndFont;
+import view.infomationCenter.InformationCenterPanel;
 import view.playerCount.PlayerCountPanel;
 import view.startView.StartPanel;
 import view.teamCount.TeamCountPanel;
@@ -40,6 +41,7 @@ public class Main {
 	
 	static TeamCountPanel teamCountPanel;
 	static PlayerCountPanel playerCountPanel;
+	static InformationCenterPanel infomationCenterPanel;
 	
 	public Main(){
 		

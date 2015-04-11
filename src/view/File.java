@@ -71,4 +71,6 @@ public class File {
 	public static String selected = "sort_out";
 	
 	public static String quickCheck = "quick_search";
+	
+	public static String infomationFrame = "information_frame";
 }

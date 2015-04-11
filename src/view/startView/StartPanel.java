@@ -150,14 +150,21 @@ public class StartPanel extends JPanel{
 				new ShowTeamController().showTeamTable();
 			}
 		});
-		TeamInfoEnter.addMouseListener(new LabelEnterListener(TeamInfo, TeamInfoEnter));
+		TeamInfoEnter.addMouseListener(new LabelEnterListener(TeamInfo, TeamInfoEnter){
+			public void mouseClicked(MouseEvent e) {
+				//TODO
+			}
+		});
 		PlayerCountEnter.addMouseListener(new LabelEnterListener(PlayerCount, PlayerCountEnter){
 			public void mouseClicked(MouseEvent e) {
 				new ShowPlayerController().showPlayerInfo("-ALL", "-ALL");
-				System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 			}
 		});
-		PlayerInfoEnter.addMouseListener(new LabelEnterListener(PlayerInfo, PlayerInfoEnter));
+		PlayerInfoEnter.addMouseListener(new LabelEnterListener(PlayerInfo, PlayerInfoEnter){
+			public void mouseClicked(MouseEvent e) {
+				//TODO 
+			}
+		});
 		
 		setLocation(0, -5);
 		setSize(width, height);

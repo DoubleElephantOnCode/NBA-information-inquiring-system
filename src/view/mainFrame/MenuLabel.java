@@ -34,6 +34,7 @@ public class MenuLabel {
 				//TODO 移除加入的界面
 				if(Main.teamCountPanel != null) Main.mainFrame.remove(Main.teamCountPanel);
 				if(Main.playerCountPanel != null) Main.mainFrame.remove(Main.playerCountPanel);
+				if(Main.infomationCenterPanel != null) Main.mainFrame.remove(Main.infomationCenterPanel);
 				
 				StartPanel.exit = new ExitLabel();
 				StartPanel.exit.addToPanel(StartPanel.self);
