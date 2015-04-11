@@ -55,7 +55,7 @@ public class InformationCenterPanel extends JPanel{
 		this.add(searchPlayer, 0);
 		this.setLayout(null);
 		this.setSize(width, height);
-		this.setLocation(0, -5);
+		this.setLocation(0, 0);
 	}
 	
 	
