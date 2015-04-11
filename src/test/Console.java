@@ -2,6 +2,10 @@ package test;
 
 import java.io.PrintStream;
 
+import model.readData.ReadMatchData;
+import model.readData.ReadPlayerData;
+import model.readData.ReadTeamData;
+
 /**
  * 
  * @author HalaWKS
@@ -16,7 +20,22 @@ public class Console {
 	 * @param args
 	 */
 	public void execute(PrintStream out, String[] args){
+		 ReadTeamData readTeam;
+		ReadPlayerData readPlayer;
+		 ReadMatchData readMatch;
 		
+		readTeam = new ReadTeamData();
+		readTeam.readTeamData();
+		
+		readPlayer = new ReadPlayerData();
+		readPlayer.readPlayerData();
+		
+		readMatch = new ReadMatchData();
+		readMatch.readMatchData();
+		
+		
+		TeamTestCommand t = new TeamTestCommand();
+		t.analysisCommand(out, args);
 	}
 	
 }

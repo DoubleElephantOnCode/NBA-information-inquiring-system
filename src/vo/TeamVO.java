@@ -3,6 +3,9 @@ package vo;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import test.data.TeamHighInfo;
+import test.data.TeamHotInfo;
+import test.data.TeamNormalInfo;
 import constant.FilePath;
 
 /**
@@ -596,6 +599,86 @@ public class TeamVO {
 		return m.toString();
 	}
 
+	public TeamNormalInfo getNormalInfo(boolean isAvg){
+		TeamNormalInfo normalInfo = new TeamNormalInfo();
+		if(isAvg){
+			normalInfo.setAssist(aveAssistNum);
+			normalInfo.setBlockShot(aveBlockNum);
+			normalInfo.setDefendRebound(aveDefensiveReboundsNum);
+			normalInfo.setFault(aveTurnoverNum);
+			normalInfo.setFoul(aveFoulNum);
+			normalInfo.setNumOfGame((int)matchNum);
+			normalInfo.setOffendRebound(aveOffensiveReboundsNum);
+			normalInfo.setPenalty(totalFreeThrowRate);
+			normalInfo.setPoint(aveScore);
+			normalInfo.setRebound(aveTotalReboundsNum);
+			normalInfo.setShot(totalScoreRate);
+			normalInfo.setSteal(aveStealNum);
+			normalInfo.setTeamName(abbreviation);
+			normalInfo.setThree(totalThreePointRate);
+		}else{
+			normalInfo.setAssist(totalAssistNum);
+			normalInfo.setBlockShot(totalBlockNum);
+			normalInfo.setDefendRebound(totalDefensiveReboundsNum);
+			normalInfo.setFault(totalTurnoverNum);
+			normalInfo.setFoul(totalFoulNum);
+			normalInfo.setNumOfGame((int)matchNum);
+			normalInfo.setOffendRebound(totalOffensiveReboundsNum);
+			normalInfo.setPenalty(totalFreeThrowRate);
+			normalInfo.setPoint(totalScore);
+			normalInfo.setRebound(totalTotalReboundsNum);
+			normalInfo.setShot(totalScoreRate);
+			normalInfo.setSteal(totalStealNum);
+			normalInfo.setTeamName(abbreviation);
+			normalInfo.setThree(totalThreePointRate);
+		}
+		return normalInfo;
+	}
+	
+	public TeamHighInfo getHighInfo(){
+		TeamHighInfo highInfo = new TeamHighInfo();
+		highInfo.setAssistEfficient(totalAssistRate);
+		highInfo.setDefendEfficient(totalDefendEfficiency);
+		highInfo.setDefendReboundEfficient(totalDefensiveReboundEfficiency);
+		highInfo.setOffendEfficient(totalAttackEfficiency);
+		highInfo.setOffendReboundEfficient(totalAttackReboundEfficiency);
+		highInfo.setOffendRound(totalAttackRound);
+		highInfo.setStealEfficient(totalStealEfficiency);
+		highInfo.setTeamName(abbreviation);
+		highInfo.setWinRate(totalWinningRate);
+		return highInfo;
+	}
+	
+	
+	public TeamHotInfo getHotInfo(String stringField,int field){
+		TeamHotInfo hotInfo = new TeamHotInfo();
+		hotInfo.setField(stringField);
+		hotInfo.setLeague(competion);
+		hotInfo.setTeamName(abbreviation);
+		hotInfo.setValue(analysisField(field));
+		return hotInfo;
+	}
+	
+	public double analysisField(int field){
+		double d= 0.0;
+		switch(field){
+		case 41:  d = aveScore; return d;
+		case 35:  d = aveTotalReboundsNum;return d;
+		case 36: d = aveAssistNum;return d;
+		case 38: d = aveBlockNum;return d;
+		case 37: d = aveStealNum;return d;
+		case 40: d = aveFoulNum;return d;
+		case 39: d = aveTurnoverNum;return d;
+		case 16: d = totalScoreRate;return d;
+		case 17: d = totalThreePointRate;return d;
+		case 18: d = totalFreeThrowRate;return d;
+		case 34: d = aveDefensiveReboundsNum;return d;
+		case 33: d = aveOffensiveReboundsNum;return d;
+		}
+		return d;
+	}
+	
+	
 	public String getName() {
 		return name;
 	}

@@ -1,9 +1,7 @@
 package model.dataLogic;
-
 import java.util.Comparator;
 
 import vo.TeamVO;
-
 public class CompareTeam {
 	Comparator[] compartor;
 	public CompareTeam(boolean isPositiveSequence){
