@@ -25,6 +25,8 @@ public class InformationCenterPanel extends JPanel{
 	
 	static SearchPanel searchPlayer;
 	
+	static TeamLogoChosenPane teamChosen;
+	
 	static int index = 0;
 	
 	public InformationCenterPanel(int index){
@@ -52,6 +54,9 @@ public class InformationCenterPanel extends JPanel{
 			}
 		});
 		
+		teamChosen = new TeamLogoChosenPane();
+		
+		this.add(teamChosen);
 		this.add(searchPlayer, 0);
 		this.setLayout(null);
 		this.setSize(width, height);

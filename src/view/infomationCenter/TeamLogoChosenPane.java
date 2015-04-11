@@ -1,12 +1,14 @@
 package view.infomationCenter;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.io.File;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import view.File;
+import view.SVGLabel;
 import view.mainFrame.Main;
 
 /***
@@ -17,30 +19,99 @@ import view.mainFrame.Main;
 
 public class TeamLogoChosenPane extends JPanel{
 
-	
-	final static String[] teamName={
-		"ATL","BKN","BOS","CHA","CHI","CLE","DAL","DEN","DET","GSW",
-		"HOU","IND","LAC","LAL","MEM","MIA","MIL","MIN","NOP","NYK",
-		"OKC","ORL","PHI","PHX","POR","SAC","SAS","TOR","UTA","WAS"
+		
+	final static String[] EastTeamName={
+		"ATL","BKN","BOS","CHA","CHI","CLE","DET","IND","MIA","MIL","NYK","ORL","PHI","TOR","WAS"
 	};
 	
+	final static String[] WestTeamName={
+		"DAL","DEN","GSW","HOU","LAC","LAL","MEM","MIN","NOP","OKC","PHX","POR","SAC","SAS","UTA"
+	};
+	
+	JLabel title;
 	JLabel backgroundIcon;
-	JLabel[] teamLogo;
+	JLabel[] EastTeamBG;
+	JLabel[] EastTeamLogo;
+	JLabel[] WestTeamBG;
+	JLabel[] WestTeamLogo;
+	
+	JLabel light;
 	
 	TeamLogoChosenPane(){
 		
-		this.setSize(148, 576);
+		this.setSize(155, 580);
 		this.setLocation(1024, 60);
         this.setLayout(null);
+        this.setOpaque(false);
 		//this.setBackground(Color.RED);
 		this.setVisible(true);
 		
-		backgroundIcon=Main.setJLabelWithIcon(File.file+"logo_chosen_frame"+File.PNG, 148, 576);
-//		backgroundIcon=Main.setJLabelWithIcon("D://image//combo.png", 67, 54);
+		backgroundIcon = Main.setJLabelWithIcon(view.File.file+"logo_chosen_frame"+view.File.PNG, 155, 580);
 		backgroundIcon.setLocation(0, 0);
 		backgroundIcon.setVisible(true);
+        
+		light = Main.setJLabelWithIcon(view.File.file+"null_light"+view.File.PNG, 73, 36);
+		light.setLocation(5, 37);
+        light.setVisible(false);
+        this.add(light, 0);
+        TeamLabelListener.clicked = light;
 		
+		WestTeamBG = new JLabel[15];
+		EastTeamBG = new JLabel[15];
+		WestTeamLogo = new SVGLabel[15];
+		EastTeamLogo = new SVGLabel[15];
+	
+		//加入队徽
+		for(int i=0; i<15; i++){
+			
+			int x = 5;
+			int y = 37+i*36;
+			
+			WestTeamBG[i] = Main.setJLabelWithIcon(view.File.file+"null"+view.File.PNG, 73, 36);
+//			WestTeamBG[i].setSize(73, 36);
+			WestTeamBG[i].setLocation(x, y);
+			WestTeamBG[i].addMouseListener(new TeamLabelListener(WestTeamName[i], x, y));
+			WestTeamBG[i].setVisible(true);
+			
+			File logoFile = new File("F://课内//软工III//CSEIII data//迭代一数据//teams//"+WestTeamName[i]+".svg");
+			WestTeamLogo[i] = new SVGLabel(logoFile, 73, 36);
+
+			WestTeamLogo[i].setLocation(x, y);
+//			WestTeamLogo[i].addMouseListener(new TeamLabelListener(WestTeamName[i]));
+//			WestTeamBG[i].add(WestTeamLogo[i]);
+			this.add(WestTeamBG[i]);
+			this.add(WestTeamLogo[i]);			
+
+		}
 		
+		for(int i=0; i<15; i++){
+			
+			int x = 78;
+			int y = 37+i*36;
+			
+			EastTeamBG[i] = Main.setJLabelWithIcon(view.File.file+"null"+view.File.PNG, 73, 36);
+//			EastTeamBG[i].setSize(73, 36);
+			EastTeamBG[i].setLocation(x, y);
+			EastTeamBG[i].addMouseListener(new TeamLabelListener(EastTeamName[i], x, y));
+			EastTeamBG[i].setVisible(true);
+
+			File logoFile = new File("F://课内//软工III//CSEIII data//迭代一数据//teams//"+EastTeamName[i]+".svg");
+			EastTeamLogo[i] = new SVGLabel(logoFile, 73, 36);
+
+			EastTeamLogo[i].setLocation(x, y);
+//			EastTeamLogo[i].addMouseListener(new TeamLabelListener(EastTeamName[i]));
+//			EastTeamBG[i].add(EastTeamLogo[i]);
+			this.add(EastTeamBG[i]);
+			this.add(EastTeamLogo[i]);
+			
+		}
+				
+		
+		title = Main.setJLabelWithIcon(view.File.file+"WE"+view.File.PNG, 146, 25);
+		title.setLocation(4, 6);
+		title.setVisible(true);
+		
+		this.add(title);
 		this.add(backgroundIcon);
 		this.updateUI();
 			
