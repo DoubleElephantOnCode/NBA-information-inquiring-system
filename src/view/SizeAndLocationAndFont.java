@@ -85,8 +85,24 @@ public class SizeAndLocationAndFont {
 	//历史比赛信息
 	static public int playerMatchHistoryPanelWidth = singlePlayerPanelWidth-playerPhoto_2Width, playerMatchHistoryPanelHeight = 270;
 	static public int playerMatchHistoryTableWidth = 600, playerMatchHistoryTableHeight = 228;
-	static public int playerMatchHistoryTablePageRow = 6, playerMatchHistoryTablePageColumn = 6;
+	static public int playerMatchHistoryTablePageRow = 6, playerMatchHistoryTablePageColumn = 6;//列表显示行应当为偶数
 	static public int playerMatchHistoryTableLocationX = playerPhoto_2Width, playerMatchHistoryTableLocationY = singlePlayerPanelHeight-playerMatchHistoryPanelHeight;
 	static public int playerMatchHistoryHeadListForRowWidth = 120;
 	static public int playerMatchHistoryHeadListForColumnHeight = 30;
+	
+	//单个球队查看面板设置参数
+	static public int singleTeamPanelWidth = 850, singleTeamPanelHeight = 430;
+	static public int singleTeamPanelLocationX = 153, singleTeamPanelLocationY = 148;
+	
+	static public int teamPicWidth = 115, teamPicHeight = 120;
+	static public int teamPicLocationX = 0, teamPicLocationY = 0;
+	
+	static public int singleTeamInfoTableWidth = singleTeamPanelWidth-teamPicWidth, singleTeamInfoTableHeight = teamPicHeight;
+	
+	static public int teamMatchHistoryPanelWidth = singleTeamPanelWidth, teamMatchHistoryPanelHeight = 270;
+	static public int teamMatchHistoryTableWidth = 700, teamMatchHistoryTableHeight = 228;
+	static public int teamMatchHistoryTablePageRow = 6, teamMatchHistoryTablePageColumn = 7;//列表显示行应当为偶数
+	static public int teamMatchHistoryTableLocationX = 0, teamMatchHistoryTableLocationY = singlePlayerPanelHeight-teamMatchHistoryPanelHeight;
+	static public int teamMatchHistoryHeadListForRowWidth = 120;
+	static public int teamMatchHistoryHeadListForColumnHeight = 30;
 }
