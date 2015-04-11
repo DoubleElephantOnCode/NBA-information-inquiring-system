@@ -439,6 +439,7 @@ public class PlayerVO {
 		
 	}
 	
+
 	public PlayerVO(PlayerDataPerMatchVO matchData) {
 //		当天热点球员： 依据筛选条件（筛选条件包括但不仅限于以下几个方面：得分，篮板，助攻，盖帽，抢断）从今日参加
 //		比赛的所有球员中筛选出前 5 名球员（按照降序排列进行筛选），并对球员的信息进行展示，球员展示信息包括但不仅限
@@ -464,6 +465,11 @@ public class PlayerVO {
 		this.turnoverNum = matchData.getTurnoverNum();
 		this.aveFoulNum = matchData.getFoulNum();
 		this.avePersonalPoints = matchData.getPersonalPoints();
+		
+		this.scoreRate = matchData.getScoreRate();
+		this.threePointScoreRate = matchData.getThreePointScoreRate();
+		this.freeThrowScoreRate = matchData.getFreeThrowScoreRate();
+		
 	}
 	
 	public PlayerVO(String name, String number, String position, String height, String weight,
@@ -733,36 +739,23 @@ public class PlayerVO {
 
 	/**
 	 * 获得当天热点球员要显示的信息
-	 * 姓名、所属球队、位置、两双次数、
-	 * 上场时间、个人得分
+	 * 姓名、所属球队、位置、两双次数、上场时间、当日得分、助攻数、抢断数、盖帽数、命中数、出手数、命中率、
+	 * 三分命中数、三分出手数、三分命中率、罚球命中数、罚球出手数、罚球命中率、进攻篮板数、防守篮板数、总篮板数、失误数、犯规数
 	 * @return
 	 */
-	public String[] getHotPlayerInfoForADay(){
+	public String[] getDailyHotPlayerInfo(){
 		//TODO 获取当天热点球员信息
-		
-//		if(matchData.isDoubleDouble()){
-//			this.doubleDouble++;
-//		}
-//		this.aveMinutes = matchData.getPlayTime();
-//		this.aveScoreNum = matchData.getScoreNum();
-//		this.aveShootNum = matchData.getShootNum();
-//		this.aveThreePointerScoreNum = matchData.getThreePointerScoreNum();
-//		this.aveThreePointerShootNum = matchData.getThreePointerShootNum();
-//		this.aveFreeThrowScoreNum = matchData.getFreeThrowScoreNum();
-//		this.aveFreeThrowShootNum = matchData.getFreeThrowShootNum();
-//		this.aveOffensiveReboundsNum = matchData.getOffensiveReboundsNum();
-//		this.aveDefensiveReboundsNum = matchData.getDefensiveReboundsNum();
-//		this.aveTotalReboundsNum = matchData.getTotalReboundsNum();
-//		this.aveAssistNum = matchData.getAssistNum();
-//		this.aveStealNum = matchData.getStealNum();
-//		this.aveBlockNum = matchData.getBlockNum();
-//		this.turnoverNum = matchData.getTurnoverNum();
-//		this.aveFoulNum = matchData.getFoulNum();
-//		this.avePersonalPoints = matchData.getPersonalPoints();
-		
+	
 		String[] s = new String[]{
 			name, teamName, position, doubleDouble + "", 
-			toString(aveMinutes.getTimeByMinute()), 
+			toString(aveMinutes.getTimeByMinute()), (int)avePersonalPoints + "",
+			(int)aveAssistNum + "", (int)aveStealNum + "", (int)aveBlockNum + "",
+			(int)aveScoreNum + "", (int)aveShootNum + "", toString(this.scoreRate * 100),
+			(int)aveThreePointerScoreNum + "", (int)aveThreePointerShootNum + "",
+			toString(this.threePointScoreRate), (int)aveFreeThrowScoreNum + "",
+			(int)aveFreeThrowShootNum + "", toString(this.freeThrowScoreRate),
+			(int)aveOffensiveReboundsNum + "", (int)aveDefensiveReboundsNum + "",
+			(int)aveTotalReboundsNum + "", (int)turnoverNum + "", (int)aveFoulNum + ""
 		};
 		
 		return s;

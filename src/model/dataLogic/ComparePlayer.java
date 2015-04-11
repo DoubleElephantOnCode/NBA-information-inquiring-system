@@ -22,13 +22,57 @@ public class ComparePlayer {
 	
 	Comparator[] comparator;
 	
+	public ComparePlayer(int i){
+		//TODO 为了筛选进步最快球员设定的方法
+		//降序排列
+		boolean isPositiveSequence = false;
+		
+		comparator = new Comparator[]{
+			new SortByRecentPoints(isPositiveSequence),
+			new SortByRecentAssist(isPositiveSequence),
+			new SortByRecentRebound(isPositiveSequence)
+		};
+	}
+	
+	public ComparePlayer(){
+		//TODO 为了筛选当天热点球员的构造方法
+		//降序排列
+		boolean isPositiveSequence = false;
+		
+//		 姓名、所属球队、位置、两双次数、上场时间、当日得分、助攻数、抢断数、盖帽数、命中数、出手数、命中率、
+//		 三分命中数、三分出手数、三分命中率、罚球命中数、罚球出手数、罚球命中率、进攻篮板数、防守篮板数、总篮板数、失误数、犯规数
+		comparator = new Comparator[]{
+				new SortByName(isPositiveSequence),
+				new SortByTeamName(isPositiveSequence),
+				new SortByPosition(isPositiveSequence),
+				new SortByDoubleDoubleNum(isPositiveSequence),
+				new SortByAvePlayTime(isPositiveSequence),
+				new SortByAvePersonalPoints(isPositiveSequence),
+				new SortByAveAssistNum(isPositiveSequence),
+				new SortByAveStealNum(isPositiveSequence),
+				new SortByAveBlockNum(isPositiveSequence),
+				new SortByAveScoreNum(isPositiveSequence),
+				new SortByAveShootNum(isPositiveSequence),
+				new SortByScoreRate(isPositiveSequence),
+				new SortByAveThreePointScoreNum(isPositiveSequence),
+				new SortByAveThreePointShootNum(isPositiveSequence),
+				new SortByThreePointScoreRate(isPositiveSequence),
+				new SortByAveFreeThrowScoreNum(isPositiveSequence),
+				new SortByAveFreeThrowShootNum(isPositiveSequence),
+				new SortByFreeThrowScoreRate(isPositiveSequence),
+				new SortByOffReboundsNum(isPositiveSequence),
+				new SortByDefReboundsNum(isPositiveSequence),
+				new SortByTotalReboundsNum(isPositiveSequence),
+				new SortByTurnoverNum(isPositiveSequence),
+				new SortByFoulNum(isPositiveSequence)
+		};
+	}
 
 	/**
 	 * 全部球员排序的构造方法
 	 * @param isPositiveSequence
 	 */
 	public ComparePlayer(boolean isPositiveSequence) {
-		// TODO Auto-generated constructor stub
 		boolean b = isPositiveSequence;
 		
 		comparator = new Comparator[]{
@@ -78,6 +122,7 @@ public class ComparePlayer {
 				new SortByRecentRebound(b)
 		};
 	}
+	
 	
 	public class SortByName implements Comparator {
 
@@ -1092,6 +1137,144 @@ public class ComparePlayer {
 
 	}
 
+	public class SortByAveScoreNum implements Comparator {
+
+		boolean b;
+		public SortByAveScoreNum(boolean isPositiveSequence) {
+			b = isPositiveSequence;
+		}
+		
+		public int compare(Object o1, Object o2) {
+			// TODO 单场(或场均)命中数排序
+			int result = -1;
+			PlayerVO p1 = (PlayerVO) o1;
+			PlayerVO p2 = (PlayerVO) o2;
+			if(p1.getAveScoreNum() >= p2.getAveScoreNum()){
+				result = 1;
+			}
+			if(!b){
+				result = -result;
+			}
+			return result;
+		}
+
+	}
+	
+	public class SortByAveShootNum implements Comparator {
+
+		boolean b;
+		public SortByAveShootNum(boolean isPositiveSequence) {
+			b = isPositiveSequence;
+		}
+		
+		public int compare(Object o1, Object o2) {
+			// TODO 单场(或场均)出手数排序
+			int result = -1;
+			PlayerVO p1 = (PlayerVO) o1;
+			PlayerVO p2 = (PlayerVO) o2;
+			if(p1.getAveShootNum() >= p2.getAveShootNum()){
+				result = 1;
+			}
+			if(!b){
+				result = -result;
+			}
+			return result;
+		}
+
+	}
+	
+	public class SortByAveThreePointScoreNum implements Comparator {
+
+		boolean b;
+		public SortByAveThreePointScoreNum(boolean isPositiveSequence) {
+			b = isPositiveSequence;
+		}
+		
+		public int compare(Object o1, Object o2) {
+			// TODO 单场(或场均)三分命中数排序
+			int result = -1;
+			PlayerVO p1 = (PlayerVO) o1;
+			PlayerVO p2 = (PlayerVO) o2;
+			if(p1.getAveThreePointerScoreNum() >= p2.getAveThreePointerScoreNum()){
+				result = 1;
+			}
+			if(!b){
+				result = -result;
+			}
+			return result;
+		}
+
+	}
+	
+	public class SortByAveThreePointShootNum implements Comparator {
+
+		boolean b;
+		public SortByAveThreePointShootNum(boolean isPositiveSequence) {
+			b = isPositiveSequence;
+		}
+		
+		public int compare(Object o1, Object o2) {
+			// TODO 单场(或场均)三分出手数排序
+			int result = -1;
+			PlayerVO p1 = (PlayerVO) o1;
+			PlayerVO p2 = (PlayerVO) o2;
+			if(p1.getAveThreePointerShootNum() >= p2.getAveThreePointerShootNum()){
+				result = 1;
+			}
+			if(!b){
+				result = -result;
+			}
+			return result;
+		}
+
+	}
+	
+	public class SortByAveFreeThrowScoreNum implements Comparator {
+
+		boolean b;
+		public SortByAveFreeThrowScoreNum(boolean isPositiveSequence) {
+			b = isPositiveSequence;
+		}
+		
+		public int compare(Object o1, Object o2) {
+			// TODO 单场(或场均)罚球命中数排序
+			int result = -1;
+			PlayerVO p1 = (PlayerVO) o1;
+			PlayerVO p2 = (PlayerVO) o2;
+			if(p1.getAveFreeThrowScoreNum() >= p2.getAveFreeThrowScoreNum()){
+				result = 1;
+			}
+			if(!b){
+				result = -result;
+			}
+			return result;
+		}
+
+	}
+	
+	public class SortByAveFreeThrowShootNum implements Comparator {
+
+		boolean b;
+		public SortByAveFreeThrowShootNum(boolean isPositiveSequence) {
+			b = isPositiveSequence;
+		}
+		
+		public int compare(Object o1, Object o2) {
+			// TODO 单场(或场均)罚球出手数排序
+			int result = -1;
+			PlayerVO p1 = (PlayerVO) o1;
+			PlayerVO p2 = (PlayerVO) o2;
+			if(p1.getAveThreePointerShootNum() >= p2.getAveThreePointerShootNum()){
+				result = 1;
+			}
+			if(!b){
+				result = -result;
+			}
+			return result;
+		}
+
+	}
+	
 	public class SortByPointReboundAssist implements Comparator {
 
 		boolean b;

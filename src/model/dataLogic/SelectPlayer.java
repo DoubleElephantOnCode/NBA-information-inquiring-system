@@ -110,6 +110,7 @@ public class SelectPlayer {
 			boolean isSeason, String presentDate, int selectNum, int selectItem){
 		//TODO 是否筛选赛季热点球员
 		ArrayList<PlayerVO> players = new ArrayList<PlayerVO>();
+		ArrayList<PlayerVO> tempPlayers = new ArrayList<PlayerVO>();
 		
 		if(!isSeason){	//筛选的是当天热点球员
 			for (int i = 0; i < playerList.size(); i++) {
@@ -119,23 +120,37 @@ public class SelectPlayer {
 				PlayerDataPerMatchVO latestMatchData = matchDataList.get(matchDataList.size() - 1);
 				if(presentDate.equals( latestMatchData.getMatchDate() )){
 					//如果最后一场比赛的日期是当前日期
+					PlayerVO player = new PlayerVO(latestMatchData);
+					tempPlayers.add(player);
 				}
 			}
+			tempPlayers = PlayerList.sortFortDailyHotPlayer(tempPlayers, selectItem);
 		} else {	//筛选赛季热点球员
-			
+			for (int i = 0; i < playerList.size(); i++) {
+				tempPlayers.add(playerList.get(i));
+			}
+			tempPlayers = PlayerList.sortPlayer(tempPlayers, selectItem, false);
+		}
+		
+		for (int i = 0; i < selectNum; i++) {
+			players.add(tempPlayers.get(i));
 		}
 		
 		
 		return players;
 	}
 	
-//	/**
-//	 * 排序并筛选
-//	 * @return
-//	 */
-//	public ArrayList<PlayerVO> sortAndselectPlayer(){
-//		ComparePlayer c = new ComparePlayer();
-//		Collections.sort(playersAfterSort, c.comparForSelect[i]);
-//		return playersAfterSort;
-//	}
+
+	/**
+	 * 筛选进步最快球员
+	 * @param playerList 
+	 * @param selectItem
+	 * @param selectNum
+	 * @return
+	 */
+	public static ArrayList<PlayerVO> selectProgressPlayer(ArrayList<PlayerVO> playerList,
+			int selectItem, int selectNum){
+		
+		return playerList;
+	}
 }

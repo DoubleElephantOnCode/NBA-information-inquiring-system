@@ -80,6 +80,23 @@ public class PlayerList {
 		return s;
 	}
 	
+	/**
+	 * 获取每日热点球员的表头
+	 * 姓名、所属球队、位置、两双次数、上场时间、当日得分、助攻数、抢断数、盖帽数、命中数、出手数、命中率、
+	 * 三分命中数、三分出手数、三分命中率、罚球命中数、罚球出手数、罚球命中率、进攻篮板数、防守篮板数、总篮板数、失误数、犯规数
+	 * @return
+	 */
+	public static String[] getHeadForDailyHotPlayers(){
+		String[] s = new String[]{
+				"姓名", "所属球队", "位置", "两双次数", "上场时间", "当日得分", "助攻数", "抢断数",
+				"盖帽数", "命中数", "出手数", "命中率", "三分命中数", "三分出手数", "三分命中率",
+				"罚球命中数", "罚球出手数", "罚球命中率", "进攻篮板数", "防守篮板数", "总篮板数",
+				"失误数", "犯规数"
+		};
+		
+		return s;
+	}
+	
 //	/**
 //	 * 获取筛选依据
 //	 * @return
@@ -120,11 +137,25 @@ public class PlayerList {
 	 * @param i
 	 * @param isPositiveSequence
 	 */
-	public static ArrayList<PlayerVO> sortPlayer(ArrayList<PlayerVO> playerList, int i,boolean isPositiveSequence){
+	public static ArrayList<PlayerVO> sortPlayer(ArrayList<PlayerVO> playerList,
+			int i, boolean isPositiveSequence){
 		
 		ComparePlayer c = new ComparePlayer(isPositiveSequence);
 		Collections.sort(playerList, c.comparator[i]);
 		
+		return playerList;
+	}
+	
+	/**
+	 * 为筛选当日热点球员而排序
+	 * @param playerList
+	 * @param i
+	 * @return
+	 */
+	public static ArrayList<PlayerVO> sortFortDailyHotPlayer(ArrayList<PlayerVO> playerList,
+			int i){
+		ComparePlayer c = new ComparePlayer();
+		Collections.sort(playerList, c.comparator[i]);
 		return playerList;
 	}
 	
