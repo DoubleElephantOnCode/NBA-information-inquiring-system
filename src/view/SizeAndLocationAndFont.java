@@ -66,4 +66,21 @@ public class SizeAndLocationAndFont {
 	static public int teamCountLeftSide = 96, teamCountRightSide = 24, teamCountDownSide = 25;
 	
 	static public int teamPicLabelWidth = 96, teamPicLabelHeight = 59;
+	
+	//单个球员查看面板设置参数
+	static public int singlePlayerPanelWidth = 850, singlePlayerPanelHeight = 430;
+	static public int singlePlayerPanelLocationX = 153, singlePlayerPanelLocationY = 148;
+	
+	static public int playerPhoto_1Width = 115, playerPhoto_1Height = 92;//半身照片
+	static public int playerPhoto_2Width = 115, playerPhoto_2Height = 190;//运动照片
+	//个人信息
+	static public int singlePlayerInfoTableWidth = singlePlayerPanelWidth-playerPhoto_1Width, singlePlayerInfoTableHeight = 120;
+	static public int singlePlayerInfoTableRow = 3, singlePlayerInfoTableColumn = 4;
+	//历史比赛信息
+	static public int playerMatchHistoryPanelWidth = singlePlayerPanelWidth-playerPhoto_2Width, playerMatchHistoryPanelHeight = 270;
+	static public int playerMatchHistoryTableWidth = 600, playerMatchHistoryTableHeight = 228;
+	static public int playerMatchHistoryTablePageRow = 6, playerMatchHistoryTablePageColumn = 6;
+	static public int playerMatchHistoryTableLocationX = playerPhoto_2Width, playerMatchHistoryTableLocationY = singlePlayerPanelHeight-playerMatchHistoryPanelHeight;
+	static public int playerMatchHistoryHeadListForRowWidth = 120;
+	static public int playerMatchHistoryHeadListForColumnHeight = 30;
 }

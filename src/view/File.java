@@ -38,6 +38,10 @@ public class File {
 	
 	public static String grid_light = "grid_light";
 	
+	public static String table_cell2_deep = "table_cell2_dark";
+	
+	public static String table_cell2_light = "table_cell2_light";
+	
 	public static String selectedColumnHeadList = "chosen_frame";
 	
 	public static String teamCountBackground = "team_count_frame";
