@@ -10,6 +10,7 @@ import view.File;
 import view.SVGLabel;
 import view.SizeAndLocationAndFont;
 import view.tablePanel.TablePanel;
+import view.timeSelectPanel.TimeSelectPanel;
 
 public class SingleTeamPanel extends JPanel{
 
@@ -24,6 +25,8 @@ public class SingleTeamPanel extends JPanel{
 	TeamMatchHistoryTablePanel matchHistory;
 	
 	ImageIcon tableCellDeep, tableCellLight;
+	
+	TimeSelectPanel begin, end;
 	
 	int width = SizeAndLocationAndFont.singleTeamPanelWidth, height = SizeAndLocationAndFont.singleTeamPanelHeight;
 	
@@ -56,10 +59,18 @@ public class SingleTeamPanel extends JPanel{
 //		temp[1] = info;
 //		teamInfo.setContent(temp);
 		
+		begin = new TimeSelectPanel(SizeAndLocationAndFont.beginTimePanelWidth, SizeAndLocationAndFont.beginTimePanelHeight, 2010, 2015);
+		begin.setLocation(SizeAndLocationAndFont.beginTimePanelLocationX, SizeAndLocationAndFont.beginTimePanelLocationY);
+		
+		end = new TimeSelectPanel(SizeAndLocationAndFont.endTimePanelWidth, SizeAndLocationAndFont.endTimePanelHeight, 2010, 2015);
+		end.setLocation(SizeAndLocationAndFont.endTimePanelLocationX, SizeAndLocationAndFont.endTimePanelLocationY);
+		
 		matchHistory = new TeamMatchHistoryTablePanel(content, headListForRow, headListForColumn);
 		
 		this.add(teamPic);
 		this.add(teamInfo);
+		this.add(begin);
+		this.add(end);
 		this.add(matchHistory);
 		
 		this.setLayout(null);
