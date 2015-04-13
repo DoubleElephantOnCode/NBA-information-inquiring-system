@@ -9,6 +9,9 @@ import javax.swing.JPanel;
 import view.File;
 import view.SVGLabel;
 import view.SizeAndLocationAndFont;
+import view.mainFrame.LabelEnterListener;
+import view.mainFrame.LabelUsualListener;
+import view.mainFrame.Main;
 import view.tablePanel.TablePanel;
 import view.timeSelectPanel.TimeSelectPanel;
 
@@ -27,6 +30,7 @@ public class SingleTeamPanel extends JPanel{
 	ImageIcon tableCellDeep, tableCellLight;
 	
 	TimeSelectPanel begin, end;
+	JLabel checkByTime, checkByTimeEnter;
 	
 	int width = SizeAndLocationAndFont.singleTeamPanelWidth, height = SizeAndLocationAndFont.singleTeamPanelHeight;
 	
@@ -65,12 +69,24 @@ public class SingleTeamPanel extends JPanel{
 		end = new TimeSelectPanel(SizeAndLocationAndFont.endTimePanelWidth, SizeAndLocationAndFont.endTimePanelHeight, 2010, 2015);
 		end.setLocation(SizeAndLocationAndFont.endTimePanelLocationX, SizeAndLocationAndFont.endTimePanelLocationY);
 		
+		checkByTime = Main.setJLabelWithIcon(File.file + File.checkByTime + File.PNG, SizeAndLocationAndFont.checkByTimeLabelWidth, SizeAndLocationAndFont.checkByTimeLabelHeight);
+		checkByTimeEnter = Main.setJLabelWithIcon(File.file + File.checkByTime + File.enter + File.PNG, SizeAndLocationAndFont.checkByTimeLabelWidth, SizeAndLocationAndFont.checkByTimeLabelHeight);
+		checkByTime.addMouseListener(new LabelUsualListener(checkByTime, checkByTimeEnter));
+		checkByTimeEnter.addMouseListener(new LabelEnterListener(checkByTime, checkByTimeEnter){
+			//TODO 重写click方法
+		});
+		checkByTime.setLocation(SizeAndLocationAndFont.checkByTimeLabelLocationX, SizeAndLocationAndFont.checkByTimeLabelLocationY);
+		checkByTimeEnter.setLocation(SizeAndLocationAndFont.checkByTimeLabelLocationX, SizeAndLocationAndFont.checkByTimeLabelLocationY);
+		checkByTimeEnter.setVisible(false);
+		
 		matchHistory = new TeamMatchHistoryTablePanel(content, headListForRow, headListForColumn);
 		
 		this.add(teamPic);
 		this.add(teamInfo);
 		this.add(begin);
 		this.add(end);
+		this.add(checkByTime);
+		this.add(checkByTimeEnter, 0);
 		this.add(matchHistory);
 		
 		this.setLayout(null);
