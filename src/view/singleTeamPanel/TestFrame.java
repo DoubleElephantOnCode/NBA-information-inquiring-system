@@ -9,10 +9,17 @@ import java.io.File;
 
 import javax.swing.JFrame;
 
+import model.readData.ReadMatchData;
+import model.readData.ReadPlayerData;
+import model.readData.ReadTeamData;
 import view.SizeAndLocationAndFont;
 import view.infomationCenter.InformationCenterPanel;
 
 public class TestFrame {
+	static ReadTeamData readTeam;
+	static ReadPlayerData readPlayer;
+	static ReadMatchData readMatch;
+	
 	static int row = 82, column = 10;
 	static int width = SizeAndLocationAndFont.frameWidth,
 			height = SizeAndLocationAndFont.frameHeight;
@@ -33,6 +40,15 @@ public class TestFrame {
 	}
 	
 	public static void main(String[] args){
+		readTeam = new ReadTeamData();
+		readTeam.readTeamData();
+		
+		readPlayer = new ReadPlayerData();
+		readPlayer.readPlayerData();
+		
+		readMatch = new ReadMatchData();
+		readMatch.readMatchData();
+		
 		content = new String[row][column];
 		headListForRow = new String[row];
 		headListForColumn = new String[column];

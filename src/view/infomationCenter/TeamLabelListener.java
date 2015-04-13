@@ -5,6 +5,8 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JLabel;
 
+import control.ShowTeamController;
+
 public class TeamLabelListener implements MouseListener {
 
 	String teamName;
@@ -21,7 +23,7 @@ public class TeamLabelListener implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-	
+		new ShowTeamController().showTeamFrame(teamName, null, null);
 	}
 
 	@Override

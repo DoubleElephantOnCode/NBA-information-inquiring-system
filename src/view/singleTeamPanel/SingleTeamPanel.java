@@ -49,19 +49,27 @@ public class SingleTeamPanel extends JPanel{
 		
 		if(infoName == null) infoName = new String[7];
 		
-		teamInfo = new TablePanel(2, infoName.length, 2, infoName.length, teamInfoWidth, teamInfoHeight);
+		teamInfo = new TablePanel(4, 7, 4, 7, teamInfoWidth, teamInfoHeight);
 		teamInfo.setLocation(SizeAndLocationAndFont.teamPicLocationX+SizeAndLocationAndFont.teamPicLabelWidth, SizeAndLocationAndFont.teamPicLocationY);
-		tableCellDeep.setImage(tableCellDeep.getImage().getScaledInstance(teamInfoWidth / infoName.length, teamInfoHeight / 2, Image.SCALE_DEFAULT));
-		tableCellLight.setImage(tableCellLight.getImage().getScaledInstance(teamInfoWidth / infoName.length, teamInfoHeight / 2, Image.SCALE_DEFAULT));
+		tableCellDeep.setImage(tableCellDeep.getImage().getScaledInstance(teamInfoWidth / 7, teamInfoHeight / 2, Image.SCALE_DEFAULT));
+		tableCellLight.setImage(tableCellLight.getImage().getScaledInstance(teamInfoWidth / 7, teamInfoHeight / 2, Image.SCALE_DEFAULT));
 		
 		teamInfo.setRowBackground(tableCellDeep, 0);
 		teamInfo.setRowBackground(tableCellLight, 1);
-		
-//		String[][] temp;
-//		temp = new String[2][infoName.length];
-//		temp[0] = infoName;
-//		temp[1] = info;
-//		teamInfo.setContent(temp);
+		teamInfo.setRowBackground(tableCellDeep, 2);
+		teamInfo.setRowBackground(tableCellLight, 3);
+		//TODO 基本信息表格
+		if(infoName != null && info != null){
+			String[][] temp;
+			temp = new String[4][7];
+			for(int i = 0; i < 7; i++){
+				temp[0][i] = infoName[i];
+				temp[2][i] = infoName[i+7];
+				temp[1][i] = info[i];
+				temp[3][i] = info[i+7];
+			}
+			teamInfo.setContent(temp);
+		}
 		
 		begin = new TimeSelectPanel(SizeAndLocationAndFont.beginTimePanelWidth, SizeAndLocationAndFont.beginTimePanelHeight, 2010, 2015);
 		begin.setLocation(SizeAndLocationAndFont.beginTimePanelLocationX, SizeAndLocationAndFont.beginTimePanelLocationY);
