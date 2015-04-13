@@ -56,7 +56,7 @@ public class InformationCenterPanel extends JPanel{
 		
 		teamChosen = new TeamLogoChosenPane();
 		
-		this.add(teamChosen);
+		this.add(teamChosen, 0);
 		this.add(searchPlayer, 0);
 		this.setLayout(null);
 		this.setSize(width, height);
