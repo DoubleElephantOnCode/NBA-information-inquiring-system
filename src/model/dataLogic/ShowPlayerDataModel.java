@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import view.mainFrame.Main;
 import view.mainFrame.Waiting;
+import vo.PlayerDataPerMatchVO;
 import vo.PlayerVO;
 
 /**
@@ -257,6 +258,37 @@ public class ShowPlayerDataModel {
 	 * 筛选进步最快球员
 	 */
 	public void selectProgressPlayer(){
-		
+		//TODO 筛选进步最快球员
+	}
+	
+	/**
+	 * 显示一个球员的详细信息
+	 */
+	public void showSinglePlayerInfo(final String name){
+		new Waiting(){
+			
+			protected Void doInBackground() throws Exception {
+
+				PlayerVO player = PlayerList.findAPlayer(name);
+				ArrayList<PlayerDataPerMatchVO> matchDataList = player.getDataPerMatchList();
+				PlayerDataPerMatchVO matchData = matchDataList.get(0);
+
+				String[][] content = new String
+						[matchDataList.size()][PlayerList.getHeadForSinglePlayer().length];
+				//给要显示的表格填上内容
+				for (int i = 0; i < matchDataList.size(); i++) {
+					matchData = matchDataList.get(i);
+					String[] s = matchData.getMatchInfo();
+					for (int j = 0; j < s.length; j++) {
+						content[i][j] = s[j];
+					}
+				}
+				
+				
+				return null;
+			}
+			
+			
+		}.execute();
 	}
 }

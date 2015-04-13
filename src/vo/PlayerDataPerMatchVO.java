@@ -1,5 +1,6 @@
 package vo;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
 /**
@@ -150,71 +151,7 @@ public class PlayerDataPerMatchVO {
 	 */
 	private double freeThrowScoreRate = 0;
 	
-//	/**
-//	 * 单场效率：(得分+篮板+助攻+抢断+盖帽) -（出手次数-命中次数） -（罚球次数-罚球命中次数） -失误次数
-//	 */
-//	private double efficiency = 0;
-//	
-//	/**
-//	 * GmSc 效率值： 得分 + 0.4×投篮命中数 - 0.7×投篮出手数-0.4×(罚球出手数-罚球命中数) +
-//	 *  0.7×前场篮板数 + 0.3×后场篮板数 + 抢断数 + 0.7×助攻数 + 0.7× 盖帽数 - 0.4×犯规数 - 失误数
-//	 */
-//	private double GmSc = 0;
-//	
-//	/**
-//	 * 真实命中率: 得分÷(2×(投篮出手数+0.44×罚球出手数))
-//	 */
-//	private double trueShootingPercentage = 0;
-//	
-//	/**
-//	 * 投篮效率： (投篮命中数+0.5×三分命中数)÷投篮出手数
-//	 */
-//	private double shootingEfficiency = 0;
-//	
-//	/**
-//	 * 篮板率：球员篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总篮板+对手总篮板)
-//	 */
-//	private double reboundRate = 0;
-//	
-//	/**
-//	 * 进攻篮板率：球员进攻篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总进攻篮板+对手总进攻篮板)
-//	 */
-//	private double offensiveReboundRate = 0;
-//	
-//	/**
-//	 * 防守篮板率：球员防守篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总防守篮板+对手总防守篮板)
-//	 */
-//	private double defensiveReboundRate = 0;
-//	
-//	/**
-//	 * 助攻率：球员助攻数÷(球员上场时间÷(球队所有球员上场时间÷5)×球队总进球数-球员进球数)
-//	 */
-//	private double assistRate = 0;
-//	
-//	/**
-//	 * 抢断率：球员抢断数×(球队所有球员上场时间÷5)÷球员上场时间÷对手进攻次数)
-//	 */
-//	private double stealRate = 0;
-//	
-//	/**
-//	 * 盖帽率：球员盖帽数×(球队所有球员上场时间÷5)÷球员上场时间÷对手两分球出手次数
-//	 */
-//	private double blockRate = 0;
-//	
-//	/**
-//	 * 失误率：球员失误数÷(球员两分球出手次数+0.44×球员罚球次数+球员失误数)
-//	 */
-//	private double turnoverRate = 0;
-//	
-//	/**
-//	 * 使用率：(球员出手次数+0.44×球员罚球次数+球员失误次数)×(球队所有球员上场时间÷5)÷
-//	 *      球员上场时间÷(球队所有总球员出手次数+0.44×球队所有球员罚球次数+球队所有球员失误次数)
-//	 */
-//	private double useRate = 0;
-//	球员名称y，所属球队y，参赛场数y，先发场数y，篮板数y，助攻数y，在
-//	场时间，投篮命中率y，三分命中率y，罚球命中率y，效率y， GmSc 效率值y，真实命中率y，投篮效率y，
-//	篮板率y，进攻篮板率，防守篮板率，助攻率，抢断率，盖帽率，失误率，使用率
-//	等， 并且可以依据以上数据中的任何一项对全部数据进行升降序操作
+
 	
 	/**
 	 * 该场球队所有球员总上场时间
@@ -421,6 +358,50 @@ public class PlayerDataPerMatchVO {
 //		useRate = (shootNum / 0.44 * freeThrowShootNum + turnoverNum) *
 //				(timeOfAllPlayers.getTimeByMinute() / 5) / playTime.getTimeByMinute() / 
 //				(allShootNum + 0.44 * allFreeThrowShootNum + allTurnoverNum );
+	}
+	
+	/**
+	 * 获得单场比赛的信息
+	 * 比赛日期, 对阵球队, 是否首发, 得分, 助攻, 篮板, 盖帽, 抢断, 失误, 犯规,
+	 * 三分命中数, 三分命中率, 罚球命中数, 罚球命中率, 投篮命中率
+	 * @return
+	 */
+	public String[] getMatchInfo(){
+		//TODO 获得单场比赛的信息
+		String[] s = new String[]{
+				this.matchDate, this.rivalTeam, isInStartingLineup(this.isStarting),
+				(int)personalPoints + "", (int)assistNum + "", (int)totalReboundsNum + "",
+				(int)blockNum + "", (int)stealNum + "", (int)turnoverNum + "", (int)foulNum + "",
+				(int)threePointerScoreNum + "", toString(this.threePointScoreRate * 100),
+				(int)freeThrowScoreNum + "", toString(this.freeThrowScoreRate * 100),
+				toString(this.scoreRate * 100)
+		};
+		return s;
+	}
+	
+	/**
+	 * 是否首发
+	 * @param isStarting
+	 * @return
+	 */
+	private String isInStartingLineup(boolean isStarting){
+		if(isStarting){
+			return "是";
+		} else {
+			return "否";
+		}
+	}
+	
+	/**
+	 * double数据转String
+	 * @param d
+	 * @return
+	 */
+	private String toString(double d){
+		DecimalFormat df = new DecimalFormat("#.00");
+		String s = df.format(d);
+		Double dd = new Double(s);
+		return dd.toString();
 	}
 	
 	public double getStealNum() {

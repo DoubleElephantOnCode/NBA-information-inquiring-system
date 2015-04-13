@@ -738,6 +738,33 @@ public class PlayerVO {
 	}
 
 	/**
+	 * 获取基本球员信息
+	 * 姓名, 位置, 所属球队, 号码, 身高, 体重, 生日, 年龄, 球龄, 毕业学校 
+	 * @return
+	 */
+	public String[] getBasicInfo(){
+		//TODO 获取基本球员信息
+		String[] s = new String[]{
+				"Name", this.name, "Position", this.position, "Team", this.teamName,
+				"Number", this.number, "Height", this.height, "Weight", this.weight,
+				"Birth", this.birthday, "Age", this.age, "Exp", this.exp, "School", this.school
+		};
+		return s;
+	}
+	
+	/**
+	 * 获取球员进步信息
+	 * @return
+	 */
+	public String[] getProgressInfo(){
+		//TODO 获取进步最快球员信息
+		String[] s = new String[]{
+				
+		};
+		return s;
+	}
+	
+	/**
 	 * 获得当天热点球员要显示的信息
 	 * 姓名、所属球队、位置、两双次数、上场时间、当日得分、助攻数、抢断数、盖帽数、命中数、出手数、命中率、
 	 * 三分命中数、三分出手数、三分命中率、罚球命中数、罚球出手数、罚球命中率、进攻篮板数、防守篮板数、总篮板数、失误数、犯规数
