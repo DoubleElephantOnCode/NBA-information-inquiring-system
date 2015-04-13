@@ -257,8 +257,42 @@ public class ShowPlayerDataModel {
 	/**
 	 * 筛选进步最快球员
 	 */
-	public void selectProgressPlayer(){
-		//TODO 筛选进步最快球员
+	public void selectProgressPlayer(final int selectItem, final int selectNum){
+		
+		new Waiting(){
+			
+			protected Void doInBackground() throws Exception {
+				
+				ArrayList<PlayerVO> playerList = SelectPlayer.selectProgressPlayer(
+						PlayerList.players, selectItem, selectNum);
+				PlayerVO player = playerList.get(0);
+				String[][] content = new String
+						[playerList.size()][PlayerList.getHeadForProgressPlayers().length];
+				
+				//给要显示的表格填上内容
+				for (int i = 0; i < playerList.size(); i++) {
+					player = playerList.get(i);
+					String[] s = player.getProgressInfo();
+					for (int j = 0; j < s.length; j++) {
+						content[i][j] = s[j];
+					}
+				}
+				
+				/**
+				 * 球员姓名列
+				 */
+				String[] nameColumn = new String[playerList.size()];
+				for (int i = 0; i < nameColumn.length; i++) {
+					nameColumn[i] = playerList.get(i).getName();
+				}
+				
+				//TODO 调用界面层方法
+				
+				return null;
+			}
+			
+			
+		}.execute();
 	}
 	
 	/**
