@@ -33,23 +33,28 @@ public class SingleTeamPanel extends JPanel{
 	int teamInfoWidth = SizeAndLocationAndFont.singleTeamInfoTableWidth, 
 			teamInfoHeight = SizeAndLocationAndFont.singleTeamInfoTableHeight;
 	
-	public SingleTeamPanel(java.io.File svgFile, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn){
+	public SingleTeamPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn){
 		teamPic = new SVGLabel(svgFile, teamPicWidth, teamPicHeight);
 		teamPic.setLocation(SizeAndLocationAndFont.teamPicLocationX, SizeAndLocationAndFont.teamPicLocationY);
 		
 		tableCellDeep = new ImageIcon(File.file + File.table_cell2_deep + File.PNG);
 		tableCellLight = new ImageIcon(File.file + File.table_cell2_light + File.PNG);
 		
-		teamInfo = new TablePanel(2, 7, 2, 7, teamInfoWidth, teamInfoHeight);
+		if(infoName == null) infoName = new String[7];
+		
+		teamInfo = new TablePanel(2, infoName.length, 2, infoName.length, teamInfoWidth, teamInfoHeight);
 		teamInfo.setLocation(SizeAndLocationAndFont.teamPicLocationX+SizeAndLocationAndFont.teamPicLabelWidth, SizeAndLocationAndFont.teamPicLocationY);
-		tableCellDeep.setImage(tableCellDeep.getImage().getScaledInstance(teamInfoWidth / 7, teamInfoHeight / 2, Image.SCALE_DEFAULT));
-		tableCellLight.setImage(tableCellLight.getImage().getScaledInstance(teamInfoWidth / 7, teamInfoHeight / 2, Image.SCALE_DEFAULT));
+		tableCellDeep.setImage(tableCellDeep.getImage().getScaledInstance(teamInfoWidth / infoName.length, teamInfoHeight / 2, Image.SCALE_DEFAULT));
+		tableCellLight.setImage(tableCellLight.getImage().getScaledInstance(teamInfoWidth / infoName.length, teamInfoHeight / 2, Image.SCALE_DEFAULT));
 		
 		teamInfo.setRowBackground(tableCellDeep, 0);
 		teamInfo.setRowBackground(tableCellLight, 1);
 		
-		//TODO
-//		teamInfo.setContent(null);
+//		String[][] temp;
+//		temp = new String[2][infoName.length];
+//		temp[0] = infoName;
+//		temp[1] = info;
+//		teamInfo.setContent(temp);
 		
 		matchHistory = new TeamMatchHistoryTablePanel(content, headListForRow, headListForColumn);
 		
