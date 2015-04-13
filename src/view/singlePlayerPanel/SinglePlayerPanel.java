@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import view.File;
 import view.SizeAndLocationAndFont;
 import view.tablePanel.TablePanel;
+import view.timeSelectPanel.TimeSelectPanel;
 
 public class SinglePlayerPanel extends JPanel{
 	
@@ -30,6 +31,8 @@ public class SinglePlayerPanel extends JPanel{
 	ImageIcon tableCellDeep, tableCellLight;
 	ImageIcon photo1BG, photo2BG;
 	ImageIcon photo1FG, photo2FG;
+	
+	TimeSelectPanel begin, end;
 	
 	int width = SizeAndLocationAndFont.singlePlayerPanelWidth, height = SizeAndLocationAndFont.singlePlayerPanelHeight;
 	int photo1W = SizeAndLocationAndFont.playerPhoto_1Width, photo1H = SizeAndLocationAndFont.playerPhoto_1Height;
@@ -82,6 +85,12 @@ public class SinglePlayerPanel extends JPanel{
 		//TODO 内容需要进行组装
 //		personalInfo.setContent(info);
 		
+		begin = new TimeSelectPanel(SizeAndLocationAndFont.beginTimePanelWidth, SizeAndLocationAndFont.beginTimePanelHeight, 2010, 2015);
+		begin.setLocation(SizeAndLocationAndFont.beginTimePanelLocationX, SizeAndLocationAndFont.beginTimePanelLocationY);
+		
+		end = new TimeSelectPanel(SizeAndLocationAndFont.endTimePanelWidth, SizeAndLocationAndFont.endTimePanelHeight, 2010, 2015);
+		end.setLocation(SizeAndLocationAndFont.endTimePanelLocationX, SizeAndLocationAndFont.endTimePanelLocationY);
+		
 		matchHistory = new PlayerMatchHistoryTablePanel(content, headListForRow, headListForColumn);
 		
 		this.add(photo1_bg);
@@ -89,6 +98,8 @@ public class SinglePlayerPanel extends JPanel{
 		this.add(photo2_bg);
 		this.add(photo2, 0);
 		this.add(personalInfo);
+		this.add(begin);
+		this.add(end);
 		this.add(matchHistory);
 		
 		this.setLayout(null);

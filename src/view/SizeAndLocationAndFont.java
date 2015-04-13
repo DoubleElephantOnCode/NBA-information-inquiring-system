@@ -73,6 +73,12 @@ public class SizeAndLocationAndFont {
 	static public int searchPlayerPanelLocationX = 787, searchPlayerPanelLocationY = 61;
 	static public Font searchPlayerPanelFont = new Font("黑体",Font.BOLD,21);
 	
+	static public int beginTimePanelWidth = 300, beginTimePanelHeight = 28;
+	static public int beginTimePanelLocationX = 0, beginTimePanelLocationY = 125;
+	
+	static public int endTimePanelWidth = 300, endTimePanelHeight = 28;
+	static public int endTimePanelLocationX = 550, endTimePanelLocationY = 125;
+	
 	//单个球员查看面板设置参数
 	static public int singlePlayerPanelWidth = 850, singlePlayerPanelHeight = 430;
 	static public int singlePlayerPanelLocationX = 153, singlePlayerPanelLocationY = 148;
