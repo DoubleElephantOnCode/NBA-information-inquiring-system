@@ -79,6 +79,9 @@ public class SizeAndLocationAndFont {
 	static public int endTimePanelWidth = 300, endTimePanelHeight = 28;
 	static public int endTimePanelLocationX = 550, endTimePanelLocationY = 125;
 	
+	static public int checkByTimeLabelWidth = 100, checkByTimeLabelHeight = 28;
+	static public int checkByTimeLabelLocationX = 375, checkByTimeLabelLocationY = 125;
+	
 	//单个球员查看面板设置参数
 	static public int singlePlayerPanelWidth = 850, singlePlayerPanelHeight = 430;
 	static public int singlePlayerPanelLocationX = 153, singlePlayerPanelLocationY = 148;

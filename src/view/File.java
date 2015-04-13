@@ -28,6 +28,8 @@ public class File {
 	
 	public static String search = "search";
 	
+	public static String checkByTime = "inquire";
+	
 	public static String enter = "_enter";
 	
 	public static String TextBackground = "search_frame";
