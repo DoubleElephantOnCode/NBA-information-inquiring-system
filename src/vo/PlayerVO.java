@@ -754,12 +754,15 @@ public class PlayerVO {
 	
 	/**
 	 * 获取球员进步信息
+	 * 近五场得分提升, 近五场助攻提升, 近五场篮板提升, 所属球队, 位置, 场均得分, 场均助攻, 场均篮板
 	 * @return
 	 */
 	public String[] getProgressInfo(){
 		//TODO 获取进步最快球员信息
 		String[] s = new String[]{
-				
+				toString(this.recentPointAdvance), toString(this.recentAssistAdvance),
+				toString(this.recentReboundAdvance), this.teamName, this.position,
+				(int)avePersonalPoints + "", (int)aveAssistNum + "", (int)aveTotalReboundsNum + ""
 		};
 		return s;
 	}

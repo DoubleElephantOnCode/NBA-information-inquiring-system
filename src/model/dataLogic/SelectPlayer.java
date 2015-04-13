@@ -89,15 +89,6 @@ public class SelectPlayer {
 	
 	
 	/**
-	 * 根据近五场提升筛选球员 
-	 * @return
-	 */
-	public ArrayList<PlayerVO> selectByRecentAdvance(){
-		//TODO 根据近五场提升筛选球员
-		return null;
-	}
-	
-	/**
 	 * 筛选热点球员
 	 * @param playerList 待筛选的球员列表
 	 * @param isSeason 是否筛选赛季热点球员
@@ -151,6 +142,18 @@ public class SelectPlayer {
 	public static ArrayList<PlayerVO> selectProgressPlayer(ArrayList<PlayerVO> playerList,
 			int selectItem, int selectNum){
 		
-		return playerList;
+		ArrayList<PlayerVO> players = new ArrayList<PlayerVO>();
+		ArrayList<PlayerVO> tempPlayers = new ArrayList<PlayerVO>();
+		
+		for (int i = 0; i < playerList.size(); i++) {
+			tempPlayers.add(playerList.get(i));
+		}
+		tempPlayers = PlayerList.sortForProgressPlayer(tempPlayers, selectItem);
+		
+		for (int i = 0; i < selectNum; i++) {
+			players.add(tempPlayers.get(i));
+		}
+		
+		return players;
 	}
 }

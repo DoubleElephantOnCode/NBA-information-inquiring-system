@@ -97,6 +97,18 @@ public class PlayerList {
 		return s;
 	}
 	
+	/**
+	 * 获取最近进步最快球员表头
+	 * 近五场得分提升, 近五场助攻提升, 近五场篮板提升, 所属球队, 位置, 场均得分, 场均助攻, 场均篮板
+	 * @return
+	 */
+	public static String[] getHeadForProgressPlayers(){
+		String[] s = new String[]{
+				"近五场得分提升", "近五场助攻提升", "近五场篮板提升",
+				"所属球队", "位置", "场均得分", "场均助攻", "场均篮板"
+		};
+		return s;
+	}
 	
 	/**
 	 * 获取显示单个球员详细信息的表头
@@ -173,6 +185,20 @@ public class PlayerList {
 		Collections.sort(playerList, c.comparator[i]);
 		return playerList;
 	}
+	
+	/**
+	 * 为筛选最近进步最快球员而排序
+	 * @param playerList
+	 * @param i
+	 * @return
+	 */
+	public static ArrayList<PlayerVO> sortForProgressPlayer(ArrayList<PlayerVO> playerList,
+			int i){	
+		ComparePlayer c = new ComparePlayer(0);
+		Collections.sort(playerList, c.comparator[i]);	
+		return playerList;
+	}
+	
 	
 //	/**
 //	 * 按照条件筛选出前50个球员
