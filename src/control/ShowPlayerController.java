@@ -46,8 +46,37 @@ public class ShowPlayerController {
 	 * @param position
 	 * @param area
 	 */
-	public void selectByAreaOrPosition(final String position, final String area){
+	public void selectByAreaOrPosition(String position, String area){
 		showPlayerModel.selectByAreaOrPosition(position, area);
+	}
+	
+	/**
+	 * 显示单独的球员信息
+	 * @param name
+	 */
+	public void showSinglePlayerInfo(String name){
+		showPlayerModel.showSinglePlayerInfo(name);
+	}
+	
+	/**
+	 * 显示热点球员
+	 * @param isSeason 是否显示赛季热点
+	 * @param presentDate 当前日期
+	 * @param selectNum 筛选数目
+	 * @param selectItem 筛选依据项
+	 */
+	public void showHotPlayerInfo(boolean isSeason,
+			String presentDate, int selectNum, int selectItem){
+		showPlayerModel.selectHotPlayer(isSeason, presentDate, selectNum, selectItem);
+	}
+	
+	/**
+	 * 显示进步最快球员
+	 * @param selectItem 筛选依据项
+	 * @param selectNum 筛选数目
+	 */
+	public void showProgressPlayerInfo(int selectItem, int selectNum){
+		showPlayerModel.selectProgressPlayer(selectItem, selectNum);
 	}
 	
 	/**
