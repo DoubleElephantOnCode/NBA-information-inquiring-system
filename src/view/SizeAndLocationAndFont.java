@@ -114,4 +114,14 @@ public class SizeAndLocationAndFont {
 	static public int teamMatchHistoryTableLocationX = 0, teamMatchHistoryTableLocationY = singlePlayerPanelHeight-teamMatchHistoryPanelHeight;
 	static public int teamMatchHistoryHeadListForRowWidth = 120;
 	static public int teamMatchHistoryHeadListForColumnHeight = 30;
+	
+	//查询热点球员参数
+	static public int hotPlayerPhotoWidth = 114, hotPlayerPhotoHeight = 86;
+	static public int hotPlayerInfoPanelWidth = 739, hotPlayerInfoPanelHeight = 86;
+	static public int hotPlayerSelectPanelWidth = 200, hotPlayerSelectPanelHeight = 28;
+//	static public Font hotPlayerSelectPanelFont = new Font("黑体",Font.BOLD,21);
+	static public int hotPlayerSelectPanelLocationX = 0, hotPlayerSelectPanelLocationY = 0;
+	
+	static public int hotPlayerPanelWidth = 853, hotPlayerPanelHeight = 432;
+	static public int hotPlayerPanelLocationX = 153, hotPlayerPanelLocationY = 148;
 }
