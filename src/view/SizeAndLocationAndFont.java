@@ -117,11 +117,19 @@ public class SizeAndLocationAndFont {
 	
 	//查询热点球员参数
 	static public int hotPlayerPhotoWidth = 114, hotPlayerPhotoHeight = 86;
-	static public int hotPlayerInfoPanelWidth = 739, hotPlayerInfoPanelHeight = 86;
+	static public int hotPlayerInfoPanelWidth = 739, hotPlayerInfoPanelHeight = hotPlayerPhotoHeight;
 	static public int hotPlayerSelectPanelWidth = 200, hotPlayerSelectPanelHeight = 28;
 //	static public Font hotPlayerSelectPanelFont = new Font("黑体",Font.BOLD,21);
 	static public int hotPlayerSelectPanelLocationX = 0, hotPlayerSelectPanelLocationY = 0;
 	
 	static public int hotPlayerPanelWidth = 853, hotPlayerPanelHeight = 432;
 	static public int hotPlayerPanelLocationX = 153, hotPlayerPanelLocationY = 148;
+	
+	//查询热点球队参数
+	static public int hotTeamPhotoWidth = 200, hotTeamPhotoHeight = 100;
+	static public int hotTeamInfoPanelWidth = 653, hotTeamInfoPanelHeight = hotTeamPhotoHeight;
+	static public int hotTeamSelectPanelWidth = 200, hotTeamSelectPanelHeight = 28;
+	static public int hotTeamSelectPanelLocationX = 0, hotTeamSelectPanelLocationY = 0;
+	static public int hotTeamPanelWidth = 853, hotTeamPanelHeight = 432;
+	static public int hotTeamPanelLocationX = 153, hotTeamPanelLocationY = 148;
 }

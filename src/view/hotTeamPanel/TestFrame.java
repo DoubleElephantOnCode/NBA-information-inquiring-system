@@ -1,4 +1,4 @@
-package view.hotPlayerPanel;
+package view.hotTeamPanel;
 
 import java.awt.Color;
 import java.awt.Point;
@@ -19,11 +19,11 @@ public class TestFrame {
 	
 	static Point origin = new Point();
 	static JFrame f;
-	static HotPlayerPanel p;
+	static HotTeamPanel p;
 	static String[][][] content;
 	static InformationCenterPanel back;
 	
-	static String png = "E:\\课件\\软件工程与计算\\大二下学期\\data\\迭代一数据\\players\\portrait\\LeBron James.png";
+	static String svgFile = "D:\\data\\teams\\MIA.svg";
 	
 	public static void main(String[] args){
 		content = new String[5][row][column];
@@ -41,11 +41,11 @@ public class TestFrame {
 		f = new JFrame();
 		f.setBackground(Color.red);
 		
-		String[] arrpng = new String[5];
+		java.io.File[] arrsvg = new java.io.File[5];
 		for(int i = 0; i < 5; i++){
-			arrpng[i] = png;
+			arrsvg[i] = new java.io.File(svgFile);
 		}
-		p = new HotPlayerPanel(arrpng, content, 1);
+		p = new HotTeamPanel(arrsvg, content);
 		
 		back.add(p, 0);
 		

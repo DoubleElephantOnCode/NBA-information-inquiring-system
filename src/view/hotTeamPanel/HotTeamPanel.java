@@ -1,4 +1,4 @@
-package view.hotPlayerPanel;
+package view.hotTeamPanel;
 
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
@@ -7,15 +7,15 @@ import javax.swing.JPanel;
 
 import view.SizeAndLocationAndFont;
 
-public class HotPlayerPanel extends JPanel{
+public class HotTeamPanel extends JPanel{
 	
 	TotalPanel total;
 	
 	int pointerH;
 	
-	public HotPlayerPanel(String[] picPath, String[][][] playerContents, int type){//1为当日热点球员,其他为赛季热点球员
+	public HotTeamPanel(java.io.File[] teamPics, String[][][] playerContents){//1为当日热点球员,其他为赛季热点球员
 		
-		total = new TotalPanel(picPath, playerContents, type);
+		total = new TotalPanel(teamPics, playerContents);
 		total.setLocation(0, 0);
 		
 		pointerH = 0;
@@ -23,8 +23,8 @@ public class HotPlayerPanel extends JPanel{
 		this.add(total);
 		
 		this.setLayout(null);
-		this.setSize(SizeAndLocationAndFont.hotPlayerPanelWidth, SizeAndLocationAndFont.hotPlayerPanelHeight);
-		this.setLocation(SizeAndLocationAndFont.hotPlayerPanelLocationX, SizeAndLocationAndFont.hotPlayerPanelLocationY);
+		this.setSize(SizeAndLocationAndFont.hotTeamPanelWidth, SizeAndLocationAndFont.hotTeamPanelHeight);
+		this.setLocation(SizeAndLocationAndFont.hotTeamPanelLocationX, SizeAndLocationAndFont.hotTeamPanelLocationY);
 		this.setOpaque(false);
 		this.addMouseWheelListener(new MouseWheelListener(){
 
@@ -32,8 +32,8 @@ public class HotPlayerPanel extends JPanel{
 			public void mouseWheelMoved(MouseWheelEvent arg0) {
 				if(arg0.getWheelRotation() > 0){
 					pointerH -= 30;
-					if(pointerH < SizeAndLocationAndFont.hotPlayerPanelHeight-total.getHeight()){
-						pointerH = SizeAndLocationAndFont.hotPlayerPanelHeight-total.getHeight();
+					if(pointerH < SizeAndLocationAndFont.hotTeamPanelHeight-total.getHeight()){
+						pointerH = SizeAndLocationAndFont.hotTeamPanelHeight-total.getHeight();
 					}
 					total.setLocation(0, pointerH);
 				}

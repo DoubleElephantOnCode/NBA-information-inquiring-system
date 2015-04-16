@@ -10,38 +10,44 @@ import view.selectedPanel.SelectPanel;
 
 public class TotalPanel extends JPanel{
 	
-	static String[] item = {"得分", "篮板", "助攻", "盖帽", "抢断"};
+	static String[] item1 = {"得分", "篮板", "助攻", "盖帽", "抢断"};
+	static String[] item2 = {"场均得分", "场均篮板", "场均助攻", "场均盖帽", "场均抢断", "三分命中率", "投篮命中率", "罚球命中率"};
 	
-	SelectPanel choice;
+	SelectPanel choiceHotPlayerToday, choiceHotPlayerThisYear;
 	
-	OneHotPlayerPanel[] playerPanel;
+	OneHotPlayerPanel[] hotPlayerTodayPanel;
 	
 	int choiceWidth = SizeAndLocationAndFont.hotPlayerSelectPanelWidth,
 			choiceHeight = SizeAndLocationAndFont.hotPlayerSelectPanelHeight;
 	
 	int num;
 	
-	public TotalPanel(String[] picPath, String[][][] playerContents){
-		num = playerContents.length;
+	public TotalPanel(String[] picHotPlayerTodayPath, String[][][] hotPlayerTodayContents, int type){
+		num = hotPlayerTodayContents.length;
 		
-		choice = new SelectPanel(choiceWidth, choiceHeight, item);
-		choice.setLocation(SizeAndLocationAndFont.hotPlayerSelectPanelLocationX, SizeAndLocationAndFont.hotPlayerSelectPanelLocationY);
-		choice.box.addActionListener(new ActionListener(){
+		if(type == 1){
+			choiceHotPlayerToday = new SelectPanel(choiceWidth, choiceHeight, item1);
+		}
+		else{
+			choiceHotPlayerToday = new SelectPanel(choiceWidth, choiceHeight, item2);
+		}
+		choiceHotPlayerToday.setLocation(SizeAndLocationAndFont.hotPlayerSelectPanelLocationX, SizeAndLocationAndFont.hotPlayerSelectPanelLocationY);
+		choiceHotPlayerToday.box.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				choice.action();
+				choiceHotPlayerToday.action();
 			}
 			
 		});
 		
-		this.add(choice);
+		this.add(choiceHotPlayerToday);
 		
-		playerPanel = new OneHotPlayerPanel[num];
+		hotPlayerTodayPanel = new OneHotPlayerPanel[num];
 		for(int i = 0; i < num; i++){
-			playerPanel[i] = new OneHotPlayerPanel(picPath[i], playerContents[i]);
-			playerPanel[i].setLocation(0, i*(SizeAndLocationAndFont.hotPlayerPhotoHeight+5) + SizeAndLocationAndFont.hotPlayerSelectPanelLocationY + choiceHeight + 5);
-			this.add(playerPanel[i]);
+			hotPlayerTodayPanel[i] = new OneHotPlayerPanel(picHotPlayerTodayPath[i], hotPlayerTodayContents[i]);
+			hotPlayerTodayPanel[i].setLocation(0, i*(SizeAndLocationAndFont.hotPlayerPhotoHeight+5) + SizeAndLocationAndFont.hotPlayerSelectPanelLocationY + choiceHeight + 5);
+			this.add(hotPlayerTodayPanel[i]);
 		}
 		
 		this.setSize(SizeAndLocationAndFont.hotPlayerPhotoWidth + SizeAndLocationAndFont.hotPlayerInfoPanelWidth,
