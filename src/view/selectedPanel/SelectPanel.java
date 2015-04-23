@@ -78,6 +78,12 @@ public class SelectPanel extends JPanel{
 		box.addItem(i);
 	}
 	
+	public void setSelectedIndex(int index){
+		box.setSelectedIndex(index);
+		text.setText((String)box.getSelectedItem());
+		this.updateUI();
+	}
+	
 	public String getSelectedItem(){
 		return text.getText();
 	}
