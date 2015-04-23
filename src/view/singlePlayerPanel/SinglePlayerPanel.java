@@ -45,8 +45,6 @@ public class SinglePlayerPanel extends JPanel{
 	int personalInfoWidth = SizeAndLocationAndFont.singlePlayerInfoTableWidth, 
 			personalInfoHeight = SizeAndLocationAndFont.singlePlayerInfoTableHeight;
 	
-	
-	
 	public SinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn){
 		photo1BG = new ImageIcon(File.file + File.table_cell2_light + File.PNG);
 		photo1BG.setImage(photo1BG.getImage().getScaledInstance(photo1W, personalInfoHeight, Image.SCALE_DEFAULT));

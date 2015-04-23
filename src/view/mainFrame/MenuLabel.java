@@ -1,6 +1,7 @@
 package view.mainFrame;
 
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -10,10 +11,12 @@ import view.startView.StartPanel;
 
 public class MenuLabel {
 
-	static JLabel menu;
-	static JLabel menuEnter;
+	JLabel menu;
+	JLabel menuEnter;
 	
 	int width = 100, height = 50;
+	
+	ArrayList<JPanel> pList;
 	
 	public MenuLabel(){
 		menu = Main.setJLabelWithIcon(File.file + File.menu + File.PNG, width, height);
@@ -25,16 +28,21 @@ public class MenuLabel {
 		menu.setOpaque(false);
 		menuEnter.setOpaque(false);
 		
+//		pList = new ArrayList<JPanel>(); TODO
+		
 		menu.addMouseListener(new LabelUsualListener(menu, menuEnter));
 		menuEnter.addMouseListener(new LabelEnterListener(menu, menuEnter){
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(StartPanel.self == null) return;//TODO throw exception
+				if(StartPanel.self == null) return;
 				StartPanel.self.setVisible(true);
 				//TODO 移除加入的界面
 				if(Main.teamCountPanel != null) Main.mainFrame.remove(Main.teamCountPanel);
 				if(Main.playerCountPanel != null) Main.mainFrame.remove(Main.playerCountPanel);
 				if(Main.infomationCenterPanel != null) Main.mainFrame.remove(Main.infomationCenterPanel);
+//				for(JPanel p : pList){ TODO
+//					if(p != null) Main.mainFrame.remove(p);
+//				}
 				
 				StartPanel.exit = new ExitLabel();
 				StartPanel.exit.addToPanel(StartPanel.self);
@@ -68,6 +76,10 @@ public class MenuLabel {
 		p.add(menuEnter, 0);
 		menu.setVisible(true);
 		menuEnter.setVisible(false);
+	}
+	
+	public void addListenPanel(JPanel p){
+		pList.add(p);
 	}
 	
 }

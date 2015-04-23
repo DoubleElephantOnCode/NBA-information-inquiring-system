@@ -13,9 +13,9 @@ public class HotTeamPanel extends JPanel{
 	
 	int pointerH;
 	
-	public HotTeamPanel(java.io.File[] teamPics, String[][][] playerContents){//1为当日热点球员,其他为赛季热点球员
+	public HotTeamPanel(java.io.File[] teamPics, String[][][] teamContents){
 		
-		total = new TotalPanel(teamPics, playerContents);
+		total = new TotalPanel(teamPics, teamContents);
 		total.setLocation(0, 0);
 		
 		pointerH = 0;
