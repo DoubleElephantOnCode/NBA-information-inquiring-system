@@ -55,7 +55,7 @@ public class ShowPlayerController {
 	 * @param name
 	 */
 	public void showSinglePlayerInfo(String name){
-		showPlayerModel.showSinglePlayerInfo(name);
+//		showPlayerModel.showSinglePlayerInfo(name);
 	}
 	
 	/**

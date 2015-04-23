@@ -298,13 +298,16 @@ public class ShowPlayerDataModel {
 	/**
 	 * 显示一个球员的详细信息
 	 */
-	public void showSinglePlayerInfo(final String name){
+	public void showSinglePlayerInfo(final String name,
+			final String startDate, final String endDate){
 		new Waiting(){
 			
 			protected Void doInBackground() throws Exception {
 
 				PlayerVO player = PlayerList.findAPlayer(name);
-				ArrayList<PlayerDataPerMatchVO> matchDataList = player.getDataPerMatchList();
+				ArrayList<PlayerDataPerMatchVO> matchDataList =
+						SelectMatch.selectMatchByDate(
+								player.getDataPerMatchList(), startDate, endDate);
 				PlayerDataPerMatchVO matchData = matchDataList.get(0);
 
 				String[][] content = new String
@@ -317,6 +320,7 @@ public class ShowPlayerDataModel {
 						content[i][j] = s[j];
 					}
 				}
+				
 				
 				
 				return null;

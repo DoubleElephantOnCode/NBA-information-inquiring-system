@@ -482,7 +482,7 @@ public class PlayerVO {
 		this.name = name;
 		this.number = number;
 		this.position = position;
-		this.height = height;
+		this.height = toMeter(height);
 		this.weight = weight;
 		this.birthday = birthday;
 		this.age = age;
@@ -739,15 +739,17 @@ public class PlayerVO {
 
 	/**
 	 * 获取基本球员信息
-	 * 姓名, 位置, 所属球队, 号码, 身高, 体重, 生日, 年龄, 球龄, 毕业学校 
+	 * 姓名, 所属球队, 位置, 号码, 生日, 身高, 体重, 年龄, 球龄, 毕业学校 , 平均得分, 平均篮板, 平均助攻
 	 * @return
 	 */
-	public String[] getBasicInfo(){
+	public String[] getBasicPlayerInfo(){
 		//TODO 获取基本球员信息
 		String[] s = new String[]{
-				"Name", this.name, "Position", this.position, "Team", this.teamName,
-				"Number", this.number, "Height", this.height, "Weight", this.weight,
-				"Birth", this.birthday, "Age", this.age, "Exp", this.exp, "School", this.school
+				this.name, this.teamName, this.position, this.number,
+				this.birthday, "Height: " + this.height + "m",
+				"Weight: " + this.weight + "磅", "Age: " + this.age, 
+				"Exp:" + this.exp, "School:" + this.school, "场均得分: " + this.avePersonalPoints,
+				"场均篮板: " + this.aveTotalReboundsNum, "场均助攻: " + this.aveAssistNum
 		};
 		return s;
 	}
@@ -848,6 +850,18 @@ public class PlayerVO {
 		String s = df.format(d);
 		Double dd = new Double(s);
 		return dd.toString();
+	}
+	
+	/**
+	 * 英尺-英寸 转化成 米
+	 * @param height
+	 * @return
+	 */
+	private String toMeter(String height){
+		String[] temp = height.split("-");
+		double inch = Double.parseDouble(temp[0]) * 12 + Double.parseDouble(temp[1]);
+		String meter = Double.toString(inch * 0.0254);
+		return meter;
 	}
 	
 	public String getAction() {
