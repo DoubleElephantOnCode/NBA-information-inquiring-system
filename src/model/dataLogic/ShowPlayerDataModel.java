@@ -2,8 +2,13 @@ package model.dataLogic;
 
 import java.util.ArrayList;
 
+import model.readData.ReadMatchData;
+import model.readData.ReadPlayerData;
+import model.readData.ReadTeamData;
+import view.infomationCenter.InformationCenterPanel;
 import view.mainFrame.Main;
 import view.mainFrame.Waiting;
+import view.singlePlayerPanel.TestFrame;
 import vo.PlayerDataPerMatchVO;
 import vo.PlayerVO;
 
@@ -305,9 +310,10 @@ public class ShowPlayerDataModel {
 			protected Void doInBackground() throws Exception {
 
 				PlayerVO player = PlayerList.findAPlayer(name);
-				ArrayList<PlayerDataPerMatchVO> matchDataList =
-						SelectMatch.selectMatchByDate(
-								player.getDataPerMatchList(), startDate, endDate);
+				ArrayList<PlayerDataPerMatchVO> matchDataList = player.getDataPerMatchList();
+//				ArrayList<PlayerDataPerMatchVO> matchDataList =
+//						SelectMatch.selectMatchByDate(
+//								player.getDataPerMatchList(), startDate, endDate);
 				PlayerDataPerMatchVO matchData = matchDataList.get(0);
 
 				String[][] content = new String
@@ -320,8 +326,17 @@ public class ShowPlayerDataModel {
 						content[i][j] = s[j];
 					}
 				}
+				//行表头，显示日期
+				String[] dateList = new String[matchDataList.size()];
+				for (int i = 0; i < dateList.length; i++) {
+					dateList[i] = matchDataList.get(i).getMatchDate();
+				}
 				
+				view.singlePlayerPanel.TestFrame testFrame = new TestFrame();
 				
+				view.singlePlayerPanel.TestFrame.back.setSinglePlayerPanel(
+						player.getPortrait(), player.getAction(), null, content,
+						dateList, PlayerList.getHeadForSinglePlayer());
 				
 				
 				return null;
@@ -329,5 +344,51 @@ public class ShowPlayerDataModel {
 			
 			
 		}.execute();
+	}
+	
+	public static void main(String[] args) {
+		ReadTeamData readTeam = new ReadTeamData();
+		readTeam.readTeamData();
+		
+		ReadPlayerData readPlayer = new ReadPlayerData();
+		readPlayer.readPlayerData();
+		
+		ReadMatchData readMatch = new ReadMatchData();
+		readMatch.readMatchData();
+		
+		PlayerVO player = PlayerList.findAPlayer("Kobe Bryant");
+		ArrayList<PlayerDataPerMatchVO> matchDataList = player.getDataPerMatchList();
+//		ArrayList<PlayerDataPerMatchVO> matchDataList =
+//				SelectMatch.selectMatchByDate(
+//						player.getDataPerMatchList(), startDate, endDate);
+		PlayerDataPerMatchVO matchData = matchDataList.get(0);
+
+		String[][] content = new String
+				[matchDataList.size()][PlayerList.getHeadForSinglePlayer().length];
+		//给要显示的表格填上内容
+		for (int i = 0; i < matchDataList.size(); i++) {
+			matchData = matchDataList.get(i);
+			String[] s = matchData.getMatchInfo();
+			for (int j = 0; j < s.length; j++) {
+				content[i][j] = s[j];
+			}
+		}
+		//行表头，显示日期
+		String[] dateList = new String[matchDataList.size()];
+		for (int i = 0; i < dateList.length; i++) {
+			dateList[i] = matchDataList.get(i).getMatchDate();
+		}
+		
+		view.singlePlayerPanel.TestFrame testFrame = new TestFrame();
+
+		String[] s = new String[0];
+		String portait = player.getPortrait();
+		String action = player.getAction();
+		System.out.println(portait);
+		System.out.println(action);
+		
+		
+		testFrame.back.setSinglePlayerPanel(portait, action, s, content,
+				dateList, PlayerList.getHeadForSinglePlayer());
 	}
 }

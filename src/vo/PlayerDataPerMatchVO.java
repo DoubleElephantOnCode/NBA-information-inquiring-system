@@ -54,77 +54,77 @@ public class PlayerDataPerMatchVO {
 	/**
 	 * 投篮命中数
 	 */
-	private double scoreNum;
+	private double scoreNum = 0;
 	
 	/**
 	 * 投篮出手数
 	 */
-	private double shootNum;
+	private double shootNum = 0;
 	
 	/**
 	 * 三分命中数
 	 */
-	private double threePointerScoreNum;
+	private double threePointerScoreNum = 0;
 	
 	/**
 	 * 三分出手数
 	 */
-	private double threePointerShootNum;
+	private double threePointerShootNum = 0;
 	
 	/**
 	 * 罚球命中数
 	 */
-	private double freeThrowScoreNum;
+	private double freeThrowScoreNum = 0;
 	
 	/**
 	 * 罚球出手数
 	 */
-	private double freeThrowShootNum;
+	private double freeThrowShootNum = 0;
 	
 	/**
 	 * 进攻篮板数
 	 */
-	private double offensiveReboundsNum;
+	private double offensiveReboundsNum = 0;
 	
 	/**
 	 * 防守篮板数
 	 */
-	private double defensiveReboundsNum;
+	private double defensiveReboundsNum = 0;
 	
 	/**
 	 * 总篮板数
 	 */
-	private double totalReboundsNum;
+	private double totalReboundsNum = 0;
 	
 	/**
 	 * 助攻数
 	 */
-	private double assistNum;
+	private double assistNum = 0;
 	
 	/**
 	 * 抢断数
 	 */
-	private double stealNum;
+	private double stealNum = 0;
 	
 	/**
 	 * 盖帽数
 	 */
-	private double blockNum;
+	private double blockNum = 0;
 
 	/**
 	 * 失误数
 	 */
-	private double turnoverNum;
+	private double turnoverNum = 0;
 	
 	/**
 	 * 犯规数
 	 */
-	private double foulNum;
+	private double foulNum = 0;
 	
 	/**
 	 * 个人得分
 	 */
-	private double personalPoints;
+	private double personalPoints = 0;
 	
 	/**
 	 * 是否两双
@@ -161,7 +161,7 @@ public class PlayerDataPerMatchVO {
 	/**
 	 * 球队总进球数
 	 */
-	private double allScoreNum;
+	private double allScoreNum = 0;
 	
 	/**
 	 * 球队总篮板数
@@ -315,49 +315,18 @@ public class PlayerDataPerMatchVO {
 	private void calAllRate(){
 		//TODO
 		//单场投篮命中率
-		scoreRate = scoreNum / shootNum;
+		if(shootNum != 0.0){
+			scoreRate = scoreNum / shootNum;
+		}
 		//单场三分命中率
-		threePointScoreRate = threePointerScoreNum / threePointerShootNum;
+		if(threePointerShootNum != 0.0){
+			threePointScoreRate = threePointerScoreNum / threePointerShootNum;
+		}	
 		//罚球命中率
-		freeThrowScoreRate = freeThrowScoreNum / freeThrowShootNum;
-//		//效率
-//		efficiency = (personalPoints + totalReboundsNum + assistNum + stealNum + blockNum) - 
-//				(shootNum - scoreNum) - (freeThrowShootNum - freeThrowScoreNum) - turnoverNum;
-//		//GmSc
-//		GmSc = personalPoints + 0.4 * scoreNum - 0.7 * shootNum -
-//				0.4 * (freeThrowShootNum - freeThrowScoreNum) + 0.7 * offensiveReboundsNum + 
-//				0.3 * defensiveReboundsNum + stealNum + 0.7 * assistNum + 0.7 * blockNum - 
-//				0.4 * foulNum - turnoverNum;
-//		//真实投篮命中率 = 得分÷(2×(投篮出手数+0.44×罚球出手数))
-//		trueShootingPercentage = personalPoints / (2 * (shootNum + 0.44 * freeThrowShootNum));
-//		//投篮效率 = (投篮命中数+0.5×三分命中数)÷投篮出手数
-//		shootingEfficiency = (scoreNum + 0.5 * threePointerScoreNum) / shootNum;
-//		//篮板率 = 球员篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总篮板+对手总篮板)
-//		reboundRate = totalReboundsNum * (timeOfAllPlayers.getTimeByMinute() / 5) / 
-//				playTime.getTimeByMinute() / (allReboundNum + allOpponentRebondNum);
-//		//进攻篮板率 = 球员进攻篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总进攻篮板+对手总进攻篮板)
-//		offensiveReboundRate = offensiveReboundsNum * (timeOfAllPlayers.getTimeByMinute() / 5) / 
-//				playTime.getTimeByMinute() / (allOffReboundNum + allOppOffReboundNum);
-//		//防守篮板率 = 球员防守篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总防守篮板+对手总防守篮板)
-//		defensiveReboundRate = defensiveReboundsNum * (timeOfAllPlayers.getTimeByMinute() / 5) / 
-//				playTime.getTimeByMinute() / (allDefReboundNum + allOppDefReboundNum);
-//		//助攻率 = 球员助攻数÷(球员上场时间÷(球队所有球员上场时间÷5)×球队总进球数-球员进球数)
-//		assistRate = assistNum / (playTime.getTimeByMinute() /
-//				(timeOfAllPlayers.getTimeByMinute() / 5) * allScoreNum - scoreNum);
-//		//抢断率 = 球员抢断数×(球队所有球员上场时间÷5)÷球员上场时间÷对手进攻次数
-//		stealRate = stealNum * (timeOfAllPlayers.getTimeByMinute() / 5) / 
-//				playTime.getTimeByMinute() / opponentAttackRound;
-//		//盖帽率 = 球员盖帽数×(球队所有球员上场时间÷5)÷球员上场时间÷对手两分球出手次数
-//		blockRate = blockNum * (timeOfAllPlayers.getTimeByMinute() / 5) / 
-//				playTime.getTimeByMinute() / oppTwoPointShootNum;
-//		//失误率 = 球员失误数÷(球员两分球出手次数+0.44×球员罚球次数+球员失误数)
-//		turnoverRate = turnoverNum / (shootNum - threePointerShootNum +
-//				0.44 * freeThrowShootNum + turnoverNum);
-//		//使用率 = (球员出手次数+0.44×球员罚球次数+球员失误次数)×(球队所有球员上场时间÷5)÷
-//		//        球员上场时间÷(球队所有总球员出手次数+0.44×球队所有球员罚球次数+球队所有球员失误次数)
-//		useRate = (shootNum / 0.44 * freeThrowShootNum + turnoverNum) *
-//				(timeOfAllPlayers.getTimeByMinute() / 5) / playTime.getTimeByMinute() / 
-//				(allShootNum + 0.44 * allFreeThrowShootNum + allTurnoverNum );
+		if(freeThrowShootNum != 0.0){
+			freeThrowScoreRate = freeThrowScoreNum / freeThrowShootNum;
+		}
+
 	}
 	
 	/**
@@ -367,6 +336,13 @@ public class PlayerDataPerMatchVO {
 	 * @return
 	 */
 	public String[] getMatchInfo(){
+		
+		System.out.println("对阵球队：" + this.rivalTeam);
+		System.out.println("三分命中率：" + this.threePointScoreRate);
+		System.out.println("罚球命中率：" + this.freeThrowScoreRate);
+		System.out.println("投篮命中率：" + this.scoreRate);
+		
+		
 		//TODO 获得单场比赛的信息
 		String[] s = new String[]{
 				this.matchDate, this.rivalTeam, isInStartingLineup(this.isStarting),

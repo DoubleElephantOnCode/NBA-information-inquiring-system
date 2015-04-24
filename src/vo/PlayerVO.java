@@ -36,6 +36,11 @@ public class PlayerVO {
 	private String portrait = FilePath.playerPortaitPath;
 	
 	/**
+	 * png后缀
+	 */
+	private String PNG = ".png";
+	
+	/**
 	 * 所属球队
 	 */
 	private String teamName = "";
@@ -476,8 +481,8 @@ public class PlayerVO {
 			String birthday, String age, String exp, String school) {
 //		dataPerMatchList = new ArrayList<PlayerDataPerMatchVO>();
 		
-		action = action + name;
-		portrait = portrait + name;
+		action = action + name + PNG;
+		portrait = portrait + name + PNG;
 		
 		this.name = name;
 		this.number = number;
