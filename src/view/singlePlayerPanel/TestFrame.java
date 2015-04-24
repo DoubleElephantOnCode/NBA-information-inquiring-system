@@ -19,7 +19,6 @@ public class TestFrame {
 	
 	static Point origin = new Point();
 	static JFrame f;
-	static SinglePlayerPanel p;
 	static String[][] content;
 	static String[] headListForRow;
 	static String[] headListForColumn;
@@ -47,9 +46,7 @@ public class TestFrame {
 		f = new JFrame();
 		f.setBackground(Color.red);
 		
-		p = new SinglePlayerPanel("E:\\课件\\软件工程与计算\\大二下学期\\data\\迭代一数据\\players\\portrait\\LeBron James.png", "E:\\课件\\软件工程与计算\\大二下学期\\data\\迭代一数据\\players\\action\\LeBron James.png", null, content, headListForRow, headListForColumn);
-		
-		back.add(p, 0);
+		back.setSinglePlayerPanel("E:\\课件\\软件工程与计算\\大二下学期\\data\\迭代一数据\\players\\portrait\\LeBron James.png", "E:\\课件\\软件工程与计算\\大二下学期\\data\\迭代一数据\\players\\action\\LeBron James.png", null, content, headListForRow, headListForColumn);
 		
 		f.add(back);
 		f.setLayout(null);
@@ -106,9 +103,7 @@ public class TestFrame {
 		f = new JFrame();
 		f.setBackground(Color.red);
 		
-		p = new SinglePlayerPanel("E:\\课件\\软件工程与计算\\大二下学期\\data\\迭代一数据\\players\\portrait\\LeBron James.png", "E:\\课件\\软件工程与计算\\大二下学期\\data\\迭代一数据\\players\\action\\LeBron James.png", null, content, headListForRow, headListForColumn);
-		
-		back.add(p, 0);
+		back.setSinglePlayerPanel("E:\\课件\\软件工程与计算\\大二下学期\\data\\迭代一数据\\players\\portrait\\LeBron James.png", "E:\\课件\\软件工程与计算\\大二下学期\\data\\迭代一数据\\players\\action\\LeBron James.png", null, content, headListForRow, headListForColumn);
 		
 		f.add(back);
 		f.setLayout(null);

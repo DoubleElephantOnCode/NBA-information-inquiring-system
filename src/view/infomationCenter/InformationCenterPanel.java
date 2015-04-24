@@ -42,7 +42,7 @@ public class InformationCenterPanel extends JPanel{
 	
 	static HotPlayerPanel hotPlayerPanel;
 	static HotTeamPanel hotTeamPanel;
-	public static SinglePlayerPanel singlePlayerPanel;
+	static SinglePlayerPanel singlePlayerPanel;
 	static SingleTeamPanel singleTeamPanel;
 	
 	public InformationCenterPanel(int index){
