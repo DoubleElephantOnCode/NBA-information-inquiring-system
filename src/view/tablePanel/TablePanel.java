@@ -81,8 +81,8 @@ public class TablePanel extends JPanel{
 	}
 	
 	protected void setTableContent(){
-		for(int i = 0; i < pageRow; i++){
-			for(int j = 0; j < pageColumn; j++){
+		for(int i = 0; i < pageRow && i+pointerRow < totalContent.length; i++){
+			for(int j = 0; j < pageColumn && j+pointerColumn < totalContent[0].length; j++){
 				pageContent[i][j] = totalContent[i+pointerRow][j+pointerColumn];
 			}
 		}
@@ -106,6 +106,7 @@ public class TablePanel extends JPanel{
 		else if(pointerColumn > totalColumn-pageColumn){
 			pointerColumn = totalColumn-pageColumn;
 		}
+		if(pointerColumn < 0) pointerColumn = 0;
 		this.setTableContent();
 	}
 	
@@ -117,6 +118,7 @@ public class TablePanel extends JPanel{
 		else if(pointerRow > totalRow-pageRow){
 			pointerRow = totalRow-pageRow;
 		}
+		if(pointerRow < 0) pointerRow = 0;
 		this.setTableContent();
 	}
 	
@@ -135,6 +137,8 @@ public class TablePanel extends JPanel{
 		else if(pointerRow > totalRow-pageRow){
 			pointerRow = totalRow-pageRow;
 		}
+		if(pointerRow < 0) pointerRow = 0;
+		if(pointerColumn < 0) pointerColumn = 0;
 		this.setTableContent();
 	}
 	

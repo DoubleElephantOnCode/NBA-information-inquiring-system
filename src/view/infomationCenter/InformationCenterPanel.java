@@ -42,7 +42,7 @@ public class InformationCenterPanel extends JPanel{
 	
 	static HotPlayerPanel hotPlayerPanel;
 	static HotTeamPanel hotTeamPanel;
-	static SinglePlayerPanel singlePlayerPanel;
+	public static SinglePlayerPanel singlePlayerPanel;
 	static SingleTeamPanel singleTeamPanel;
 	
 	public InformationCenterPanel(int index){
@@ -123,6 +123,7 @@ public class InformationCenterPanel extends JPanel{
 		removeInformationPanel();
 		singlePlayerPanel = new SinglePlayerPanel(pathOfPhoto1, pathOfPhoto2, info, content, headListForRow, headListForColumn);
 		this.add(singlePlayerPanel, 0);
+		singlePlayerPanel.updateUI();
 		this.updateUI();
 	}
 	
