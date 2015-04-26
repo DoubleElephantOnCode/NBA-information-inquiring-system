@@ -26,8 +26,6 @@ public class ShowTeamDataModel implements ShowView{
 				ArrayList<TeamVO> teamVOList = TeamList.getTeamVOList();
 				TeamVO t = teamVOList.get(0);
 				
-				System.out.println(teamVOList.size());
-				
 				
 				fs = new  File[teamVOList.size()];
 				content = new String[teamVOList.size()][TeamList.getHeadListForColumn().length];
@@ -51,15 +49,11 @@ public class ShowTeamDataModel implements ShowView{
 				column = TeamList.getHeadListForColumn();
 				row = TeamList.getHeadListForRow();
 				
+				System.out.println("newTeam11111");
+				Main.newTeamCountPanel(content,row,column,fs);
 				return null;
 			}
 			
-			@Override
-			protected void done(){
-				super.done();
-				System.out.println("newTeam11111");
-				Main.newTeamCountPanel(content,row,column,fs);
-			}
 		}.execute();
 		
 
@@ -99,23 +93,30 @@ public class ShowTeamDataModel implements ShowView{
 	public void changeData() {
 		// TODO Auto-generated method stub
 		
+		new Waiting(){
+			@Override
+			protected Void doInBackground() throws Exception {
+				super.doInBackground();
+				
 				ArrayList<TeamVO> teamVOList = TeamList.getTeamVOList();
-				TeamVO t = teamVOList.get(0);
 				File[] fs = new  File[teamVOList.size()];
+				TeamVO t = teamVOList.get(0);
 				String[][] content = new String[teamVOList.size()][TeamList.getHeadListForColumn().length];
-				for(int i = 0;i<teamVOList.size();i++){
-					t=teamVOList.get(i);
+				for(int h = 0;h<teamVOList.size();h++){
+					t=teamVOList.get(h);
 					String[] s = t.toStringArray();
-					fs[i] = new File(t.getPath());
+					fs[h] = new File(t.getPath());
 					for(int j=0;j<s.length;j++){
-						content[i][j] = s[j];
+						content[h][j] = s[j];
 					}
 				}
-				
-				String[] column = TeamList.getHeadListForColumn();
 				String[] row = TeamList.getHeadListForRow();
 				
-				Main.newTeamCountPanel(content,row,column,fs);
+				
+				Main.resetTeamCountPanel(content, row,fs);
+				return null;
+			}
+		}.execute();
 				
 			
 

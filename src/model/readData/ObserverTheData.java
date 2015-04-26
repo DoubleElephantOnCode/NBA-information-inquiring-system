@@ -46,14 +46,14 @@ public class ObserverTheData extends Thread{
 					 showView.changeData();
 				 }
 			 }
-/**
+
 			 try {
 				this.sleep(5000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	*/
+
 
 		}
 	}
@@ -63,11 +63,16 @@ public class ObserverTheData extends Thread{
 	 * 读取一个match文件的数据
 	 */
 	public void readMatchFile(File file,int yearOfStart){
+		
+		System.out.println(file.getAbsolutePath());
+		
 		BufferedReader reader = null;
 		try{
 			reader = new BufferedReader(new FileReader(file));
 			String tempString = null;
 			tempString = reader.readLine();
+			
+			System.out.println(tempString);
 			String[] strings = tempString.split(";");
 			int month = Integer.parseInt(strings[0].split("-")[0]);
 			int day = Integer.parseInt(strings[0].split("-")[1]);

@@ -515,6 +515,10 @@ public class TeamVO {
 	 * @return
 	 */
 	public void calAve(){
+		if(matchNum==0){
+			return;
+		}
+		
 		aveScoreNum = totalScoreNum/matchNum;
 		aveShootNum = totalShootNum/matchNum;
 		aveThreePointScoreNum = totalThreePointScoreNum/matchNum;
@@ -539,6 +543,9 @@ public class TeamVO {
 	 * 计算总的进攻防守回合
 	 */
 	public void calRound(){
+		if(matchNum==0){
+			return;
+		}
 		
 		totalAttackRound =  totalShootNum + 0.4 * totalFreeThrowShootNum 
 				- 1.07 *(totalOffensiveReboundsNum/(double)(totalOffensiveReboundsNum+totalOpponentDefensiveReboundsNum)*(totalShootNum - totalScoreNum))
@@ -553,6 +560,9 @@ public class TeamVO {
 	 * @return
 	 */
 	public void calEfficiency(){
+		if(matchNum==0){
+			return;
+		}
 		totalAttackEfficiency = totalScore/totalAttackRound*100;
 		totalDefendEfficiency = totalOpponentScore/totalDefensiveRound*100;
 		totalAttackReboundEfficiency = totalOffensiveReboundsNum/(double)(totalOffensiveReboundsNum + totalOpponentDefensiveReboundsNum);
@@ -566,6 +576,9 @@ public class TeamVO {
 	 * @return
 	 */
 	public void calRate(){
+		if(matchNum==0){
+			return;
+		}
 		totalScoreRate = totalScoreNum/(double)totalShootNum;
 		totalThreePointRate = totalThreePointScoreNum/(double)totalThreePointShootNum;
 		totalFreeThrowRate = totalFreeThrowScoreNum/(double)totalFreeThrowShootNum;
