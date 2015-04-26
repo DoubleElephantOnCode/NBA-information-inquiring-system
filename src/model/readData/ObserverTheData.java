@@ -7,57 +7,52 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import model.dataLogic.MatchList;
-import model.dataLogic.PlayerList;
-import model.dataLogic.TeamList;
+import constant.FilePath;
 import vo.MatchDataPerPlayerVO;
 import vo.MatchVO;
-import vo.PlayerDataPerMatchVO;
 import vo.ScoreVO;
-import constant.FilePath;
+import model.dataLogic.MatchList;
+import model.dataLogic.PlayerList;
+import model.dataLogic.ShowView;
+import model.dataLogic.TeamList;
 
-public class ReadMatchData {
+public class ObserverTheData extends Thread{
 	
 	private final int datePadding = 1900;
+	ShowView showView = null;
+	public int readMatchNum = 0;
 	
-	public static ObserverTheData readMatch= null;
+	public void setCurrentView(ShowView showView){
+		this.showView = showView;
+	}
 	
-	public void readMatchData(){
-		File matchFile = new File(FilePath.matchPath);
-		 File[] matches = matchFile.listFiles();
-		 
-		 //直接遍历时间顺序不对
-		// for(File file:matches){
-		//	 readMatchFile(file);
-		// }
-		 int i = 0;
-		 for(i = 0;i < matches.length;i++){
-			 String path = matches[i].getPath();
-			 String fileName = path.substring(FilePath.matchPath.length()+1);
-			 int month = Integer.parseInt(fileName.substring(6, 8));
-			 if(month > 6){
-				 break;
+	public void run(){
+		
+		while(true){
+			File matchFile = new File(FilePath.matchPath);
+			 File[] matches = matchFile.listFiles();
+			 if(matches.length> readMatchNum){
+				 for(int i = readMatchNum;i<matches.length;i++){
+					 readMatchFile(matches[i],2012);
+				 }
+				 readMatchNum = matches.length;
+				 
+				 TeamList.finishRead();
+				 
+				 if(showView!=null){
+					 showView.changeData();
+				 }
 			 }
-		 }
-		 for(int j = i;j<matches.length;j++){
-			 readMatchFile(matches[j],2013);
-		 }
-		 for(int j = 0;j < i;j++){
-			 readMatchFile(matches[j],2013);
-		 }
-		 
-		 TeamList.finishRead();
+			 try {
+				this.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
-	/**
-	 * 迭代二的读取比赛数据
-	 */
-	public void readMatchDataForTwo(){
-		ObserverTheData t = new ObserverTheData();
-		 readMatch = t;
-		t.start();
-	}
-	
+
 	/**
 	 * 读取一个match文件的数据
 	 */

@@ -34,6 +34,11 @@ public class TeamVO {
 	public String name;
 	
 	/**
+	 * 球队曾用名
+	 */
+	public String Oldname= "";
+	
+	/**
 	 * 球队名称缩写
 	 */
 	public String abbreviation;
