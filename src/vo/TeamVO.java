@@ -36,7 +36,7 @@ public class TeamVO {
 	/**
 	 * 球队曾用名
 	 */
-	public String Oldname= "";
+	public String oldName= "";
 	
 	/**
 	 * 球队名称缩写
@@ -412,7 +412,13 @@ public class TeamVO {
 		super();
 		
 		this.name = name;
+	
 		this.abbreviation = abbreviation;
+		if(abbreviation.equals("NOP")){
+			oldName = "NOH";
+		}else if(abbreviation.equals("NOH")){
+			oldName = "NOP";
+		}
 		//球队图片路径
 		this.path = FilePath.teamPath+"/"+abbreviation+".svg";
 				
@@ -430,7 +436,7 @@ public class TeamVO {
 	 */
 	public void addMatchVO(MatchVO matchVO){
 		matchList.add(matchVO);
-		if(abbreviation.equals(matchVO.getAwayTeam())){
+		if(abbreviation.equals(matchVO.getAwayTeam())||matchVO.getAwayTeam().equals(oldName)){
 			matchVOList.add(matchVO);
 			matchNum++;
 			if(matchVO.getTotalScore().former > matchVO.getTotalScore().latter){
@@ -465,7 +471,7 @@ public class TeamVO {
 			totalOpponentTurnoverNum += matchVO.getHomeTotalTurnoverNum();
 			
 			
-		}else if(abbreviation.equals(matchVO.getHomeTeam())){
+		}else if(abbreviation.equals(matchVO.getHomeTeam())||matchVO.getHomeTeam().equals(oldName)){
 			matchVOList.add(matchVO);
 			matchNum++;
 			if(matchVO.getTotalScore().former < matchVO.getTotalScore().latter){
@@ -1286,6 +1292,14 @@ public class TeamVO {
 
 	public void setTotalOpponentTurnoverNum(int totalOpponentTurnoverNum) {
 		this.totalOpponentTurnoverNum = totalOpponentTurnoverNum;
+	}
+
+	public String getOldName() {
+		return oldName;
+	}
+
+	public void setOldName(String oldName) {
+		this.oldName = oldName;
 	}
 	
 	

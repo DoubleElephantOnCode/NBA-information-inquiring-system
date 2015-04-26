@@ -397,7 +397,6 @@ public class MatchVO {
 			homePlayerData.setAllShootNum(homeTotalShootNum);
 			homePlayerData.setAllFreeThrowShootNum(homeTotalFreeThrowShootNum);
 			homePlayerData.setAllTurnoverNum(homeTotalTurnoverNum);
-			System.out.println(homeTeam);
 			TeamVO teamVO = TeamList.findTeamVO(homeTeam);
 			homePlayerData.setCompetion(teamVO.competion);
 			homePlayerData.setPartition(teamVO.partition);

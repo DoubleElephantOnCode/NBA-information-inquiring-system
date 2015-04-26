@@ -9,33 +9,56 @@ import view.mainFrame.Waiting;
 import vo.TeamVO;
 
 public class ShowTeamDataModel implements ShowView{
-	
+	public ShowView showView= this;
+	File[] fs ;
+		String[] column;
+		String[] row ;
+		String[][] content;
 	public void showTeamTable(){
 		ReadMatchData.readMatch.setCurrentView(this);
-
+	    
 		new Waiting(){
 			@Override
 			protected Void doInBackground() throws Exception {
 				super.doInBackground();
+				
+				
 				ArrayList<TeamVO> teamVOList = TeamList.getTeamVOList();
 				TeamVO t = teamVOList.get(0);
-				File[] fs = new  File[teamVOList.size()];
-				String[][] content = new String[teamVOList.size()][TeamList.getHeadListForColumn().length];
+				
+				System.out.println(teamVOList.size());
+				
+				
+				fs = new  File[teamVOList.size()];
+				content = new String[teamVOList.size()][TeamList.getHeadListForColumn().length];
+				
+				try{
 				for(int i = 0;i<teamVOList.size();i++){
+					
 					t=teamVOList.get(i);
+					
+					
 					String[] s = t.toStringArray();
 					fs[i] = new File(t.getPath());
 					for(int j=0;j<s.length;j++){
 						content[i][j] = s[j];
 					}
 				}
+				}catch(Exception e){
+					e.printStackTrace();
+				}
 				
-				String[] column = TeamList.getHeadListForColumn();
-				String[] row = TeamList.getHeadListForRow();
-				
-				Main.newTeamCountPanel(content,row,column,fs);
+				column = TeamList.getHeadListForColumn();
+				row = TeamList.getHeadListForRow();
 				
 				return null;
+			}
+			
+			@Override
+			protected void done(){
+				super.done();
+				System.out.println("newTeam11111");
+				Main.newTeamCountPanel(content,row,column,fs);
 			}
 		}.execute();
 		
@@ -75,10 +98,7 @@ public class ShowTeamDataModel implements ShowView{
 	@Override
 	public void changeData() {
 		// TODO Auto-generated method stub
-		new Waiting(){
-			@Override
-			protected Void doInBackground() throws Exception {
-				super.doInBackground();
+		
 				ArrayList<TeamVO> teamVOList = TeamList.getTeamVOList();
 				TeamVO t = teamVOList.get(0);
 				File[] fs = new  File[teamVOList.size()];
@@ -97,9 +117,8 @@ public class ShowTeamDataModel implements ShowView{
 				
 				Main.newTeamCountPanel(content,row,column,fs);
 				
-				return null;
-			}
-		}.execute();
+			
+
 	}
 	
 }

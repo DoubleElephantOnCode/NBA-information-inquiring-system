@@ -29,9 +29,12 @@ public class ObserverTheData extends Thread{
 	public void run(){
 		
 		while(true){
+			
 			File matchFile = new File(FilePath.matchPath);
 			 File[] matches = matchFile.listFiles();
 			 if(matches.length> readMatchNum){
+				 
+
 				 for(int i = readMatchNum;i<matches.length;i++){
 					 readMatchFile(matches[i],2012);
 				 }
@@ -43,12 +46,15 @@ public class ObserverTheData extends Thread{
 					 showView.changeData();
 				 }
 			 }
+/**
 			 try {
 				this.sleep(5000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+	*/
+
 		}
 	}
 	

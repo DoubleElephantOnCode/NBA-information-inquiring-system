@@ -33,13 +33,12 @@ public class TeamList {
 	}
 	
 	public static void addMatchVO(MatchVO matchVO){
-		for(TeamVO teamVO:teamVOList){
-			if(teamVO.abbreviation.equals(matchVO.getAwayTeam())){
-				teamVO.addMatchVO(matchVO);
-			}else if(teamVO.abbreviation.equals(matchVO.getHomeTeam())){
-				teamVO.addMatchVO(matchVO);
-			}
-		}
+		TeamVO teamVO = findTeamVO(matchVO.getAwayTeam());
+		teamVO.addMatchVO(matchVO);
+		teamVO = findTeamVO(matchVO.getHomeTeam());
+		teamVO.addMatchVO(matchVO);
+		
+		
 	}
 	
 	public static void finishRead(){
@@ -84,7 +83,7 @@ public class TeamList {
 	
 	public static TeamVO findTeamVO(String abbreviation){
 		for(int i = 0;i<teamVOList.size();i++){
-			if(abbreviation.equals(teamVOList.get(i).getAbbreviation())){
+			if(abbreviation.equals(teamVOList.get(i).getAbbreviation())||abbreviation.equals(teamVOList.get(i).getOldName())){
 				return teamVOList.get(i);
 			}
 		}
