@@ -15,6 +15,7 @@ import view.mainFrame.ExitLabel;
 import view.mainFrame.LabelEnterListener;
 import view.mainFrame.Main;
 import view.mainFrame.MenuLabel;
+import view.matchPanel.MatchPanel;
 import view.searchPanel.SearchPanel;
 import view.selectedPanel.SelectPanel;
 import view.singlePlayerPanel.SinglePlayerPanel;
@@ -44,6 +45,7 @@ public class InformationCenterPanel extends JPanel{
 	static HotTeamPanel hotTeamPanel;
 	static SinglePlayerPanel singlePlayerPanel;
 	static SingleTeamPanel singleTeamPanel;
+	static MatchPanel matchPanel;
 	
 	public InformationCenterPanel(int index){
 		this.index = index;
@@ -134,11 +136,20 @@ public class InformationCenterPanel extends JPanel{
 		this.updateUI();
 	}
 	
+	public void setMatchPanel(java.io.File team1, String[][] content1, String[] headListForRow1, String[] headListForColumn1,
+			java.io.File team2, String[][] content2, String[] headListForRow2, String[] headListForColumn2){
+		removeInformationPanel();
+		matchPanel = new MatchPanel(team1, content1, headListForRow1, headListForColumn1, team2, content2, headListForRow2, headListForColumn2);
+		this.add(matchPanel, 0);
+		this.updateUI();
+	}
+	
 	private void removeInformationPanel(){
 		if(hotPlayerPanel != null) this.remove(hotPlayerPanel);
 		if(hotTeamPanel != null) this.remove(hotTeamPanel);
 		if(singlePlayerPanel != null) this.remove(singlePlayerPanel);
 		if(singleTeamPanel != null) this.remove(singleTeamPanel);
+		if(matchPanel != null) this.remove(matchPanel);
 	}
 	
 }

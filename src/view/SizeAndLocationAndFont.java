@@ -135,4 +135,20 @@ public class SizeAndLocationAndFont {
 	static public int hotTeamSelectPanelLocationX = 0, hotTeamSelectPanelLocationY = 0;
 	static public int hotTeamPanelWidth = 853, hotTeamPanelHeight = 432;
 	static public int hotTeamPanelLocationX = 153, hotTeamPanelLocationY = 148;
+	
+	//查询单场比赛数据（单个球队参数）
+	static public int oneTeamStatisticsTablePanelWidth = 853, oneTeamStatisticsTablePanelHeight = 180;
+	static public int oneTeamStatisticsTablePanelLocationX = 0, oneTeamStatisticsTablePanelLocationY = 36;
+	
+	static public int oneTeamStatisticsTableWidth = 700, oneTeamStatisticsTableHeight = 135;
+	static public int oneTeamStatisticsTableHeadListForRowWidth = 140;
+	static public int oneTeamStatisticsTableHeadListForColumnHeight = 30;
+	static public int oneTeamStatisticsTablePageRow = 5, oneTeamStatisticsTablePageColumn = 7;
+	
+	static public int teamStatisticsPanelSVGLabelWidth = 60, teamStatisticsPanelSVGLabelHeight = 36;
+	
+	static public int teamStatisticsPanelWidth = 853, teamStatisticsPanelHeight = 216;
+	
+	static public int matchPanelWidth = 853, matchPanelHeight = 432;
+	static public int matchPanelLocationX = 153, matchPanelLocationY = 148;
 }
