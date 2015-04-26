@@ -54,8 +54,8 @@ public class ShowPlayerController {
 	 * 显示单独的球员信息
 	 * @param name
 	 */
-	public void showSinglePlayerInfo(String name){
-//		showPlayerModel.showSinglePlayerInfo(name);
+	public void showSinglePlayerInfo(String name, String startDate, String endDate){
+		showPlayerModel.showSinglePlayerInfo(name, startDate, endDate);
 	}
 	
 	/**

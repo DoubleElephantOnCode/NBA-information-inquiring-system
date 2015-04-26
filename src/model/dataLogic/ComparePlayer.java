@@ -41,30 +41,39 @@ public class ComparePlayer {
 		
 //		 姓名、所属球队、位置、两双次数、上场时间、当日得分、助攻数、抢断数、盖帽数、命中数、出手数、命中率、
 //		 三分命中数、三分出手数、三分命中率、罚球命中数、罚球出手数、罚球命中率、进攻篮板数、防守篮板数、总篮板数、失误数、犯规数
+		
+		//得分、篮板、盖帽、助攻、抢断、命中率、罚球命中率
 		comparator = new Comparator[]{
-				new SortByName(isPositiveSequence),
-				new SortByTeamName(isPositiveSequence),
-				new SortByPosition(isPositiveSequence),
-				new SortByDoubleDoubleNum(isPositiveSequence),
-				new SortByAvePlayTime(isPositiveSequence),
 				new SortByAvePersonalPoints(isPositiveSequence),
+				new SortByTotalReboundsNum(isPositiveSequence),
+				new SortByAveBlockNum(isPositiveSequence),
 				new SortByAveAssistNum(isPositiveSequence),
 				new SortByAveStealNum(isPositiveSequence),
-				new SortByAveBlockNum(isPositiveSequence),
-				new SortByAveScoreNum(isPositiveSequence),
-				new SortByAveShootNum(isPositiveSequence),
 				new SortByScoreRate(isPositiveSequence),
-				new SortByAveThreePointScoreNum(isPositiveSequence),
-				new SortByAveThreePointShootNum(isPositiveSequence),
-				new SortByThreePointScoreRate(isPositiveSequence),
-				new SortByAveFreeThrowScoreNum(isPositiveSequence),
-				new SortByAveFreeThrowShootNum(isPositiveSequence),
 				new SortByFreeThrowScoreRate(isPositiveSequence),
-				new SortByOffReboundsNum(isPositiveSequence),
-				new SortByDefReboundsNum(isPositiveSequence),
-				new SortByTotalReboundsNum(isPositiveSequence),
-				new SortByTurnoverNum(isPositiveSequence),
-				new SortByFoulNum(isPositiveSequence)
+//				new SortByName(isPositiveSequence),
+//				new SortByTeamName(isPositiveSequence),
+//				new SortByPosition(isPositiveSequence),
+//				new SortByDoubleDoubleNum(isPositiveSequence),
+//				new SortByAvePlayTime(isPositiveSequence),
+//				new SortByAvePersonalPoints(isPositiveSequence),
+//				new SortByAveAssistNum(isPositiveSequence),
+//				new SortByAveStealNum(isPositiveSequence),
+//				new SortByAveBlockNum(isPositiveSequence),
+//				new SortByAveScoreNum(isPositiveSequence),
+//				new SortByAveShootNum(isPositiveSequence),
+//				new SortByScoreRate(isPositiveSequence),
+//				new SortByAveThreePointScoreNum(isPositiveSequence),
+//				new SortByAveThreePointShootNum(isPositiveSequence),
+//				new SortByThreePointScoreRate(isPositiveSequence),
+//				new SortByAveFreeThrowScoreNum(isPositiveSequence),
+//				new SortByAveFreeThrowShootNum(isPositiveSequence),
+//				new SortByFreeThrowScoreRate(isPositiveSequence),
+//				new SortByOffReboundsNum(isPositiveSequence),
+//				new SortByDefReboundsNum(isPositiveSequence),
+//				new SortByTotalReboundsNum(isPositiveSequence),
+//				new SortByTurnoverNum(isPositiveSequence),
+//				new SortByFoulNum(isPositiveSequence)
 		};
 	}
 
