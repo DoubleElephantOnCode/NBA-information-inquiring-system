@@ -48,6 +48,8 @@ public class InformationCenterPanel extends JPanel{
 	static SingleTeamPanel singleTeamPanel;
 	static MatchPanel matchPanel;
 	
+	static int formerPanel = 0;
+	
 	public InformationCenterPanel(int index){
 		this.index = index;
 		
@@ -84,7 +86,10 @@ public class InformationCenterPanel extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 界面切换
 				panelBox.action();
-				switch(panelBox.getSelectedIndex()){
+				if(formerPanel == panelBox.getSelectedIndex()) return;
+				
+				formerPanel = panelBox.getSelectedIndex();
+				switch(formerPanel){
 				case 0:new ShowPlayerController().showHotPlayerInfo(true, 5, 0); break;//赛季热点球员
 				case 1:new ShowPlayerController().showHotPlayerInfo(false, 5, 0); break;//当日热点球员
 				case 2:new ShowPlayerController().showProgressPlayerInfo(0, 5);; break;//进步最快球员
