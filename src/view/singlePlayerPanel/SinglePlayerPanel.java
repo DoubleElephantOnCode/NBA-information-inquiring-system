@@ -45,7 +45,7 @@ public class SinglePlayerPanel extends JPanel{
 	int personalInfoWidth = SizeAndLocationAndFont.singlePlayerInfoTableWidth, 
 			personalInfoHeight = SizeAndLocationAndFont.singlePlayerInfoTableHeight;
 	
-	public SinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn){
+	public SinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[][] info, String[][] content, String[] headListForRow, String[] headListForColumn){
 		photo1BG = new ImageIcon(File.file + File.table_cell2_light + File.PNG);
 		photo1BG.setImage(photo1BG.getImage().getScaledInstance(photo1W, personalInfoHeight, Image.SCALE_DEFAULT));
 		photo1_bg = new JLabel(photo1BG);
@@ -75,17 +75,19 @@ public class SinglePlayerPanel extends JPanel{
 		tableCellDeep = new ImageIcon(File.file + File.table_cell2_deep + File.PNG);
 		tableCellLight = new ImageIcon(File.file + File.table_cell2_light + File.PNG);
 		
-		personalInfo = new TablePanel(3, 4, 3, 4, personalInfoWidth, personalInfoHeight);
-		tableCellDeep.setImage(tableCellDeep.getImage().getScaledInstance(personalInfoWidth / 4, personalInfoHeight / 3, Image.SCALE_DEFAULT));
-		tableCellLight.setImage(tableCellLight.getImage().getScaledInstance(personalInfoWidth / 4, personalInfoHeight / 3, Image.SCALE_DEFAULT));
+		personalInfo = new TablePanel(info.length, info[0].length, info.length, info[0].length, personalInfoWidth, personalInfoHeight);
+		tableCellDeep.setImage(tableCellDeep.getImage().getScaledInstance(personalInfoWidth / info[0].length, personalInfoHeight / info.length, Image.SCALE_DEFAULT));
+		tableCellLight.setImage(tableCellLight.getImage().getScaledInstance(personalInfoWidth / info[0].length, personalInfoHeight / info.length, Image.SCALE_DEFAULT));
 		
-		personalInfo.setRowBackground(tableCellLight, 0);
-		personalInfo.setRowBackground(tableCellDeep, 1);
-		personalInfo.setRowBackground(tableCellLight, 2);
+		for(int i = 0; i < info.length; i++){
+			if(i%2 == 0)
+				personalInfo.setRowBackground(tableCellLight, i);
+			else
+				personalInfo.setRowBackground(tableCellDeep, i);
+		}
 		
 		personalInfo.setLocation(photo1W, 0);
-		//TODO 内容需要进行组装
-//		personalInfo.setContent(info);
+		personalInfo.setContent(info);
 		
 		begin = new TimeSelectPanel(SizeAndLocationAndFont.beginTimePanelWidth, SizeAndLocationAndFont.beginTimePanelHeight, 2010, 2015);
 		begin.setLocation(SizeAndLocationAndFont.beginTimePanelLocationX, SizeAndLocationAndFont.beginTimePanelLocationY);

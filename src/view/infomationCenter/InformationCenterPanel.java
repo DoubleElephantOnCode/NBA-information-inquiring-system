@@ -139,7 +139,7 @@ public class InformationCenterPanel extends JPanel{
 		this.updateUI();
 	}
 	
-	public void setSinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn){
+	public void setSinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[][] info, String[][] content, String[] headListForRow, String[] headListForColumn){
 		removeInformationPanel();
 		singlePlayerPanel = new SinglePlayerPanel(pathOfPhoto1, pathOfPhoto2, info, content, headListForRow, headListForColumn);
 		this.add(singlePlayerPanel, 0);

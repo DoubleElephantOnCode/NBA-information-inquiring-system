@@ -187,7 +187,7 @@ public class Main {
 		mainFrame.repaint();
 	}
 	
-	public static void setSinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn){
+	public static void setSinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[][] info, String[][] content, String[] headListForRow, String[] headListForColumn){
 		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(4);//球员信息
 		InformationCenterPanel.formerPanel = 4;
 		informationCenterPanel.setSinglePlayerPanel(pathOfPhoto1, pathOfPhoto2, info, content, headListForRow, headListForColumn);
