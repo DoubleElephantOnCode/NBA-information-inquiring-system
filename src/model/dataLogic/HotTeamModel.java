@@ -3,7 +3,7 @@ package model.dataLogic;
 import java.io.File;
 import java.util.Date;
 
-import view.singleTeamPanel.TestFrame;
+import view.mainFrame.Main;
 import vo.TeamVO;
 
 public class HotTeamModel {
@@ -19,6 +19,6 @@ public class HotTeamModel {
 		for(int i = 0;i<content.length;i++){
 			headListForRow[i] = content[i][0];
 		}
-		TestFrame.teamInfoPanel(svgFile, infoName, info, content, headListForRow, headListForColumn);
+		Main.setSingleTeamPanel(svgFile, infoName, info, content, headListForRow, headListForColumn,teamName);
 	}
 }
