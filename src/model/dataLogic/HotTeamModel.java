@@ -15,10 +15,18 @@ public class HotTeamModel {
 		
 		String[] headListForColumn = MatchList.getHeadListForColumn();
 		String[][] content = teamVO.getMatchInfo(begin,end);
+		String[][] realContent = new String[content.length][3];//去掉第一项时间
+		for(int i = 0 ;i<content.length;i++){
+			for(int j = 0;j<3;j++){
+				realContent[i][j] = content[i][j+1];
+			}
+		}
+		
+		
 		String[] headListForRow = new String[content.length];
 		for(int i = 0;i<content.length;i++){
 			headListForRow[i] = content[i][0];
 		}
-		Main.setSingleTeamPanel(svgFile, infoName, info, content, headListForRow, headListForColumn,teamName);
+		Main.setSingleTeamPanel(svgFile, infoName, info, realContent, headListForRow, headListForColumn,teamName);
 	}
 }

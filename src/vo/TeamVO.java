@@ -686,7 +686,7 @@ public class TeamVO {
 				}
 			}
 		}
-		int length = 4; // 比赛时间  主场  客场 比分 
+		int length = 4; //比赛时间 主场  客场 比分 
 		String[][] content = new String[info.size()][length];
 		for(int i = 0;i<info.size();i++){
 			for(int j = 0;j<length;j++){

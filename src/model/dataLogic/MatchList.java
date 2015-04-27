@@ -26,11 +26,11 @@ public class MatchList {
 	}
 	
 	/**
-	 * 比赛时间 主场 客场 比分
+	 *   主场 客场 比分
 	 */
 	public static String[] getHeadListForColumn(){
 		String[] s = new String[]{
-				"比赛时间","主场","客场","比分"
+			"主场","客场","比分"
 		};
 		return s;
 	}
