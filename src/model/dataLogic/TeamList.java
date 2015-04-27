@@ -103,5 +103,16 @@ public class TeamList {
 		};
 		return s;
 	}
+	
+	
+	/**
+	 * 得到热点球队排序信息
+	 * 场均得分，场均篮板，场均助攻，场均盖帽，
+	场均抢断，三分命中率，投篮命中率，罚球命中率等
+	 * @return
+	 */
+	public static String[] getHotTeamSortInfoName(){
+		return null;
+	}
 
 }

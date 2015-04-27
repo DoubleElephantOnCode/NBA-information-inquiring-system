@@ -7,10 +7,10 @@ import model.dataLogic.ShowTeamDataModel;
 
 public class ShowTeamController {
 	ShowTeamDataModel showTeamModel;
-	HotTeamModel hotTeamModel;
+	HotTeamModel singleTeamModel;
 	public ShowTeamController(){
 		showTeamModel = new ShowTeamDataModel();
-		hotTeamModel = new HotTeamModel();
+		singleTeamModel = new HotTeamModel();
 	}
 	
 	public void showTeamTable(){
@@ -22,6 +22,10 @@ public class ShowTeamController {
 	}
 	
 	public void showTeamFrame(String teamName, Date begin,Date end){
-		hotTeamModel.showTeam(teamName,begin,end);
+		singleTeamModel.showTeam(teamName,begin,end);
+	}
+	
+	public void showHotTeamTable(int i){
+		
 	}
 }
