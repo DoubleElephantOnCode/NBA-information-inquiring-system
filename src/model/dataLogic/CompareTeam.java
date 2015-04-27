@@ -4,6 +4,7 @@ import java.util.Comparator;
 import vo.TeamVO;
 public class CompareTeam {
 	Comparator[] compartor;
+	Comparator[] hotCompartor;
 	public CompareTeam(boolean isPositiveSequence){
 	boolean b = isPositiveSequence;
 	compartor = new Comparator[]{			
@@ -49,6 +50,17 @@ public class CompareTeam {
 		new SortByAveTurnoverNum(b),
 		new SortByAveFoulNum(b),
 		new SortByAveScore(b),		
+	};
+	
+	hotCompartor = new Comparator[]{
+		new SortByAveScore(b),
+		new SortByAveTotalReboundsNum(b),
+		new SortByAveAssistNum(b),
+		new SortByAveBlockNum(b),
+		new SortByAveStealNum(b),
+		new SortByTotalThreePointRate(b),
+		new SortByTotalScoreRate(b),
+		new SortByTotalFreeThrowRate(b)
 	};
 	}
 	

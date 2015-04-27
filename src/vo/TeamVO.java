@@ -665,6 +665,18 @@ public class TeamVO {
 		return s;
 	}
 	
+	
+	public String[][] toStringArrayForHotTeam(){
+		String[][] s = new String[][]{
+			{name,location,competion,homeCourt,buildTime,"","",""},
+			{"场均得分","场均篮板 ","场均助攻","场均盖帽 ","场均抢断","三分命中率 ","投篮命中率","罚球命中率"	},
+			{changeFormat(aveScore),changeFormat(aveTotalReboundsNum),changeFormat(aveAssistNum),
+				changeFormat(aveBlockNum),changeFormat(aveStealNum),changeFormat(totalThreePointRate),
+				changeFormat(totalScoreRate),changeFormat(totalFreeThrowRate)}
+		};
+		return s;
+	}
+	
 	/**
 	 * 近期比赛数据
 	 * @param begin

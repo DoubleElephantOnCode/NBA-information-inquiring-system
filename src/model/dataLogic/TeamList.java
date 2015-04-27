@@ -81,6 +81,12 @@ public class TeamList {
 		Collections.sort(teamVOList, c);
 	}
 	
+	public static void sortHotTeam(int i){
+		CompareTeam ct = new CompareTeam(false);
+		Comparator c =ct.hotCompartor[i];
+		Collections.sort(teamVOList, c);
+	}
+	
 	public static TeamVO findTeamVO(String abbreviation){
 		for(int i = 0;i<teamVOList.size();i++){
 			if(abbreviation.equals(teamVOList.get(i).getAbbreviation())||abbreviation.equals(teamVOList.get(i).getOldName())){
