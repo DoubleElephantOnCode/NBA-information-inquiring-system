@@ -41,7 +41,7 @@ public class Main {
 	
 	static TeamCountPanel teamCountPanel;
 	static PlayerCountPanel playerCountPanel;
-	static InformationCenterPanel infomationCenterPanel;
+	static InformationCenterPanel informationCenterPanel;
 	
 	public Main(){
 		
@@ -148,67 +148,74 @@ public class Main {
 	}
 	
 	public static void setHotPlayerTodayPanel(String[] picPath, String[][][] playerContents){
-		if(infomationCenterPanel == null) infomationCenterPanel = new InformationCenterPanel(1);//当日热点球员
-		infomationCenterPanel.setHotPlayerTodayPanel(picPath, playerContents);
+		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(1);//当日热点球员
+		InformationCenterPanel.formerPanel = 1;
+		informationCenterPanel.setHotPlayerTodayPanel(picPath, playerContents);
 		startPanel.setVisible(false);
 		removeAllPanel();
-		mainFrame.add(infomationCenterPanel);
+		mainFrame.add(informationCenterPanel);
 		mainFrame.repaint();
 	}
 	
 	public static void setHotPlayerThisYearPanel(String[] picPath, String[][][] playerContents){
-		if(infomationCenterPanel == null) infomationCenterPanel = new InformationCenterPanel(0);//赛季热点球员
-		infomationCenterPanel.setHotPlayerThisYearPanel(picPath, playerContents);
+		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(0);//赛季热点球员
+		InformationCenterPanel.formerPanel = 0;
+		informationCenterPanel.setHotPlayerThisYearPanel(picPath, playerContents);
 		startPanel.setVisible(false);
 		removeAllPanel();
-		mainFrame.add(infomationCenterPanel);
+		mainFrame.add(informationCenterPanel);
 		mainFrame.repaint();
 	}
 	
 	public static void setProgressGreatPlayerPanel(String[] picPath, String[][][] playerContents){
-		if(infomationCenterPanel == null) infomationCenterPanel = new InformationCenterPanel(2);//进步最快球员
-		infomationCenterPanel.setProgressGreatPlayerPanel(picPath, playerContents);
+		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(2);//进步最快球员
+		InformationCenterPanel.formerPanel = 2;
+		informationCenterPanel.setProgressGreatPlayerPanel(picPath, playerContents);
 		startPanel.setVisible(false);
 		removeAllPanel();
-		mainFrame.add(infomationCenterPanel);
+		mainFrame.add(informationCenterPanel);
 		mainFrame.repaint();
 	}
 	
 	public static void setHotTeamPanel(java.io.File[] teamPics, String[][][] teamContents){
-		if(infomationCenterPanel == null) infomationCenterPanel = new InformationCenterPanel(3);//赛季热点球队
-		infomationCenterPanel.setHotTeamPanel(teamPics, teamContents);
+		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(3);//赛季热点球队
+		InformationCenterPanel.formerPanel = 3;
+		informationCenterPanel.setHotTeamPanel(teamPics, teamContents);
 		startPanel.setVisible(false);
 		removeAllPanel();
-		mainFrame.add(infomationCenterPanel);
+		mainFrame.add(informationCenterPanel);
 		mainFrame.repaint();
 	}
 	
 	public static void setSinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn){
-		if(infomationCenterPanel == null) infomationCenterPanel = new InformationCenterPanel(4);//球员信息
-		infomationCenterPanel.setSinglePlayerPanel(pathOfPhoto1, pathOfPhoto2, info, content, headListForRow, headListForColumn);
+		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(4);//球员信息
+		InformationCenterPanel.formerPanel = 4;
+		informationCenterPanel.setSinglePlayerPanel(pathOfPhoto1, pathOfPhoto2, info, content, headListForRow, headListForColumn);
 		startPanel.setVisible(false);
 		removeAllPanel();
-		mainFrame.add(infomationCenterPanel);
+		mainFrame.add(informationCenterPanel);
 		mainFrame.repaint();
 	}
 	
 	public static void setSingleTeamPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn, String teamName){
-		if(infomationCenterPanel == null) infomationCenterPanel = new InformationCenterPanel(5);//球队信息
-		infomationCenterPanel.setSingleTeamPanel(svgFile, infoName, info, content, headListForRow, headListForColumn, teamName);
+		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(5);//球队信息
+		InformationCenterPanel.formerPanel = 5;
+		informationCenterPanel.setSingleTeamPanel(svgFile, infoName, info, content, headListForRow, headListForColumn, teamName);
 		startPanel.setVisible(false);
 		removeAllPanel();
-		mainFrame.add(infomationCenterPanel);
+		mainFrame.add(informationCenterPanel);
 		mainFrame.repaint();
 	}
 	
 	public static void setMatchPanel(java.io.File team1, String[][] content1, String[] headListForRow1, String[] headListForColumn1,
 			java.io.File team2, String[][] content2, String[] headListForRow2, String[] headListForColumn2){
-		if(infomationCenterPanel == null) infomationCenterPanel = new InformationCenterPanel(6);//对阵信息
-		infomationCenterPanel.setMatchPanel(team1, content1, headListForRow1, headListForColumn1, 
+		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(6);//对阵信息
+		InformationCenterPanel.formerPanel = 6;
+		informationCenterPanel.setMatchPanel(team1, content1, headListForRow1, headListForColumn1, 
 				team2, content2, headListForRow2, headListForColumn2);
 		startPanel.setVisible(false);
 		removeAllPanel();
-		mainFrame.add(infomationCenterPanel);
+		mainFrame.add(informationCenterPanel);
 		mainFrame.repaint();
 	}
 	
@@ -217,8 +224,8 @@ public class Main {
 			mainFrame.remove(playerCountPanel);
 		if(teamCountPanel != null)
 			mainFrame.remove(teamCountPanel);
-		if(infomationCenterPanel != null)
-			mainFrame.remove(infomationCenterPanel);
+		if(informationCenterPanel != null)
+			mainFrame.remove(informationCenterPanel);
 	}
 	
 	public static void main(String[] args){
