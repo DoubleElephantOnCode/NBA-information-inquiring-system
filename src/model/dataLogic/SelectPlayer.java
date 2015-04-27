@@ -2,6 +2,7 @@ package model.dataLogic;
 
 import java.util.ArrayList;
 
+import model.readData.ReadMatchData;
 import vo.PlayerDataPerMatchVO;
 import vo.PlayerVO;
 
@@ -109,11 +110,11 @@ public class SelectPlayer {
 				ArrayList<PlayerDataPerMatchVO> matchDataList = pvo.getDataPerMatchList();
 				//最后一场比赛的数据
 				PlayerDataPerMatchVO latestMatchData = matchDataList.get(matchDataList.size() - 1);
-//				if(presentDate.equals( latestMatchData.getMatchDate() )){
-//					//如果最后一场比赛的日期是当前日期
-//					PlayerVO player = new PlayerVO(latestMatchData);
-//					tempPlayers.add(player);
-//				}
+				if(ReadMatchData.getCurrentDate().equals( latestMatchData.getMatchDate() )){
+					//如果最后一场比赛的日期是当前日期
+					PlayerVO player = new PlayerVO(latestMatchData);
+					tempPlayers.add(player);
+				}
 			}
 			tempPlayers = PlayerList.sortForHotPlayer(tempPlayers, selectItem);
 		} else {	//筛选赛季热点球员

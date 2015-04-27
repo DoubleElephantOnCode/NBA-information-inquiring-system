@@ -792,7 +792,8 @@ public class PlayerVO {
 	 * 获得热点球员要显示的信息
 	 * 
 	 * @param isSeason
-	 *            是否筛选赛季热点 姓名、球队、位置、得分、篮板、盖帽、助攻、抢断、命中率、罚球命中率
+	 *            是否筛选赛季热点
+	 * 姓名、球队、位置、得分、篮板、盖帽、助攻、抢断、命中率、罚球命中率
 	 * @return
 	 */
 	public String[][] getHotPlayerInfo(boolean isSeason) {
