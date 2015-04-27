@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.swing.JPanel;
 
+import view.TimeSetting;
 import view.selectedPanel.SelectPanel;
 
 public class TimeSelectPanel extends JPanel{
@@ -83,9 +84,10 @@ public class TimeSelectPanel extends JPanel{
 	}
 	
 	public void setDate(Date d){
-		year.setSelectedIndex(d.getYear()+1900-2010);
-		month.setSelectedIndex(d.getMonth());
-		day.setSelectedIndex(d.getDay()-1);
+		String[] temp = TimeSetting.sdf.format(d).split(TimeSetting.split);
+		year.setSelectedIndex(Integer.parseInt(temp[0])-TimeSetting.beginYear);
+		month.setSelectedIndex(Integer.parseInt(temp[1])-1);
+		day.setSelectedIndex(Integer.parseInt(temp[2])-1);
 	}
 	
 	private void setDayItem(){

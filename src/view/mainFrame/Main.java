@@ -192,16 +192,16 @@ public class Main {
 		mainFrame.repaint();
 	}
 	
-	public void setSingleTeamPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn){
+	public static void setSingleTeamPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn, String teamName){
 		if(infomationCenterPanel == null) infomationCenterPanel = new InformationCenterPanel(5);//球队信息
-		infomationCenterPanel.setSingleTeamPanel(svgFile, infoName, info, content, headListForRow, headListForColumn);
+		infomationCenterPanel.setSingleTeamPanel(svgFile, infoName, info, content, headListForRow, headListForColumn, teamName);
 		startPanel.setVisible(false);
 		removeAllPanel();
 		mainFrame.add(infomationCenterPanel);
 		mainFrame.repaint();
 	}
 	
-	public void setMatchPanel(java.io.File team1, String[][] content1, String[] headListForRow1, String[] headListForColumn1,
+	public static void setMatchPanel(java.io.File team1, String[][] content1, String[] headListForRow1, String[] headListForColumn1,
 			java.io.File team2, String[][] content2, String[] headListForRow2, String[] headListForColumn2){
 		if(infomationCenterPanel == null) infomationCenterPanel = new InformationCenterPanel(6);//对阵信息
 		infomationCenterPanel.setMatchPanel(team1, content1, headListForRow1, headListForColumn1, 

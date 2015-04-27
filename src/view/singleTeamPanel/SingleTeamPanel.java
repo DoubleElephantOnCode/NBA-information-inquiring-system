@@ -11,18 +11,20 @@ import javax.swing.JPanel;
 import view.File;
 import view.SVGLabel;
 import view.SizeAndLocationAndFont;
+import view.TimeSetting;
 import view.mainFrame.LabelEnterListener;
 import view.mainFrame.LabelUsualListener;
 import view.mainFrame.Main;
 import view.tablePanel.TablePanel;
 import view.timeSelectPanel.TimeSelectPanel;
+import control.ShowTeamController;
 
 public class SingleTeamPanel extends JPanel{
 
 	static String NAME = "队名", SHORTNAME = "简写", STATE = "所在州", AREA = "赛区", ZONE = "方位", HOME = "主场", 
 			FOUND = "成立年";
 	
-	static Date Begin = new Date(2010-1900, 0, 1), End = new Date(2015-1900, 0, 1);
+	static Date Begin = TimeSetting.begin, End = TimeSetting.end;
 	
 	String name, shortname, state, area, zone, home, found;
 	
@@ -44,7 +46,9 @@ public class SingleTeamPanel extends JPanel{
 	int teamInfoWidth = SizeAndLocationAndFont.singleTeamInfoTableWidth, 
 			teamInfoHeight = SizeAndLocationAndFont.singleTeamInfoTableHeight;
 	
-	public SingleTeamPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn){
+	public SingleTeamPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn, String teamName){
+		name = teamName;
+		
 		teamPic = new SVGLabel(svgFile, teamPicWidth, teamPicHeight);
 		teamPic.setLocation(SizeAndLocationAndFont.teamPicLocationX, SizeAndLocationAndFont.teamPicLocationY);
 		
@@ -75,11 +79,14 @@ public class SingleTeamPanel extends JPanel{
 			teamInfo.setContent(temp);
 		}
 		
-		begin = new TimeSelectPanel(SizeAndLocationAndFont.beginTimePanelWidth, SizeAndLocationAndFont.beginTimePanelHeight, 2010, 2015);
+		begin = new TimeSelectPanel(SizeAndLocationAndFont.beginTimePanelWidth, SizeAndLocationAndFont.beginTimePanelHeight, TimeSetting.beginYear, TimeSetting.endYear);
 		begin.setLocation(SizeAndLocationAndFont.beginTimePanelLocationX, SizeAndLocationAndFont.beginTimePanelLocationY);
 		
-		end = new TimeSelectPanel(SizeAndLocationAndFont.endTimePanelWidth, SizeAndLocationAndFont.endTimePanelHeight, 2010, 2015);
+		end = new TimeSelectPanel(SizeAndLocationAndFont.endTimePanelWidth, SizeAndLocationAndFont.endTimePanelHeight, TimeSetting.beginYear, TimeSetting.endYear);
 		end.setLocation(SizeAndLocationAndFont.endTimePanelLocationX, SizeAndLocationAndFont.endTimePanelLocationY);
+		
+		begin.setDate(Begin);
+		end.setDate(End);
 		
 		checkByTime = Main.setJLabelWithIcon(File.file + File.checkByTime + File.PNG, SizeAndLocationAndFont.checkByTimeLabelWidth, SizeAndLocationAndFont.checkByTimeLabelHeight);
 		checkByTimeEnter = Main.setJLabelWithIcon(File.file + File.checkByTime + File.enter + File.PNG, SizeAndLocationAndFont.checkByTimeLabelWidth, SizeAndLocationAndFont.checkByTimeLabelHeight);
@@ -87,9 +94,9 @@ public class SingleTeamPanel extends JPanel{
 		checkByTimeEnter.addMouseListener(new LabelEnterListener(checkByTime, checkByTimeEnter){
 			//TODO 重写click方法
 			public void mouseClicked(MouseEvent e) {
-				Date B = begin.getDate();
-				Date E = end.getDate();
-				
+				Begin = begin.getDate();
+				End = end.getDate();
+				new ShowTeamController().showTeamFrame(name, Begin, End);
 			}
 		});
 		checkByTime.setLocation(SizeAndLocationAndFont.checkByTimeLabelLocationX, SizeAndLocationAndFont.checkByTimeLabelLocationY);
