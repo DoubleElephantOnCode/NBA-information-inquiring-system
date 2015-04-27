@@ -224,8 +224,8 @@ public class TeamMatchHistoryTablePanel extends JPanel{
 		});
 		
 		//添加点击时间进入对阵信息界面 TODO
-		for(int i = 0; i < hpR.list.field.length; i++){
-			hpR.list.field[i][0].addMouseListener(new MatchHeadListListener(i));
+		for(int i = 0; i < hpR.getTotalRow(); i++){
+			hpR.addMouseListenerTo(i, new MatchHeadListListener(i));
 		}
 	}
 	
@@ -337,8 +337,8 @@ public class TeamMatchHistoryTablePanel extends JPanel{
 		bcp.updateUI();
 		
 		//添加点击时间进入对阵信息界面 TODO
-		for(int i = 0; i < hpR.list.field.length; i++){
-			hpR.list.field[i][0].addMouseListener(new MatchHeadListListener(i));
+		for(int i = 0; i < hpR.getTotalRow(); i++){
+			hpR.addMouseListenerTo(i, new MatchHeadListListener(i));
 		}
 	}
 	
@@ -349,7 +349,7 @@ public class TeamMatchHistoryTablePanel extends JPanel{
 		}
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
-			new ShowMatchController().showMatchTable(hpR.list.field[i][0].getText(), p.totalContent[i][1], p.totalContent[i][2]);
+			new ShowMatchController().showMatchTable(hpR.getText(i), p.getText(i, 1), p.getText(i, 2));
 		}
 		@Override
 		public void mouseEntered(MouseEvent arg0) {}
