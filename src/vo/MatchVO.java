@@ -1,5 +1,6 @@
 package vo;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -435,6 +436,97 @@ public class MatchVO {
 			sdf.format(timeOfMatch),homeTeam,awayTeam,totalScore.getString()
 		};
 		return s;
+	}
+	
+	/**
+	 * 主场球队图片
+	 * @return
+	 */
+	public File getHomeTeamPicture(){
+		TeamVO teamVO = TeamList.findTeamVO(homeTeam);
+		return new File(teamVO.getPath());
+	}
+	
+	/**
+	 * 主场球队名称列表
+	 * @return
+	 */
+	public String[] getHomeTeamInfoForRow(){
+		String[] row = new String[homePlayerList.size()] ;
+		for(int i = 0;i< homePlayerList.size();i++){
+			MatchDataPerPlayerVO mdppVO = homePlayerList.get(i);
+			row[i] = mdppVO.playerName;
+		}
+		return row;
+	}
+	
+	/**
+	 * 位置;在场时间;投篮命中数;投篮出手数;
+	 * 三分命中数;三分出手数;罚球命中数;罚 球出手数;
+	 * 进攻（前场）篮板数;防守（后场）篮板数;
+	 * 总篮板数;助攻数;抢断数;盖帽数;失误 数;犯规数;个人得分; 
+	 * @return
+	 */
+	public String[] getInfoForColumn(){
+		String[] column = new String[]{
+			"位置","在场时间","投篮命中数","投篮出手数",
+			"三分命中数","三分出手数","罚球命中数","罚 球出手数",
+			"进攻篮板数","防守篮板数",
+			"总篮板数","助攻数","抢断数","盖帽数","失误 数","犯规数","个人得分" 
+		};
+		return column;
+	}
+	
+	/**
+	 * 主场球员信息
+	 * @return
+	 */
+	public String[][] getHomeTeamContent(){
+		String[][] content = new String[homePlayerList.size()][17];
+		for(int i = 0;i<homePlayerList.size();i++){
+			String[] info = homePlayerList.get(i).getInfo();
+			for(int j=0;j<17;j++){
+				content[i][j] = info[j];
+			}
+		}
+		return content;
+	}
+	
+	/**
+	 * 客场球队图片
+	 * @return
+	 */
+	public File getAwayTeamPicture(){
+		TeamVO teamVO = TeamList.findTeamVO(awayTeam);
+		return new File(teamVO.getPath());
+	}
+	
+	/**
+	 * 客场球队名称列表
+	 * @return
+	 */
+	public String[] getAwayTeamInfoForRow(){
+		String[] row = new String[awayPlayerList.size()] ;
+		for(int i = 0;i< awayPlayerList.size();i++){
+			MatchDataPerPlayerVO mdppVO = awayPlayerList.get(i);
+			row[i] = mdppVO.playerName;
+		}
+		return row;
+	}
+	
+	/**
+	 * 客场球员信息
+	 * @return
+	 */
+	public String[][] getAwayTeamContent(){
+		String[][] content = new String[awayPlayerList.size()][17];
+		for(int i = 0;i<awayPlayerList.size();i++){
+			String[] info = awayPlayerList.get(i).getInfo();
+			for(int j=0;j<17;j++){
+				content[i][j] = info[j];
+			}
+		}
+		return content;
 	}
 	
 	public Date getTimeOfMatch() {

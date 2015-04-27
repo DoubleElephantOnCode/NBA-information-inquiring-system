@@ -570,6 +570,25 @@ public class MatchDataPerPlayerVO {
 	public void setTimeOfMatch(Date timeOfMatch) {
 		this.timeOfMatch = timeOfMatch;
 	}
+
+	
+	/**
+	 "位置","在场时间","投篮命中数","投篮出手数",
+			"三分命中数","三分出手数","罚球命中数","罚 球出手数",
+			"进攻篮板数","防守篮板数",
+			"总篮板数","助攻数","抢断数","盖帽数","失误 数","犯规数","个人得分" 
+	 * @return
+	 */
+	public String[] getInfo() {
+		// TODO Auto-generated method stub
+		String[] s = new String[]{
+			position,presentTime.minute+"-"+presentTime.second,scoreNum+"",shootNum+"",
+			threePointScoreNum+"",threePointShootNum+"",freeThrowScoreNum+"",freeThrowShootNum+"",
+			offensiveReboundsNum+"",defensiveReboundsNum+"",
+			totalReboundsNum+"",assistNum+"",stealNum+"",blockNum+"",turnoverNum+"",foulNum+"",personalScore+""
+		};
+		return null;
+	}
 	
 	
 }
