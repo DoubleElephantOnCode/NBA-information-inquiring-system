@@ -1,6 +1,7 @@
 package view.tablePanel;
 
 import java.awt.Color;
+import java.awt.event.MouseListener;
 
 import javax.swing.Icon;
 import javax.swing.JLabel;
@@ -87,5 +88,17 @@ public class HeadListForRowPanel extends JPanel{
 			list.field[i][0].setText(null);
 			list.field[i][0].updateUI();
 		}
+	}
+	
+	public void addMouseListenerTo(int row, MouseListener l){
+		list.field[row][0].addMouseListener(l);
+	}
+	
+	public int getTotalRow(){
+		return list.field.length;
+	}
+	
+	public String getText(int row){
+		return list.field[row][0].getText();
 	}
 }

@@ -12,7 +12,7 @@ public class TablePanel extends JPanel{
 	int totalRow, totalColumn;
 	int pageRow, pageColumn;
 	
-	public String[][] totalContent;
+	String[][] totalContent;
 	String[][] pageContent;
 	
 	public int pointerRow = 0;//指向目前显示在table上面的最左上角的行和列，指向的列同时是headList的列
@@ -120,6 +120,10 @@ public class TablePanel extends JPanel{
 		}
 		if(pointerRow < 0) pointerRow = 0;
 		this.setTableContent();
+	}
+	
+	public String getText(int row, int column){
+		return totalContent[row][column];
 	}
 	
 	protected void setTablePointer(int pointerR, int pointerC){
