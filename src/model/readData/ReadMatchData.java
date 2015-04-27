@@ -60,7 +60,7 @@ public class ReadMatchData {
 	
 	public static String getCurrentDate(){
 		//TODO
-		return "2013-12-01"; 
+		return "2012-12-01"; 
 	}
 	
 	/**

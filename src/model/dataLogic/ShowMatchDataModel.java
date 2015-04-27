@@ -2,6 +2,7 @@ package model.dataLogic;
 
 import java.io.File;
 
+import view.mainFrame.Main;
 import view.mainFrame.Waiting;
 import vo.MatchVO;
 import vo.TeamVO;
@@ -24,7 +25,14 @@ public class ShowMatchDataModel {
 					File hometeamPicture = matchVO.getHomeTeamPicture();
 					File awayteamPicture = matchVO.getAwayTeamPicture();
 					String[][] homeContent = matchVO.getHomeTeamContent();
-					String[][] awayComtent = matchVO.getAwayTeamContent();
+					String[][] awayContent = matchVO.getAwayTeamContent();
+					String[] homerow = matchVO.getHomeTeamInfoForRow();
+					String[] awayrow = matchVO.getAwayTeamInfoForRow();
+					String[] column = matchVO.getInfoForColumn();
+					
+					Main.setMatchPanel(hometeamPicture, homeContent, homerow, column,
+							awayteamPicture, awayContent, awayrow, column);
+					
 					
 				}catch(Exception e){
 					e.printStackTrace();
