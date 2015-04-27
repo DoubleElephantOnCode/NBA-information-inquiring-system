@@ -112,10 +112,10 @@ public class SizeAndLocationAndFont {
 	static public int singleTeamInfoTableWidth = singleTeamPanelWidth-teamPicWidth, singleTeamInfoTableHeight = teamPicHeight;
 	
 	static public int teamMatchHistoryPanelWidth = singleTeamPanelWidth, teamMatchHistoryPanelHeight = 270;
-	static public int teamMatchHistoryTableWidth = 700, teamMatchHistoryTableHeight = 228;
-	static public int teamMatchHistoryTablePageRow = 6, teamMatchHistoryTablePageColumn = 4;//列表显示行应当为偶数
+	static public int teamMatchHistoryTableWidth = 600, teamMatchHistoryTableHeight = 240;
+	static public int teamMatchHistoryTablePageRow = 6, teamMatchHistoryTablePageColumn = 3;//列表显示行应当为偶数
 	static public int teamMatchHistoryTableLocationX = 0, teamMatchHistoryTableLocationY = singlePlayerPanelHeight-teamMatchHistoryPanelHeight;
-	static public int teamMatchHistoryHeadListForRowWidth = 120;
+	static public int teamMatchHistoryHeadListForRowWidth = 220;
 	static public int teamMatchHistoryHeadListForColumnHeight = 30;
 	
 	//查询热点球员参数

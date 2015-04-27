@@ -7,13 +7,15 @@ import javax.swing.JPanel;
 
 import view.SizeAndLocationAndFont;
 import view.selectedPanel.SelectPanel;
+import control.ShowPlayerController;
 
 public class TotalPanel extends JPanel{
 	
 	final static String[] item1 = {"得分", "篮板", "助攻", "盖帽", "抢断"};
-	final static String[] item2 = {"场均得分", "场均篮板", "场均助攻", "场均盖帽", "场均抢断", "三分命中率", "投篮命中率", "罚球命中率"};
+	final static String[] item2 = {"场均得分", "场均篮板", "场均助攻", "场均盖帽", "场均抢断", "投篮命中率", "三分命中率", "罚球命中率"};
 	final static String[] item3 = {"场均得分", "场均篮板", "场均助攻"};
-	
+	static int formerIndex = 0;
+	static int formerType = -1;
 	SelectPanel choiceHotPlayer;
 	
 	OneHotPlayerPanel[] hotPlayerPanel;
@@ -32,17 +34,28 @@ public class TotalPanel extends JPanel{
 		else if(type == 1){
 			choiceHotPlayer = new SelectPanel(choiceWidth, choiceHeight, item2);
 		}
-		else{
+		else if(type == 2){
 			choiceHotPlayer = new SelectPanel(choiceWidth, choiceHeight, item3);
 		}
 		choiceHotPlayer.setLocation(SizeAndLocationAndFont.hotPlayerSelectPanelLocationX, SizeAndLocationAndFont.hotPlayerSelectPanelLocationY);
+		if(formerType == type) choiceHotPlayer.setSelectedIndex(formerIndex);//与之前显示类型相同，设置为之前选择的项目
+		else {
+			formerIndex = 0;
+			formerType = type;
+		}
 		choiceHotPlayer.box.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				choiceHotPlayer.action();
+				int t = choiceHotPlayer.getSelectedIndex();
+				if(t == formerIndex) return;
+				//TODO 改变选项
+				formerIndex = t;
+				if(formerType == 0) new ShowPlayerController().showHotPlayerInfo(false, 5, t);
+				else if(formerType == 1) new ShowPlayerController().showHotPlayerInfo(true, 5, t);
+				else if(formerType == 2) new ShowPlayerController().showProgressPlayerInfo(t, 5);
 			}
-			
 		});
 		
 		this.add(choiceHotPlayer);
