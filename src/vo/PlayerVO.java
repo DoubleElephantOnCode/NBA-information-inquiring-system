@@ -776,26 +776,38 @@ public class PlayerVO {
 	
 	/**
 	 * 获得当天热点球员要显示的信息
-	 * 姓名、所属球队、位置、两双次数、上场时间、当日得分、助攻数、抢断数、盖帽数、命中数、出手数、命中率、
-	 * 三分命中数、三分出手数、三分命中率、罚球命中数、罚球出手数、罚球命中率、进攻篮板数、防守篮板数、总篮板数、失误数、犯规数
+//	 * 姓名、所属球队、位置、两双次数、上场时间、当日得分、助攻数、抢断数、盖帽数、命中数、出手数、命中率、
+//	 * 三分命中数、三分出手数、三分命中率、罚球命中数、罚球出手数、罚球命中率、进攻篮板数、防守篮板数、总篮板数、失误数、犯规数
+	 * 姓名、球队、位置、得分、篮板、盖帽、助攻、抢断、命中率、罚球命中率
 	 * @return
 	 */
-	public String[] getDailyHotPlayerInfo(){
+	public String[][] getDailyHotPlayerInfo(){
 		//TODO 获取当天热点球员信息
-	
-		String[] s = new String[]{
-			name, teamName, position, doubleDouble + "", 
-			toString(aveMinutes.getTimeByMinute()), (int)avePersonalPoints + "",
-			(int)aveAssistNum + "", (int)aveStealNum + "", (int)aveBlockNum + "",
-			(int)aveScoreNum + "", (int)aveShootNum + "", toString(this.scoreRate * 100),
-			(int)aveThreePointerScoreNum + "", (int)aveThreePointerShootNum + "",
-			toString(this.threePointScoreRate), (int)aveFreeThrowScoreNum + "",
-			(int)aveFreeThrowShootNum + "", toString(this.freeThrowScoreRate),
-			(int)aveOffensiveReboundsNum + "", (int)aveDefensiveReboundsNum + "",
-			(int)aveTotalReboundsNum + "", (int)turnoverNum + "", (int)aveFoulNum + ""
+		int rowSize = 2;
+		String[] head = new String[]{
+				"姓名", "球队", "位置", "得分", "篮板", "盖帽", "助攻", "抢断", "命中率", "罚球命中率"
 		};
+		String[] data = new String[]{
+			name, teamName, position, (int)avePersonalPoints + "", (int)aveTotalReboundsNum + "",
+			(int)aveBlockNum + "", (int)aveAssistNum + "", (int)aveStealNum + "",
+			toString(this.scoreRate * 100),  toString(this.freeThrowScoreRate)
+		};
+		String[][] content = new String[rowSize][head.length];
+		content[0] = head;
+		content[1] = data;
+//		String[] s = new String[]{
+//			name, teamName, position, doubleDouble + "", 
+//			toString(aveMinutes.getTimeByMinute()), (int)avePersonalPoints + "",
+//			(int)aveAssistNum + "", (int)aveStealNum + "", (int)aveBlockNum + "",
+//			(int)aveScoreNum + "", (int)aveShootNum + "", toString(this.scoreRate * 100),
+//			(int)aveThreePointerScoreNum + "", (int)aveThreePointerShootNum + "",
+//			toString(this.threePointScoreRate), (int)aveFreeThrowScoreNum + "",
+//			(int)aveFreeThrowShootNum + "", toString(this.freeThrowScoreRate),
+//			(int)aveOffensiveReboundsNum + "", (int)aveDefensiveReboundsNum + "",
+//			(int)aveTotalReboundsNum + "", (int)turnoverNum + "", (int)aveFoulNum + ""
+//		};
 		
-		return s;
+		return content;
 	}
 	
 	/**
