@@ -109,12 +109,21 @@ public class SelectPlayer {
 				PlayerVO pvo = playerList.get(i);
 				ArrayList<PlayerDataPerMatchVO> matchDataList = pvo.getDataPerMatchList();
 				//最后一场比赛的数据
-				PlayerDataPerMatchVO latestMatchData = matchDataList.get(matchDataList.size() - 1);
-				if(ReadMatchData.getCurrentDate().equals( latestMatchData.getMatchDate() )){
-					//如果最后一场比赛的日期是当前日期
-					PlayerVO player = new PlayerVO(latestMatchData);
-					tempPlayers.add(player);
+				if(matchDataList.size() != 0){
+					PlayerDataPerMatchVO latestMatchData =
+							matchDataList.get(matchDataList.size() - 1);
+					//TODO 输出以观察正确性
+					System.out.println(pvo.getName());
+					System.out.println("当前日期：" + ReadMatchData.getCurrentDate());
+					System.out.println("最后一场比赛日期：" + latestMatchData.getMatchDate());
+					
+					if(ReadMatchData.getCurrentDate().equals( latestMatchData.getMatchDate() )){
+						//如果最后一场比赛的日期是当前日期
+						PlayerVO player = new PlayerVO(latestMatchData);
+						tempPlayers.add(player);
+					}
 				}
+
 			}
 			tempPlayers = PlayerList.sortForHotPlayer(tempPlayers, selectItem);
 		} else {	//筛选赛季热点球员

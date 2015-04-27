@@ -227,7 +227,8 @@ public class ShowPlayerDataModel {
 						}
 						String[][][] playerContents = new String[selectNum][][];
 						for (int i = 0; i < selectNum; i++) {
-							 playerContents[i] = playerList.get(i).getHotPlayerInfo(isSeason);
+							 playerContents[i] =
+									 playerList.get(i).getHotPlayerInfo(isSeason, selectItem);
 						}
 						
 						// TODO 调用界面层方法，重设界面
@@ -243,7 +244,8 @@ public class ShowPlayerDataModel {
 						String[][][] playerContents = new String[selectNum][][];
 //						String[][] singlePlayerContent = playerList.get(0).getDailyHotPlayerInfo();
 						for (int i = 0; i < selectNum; i++) {
-							 playerContents[i] = playerList.get(i).getHotPlayerInfo(isSeason);
+							 playerContents[i] =
+									 playerList.get(i).getHotPlayerInfo(isSeason, selectItem);
 						}
 
 						// TODO 调用界面层方法，重设界面
