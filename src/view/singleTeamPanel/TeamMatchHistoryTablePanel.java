@@ -3,6 +3,7 @@ package view.singleTeamPanel;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
@@ -19,6 +20,7 @@ import view.tablePanel.BarInRowPanel;
 import view.tablePanel.HeadListForColumnPanel;
 import view.tablePanel.HeadListForRowPanel;
 import view.tablePanel.TablePanel;
+import control.ShowMatchController;
 
 public class TeamMatchHistoryTablePanel extends JPanel{
 	int width = SizeAndLocationAndFont.teamMatchHistoryPanelWidth,
@@ -220,6 +222,11 @@ public class TeamMatchHistoryTablePanel extends JPanel{
 				hpC.moveToIndex(p.pointerColumn);
 			}
 		});
+		
+		//添加点击时间进入对阵信息界面 TODO
+		for(int i = 0; i < hpR.list.field.length; i++){
+			hpR.list.field[i][0].addMouseListener(new MatchHeadListListener(i));
+		}
 	}
 	
 	private JLabel setJLabelWithIcon(String IconPath, int width, int height){
@@ -328,5 +335,29 @@ public class TeamMatchHistoryTablePanel extends JPanel{
 		p.updateUI();
 		hpR.updateUI();
 		bcp.updateUI();
+		
+		//添加点击时间进入对阵信息界面 TODO
+		for(int i = 0; i < hpR.list.field.length; i++){
+			hpR.list.field[i][0].addMouseListener(new MatchHeadListListener(i));
+		}
+	}
+	
+	class MatchHeadListListener implements MouseListener{
+		int i;
+		public MatchHeadListListener(int index){
+			i = index;
+		}
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			new ShowMatchController().showMatchTable(hpR.list.field[i][0].getText(), p.totalContent[i][1], p.totalContent[i][2]);
+		}
+		@Override
+		public void mouseEntered(MouseEvent arg0) {}
+		@Override
+		public void mouseExited(MouseEvent arg0) {}
+		@Override
+		public void mousePressed(MouseEvent arg0) {}
+		@Override
+		public void mouseReleased(MouseEvent arg0) {}
 	}
 }

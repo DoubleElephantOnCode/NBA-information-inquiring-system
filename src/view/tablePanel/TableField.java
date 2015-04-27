@@ -15,7 +15,7 @@ import javax.swing.SwingConstants;
  */
 public class TableField {
 	
-	JLabel[][][] field;//table由多个JLabel组成
+	public JLabel[][][] field;//table由多个JLabel组成
 	int row, column;
 	int rowH, columnW;
 	

@@ -11,7 +11,7 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingWorker;
 
 public class HeadListForRow{
-	JLabel[][] field;
+	public JLabel[][] field;
 	int rowH, columnW;
 	int pageRow;
 	

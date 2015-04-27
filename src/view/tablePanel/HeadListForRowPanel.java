@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 public class HeadListForRowPanel extends JPanel{
 	int width, height;
-	HeadListForRow list;
+	public HeadListForRow list;
 	
 	int pageRow;
 
