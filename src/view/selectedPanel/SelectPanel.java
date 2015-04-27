@@ -88,6 +88,10 @@ public class SelectPanel extends JPanel{
 		return text.getText();
 	}
 	
+	public int getSelectedIndex(){
+		return box.getSelectedIndex();
+	}
+	
 	public void removeAllItems(){
 		box.removeAllItems();
 	}

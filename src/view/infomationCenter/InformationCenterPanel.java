@@ -83,8 +83,19 @@ public class InformationCenterPanel extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 界面切换
 				panelBox.action();
+				switch(panelBox.getSelectedIndex()){
+				case 0:break;
+				case 1:break;
+				case 2:break;
+				case 3:break;
+				case 4:break;
+				case 5:break;
+				case 6:break;
+				default:break;
+				}
 			}
 		});
+		panelBox.setSelectedIndex(index);
 		
 		this.add(teamChosen, 0);
 		this.add(searchPlayer, 0);

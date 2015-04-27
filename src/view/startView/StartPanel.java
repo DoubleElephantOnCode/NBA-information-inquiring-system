@@ -162,7 +162,7 @@ public class StartPanel extends JPanel{
 		});
 		PlayerInfoEnter.addMouseListener(new LabelEnterListener(PlayerInfo, PlayerInfoEnter){
 			public void mouseClicked(MouseEvent e) {
-				//TODO 
+				new ShowPlayerController().showHotPlayerInfo(false, "", 5, 0);
 			}
 		});
 		
