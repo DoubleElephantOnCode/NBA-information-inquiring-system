@@ -9,11 +9,8 @@ import view.mainFrame.Waiting;
 import vo.TeamVO;
 
 public class ShowTeamDataModel implements ShowView{
-	public ShowView showView= this;
-	File[] fs ;
-		String[] column;
-		String[] row ;
-		String[][] content;
+
+	
 	public void showTeamTable(){
 		ReadMatchData.readMatch.setCurrentView(this);
 	    
@@ -27,8 +24,8 @@ public class ShowTeamDataModel implements ShowView{
 				TeamVO t = teamVOList.get(0);
 				
 				
-				fs = new  File[teamVOList.size()];
-				content = new String[teamVOList.size()][TeamList.getHeadListForColumn().length];
+				File[] fs = new  File[teamVOList.size()];
+				String[][] content = new String[teamVOList.size()][TeamList.getHeadListForColumn().length];
 				
 				try{
 				for(int i = 0;i<teamVOList.size();i++){
@@ -46,10 +43,10 @@ public class ShowTeamDataModel implements ShowView{
 					e.printStackTrace();
 				}
 				
-				column = TeamList.getHeadListForColumn();
-				row = TeamList.getHeadListForRow();
+				String[] column = TeamList.getHeadListForColumn();
+				String[] row = TeamList.getHeadListForRow();
 				
-				System.out.println("newTeam11111");
+				
 				Main.newTeamCountPanel(content,row,column,fs);
 				return null;
 			}

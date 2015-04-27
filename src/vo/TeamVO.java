@@ -1,6 +1,7 @@
 package vo;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -624,6 +625,29 @@ public class TeamVO {
 		};
 		return s;
 	}
+	
+	/**
+	 * 根据日期和对手球队找比赛  不能找NOP和NOH的
+	 * @param date
+	 * @param awayTeam
+	 * @return
+	 */
+	public MatchVO findMatchVO(String date,String awayTeam){
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		for(int i = 0;i<matchList.size();i++){
+			MatchVO matchVO = matchList.get(i);
+			if(sdf.format(matchVO.getTimeOfMatch()).equals(date)&&
+					(matchVO.getAwayTeam().equals(awayTeam)||matchVO.getHomeTeam().equals(awayTeam))){
+				return matchVO;
+			}
+		}
+		
+		System.out.println("error in TeamVO findMatchVO  can't find any match");
+		return null;
+	}
+	
+	
+	
 	
 	/**
 	 * 热点球队显示属性 
