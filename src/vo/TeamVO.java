@@ -650,12 +650,12 @@ public class TeamVO {
 	
 	
 	/**
-	 * 热点球队显示属性 
+	 * 单个球队显示属性 
 	 * 球队名称  所在地 赛区 分区 主场 建立时间  场均得分 场均篮板 场均助攻 场均盖帽 场均抢断
 	 * 三分命中率 投篮命中率 罚球命中率
 	 * @return
 	 */
-	public String[] toStringArrayForHotTeam(){
+	public String[] toStringArrayForSingleTeam(){
 		String[] s = new String[]{
 				name,location,competion,partition,homeCourt,buildTime,
 				changeFormat(aveScore),changeFormat(aveTotalReboundsNum),changeFormat(aveAssistNum),

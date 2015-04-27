@@ -11,7 +11,7 @@ public class HotTeamModel {
 		TeamVO teamVO = TeamList.findTeamVO(teamName);
 		File svgFile = new File(teamVO.getPath());
 		String[] infoName = TeamList.getTeamInfoName();
-		String[] info = teamVO.toStringArrayForHotTeam();
+		String[] info = teamVO.toStringArrayForSingleTeam();
 		
 		String[] headListForColumn = MatchList.getHeadListForColumn();
 		String[][] content = teamVO.getMatchInfo(begin,end);
