@@ -267,7 +267,7 @@ public class ShowPlayerDataModel {
 						String[][][] playerContents = new String[selectNum][][];
 //						String[][] singlePlayerContent = playerList.get(0).getDailyHotPlayerInfo();
 						for (int i = 0; i < selectNum; i++) {
-							 playerContents[i] = playerList.get(i).getDailyHotPlayerInfo();
+							 playerContents[i] = playerList.get(i).getHotPlayerInfo(isSeason);
 						}
 
 						// TODO 调用界面层方法，重设界面
