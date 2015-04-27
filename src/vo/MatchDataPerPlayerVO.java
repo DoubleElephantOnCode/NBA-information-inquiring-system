@@ -580,14 +580,13 @@ public class MatchDataPerPlayerVO {
 	 * @return
 	 */
 	public String[] getInfo() {
-		// TODO Auto-generated method stub
 		String[] s = new String[]{
-			position,presentTime.minute+"-"+presentTime.second,scoreNum+"",shootNum+"",
+			position,presentTime.minute+":"+presentTime.second,scoreNum+"",shootNum+"",
 			threePointScoreNum+"",threePointShootNum+"",freeThrowScoreNum+"",freeThrowShootNum+"",
 			offensiveReboundsNum+"",defensiveReboundsNum+"",
 			totalReboundsNum+"",assistNum+"",stealNum+"",blockNum+"",turnoverNum+"",foulNum+"",personalScore+""
 		};
-		return null;
+		return s;
 	}
 	
 	
