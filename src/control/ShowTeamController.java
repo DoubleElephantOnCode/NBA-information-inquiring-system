@@ -2,15 +2,15 @@ package control;
 
 import java.util.Date;
 
-import model.dataLogic.HotTeamModel;
+import model.dataLogic.SingleTeamModel;
 import model.dataLogic.ShowTeamDataModel;
 
 public class ShowTeamController {
 	ShowTeamDataModel showTeamModel;
-	HotTeamModel singleTeamModel;
+	SingleTeamModel singleTeamModel;
 	public ShowTeamController(){
 		showTeamModel = new ShowTeamDataModel();
-		singleTeamModel = new HotTeamModel();
+		singleTeamModel = new SingleTeamModel();
 	}
 	
 	public void showTeamTable(){

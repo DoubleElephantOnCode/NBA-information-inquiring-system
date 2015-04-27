@@ -6,7 +6,7 @@ import java.util.Date;
 import view.mainFrame.Main;
 import vo.TeamVO;
 
-public class HotTeamModel {
+public class SingleTeamModel {
 	public void showTeam(String teamName, Date begin,Date end){
 		TeamVO teamVO = TeamList.findTeamVO(teamName);
 		File svgFile = new File(teamVO.getPath());
