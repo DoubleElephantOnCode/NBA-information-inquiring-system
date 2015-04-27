@@ -208,8 +208,7 @@ public class ShowPlayerDataModel {
 	 * @param selectItem
 	 *            筛选依据项
 	 */
-	public void selectHotPlayer(final boolean isSeason,
-			final String presentDate, final int selectNum, final int selectItem) {
+	public void selectHotPlayer(final boolean isSeason, final int selectNum, final int selectItem) {
 		new Waiting() {
 			@Override
 			protected Void doInBackground() throws Exception {
@@ -217,9 +216,7 @@ public class ShowPlayerDataModel {
 
 				try {
 					ArrayList<PlayerVO> playerList = SelectPlayer
-							.selectHotPlayers(PlayerList.players, isSeason,
-									presentDate, selectNum, selectItem);
-
+							.selectHotPlayers(PlayerList.players, isSeason,selectNum, selectItem);
 					PlayerVO player = playerList.get(0);
 
 					if (!isSeason) { // 筛选的是当天热点球员

@@ -98,7 +98,7 @@ public class SelectPlayer {
 	 * @return 
 	 */
 	public static ArrayList<PlayerVO> selectHotPlayers(ArrayList<PlayerVO> playerList,
-			boolean isSeason, String presentDate, int selectNum, int selectItem){
+			boolean isSeason, int selectNum, int selectItem){
 		//TODO 是否筛选赛季热点球员
 		ArrayList<PlayerVO> players = new ArrayList<PlayerVO>();
 		ArrayList<PlayerVO> tempPlayers = new ArrayList<PlayerVO>();
@@ -109,11 +109,11 @@ public class SelectPlayer {
 				ArrayList<PlayerDataPerMatchVO> matchDataList = pvo.getDataPerMatchList();
 				//最后一场比赛的数据
 				PlayerDataPerMatchVO latestMatchData = matchDataList.get(matchDataList.size() - 1);
-				if(presentDate.equals( latestMatchData.getMatchDate() )){
-					//如果最后一场比赛的日期是当前日期
-					PlayerVO player = new PlayerVO(latestMatchData);
-					tempPlayers.add(player);
-				}
+//				if(presentDate.equals( latestMatchData.getMatchDate() )){
+//					//如果最后一场比赛的日期是当前日期
+//					PlayerVO player = new PlayerVO(latestMatchData);
+//					tempPlayers.add(player);
+//				}
 			}
 			tempPlayers = PlayerList.sortForHotPlayer(tempPlayers, selectItem);
 		} else {	//筛选赛季热点球员

@@ -65,9 +65,8 @@ public class ShowPlayerController {
 	 * @param selectNum 筛选数目
 	 * @param selectItem 筛选依据项
 	 */
-	public void showHotPlayerInfo(boolean isSeason,
-			String presentDate, int selectNum, int selectItem){
-		showPlayerModel.selectHotPlayer(isSeason, presentDate, selectNum, selectItem);
+	public void showHotPlayerInfo(boolean isSeason, int selectNum, int selectItem){
+		showPlayerModel.selectHotPlayer(isSeason, selectNum, selectItem);
 	}
 	
 	/**
