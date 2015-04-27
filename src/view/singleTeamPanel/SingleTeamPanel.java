@@ -1,6 +1,8 @@
 package view.singleTeamPanel;
 
 import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -19,6 +21,8 @@ public class SingleTeamPanel extends JPanel{
 
 	static String NAME = "队名", SHORTNAME = "简写", STATE = "所在州", AREA = "赛区", ZONE = "方位", HOME = "主场", 
 			FOUND = "成立年";
+	
+	static Date Begin = new Date(2010-1900, 0, 1), End = new Date(2015-1900, 0, 1);
 	
 	String name, shortname, state, area, zone, home, found;
 	
@@ -82,6 +86,11 @@ public class SingleTeamPanel extends JPanel{
 		checkByTime.addMouseListener(new LabelUsualListener(checkByTime, checkByTimeEnter));
 		checkByTimeEnter.addMouseListener(new LabelEnterListener(checkByTime, checkByTimeEnter){
 			//TODO 重写click方法
+			public void mouseClicked(MouseEvent e) {
+				Date B = begin.getDate();
+				Date E = end.getDate();
+				
+			}
 		});
 		checkByTime.setLocation(SizeAndLocationAndFont.checkByTimeLabelLocationX, SizeAndLocationAndFont.checkByTimeLabelLocationY);
 		checkByTimeEnter.setLocation(SizeAndLocationAndFont.checkByTimeLabelLocationX, SizeAndLocationAndFont.checkByTimeLabelLocationY);

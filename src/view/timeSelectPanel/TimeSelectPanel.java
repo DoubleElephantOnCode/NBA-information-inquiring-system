@@ -82,6 +82,12 @@ public class TimeSelectPanel extends JPanel{
 		return new Date(y-1900, m-1, d);
 	}
 	
+	public void setDate(Date d){
+		year.setSelectedIndex(d.getYear()+1900-2010);
+		month.setSelectedIndex(d.getMonth());
+		day.setSelectedIndex(d.getDay()-1);
+	}
+	
 	private void setDayItem(){
 		int y = Integer.parseInt(year.getSelectedItem());
 		int m = Integer.parseInt(month.getSelectedItem());
