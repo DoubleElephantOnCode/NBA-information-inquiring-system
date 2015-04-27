@@ -80,7 +80,7 @@ public class InformationCenterPanel extends JPanel{
 		
 		panelBox = new SelectPanel(SizeAndLocationAndFont.panelBoxWidth, SizeAndLocationAndFont.panelBoxHeight, items);
 		panelBox.setLocation(SizeAndLocationAndFont.panelBoxLocationX, SizeAndLocationAndFont.panelBoxLocationY);
-		
+		panelBox.setSelectedIndex(index);
 		panelBox.box.addActionListener(new ActionListener() {
 			
 			@Override
@@ -94,7 +94,7 @@ public class InformationCenterPanel extends JPanel{
 				case 0:new ShowPlayerController().showHotPlayerInfo(true, 5, 0); break;//赛季热点球员
 				case 1:new ShowPlayerController().showHotPlayerInfo(false, 5, 0); break;//当日热点球员
 				case 2:new ShowPlayerController().showProgressPlayerInfo(0, 5); break;//进步最快球员
-//				case 3:new ShowTeamController().showHotTeamTable(0); break;//赛季热点球队
+				case 3:new ShowTeamController().showHotTeamTable(0); break;//赛季热点球队
 				case 4:break;//球员信息
 				case 5:break;//球队信息
 				case 6:break;//对阵信息
@@ -102,7 +102,6 @@ public class InformationCenterPanel extends JPanel{
 				}
 			}
 		});
-		panelBox.setSelectedIndex(index);
 		
 		this.add(teamChosen, 0);
 		this.add(searchPlayer, 0);
