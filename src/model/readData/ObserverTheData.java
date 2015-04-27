@@ -36,8 +36,8 @@ public class ObserverTheData extends Thread{
 		
 		while(true){
 			 
-//			 File matchFile = new File(FilePath.matchPath);
-			 File matchFile = new File("D://test");
+			 File matchFile = new File(FilePath.matchPath);
+//			 File matchFile = new File("D://test");
 			 File[] matches = matchFile.listFiles();
 //			 System.out.println("nums is "+matches.length);
 			 
@@ -47,8 +47,8 @@ public class ObserverTheData extends Thread{
 				 if(readMatchNum==0){
 				     
 					 for(int i = readMatchNum;i<matches.length;i++){
-//					      readMatchFile(matches[i],2012);
-						  System.out.println(matches[i].getName()+" "+(++NUM));
+					      readMatchFile(matches[i],2012);
+//						  System.out.println(matches[i].getName()+" "+(++NUM));
 				     }	
 					 
 					 greatestIndex = matches.length-1;
@@ -73,7 +73,7 @@ public class ObserverTheData extends Thread{
 					 
 					 greatestIndex+=move;
 					 
-					 System.out.println(move);
+//					 System.out.println(move);
 					 
 					 //说明前面没有新增的
 					// if(move==0){
@@ -82,8 +82,8 @@ public class ObserverTheData extends Thread{
 						  	
 							 if(this.matchFilesCompare(matches[i], matches[greatestIndex])>=0){
 						  		 
-//						  		 readMatchFile(matches[i],2012);
-								 System.out.println(matches[i].getName()+" "+(++NUM));
+						  		 readMatchFile(matches[i],2012);
+//								 System.out.println(matches[i].getName()+" "+(++NUM));
 						  		 greatestIndex = i;
 						  	 }
 						  	 
@@ -114,8 +114,8 @@ public class ObserverTheData extends Thread{
 						 
 						 //读取加入在头部的比赛
 						 for(int i = 0; i < move; i++){
-//							 readMatchFile(matches[i],2012);
-							 System.out.println(matches[i].getName()+" "+(++NUM));
+							 readMatchFile(matches[i],2012);
+//							 System.out.println(matches[i].getName()+" "+(++NUM));
 						 }
 						 greatestIndex = move-1;
 						 
@@ -309,10 +309,10 @@ public class ObserverTheData extends Thread{
 		}
 	}
 	
-	public static void main(String[] args){
-	
-		ObserverTheData o = new ObserverTheData();
-		o.run();
-		//System.out.println(o.matchFilesCompare(new File("D://test//12-13_11-02_LAC-LAL"), new File("D://test//12-13_10-30_DAL-LALU")));
-	}
+//	public static void main(String[] args){
+//	
+//		ObserverTheData o = new ObserverTheData();
+//		o.run();
+//		//System.out.println(o.matchFilesCompare(new File("D://test//12-13_11-02_LAC-LAL"), new File("D://test//12-13_10-30_DAL-LALU")));
+//	}
 }
