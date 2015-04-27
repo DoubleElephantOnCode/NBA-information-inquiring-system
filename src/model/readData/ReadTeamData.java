@@ -20,7 +20,8 @@ public class ReadTeamData {
 				if(tempString.charAt(2)=='═'){
 					continue;
 				}
-				tempString.replace("║", "");
+				tempString = tempString.substring(1, tempString.length()-1);
+				//tempString.replace("║", "");
 				String[] strings = tempString.split("│");
 				TeamVO teamVO = new TeamVO(strings[0].trim(), strings[1].trim(), strings[2].trim(), strings[3].trim(), strings[4].trim(), strings[5].trim(), strings[6].trim());
 				TeamList.addTeamVO(teamVO);

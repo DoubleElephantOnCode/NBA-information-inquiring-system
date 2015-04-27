@@ -18,7 +18,7 @@ public class ShowHotTeamModel {
 					TeamList.sortHotTeam(i);
 					ArrayList<TeamVO> teamVOList = TeamList.getTeamVOList();
 					File[] fs = new  File[5];
-					TeamVO t ;
+					TeamVO t;
 					String[][][] content= new String[5][3][8];
 					for(int i = 0;i<5;i++){
 						t = teamVOList.get(i);
