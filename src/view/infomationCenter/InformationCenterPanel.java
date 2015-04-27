@@ -22,6 +22,7 @@ import view.singlePlayerPanel.SinglePlayerPanel;
 import view.singleTeamPanel.SingleTeamPanel;
 import view.startView.StartPanel;
 import control.ShowPlayerController;
+import control.ShowTeamController;
 
 public class InformationCenterPanel extends JPanel{
 	
@@ -48,7 +49,7 @@ public class InformationCenterPanel extends JPanel{
 	static SingleTeamPanel singleTeamPanel;
 	static MatchPanel matchPanel;
 	
-	static int formerPanel = 0;
+	public static int formerPanel = 0;
 	
 	public InformationCenterPanel(int index){
 		this.index = index;
@@ -92,8 +93,8 @@ public class InformationCenterPanel extends JPanel{
 				switch(formerPanel){
 				case 0:new ShowPlayerController().showHotPlayerInfo(true, 5, 0); break;//赛季热点球员
 				case 1:new ShowPlayerController().showHotPlayerInfo(false, 5, 0); break;//当日热点球员
-				case 2:new ShowPlayerController().showProgressPlayerInfo(0, 5);; break;//进步最快球员
-				case 3:break;//赛季热点球队
+				case 2:new ShowPlayerController().showProgressPlayerInfo(0, 5); break;//进步最快球员
+//				case 3:new ShowTeamController().showHotTeamTable(0); break;//赛季热点球队
 				case 4:break;//球员信息
 				case 5:break;//球队信息
 				case 6:break;//对阵信息
