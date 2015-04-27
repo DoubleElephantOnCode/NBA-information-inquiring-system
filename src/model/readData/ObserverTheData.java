@@ -64,7 +64,7 @@ public class ObserverTheData extends Thread{
 	 */
 	public void readMatchFile(File file,int yearOfStart){
 		
-		System.out.println(file.getAbsolutePath());
+
 		
 		BufferedReader reader = null;
 		try{
@@ -72,7 +72,7 @@ public class ObserverTheData extends Thread{
 			String tempString = null;
 			tempString = reader.readLine();
 			
-			System.out.println(tempString);
+
 			String[] strings = tempString.split(";");
 			int month = Integer.parseInt(strings[0].split("-")[0]);
 			int day = Integer.parseInt(strings[0].split("-")[1]);
