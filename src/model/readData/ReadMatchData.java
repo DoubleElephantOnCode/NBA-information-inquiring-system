@@ -58,6 +58,11 @@ public class ReadMatchData {
 		t.start();
 	}
 	
+	public static String getCurrentDate(){
+		//TODO
+		return "2013-12-01"; 
+	}
+	
 	/**
 	 * 读取一个match文件的数据
 	 */
