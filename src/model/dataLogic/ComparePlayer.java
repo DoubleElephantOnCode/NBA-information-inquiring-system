@@ -35,7 +35,7 @@ public class ComparePlayer {
 	}
 	
 	public ComparePlayer(){
-		//TODO 为了筛选当天热点球员的构造方法
+		//TODO 为了筛选热点球员的构造方法
 		//降序排列
 		boolean isPositiveSequence = false;
 		

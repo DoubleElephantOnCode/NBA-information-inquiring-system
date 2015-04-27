@@ -115,12 +115,12 @@ public class SelectPlayer {
 					tempPlayers.add(player);
 				}
 			}
-			tempPlayers = PlayerList.sortFortDailyHotPlayer(tempPlayers, selectItem);
+			tempPlayers = PlayerList.sortForHotPlayer(tempPlayers, selectItem);
 		} else {	//筛选赛季热点球员
 			for (int i = 0; i < playerList.size(); i++) {
 				tempPlayers.add(playerList.get(i));
 			}
-			tempPlayers = PlayerList.sortPlayer(tempPlayers, selectItem, false);
+			tempPlayers = PlayerList.sortForHotPlayer(tempPlayers, selectItem);
 		}
 		
 		for (int i = 0; i < selectNum; i++) {

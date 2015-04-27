@@ -179,7 +179,7 @@ public class PlayerList {
 	 * @param i
 	 * @return
 	 */
-	public static ArrayList<PlayerVO> sortFortDailyHotPlayer(ArrayList<PlayerVO> playerList,
+	public static ArrayList<PlayerVO> sortForHotPlayer(ArrayList<PlayerVO> playerList,
 			int i){
 		ComparePlayer c = new ComparePlayer();
 		Collections.sort(playerList, c.comparator[i]);

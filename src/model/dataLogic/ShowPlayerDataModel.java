@@ -215,48 +215,66 @@ public class ShowPlayerDataModel {
 			protected Void doInBackground() throws Exception {
 				super.doInBackground();
 
-				ArrayList<PlayerVO> playerList = SelectPlayer.selectHotPlayers(
-						PlayerList.players, isSeason, presentDate, selectNum,
-						selectItem);
+				try {
+					ArrayList<PlayerVO> playerList = SelectPlayer
+							.selectHotPlayers(PlayerList.players, isSeason,
+									presentDate, selectNum, selectItem);
 
-				PlayerVO player = playerList.get(0);
+					PlayerVO player = playerList.get(0);
 
-				if (!isSeason) { // 筛选的是当天热点球员
-					String[][] content = new String[playerList.size()][PlayerList
-							.getHeadForDailyHotPlayers().length];
-					// 给要显示的表格填上内容
-					for (int i = 0; i < playerList.size(); i++) {
-						player = playerList.get(i);
-						String[] s = player.getDailyHotPlayerInfo();
-						for (int j = 0; j < s.length; j++) {
-							content[i][j] = s[j];
+					if (!isSeason) { // 筛选的是当天热点球员
+					// String[][] content = new
+					// String[playerList.size()][PlayerList
+					// .getHeadForDailyHotPlayers().length];
+					// // 给要显示的表格填上内容
+					// for (int i = 0; i < playerList.size(); i++) {
+					// player = playerList.get(i);
+					// String[] s = player.getDailyHotPlayerInfo();
+					// for (int j = 0; j < s.length; j++) {
+					// content[i][j] = s[j];
+					// }
+					// }
+					// // 球员姓名列
+					// String[] row = new String[playerList.size()];
+					// for (int i = 0; i < playerList.size(); i++) {
+					// row[i] = playerList.get(i).getName();
+					// }
+						// TODO 调用界面层方法，重设界面
+
+					} else { // 筛选的是赛季热点球员
+					// String[][] content = new
+					// String[playerList.size()][PlayerList
+					// .getHeadForColumn().length];
+						// 给要显示的表格填上内容
+						// for (int i = 0; i < playerList.size(); i++) {
+						// player = playerList.get(i);
+						// String[] s = player.getPlayerInfo();
+						// for (int j = 0; j < s.length; j++) {
+						// content[i][j] = s[j];
+						// }
+						// }
+						// 球员姓名列
+						// String[] row = new String[playerList.size()];
+						// for (int i = 0; i < playerList.size(); i++) {
+						// row[i] = playerList.get(i).getName();
+						// }
+						// 球员们的照片
+						String[] picPath = new String[selectNum];
+						for (int i = 0; i < picPath.length; i++) {
+							picPath[i] = playerList.get(i).getPortrait();
 						}
-					}
-					// 球员姓名列
-					String[] row = new String[playerList.size()];
-					for (int i = 0; i < playerList.size(); i++) {
-						row[i] = playerList.get(i).getName();
-					}
-					// TODO 调用界面层方法，重设界面
-					
-				} else { // 筛选的是赛季热点球员
-					String[][] content = new String[playerList.size()][PlayerList
-							.getHeadForColumn().length];
-					// 给要显示的表格填上内容
-					for (int i = 0; i < playerList.size(); i++) {
-						player = playerList.get(i);
-						String[] s = player.getPlayerInfo();
-						for (int j = 0; j < s.length; j++) {
-							content[i][j] = s[j];
+						// 球员信息显示[第几个球员][行][列]
+						String[][][] playerContents = new String[selectNum][][];
+//						String[][] singlePlayerContent = playerList.get(0).getDailyHotPlayerInfo();
+						for (int i = 0; i < selectNum; i++) {
+							 playerContents[i] = playerList.get(i).getHotPlayerInfo(isSeason);
 						}
+
+						// TODO 调用界面层方法，重设界面
+						Main.setHotPlayerThisYearPanel(picPath, playerContents);
 					}
-					// 球员姓名列
-					String[] row = new String[playerList.size()];
-					for (int i = 0; i < playerList.size(); i++) {
-						row[i] = playerList.get(i).getName();
-					}
-					// TODO 调用界面层方法，重设界面
-					
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 
 				return null;
@@ -366,42 +384,39 @@ public class ShowPlayerDataModel {
 		ReadMatchData readMatch = new ReadMatchData();
 		readMatch.readMatchData();
 
-		
-		
-		
-//		PlayerVO player = PlayerList.findAPlayer("Kobe Bryant");
-//		ArrayList<PlayerDataPerMatchVO> matchDataList = player
-//				.getDataPerMatchList();
-//		// ArrayList<PlayerDataPerMatchVO> matchDataList =
-//		// SelectMatch.selectMatchByDate(
-//		// player.getDataPerMatchList(), startDate, endDate);
-//		PlayerDataPerMatchVO matchData = matchDataList.get(0);
-//
-//		String[][] content = new String[matchDataList.size()][PlayerList
-//				.getHeadForSinglePlayer().length];
-//		// 给要显示的表格填上内容
-//		for (int i = 0; i < matchDataList.size(); i++) {
-//			matchData = matchDataList.get(i);
-//			String[] s = matchData.getMatchInfo();
-//			for (int j = 0; j < s.length; j++) {
-//				content[i][j] = s[j];
-//			}
-//		}
-//		// 行表头，显示日期
-//		String[] dateList = new String[matchDataList.size()];
-//		for (int i = 0; i < dateList.length; i++) {
-//			dateList[i] = matchDataList.get(i).getMatchDate();
-//		}
-//
-//		view.singlePlayerPanel.TestFrame testFrame = new TestFrame();
-//
-//		String[] s = new String[0];
-//		String portait = player.getPortrait();
-//		String action = player.getAction();
-//		System.out.println(portait);
-//		System.out.println(action);
-//
-//		testFrame.back.setSinglePlayerPanel(portait, action, s, content,
-//				dateList, PlayerList.getHeadForSinglePlayer());
+		// PlayerVO player = PlayerList.findAPlayer("Kobe Bryant");
+		// ArrayList<PlayerDataPerMatchVO> matchDataList = player
+		// .getDataPerMatchList();
+		// // ArrayList<PlayerDataPerMatchVO> matchDataList =
+		// // SelectMatch.selectMatchByDate(
+		// // player.getDataPerMatchList(), startDate, endDate);
+		// PlayerDataPerMatchVO matchData = matchDataList.get(0);
+		//
+		// String[][] content = new String[matchDataList.size()][PlayerList
+		// .getHeadForSinglePlayer().length];
+		// // 给要显示的表格填上内容
+		// for (int i = 0; i < matchDataList.size(); i++) {
+		// matchData = matchDataList.get(i);
+		// String[] s = matchData.getMatchInfo();
+		// for (int j = 0; j < s.length; j++) {
+		// content[i][j] = s[j];
+		// }
+		// }
+		// // 行表头，显示日期
+		// String[] dateList = new String[matchDataList.size()];
+		// for (int i = 0; i < dateList.length; i++) {
+		// dateList[i] = matchDataList.get(i).getMatchDate();
+		// }
+		//
+		// view.singlePlayerPanel.TestFrame testFrame = new TestFrame();
+		//
+		// String[] s = new String[0];
+		// String portait = player.getPortrait();
+		// String action = player.getAction();
+		// System.out.println(portait);
+		// System.out.println(action);
+		//
+		// testFrame.back.setSinglePlayerPanel(portait, action, s, content,
+		// dateList, PlayerList.getHeadForSinglePlayer());
 	}
 }
