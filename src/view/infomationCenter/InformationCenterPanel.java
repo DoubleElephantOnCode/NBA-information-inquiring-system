@@ -21,6 +21,7 @@ import view.selectedPanel.SelectPanel;
 import view.singlePlayerPanel.SinglePlayerPanel;
 import view.singleTeamPanel.SingleTeamPanel;
 import view.startView.StartPanel;
+import control.ShowPlayerController;
 
 public class InformationCenterPanel extends JPanel{
 	
@@ -46,6 +47,8 @@ public class InformationCenterPanel extends JPanel{
 	static SinglePlayerPanel singlePlayerPanel;
 	static SingleTeamPanel singleTeamPanel;
 	static MatchPanel matchPanel;
+	
+	static int formerPanel = 0;
 	
 	public InformationCenterPanel(int index){
 		this.index = index;
@@ -83,14 +86,17 @@ public class InformationCenterPanel extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 界面切换
 				panelBox.action();
-				switch(panelBox.getSelectedIndex()){
-				case 0:break;
-				case 1:break;
-				case 2:break;
-				case 3:break;
-				case 4:break;
-				case 5:break;
-				case 6:break;
+				if(formerPanel == panelBox.getSelectedIndex()) return;
+				
+				formerPanel = panelBox.getSelectedIndex();
+				switch(formerPanel){
+				case 0:new ShowPlayerController().showHotPlayerInfo(true, 5, 0); break;//赛季热点球员
+				case 1:new ShowPlayerController().showHotPlayerInfo(false, 5, 0); break;//当日热点球员
+				case 2:new ShowPlayerController().showProgressPlayerInfo(0, 5);; break;//进步最快球员
+				case 3:break;//赛季热点球队
+				case 4:break;//球员信息
+				case 5:break;//球队信息
+				case 6:break;//对阵信息
 				default:break;
 				}
 			}
@@ -107,20 +113,20 @@ public class InformationCenterPanel extends JPanel{
 	
 	public void setHotPlayerTodayPanel(String[] picPath, String[][][] playerContents){
 		removeInformationPanel();
-		hotPlayerPanel = new HotPlayerPanel(picPath, playerContents, 0);
+		hotPlayerPanel = new HotPlayerPanel(picPath, playerContents, 0);//当日
 		this.add(hotPlayerPanel, 0);
 	}
 	
 	public void setHotPlayerThisYearPanel(String[] picPath, String[][][] playerContents){
 		removeInformationPanel();
-		hotPlayerPanel = new HotPlayerPanel(picPath, playerContents, 1);
+		hotPlayerPanel = new HotPlayerPanel(picPath, playerContents, 1);//赛季
 		this.add(hotPlayerPanel, 0);
 		this.updateUI();
 	}
 	
 	public void setProgressGreatPlayerPanel(String[] picPath, String[][][] playerContents){
 		removeInformationPanel();
-		hotPlayerPanel = new HotPlayerPanel(picPath, playerContents, 2);
+		hotPlayerPanel = new HotPlayerPanel(picPath, playerContents, 2);//进步最快
 		this.add(hotPlayerPanel, 0);
 		this.updateUI();
 	}

@@ -792,21 +792,22 @@ public class PlayerVO {
 	 * 获得热点球员要显示的信息
 	 * 
 	 * @param isSeason
-	 *            是否筛选赛季热点 姓名、球队、位置、得分、篮板、盖帽、助攻、抢断、命中率、罚球命中率
+	 *            是否筛选赛季热点
+	 * 姓名、球队、位置、
+	 * 得分、篮板、盖帽、助攻、抢断、命中率、三分命中率、罚球命中率
+	 * 0   1   2   3   4   5       6    7
 	 * @return
 	 */
-	public String[][] getHotPlayerInfo(boolean isSeason) {
+	public String[][] getHotPlayerInfo(boolean isSeason, int selectItem) {
 		// TODO 获取当天热点球员信息
 		int rowSize = 3;
 		// 第一行：姓名，球队名，位置
 		String[] basicInfo = new String[] { 
 				name, teamName, position, "", "", ""
 		};
+		
 		String[] head = new String[] { 
-				"得分", "篮板", "盖帽", "助攻", "抢断", "命中率%" 
-		};
-		String[] headForSeason = new String[] {
-				"场均得分", "场均篮板", "场均盖帽", "场均助攻", "场均抢断", "命中率%" 
+				"得分", "篮板", "盖帽", "助攻", "抢断", "命中率%"
 		};
 		String[] data = new String[] {
 				// name, teamName, position,
@@ -814,18 +815,49 @@ public class PlayerVO {
 				(int) aveBlockNum + "", (int) aveAssistNum + "",
 				(int) aveStealNum + "", toString(this.scoreRate * 100)
 		};
+		
+		String[] headForSeason = new String[] {
+				"场均得分", "场均篮板", "场均盖帽", "场均助攻", "场均抢断", "命中率%" 
+		};
+		String[] headWithThreePointRate = new String[]{
+				"场均得分", "场均篮板", "场均盖帽", "场均助攻", "场均抢断", "三分命中率%"
+		};
+		String[] headWithFreePointRate = new String[]{
+				"场均得分", "场均篮板", "场均盖帽", "场均助攻", "场均抢断", "罚球命中率%"
+		};
+
 		String[] dataForSeason = new String[]{
 				toString(avePersonalPoints), toString(aveTotalReboundsNum),
 				toString(aveBlockNum), toString(aveAssistNum),
 				toString(aveStealNum), toString(this.scoreRate * 100)
 		};
+		String[] dataWithThreePointRate = new String[]{
+				toString(avePersonalPoints), toString(aveTotalReboundsNum),
+				toString(aveBlockNum), toString(aveAssistNum),
+				toString(aveStealNum), toString(this.threePointScoreRate * 100)
+		};
+		String[] dataWithFreePointRate = new String[]{
+				toString(avePersonalPoints), toString(aveTotalReboundsNum),
+				toString(aveBlockNum), toString(aveAssistNum),
+				toString(aveStealNum), toString(this.freeThrowScoreRate * 100)
+		};
+		
 		String[][] content = new String[rowSize][head.length];
+		content[0] = basicInfo;
 		if (isSeason) {// 赛季热点
-			content[0] = basicInfo;
-			content[1] = headForSeason;
-			content[2] = dataForSeason;
+			
+			if(selectItem <= 5){//命中率及其他
+				content[1] = headForSeason;
+				content[2] = dataForSeason;
+			} else if(selectItem == 6){//三分命中
+				content[1] = headWithThreePointRate;
+				content[2] = dataWithThreePointRate;
+			} else {//罚球命中
+				content[1] = headWithFreePointRate;
+				content[2] = dataWithFreePointRate;
+			}
+
 		} else {//当日热点
-			content[0] = basicInfo;
 			content[1] = head;
 			content[2] = data;
 		}

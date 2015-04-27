@@ -208,8 +208,7 @@ public class ShowPlayerDataModel {
 	 * @param selectItem
 	 *            筛选依据项
 	 */
-	public void selectHotPlayer(final boolean isSeason,
-			final String presentDate, final int selectNum, final int selectItem) {
+	public void selectHotPlayer(final boolean isSeason, final int selectNum, final int selectItem) {
 		new Waiting() {
 			@Override
 			protected Void doInBackground() throws Exception {
@@ -217,48 +216,26 @@ public class ShowPlayerDataModel {
 
 				try {
 					ArrayList<PlayerVO> playerList = SelectPlayer
-							.selectHotPlayers(PlayerList.players, isSeason,
-									presentDate, selectNum, selectItem);
-
+							.selectHotPlayers(PlayerList.players, isSeason,selectNum, selectItem);
 					PlayerVO player = playerList.get(0);
 
 					if (!isSeason) { // 筛选的是当天热点球员
-					// String[][] content = new
-					// String[playerList.size()][PlayerList
-					// .getHeadForDailyHotPlayers().length];
-					// // 给要显示的表格填上内容
-					// for (int i = 0; i < playerList.size(); i++) {
-					// player = playerList.get(i);
-					// String[] s = player.getDailyHotPlayerInfo();
-					// for (int j = 0; j < s.length; j++) {
-					// content[i][j] = s[j];
-					// }
-					// }
-					// // 球员姓名列
-					// String[] row = new String[playerList.size()];
-					// for (int i = 0; i < playerList.size(); i++) {
-					// row[i] = playerList.get(i).getName();
-					// }
+						//照片列表
+						String[] picPath = new String[selectNum];
+						for (int i = 0; i < picPath.length; i++) {
+							picPath[i] = playerList.get(i).getPortrait();
+						}
+						String[][][] playerContents = new String[selectNum][][];
+						for (int i = 0; i < selectNum; i++) {
+							 playerContents[i] =
+									 playerList.get(i).getHotPlayerInfo(isSeason, selectItem);
+						}
+						
 						// TODO 调用界面层方法，重设界面
+						Main.setHotPlayerTodayPanel(picPath, playerContents);
 
 					} else { // 筛选的是赛季热点球员
-					// String[][] content = new
-					// String[playerList.size()][PlayerList
-					// .getHeadForColumn().length];
-						// 给要显示的表格填上内容
-						// for (int i = 0; i < playerList.size(); i++) {
-						// player = playerList.get(i);
-						// String[] s = player.getPlayerInfo();
-						// for (int j = 0; j < s.length; j++) {
-						// content[i][j] = s[j];
-						// }
-						// }
-						// 球员姓名列
-						// String[] row = new String[playerList.size()];
-						// for (int i = 0; i < playerList.size(); i++) {
-						// row[i] = playerList.get(i).getName();
-						// }
-						// 球员们的照片
+
 						String[] picPath = new String[selectNum];
 						for (int i = 0; i < picPath.length; i++) {
 							picPath[i] = playerList.get(i).getPortrait();
@@ -267,7 +244,8 @@ public class ShowPlayerDataModel {
 						String[][][] playerContents = new String[selectNum][][];
 //						String[][] singlePlayerContent = playerList.get(0).getDailyHotPlayerInfo();
 						for (int i = 0; i < selectNum; i++) {
-							 playerContents[i] = playerList.get(i).getHotPlayerInfo(isSeason);
+							 playerContents[i] =
+									 playerList.get(i).getHotPlayerInfo(isSeason, selectItem);
 						}
 
 						// TODO 调用界面层方法，重设界面

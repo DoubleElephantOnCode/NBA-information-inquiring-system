@@ -174,7 +174,7 @@ public class PlayerList {
 	}
 	
 	/**
-	 * 为筛选当日热点球员而排序
+	 * 为筛选热点球员而排序
 	 * @param playerList
 	 * @param i
 	 * @return
