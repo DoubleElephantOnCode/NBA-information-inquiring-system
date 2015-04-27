@@ -39,7 +39,7 @@ public class MenuLabel {
 				//TODO 移除加入的界面
 				if(Main.teamCountPanel != null) Main.mainFrame.remove(Main.teamCountPanel);
 				if(Main.playerCountPanel != null) Main.mainFrame.remove(Main.playerCountPanel);
-				if(Main.infomationCenterPanel != null) Main.mainFrame.remove(Main.infomationCenterPanel);
+				if(Main.informationCenterPanel != null) Main.mainFrame.remove(Main.informationCenterPanel);
 //				for(JPanel p : pList){ TODO
 //					if(p != null) Main.mainFrame.remove(p);
 //				}
