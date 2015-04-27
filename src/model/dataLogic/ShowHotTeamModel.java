@@ -25,7 +25,7 @@ public class ShowHotTeamModel {
 						fs[i] = new File(t.getPath());
 						String[][] s= t.toStringArrayForHotTeam();
 						for(int j = 0;j<3;j++){
-							for(int h = 0;h<3;h++){
+							for(int h = 0;h<8;h++){
 								content[i][j][h] = s[j][h];
 							}
 						}
