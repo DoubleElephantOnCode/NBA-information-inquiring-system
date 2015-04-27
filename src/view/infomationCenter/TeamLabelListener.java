@@ -40,7 +40,7 @@ public class TeamLabelListener implements MouseListener {
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
-		System.out.println(this.teamName);
+		//System.out.println(this.teamName);
 		
 		if(clicked.isVisible()&&clicked.getX()==x&&clicked.getY()==y){
 			clicked.setVisible(false);
