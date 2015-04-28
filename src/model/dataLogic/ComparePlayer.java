@@ -29,8 +29,8 @@ public class ComparePlayer {
 		
 		comparator = new Comparator[]{
 			new SortByRecentPoints(isPositiveSequence),
-			new SortByRecentAssist(isPositiveSequence),
-			new SortByRecentRebound(isPositiveSequence)
+			new SortByRecentRebound(isPositiveSequence),
+			new SortByRecentAssist(isPositiveSequence)
 		};
 	}
 	
@@ -45,7 +45,8 @@ public class ComparePlayer {
 		//得分、篮板、助攻、盖帽、抢断、命中率、三分命中率、罚球命中率
 		comparator = new Comparator[]{
 				new SortByAvePersonalPoints(isPositiveSequence),
-				new SortByTotalReboundsNum(isPositiveSequence),
+//				new SortByTotalReboundsNum(isPositiveSequence),
+				new SortByAveTotalReboundsNum(isPositiveSequence),
 				new SortByAveAssistNum(isPositiveSequence),
 				new SortByAveBlockNum(isPositiveSequence),
 				new SortByAveStealNum(isPositiveSequence),

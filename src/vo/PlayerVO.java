@@ -827,18 +827,36 @@ public class PlayerVO {
 	}
 
 	/**
-	 * 获取球员进步信息 近五场得分提升, 近五场助攻提升, 近五场篮板提升, 所属球队, 位置, 场均得分, 场均助攻, 场均篮板
-	 * 
+	 * 获取球员进步信息 
+	 * 姓名, 所属球队, 位置
+	 * 场均得分, 场均助攻, 场均篮板, 近五场得分提升, 近五场助攻提升, 近五场篮板提升
 	 * @return
 	 */
-	public String[] getProgressInfo() {
+	public String[][] getProgressInfo() {
 		// TODO 获取进步最快球员信息
-		String[] s = new String[] { toString(this.recentPointAdvance),
-				toString(this.recentAssistAdvance),
-				toString(this.recentReboundAdvance), this.teamName,
-				this.position, (int) avePersonalPoints + "",
-				(int) aveAssistNum + "", (int) aveTotalReboundsNum + "" };
-		return s;
+		int rowSize = 3;
+		String[] basicInfo = new String[]{
+				this.name, this.teamName, this.position, "", "", ""
+		};
+		String[] head = new String[]{
+				"场均得分", "场均助攻", "场均篮板", "近五场得分提升", "近五场助攻提升", "近五场篮板提升"
+		};
+		String[] data = new String[]{
+				toString(this.avePersonalPoints), toString(this.aveAssistNum),
+				toString(this.aveTotalReboundsNum), toString(this.recentPointAdvance),
+				toString(this.recentAssistAdvance), toString(this.recentReboundAdvance)
+		};
+		
+		String[][] content = new String[rowSize][basicInfo.length];
+		content[0] = basicInfo;
+		content[1] = head;
+		content[2] = data;
+//		String[] s = new String[] { toString(this.recentPointAdvance),
+//				toString(this.recentAssistAdvance),
+//				toString(this.recentReboundAdvance), this.teamName,
+//				this.position, (int) avePersonalPoints + "",
+//				(int) aveAssistNum + "", (int) aveTotalReboundsNum + "" };
+		return content;
 	}
 
 	/**
