@@ -14,4 +14,7 @@ public class TimeSetting {
 	public final static Date end = new Date(endYear-1900, endMonth-1, endDay);
 	
 	public final static String split = "-";
+	
+	public final static String startDate = "2010-01-01";
+	public final static String endDate = "2015-12-01";
 }

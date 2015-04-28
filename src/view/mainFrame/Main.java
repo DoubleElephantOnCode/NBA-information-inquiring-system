@@ -219,6 +219,12 @@ public class Main {
 		mainFrame.repaint();
 	}
 	
+	public static void failedToFindPlayer(){//查找失败
+		if(informationCenterPanel != null){
+			informationCenterPanel.setFailedToFindPlayer();
+		}
+	}
+	
 	private static void removeAllPanel(){
 		if(playerCountPanel != null)
 			mainFrame.remove(playerCountPanel);
