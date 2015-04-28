@@ -48,10 +48,29 @@ public class ObserverTheData extends Thread{
                  //初始读入
 				 if(readMatchNum==0){
 				     
-					 for(int i = readMatchNum;i<matches.length;i++){
+					 int separator = 0;
+					 
+					 for(int i = 0;i<matches.length;i++){
+						 
+						 String[] mInfo = matches[i].getName().split("_");
+						 String[] date = mInfo[1].split("-");
+						 
+						 if(Integer.parseInt(date[0])<9){
+							 separator++;
+						 }
+						 else{
+							 break;
+						 }
+					 }
+					 
+					 for(int i = separator;i<matches.length;i++){
 					      readMatchFile(matches[i],2012);
 //						  System.out.println(matches[i].getName()+" "+(++NUM));
 				     }	
+					 
+				     for(int i = 0;i<separator;i++){
+				    	 readMatchFile(matches[i], 2012);
+				     }
 					 
 					 greatestIndex = matches.length-1;
 					 
@@ -336,10 +355,8 @@ public class ObserverTheData extends Thread{
 		}
 	}
 	
-//	public static void main(String[] args){
-//	
-//		ObserverTheData o = new ObserverTheData();
-//		o.run();
-//		//System.out.println(o.matchFilesCompare(new File("D://test//12-13_11-02_LAC-LAL"), new File("D://test//12-13_10-30_DAL-LALU")));
-//	}
+	public static void main(String[] args){
+	
+	
+	}
 }
