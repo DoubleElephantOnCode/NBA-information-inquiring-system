@@ -7,6 +7,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.sun.javafx.scene.control.SelectedCellsMap;
+
 import view.File;
 import view.SizeAndLocationAndFont;
 import view.TimeSetting;
@@ -101,6 +103,7 @@ public class InformationCenterPanel extends JPanel{
 					if(singlePlayerPanel != null){
 						removeInformationPanel();
 						add(singlePlayerPanel, 0);
+						updateUI();
 					}
 					else{
 						panelBox.setSelectedIndex(formerPanel);
@@ -110,12 +113,22 @@ public class InformationCenterPanel extends JPanel{
 					if(singleTeamPanel != null){
 						removeInformationPanel();
 						add(singleTeamPanel, 0);
+						updateUI();
 					}
 					else{
 						panelBox.setSelectedIndex(formerPanel);
 					}
 					break;//球队信息
-				case 6:break;//对阵信息
+				case 6:
+					if(matchPanel != null){
+						removeInformationPanel();
+						add(matchPanel, 0);
+						updateUI();
+					}
+					else{
+						panelBox.setSelectedIndex(formerPanel);
+					}
+					break;//对阵信息
 				default:break;
 				}
 				formerPanel = panelBox.getSelectedIndex();
@@ -134,12 +147,15 @@ public class InformationCenterPanel extends JPanel{
 		removeInformationPanel();
 		hotPlayerPanel = new HotPlayerPanel(picPath, playerContents, 0);//当日
 		this.add(hotPlayerPanel, 0);
+		panelBox.setSelectedIndex(1);
+		this.updateUI();
 	}
 	
 	public void setHotPlayerThisYearPanel(String[] picPath, String[][][] playerContents){
 		removeInformationPanel();
 		hotPlayerPanel = new HotPlayerPanel(picPath, playerContents, 1);//赛季
 		this.add(hotPlayerPanel, 0);
+		panelBox.setSelectedIndex(0);
 		this.updateUI();
 	}
 	
@@ -147,6 +163,7 @@ public class InformationCenterPanel extends JPanel{
 		removeInformationPanel();
 		hotPlayerPanel = new HotPlayerPanel(picPath, playerContents, 2);//进步最快
 		this.add(hotPlayerPanel, 0);
+		panelBox.setSelectedIndex(2);
 		this.updateUI();
 	}
 	
@@ -154,6 +171,7 @@ public class InformationCenterPanel extends JPanel{
 		removeInformationPanel();
 		hotTeamPanel = new HotTeamPanel(teamPics, teamContents);
 		this.add(hotTeamPanel, 0);
+		panelBox.setSelectedIndex(3);
 		this.updateUI();
 	}
 	
@@ -161,6 +179,7 @@ public class InformationCenterPanel extends JPanel{
 		removeInformationPanel();
 		singlePlayerPanel = new SinglePlayerPanel(pathOfPhoto1, pathOfPhoto2, info, content, headListForRow, headListForColumn);
 		this.add(singlePlayerPanel, 0);
+		panelBox.setSelectedIndex(4);
 		singlePlayerPanel.updateUI();
 		this.updateUI();
 	}
@@ -169,6 +188,7 @@ public class InformationCenterPanel extends JPanel{
 		removeInformationPanel();
 		singleTeamPanel = new SingleTeamPanel(svgFile, infoName, info, content, headListForRow, headListForColumn, teamName);
 		this.add(singleTeamPanel, 0);
+		panelBox.setSelectedIndex(5);
 		this.updateUI();
 	}
 	
@@ -177,6 +197,7 @@ public class InformationCenterPanel extends JPanel{
 		removeInformationPanel();
 		matchPanel = new MatchPanel(team1, content1, headListForRow1, headListForColumn1, team2, content2, headListForRow2, headListForColumn2);
 		this.add(matchPanel, 0);
+		panelBox.setSelectedIndex(6);
 		this.updateUI();
 	}
 	
