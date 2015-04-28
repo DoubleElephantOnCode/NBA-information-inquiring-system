@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import view.File;
 import view.SizeAndLocationAndFont;
+import view.TimeSetting;
 import view.hotPlayerPanel.HotPlayerPanel;
 import view.hotTeamPanel.HotTeamPanel;
 import view.mainFrame.ExitLabel;
@@ -73,6 +74,8 @@ public class InformationCenterPanel extends JPanel{
 			public void mouseClicked(MouseEvent e) {
 				//TODO 查找事项
 				String temp = searchPlayer.getInputText();
+				new ShowPlayerController().showSinglePlayerInfo(temp, TimeSetting.startDate, TimeSetting.endDate);
+				panelBox.setSelectedIndex(4);
 			}
 		});
 		
@@ -89,17 +92,33 @@ public class InformationCenterPanel extends JPanel{
 				panelBox.action();
 				if(formerPanel == panelBox.getSelectedIndex()) return;
 				
-				formerPanel = panelBox.getSelectedIndex();
-				switch(formerPanel){
+				switch(panelBox.getSelectedIndex()){
 				case 0:new ShowPlayerController().showHotPlayerInfo(true, 5, 0); break;//赛季热点球员
 				case 1:new ShowPlayerController().showHotPlayerInfo(false, 5, 0); break;//当日热点球员
 				case 2:new ShowPlayerController().showProgressPlayerInfo(0, 5); break;//进步最快球员
 				case 3:new ShowTeamController().showHotTeamTable(0); break;//赛季热点球队
-				case 4:break;//球员信息
-				case 5:break;//球队信息
+				case 4:
+					if(singlePlayerPanel != null){
+						removeInformationPanel();
+						add(singlePlayerPanel, 0);
+					}
+					else{
+						panelBox.setSelectedIndex(formerPanel);
+					}
+					break;//球员信息
+				case 5:
+					if(singleTeamPanel != null){
+						removeInformationPanel();
+						add(singleTeamPanel, 0);
+					}
+					else{
+						panelBox.setSelectedIndex(formerPanel);
+					}
+					break;//球队信息
 				case 6:break;//对阵信息
 				default:break;
 				}
+				formerPanel = panelBox.getSelectedIndex();
 			}
 		});
 		
@@ -159,6 +178,10 @@ public class InformationCenterPanel extends JPanel{
 		matchPanel = new MatchPanel(team1, content1, headListForRow1, headListForColumn1, team2, content2, headListForRow2, headListForColumn2);
 		this.add(matchPanel, 0);
 		this.updateUI();
+	}
+	
+	public void setFailedToFindPlayer(){
+		searchPlayer.area.setText("输入球员名错误");
 	}
 	
 	private void removeInformationPanel(){
