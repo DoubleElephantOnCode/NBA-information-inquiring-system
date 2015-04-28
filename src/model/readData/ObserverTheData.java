@@ -24,6 +24,8 @@ public class ObserverTheData extends Thread{
 	public int NUM = 0;
 	
 	int greatestIndex = 0;
+	public String latestDate = "2013-10-29";
+	
 	ArrayList<String> latestMatches = new ArrayList<String>();  //0位置的是同日期中字典序排最后的比赛
 	
 	
@@ -128,7 +130,7 @@ public class ObserverTheData extends Thread{
 					 }
 				 }
 				 
-				 
+				 latestDate = this.fetchLatestDate(matches[greatestIndex].getName());
 				 
 				 latestMatches.clear();
 				 latestMatches.add(matches[greatestIndex].getName());   //最大下标在0位置
@@ -221,6 +223,31 @@ public class ObserverTheData extends Thread{
 		}
 				
 		return num;
+	}
+	
+	/**
+	 *  读取最近日期
+	 */
+	public String fetchLatestDate(String fileName){
+		
+		String result = null;
+		
+		String[] m = fileName.split("_");
+		
+		String[] year = m[0].split("-");
+		
+		String[] date = m[1].split("-");
+		
+		if(Integer.parseInt(date[0])<=9){
+			
+			result = "20"+year[1]+"-"+m[1];
+		}
+		else{
+			
+			result = "20"+year[0]+"-"+m[1];
+		}
+		
+		return result;
 	}
 	
 	
