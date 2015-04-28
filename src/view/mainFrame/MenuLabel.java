@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import view.File;
 import view.startView.StartPanel;
+import control.ChangePageController;
 
 public class MenuLabel {
 
@@ -67,6 +68,8 @@ public class MenuLabel {
 				StartPanel.TeamInfo.setVisible(true);
 				StartPanel.PlayerCount.setVisible(true);
 				StartPanel.PlayerInfo.setVisible(true);
+				
+				new ChangePageController().changePageToMainFrame();
 			}
 		});
 	}
