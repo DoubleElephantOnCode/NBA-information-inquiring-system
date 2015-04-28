@@ -18,7 +18,7 @@ import vo.PlayerVO;
  * @date 2015年3月14日 下午11:07:11
  * 
  */
-public class ShowPlayerDataModel implements ShowView {
+public class ShowPlayerDataModel {
 
 	/**
 	 * 筛选球员数（50名）
@@ -118,13 +118,12 @@ public class ShowPlayerDataModel implements ShowView {
 
 	}
 
-
 	public void sortByPlayerInfo(final String position, final String area,
 			final int i, final boolean isPositiveSequence) {
 
-		ReadMatchData.readMatch.setCurrentView(
-				new sortByPlayerInfo(position, area, i, isPositiveSequence));
-		
+		ReadMatchData.readMatch.setCurrentView(new sortByPlayerInfo(position,
+				area, i, isPositiveSequence));
+
 		new Waiting() {
 			@Override
 			protected Void doInBackground() throws Exception {
@@ -155,7 +154,7 @@ public class ShowPlayerDataModel implements ShowView {
 		}.execute();
 
 	}
-	
+
 	public class sortByPlayerInfo implements ShowView {
 
 		private String position = "";
@@ -174,9 +173,9 @@ public class ShowPlayerDataModel implements ShowView {
 		@Override
 		public void changeData() {
 			// TODO Auto-generated method stub
-			ArrayList<PlayerVO> playerList = PlayerList.sortPlayer(
-					SelectPlayer.selectPlayer(PlayerList.players, position,
-							area), i, isPositiveSequence);
+			ArrayList<PlayerVO> playerList = PlayerList.sortPlayer(SelectPlayer
+					.selectPlayer(PlayerList.players, position, area), i,
+					isPositiveSequence);
 			PlayerVO player = playerList.get(0);
 			String[][] content = new String[playerList.size()][PlayerList
 					.getHeadForColumn().length];
@@ -197,7 +196,6 @@ public class ShowPlayerDataModel implements ShowView {
 
 	}
 
-
 	/**
 	 * 筛选所选项前50的球员
 	 * 
@@ -205,9 +203,9 @@ public class ShowPlayerDataModel implements ShowView {
 	 */
 	public void selectByPlayerInfo(final String position, final String area,
 			final int i) {
-		
-		ReadMatchData.readMatch.setCurrentView(
-				new SelectByPlayerInfo(position, area, i));
+
+		ReadMatchData.readMatch.setCurrentView(new SelectByPlayerInfo(position,
+				area, i));
 
 		new Waiting() {
 
@@ -243,13 +241,13 @@ public class ShowPlayerDataModel implements ShowView {
 		}.execute();
 
 	}
-	
-	public class SelectByPlayerInfo implements ShowView{
-		
+
+	public class SelectByPlayerInfo implements ShowView {
+
 		private String position = "";
 		private String area = "";
 		private int i = 0;
-		
+
 		public SelectByPlayerInfo(String position, String area, int i) {
 			// TODO Auto-generated constructor stub
 			this.position = position;
@@ -285,9 +283,7 @@ public class ShowPlayerDataModel implements ShowView {
 				e.printStackTrace();
 			}
 		}
-		
-		
-		
+
 	}
 
 	/**
@@ -297,10 +293,10 @@ public class ShowPlayerDataModel implements ShowView {
 	 * @param area
 	 */
 	public void selectByAreaOrPosition(final String position, final String area) {
-		
-		ReadMatchData.readMatch.setCurrentView(
-				new ShowPlayerInfo(position, area));
-		
+
+		ReadMatchData.readMatch.setCurrentView(new ShowPlayerInfo(position,
+				area));
+
 		new Waiting() {
 			@Override
 			protected Void doInBackground() throws Exception {
@@ -356,10 +352,10 @@ public class ShowPlayerDataModel implements ShowView {
 	 */
 	public void selectHotPlayer(final boolean isSeason, final int selectNum,
 			final int selectItem) {
-		
-		ReadMatchData.readMatch.setCurrentView(
-				new SelectHotPlayer(isSeason, selectNum, selectItem));
-		
+
+		ReadMatchData.readMatch.setCurrentView(new SelectHotPlayer(isSeason,
+				selectNum, selectItem));
+
 		new Waiting() {
 			@Override
 			protected Void doInBackground() throws Exception {
@@ -369,7 +365,7 @@ public class ShowPlayerDataModel implements ShowView {
 					ArrayList<PlayerVO> playerList = SelectPlayer
 							.selectHotPlayers(PlayerList.players, isSeason,
 									selectNum, selectItem);
-					
+
 					if (!isSeason) { // 筛选的是当天热点球员
 						// 照片列表
 						String[] picPath = new String[selectNum];
@@ -412,13 +408,13 @@ public class ShowPlayerDataModel implements ShowView {
 
 		}.execute();
 	}
-	
-	public class SelectHotPlayer implements ShowView{
-		
+
+	public class SelectHotPlayer implements ShowView {
+
 		private boolean isSeason = true;
 		private int selectNum = 0;
 		private int selectItem = 0;
-		
+
 		public SelectHotPlayer(boolean isSeason, int selectNum, int selectItem) {
 			this.isSeason = isSeason;
 			this.selectNum = selectNum;
@@ -428,9 +424,8 @@ public class ShowPlayerDataModel implements ShowView {
 		@Override
 		public void changeData() {
 			try {
-				ArrayList<PlayerVO> playerList = SelectPlayer
-						.selectHotPlayers(PlayerList.players, isSeason,
-								selectNum, selectItem);
+				ArrayList<PlayerVO> playerList = SelectPlayer.selectHotPlayers(
+						PlayerList.players, isSeason, selectNum, selectItem);
 				if (!isSeason) { // 筛选的是当天热点球员
 					// 照片列表
 					String[] picPath = new String[selectNum];
@@ -439,8 +434,8 @@ public class ShowPlayerDataModel implements ShowView {
 					}
 					String[][][] playerContents = new String[selectNum][][];
 					for (int i = 0; i < selectNum; i++) {
-						playerContents[i] = playerList.get(i)
-								.getHotPlayerInfo(isSeason, selectItem);
+						playerContents[i] = playerList.get(i).getHotPlayerInfo(
+								isSeason, selectItem);
 					}
 
 					// TODO 调用界面层方法，重设界面
@@ -457,8 +452,8 @@ public class ShowPlayerDataModel implements ShowView {
 					// String[][] singlePlayerContent =
 					// playerList.get(0).getDailyHotPlayerInfo();
 					for (int i = 0; i < selectNum; i++) {
-						playerContents[i] = playerList.get(i)
-								.getHotPlayerInfo(isSeason, selectItem);
+						playerContents[i] = playerList.get(i).getHotPlayerInfo(
+								isSeason, selectItem);
 					}
 
 					// TODO 调用界面层方法，重设界面
@@ -470,11 +465,12 @@ public class ShowPlayerDataModel implements ShowView {
 		}
 	}
 
-	
 	/**
 	 * 筛选进步最快球员
 	 */
 	public void selectProgressPlayer(final int selectItem, final int selectNum) {
+
+		ReadMatchData.readMatch.setCurrentView(new SelectProgressPlayer(selectItem, selectNum));
 
 		new Waiting() {
 
@@ -495,37 +491,55 @@ public class ShowPlayerDataModel implements ShowView {
 
 				// TODO 调用界面层方法
 				Main.setProgressGreatPlayerPanel(picPath, playerContents);
-				
-//				String[][] content = new String[playerList.size()][PlayerList
-//						.getHeadForProgressPlayers().length];
-//				// 给要显示的表格填上内容
-//				for (int i = 0; i < playerList.size(); i++) {
-//					player = playerList.get(i);
-//					String[] s = player.getProgressInfo();
-//					for (int j = 0; j < s.length; j++) {
-//						content[i][j] = s[j];
-//					}
-//				}
-//				//球员姓名列
-//				String[] nameColumn = new String[playerList.size()];
-//				for (int i = 0; i < nameColumn.length; i++) {
-//					nameColumn[i] = playerList.get(i).getName();
-//				}
+
 				return null;
 			}
 
 		}.execute();
 	}
 
+	public class SelectProgressPlayer implements ShowView{
+		
+		private int selectItem = 0;
+		private int selectNum = 0;
+		
+		public SelectProgressPlayer(int selectItem, int selectNum) {
+			this.selectItem = selectItem;
+			this.selectNum = selectNum;
+		}
+
+		@Override
+		public void changeData() {
+			ArrayList<PlayerVO> playerList = SelectPlayer
+					.selectProgressPlayer(PlayerList.players, selectItem,
+							selectNum);
+			// 照片列表
+			String[] picPath = new String[selectNum];
+			for (int i = 0; i < picPath.length; i++) {
+				picPath[i] = playerList.get(i).getPortrait();
+			}
+			String[][][] playerContents = new String[selectNum][][];
+			for (int i = 0; i < selectNum; i++) {
+				playerContents[i] = playerList.get(i).getProgressInfo();
+			}
+
+			// TODO 调用界面层方法
+			Main.setProgressGreatPlayerPanel(picPath, playerContents);
+
+		}
+		
+		
+	}
+	
 	/**
 	 * 显示一个球员的详细信息
 	 */
 	public void showSinglePlayerInfo(final String name, final String startDate,
 			final String endDate) {
-		
-		ReadMatchData.readMatch.setCurrentView(
-				new ShowSinglePlayerInfo(name, startDate, endDate));
-		
+
+		ReadMatchData.readMatch.setCurrentView(new ShowSinglePlayerInfo(name,
+				startDate, endDate));
+
 		new Waiting() {
 
 			protected Void doInBackground() throws Exception {
@@ -571,13 +585,14 @@ public class ShowPlayerDataModel implements ShowView {
 		}.execute();
 	}
 
-	public class ShowSinglePlayerInfo implements ShowView{
-		
+	public class ShowSinglePlayerInfo implements ShowView {
+
 		private String name = "";
 		private String startDate = "";
 		private String endDate = "";
-		
-		public ShowSinglePlayerInfo(String name, String startDate, String endDate) {
+
+		public ShowSinglePlayerInfo(String name, String startDate,
+				String endDate) {
 			this.name = name;
 			this.startDate = startDate;
 			this.endDate = endDate;
@@ -587,11 +602,10 @@ public class ShowPlayerDataModel implements ShowView {
 		public void changeData() {
 			try {
 				PlayerVO player = PlayerList.findAPlayer(name);
-				ArrayList<PlayerDataPerMatchVO> matchDataList = player
-						.getDataPerMatchList();
-				// ArrayList<PlayerDataPerMatchVO> matchDataList =
-				// SelectMatch.selectMatchByDate(
-				// player.getDataPerMatchList(), startDate, endDate);
+				// ArrayList<PlayerDataPerMatchVO> matchDataList = player
+				// .getDataPerMatchList();
+				ArrayList<PlayerDataPerMatchVO> matchDataList = SelectMatch.selectMatchByDate(
+						player.getDataPerMatchList(), startDate, endDate);
 				PlayerDataPerMatchVO matchData = matchDataList.get(0);
 
 				String[][] content = new String[matchDataList.size()][PlayerList
@@ -614,20 +628,12 @@ public class ShowPlayerDataModel implements ShowView {
 
 				view.singlePlayerPanel.TestFrame.back.setSinglePlayerPanel(
 						player.getPortrait(), player.getAction(), null,
-						content, dateList,
-						PlayerList.getHeadForSinglePlayer());
+						content, dateList, PlayerList.getHeadForSinglePlayer());
 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		
-	}
-	
-	
-	@Override
-	public void changeData() {
-		// TODO Auto-generated method stub
 
 	}
 
