@@ -53,29 +53,7 @@ public class ComparePlayer {
 				new SortByScoreRate(isPositiveSequence),
 				new SortByThreePointScoreRate(isPositiveSequence),
 				new SortByFreeThrowScoreRate(isPositiveSequence),
-//				new SortByName(isPositiveSequence),
-//				new SortByTeamName(isPositiveSequence),
-//				new SortByPosition(isPositiveSequence),
-//				new SortByDoubleDoubleNum(isPositiveSequence),
-//				new SortByAvePlayTime(isPositiveSequence),
-//				new SortByAvePersonalPoints(isPositiveSequence),
-//				new SortByAveAssistNum(isPositiveSequence),
-//				new SortByAveStealNum(isPositiveSequence),
-//				new SortByAveBlockNum(isPositiveSequence),
-//				new SortByAveScoreNum(isPositiveSequence),
-//				new SortByAveShootNum(isPositiveSequence),
-//				new SortByScoreRate(isPositiveSequence),
-//				new SortByAveThreePointScoreNum(isPositiveSequence),
-//				new SortByAveThreePointShootNum(isPositiveSequence),
-//				new SortByThreePointScoreRate(isPositiveSequence),
-//				new SortByAveFreeThrowScoreNum(isPositiveSequence),
-//				new SortByAveFreeThrowShootNum(isPositiveSequence),
-//				new SortByFreeThrowScoreRate(isPositiveSequence),
-//				new SortByOffReboundsNum(isPositiveSequence),
-//				new SortByDefReboundsNum(isPositiveSequence),
-//				new SortByTotalReboundsNum(isPositiveSequence),
-//				new SortByTurnoverNum(isPositiveSequence),
-//				new SortByFoulNum(isPositiveSequence)
+
 		};
 	}
 
@@ -217,8 +195,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getEntryNum() >= p2.getEntryNum()){
+			if(p1.getEntryNum() > p2.getEntryNum()){
 				result = 1;
+			} else if(p1.getEntryNum() == p2.getEntryNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -240,8 +220,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getStartingNum() >= p2.getStartingNum()){
+			if(p1.getStartingNum() > p2.getStartingNum()){
 				result = 1;
+			} else if(p1.getStartingNum() == p2.getStartingNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -263,8 +245,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getDoubleDouble() >= p2.getDoubleDouble()){
+			if(p1.getDoubleDouble() > p2.getDoubleDouble()){
 				result = 1;
+			} else if(p1.getDoubleDouble() == p2.getDoubleDouble()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -309,8 +293,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getAveMinutes().getTimeByMinute() >= p2.getAveMinutes().getTimeByMinute()){
+			if(p1.getAveMinutes().getTimeByMinute() > p2.getAveMinutes().getTimeByMinute()){
 				result = 1;
+			} else if(p1.getAveMinutes().getTimeByMinute() == p2.getAveMinutes().getTimeByMinute()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -332,8 +318,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getTotalReboundsNum() >= p2.getTotalReboundsNum()){
+			if(p1.getTotalReboundsNum() > p2.getTotalReboundsNum()){
 				result = 1;
+			} else if(p1.getTotalReboundsNum() == p2.getTotalReboundsNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -355,8 +343,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getAveTotalReboundsNum() >= p2.getAveTotalReboundsNum()){
+			if(p1.getAveTotalReboundsNum() > p2.getAveTotalReboundsNum()){
 				result = 1;
+			} else if(p1.getAveTotalReboundsNum() == p2.getAveTotalReboundsNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -378,8 +368,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getOffensiveReboundsNum() >= p2.getOffensiveReboundsNum()){
+			if(p1.getOffensiveReboundsNum() > p2.getOffensiveReboundsNum()){
 				result = 1;
+			} else if(p1.getOffensiveReboundsNum() == p2.getOffensiveReboundsNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -401,8 +393,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getAveOffensiveReboundsNum() >= p2.getAveOffensiveReboundsNum()){
+			if(p1.getAveOffensiveReboundsNum() > p2.getAveOffensiveReboundsNum()){
 				result = 1;
+			} else if(p1.getAveOffensiveReboundsNum() == p2.getAveOffensiveReboundsNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -424,8 +418,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getDefensiveReboundsNum() >= p2.getDefensiveReboundsNum()){
+			if(p1.getDefensiveReboundsNum() > p2.getDefensiveReboundsNum()){
 				result = 1;
+			} else if(p1.getDefensiveReboundsNum() == p2.getDefensiveReboundsNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -447,8 +443,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getAveDefensiveReboundsNum() >= p2.getAveDefensiveReboundsNum()){
+			if(p1.getAveDefensiveReboundsNum() > p2.getAveDefensiveReboundsNum()){
 				result = 1;
+			} else if(p1.getAveDefensiveReboundsNum() == p2.getAveDefensiveReboundsNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -470,8 +468,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getAssistNum() >= p2.getAssistNum()){
+			if(p1.getAssistNum() > p2.getAssistNum()){
 				result = 1;
+			} else if(p1.getAssistNum() == p2.getAssistNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -493,8 +493,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getAveAssistNum() >= p2.getAveAssistNum()){
+			if(p1.getAveAssistNum() > p2.getAveAssistNum()){
 				result = 1;
+			} else if(p1.getAveAssistNum() == p2.getAveAssistNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -516,8 +518,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getScoreRate() >= p2.getScoreRate()){
+			if(p1.getScoreRate() > p2.getScoreRate()){
 				result = 1;
+			} else if(p1.getScoreRate() == p2.getScoreRate()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -539,8 +543,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getThreePointScoreRate() >= p2.getThreePointScoreRate()){
+			if(p1.getThreePointScoreRate() > p2.getThreePointScoreRate()){
 				result = 1;
+			} else if(p1.getThreePointScoreRate() == p2.getThreePointScoreRate()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -562,8 +568,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getFreeThrowScoreRate() >= p2.getFreeThrowScoreRate()){
+			if(p1.getFreeThrowScoreRate() > p2.getFreeThrowScoreRate()){
 				result = 1;
+			} else if(p1.getFreeThrowScoreRate() == p2.getFreeThrowScoreRate()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -585,8 +593,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getStealNum() >= p2.getStealNum()){
+			if(p1.getStealNum() > p2.getStealNum()){
 				result = 1;
+			} else if(p1.getStealNum() == p2.getStealNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -608,8 +618,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getAveStealNum() >= p2.getAveStealNum()){
+			if(p1.getAveStealNum() > p2.getAveStealNum()){
 				result = 1;
+			} else if(p1.getAveStealNum() == p2.getAveStealNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -631,8 +643,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getBlockNum() >= p2.getBlockNum()){
+			if(p1.getBlockNum() > p2.getBlockNum()){
 				result = 1;
+			} else if(p1.getBlockNum() == p2.getBlockNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -654,8 +668,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getAveBlockNum() >= p2.getAveBlockNum()){
+			if(p1.getAveBlockNum() > p2.getAveBlockNum()){
 				result = 1;
+			} else if(p1.getAveBlockNum() == p2.getAveBlockNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -677,8 +693,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getTurnoverNum() >= p2.getTurnoverNum()){
+			if(p1.getTurnoverNum() > p2.getTurnoverNum()){
 				result = 1;
+			} else if(p1.getTurnoverNum() == p2.getTurnoverNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -700,8 +718,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getAveTurnoverNum() >= p2.getAveTurnoverNum()){
+			if(p1.getAveTurnoverNum() > p2.getAveTurnoverNum()){
 				result = 1;
+			} else if(p1.getAveTurnoverNum() == p2.getAveTurnoverNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -723,8 +743,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getFoulNum() >= p2.getFoulNum()){
+			if(p1.getFoulNum() > p2.getFoulNum()){
 				result = 1;
+			} else if(p1.getFoulNum() == p2.getFoulNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -746,8 +768,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getAveFoulNum() >= p2.getAveFoulNum()){
+			if(p1.getAveFoulNum() > p2.getAveFoulNum()){
 				result = 1;
+			} else if(p1.getAveFoulNum() == p2.getAveFoulNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -769,8 +793,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getPersonalPoints() >= p2.getPersonalPoints()){
+			if(p1.getPersonalPoints() > p2.getPersonalPoints()){
 				result = 1;
+			} else if(p1.getPersonalPoints() == p2.getPersonalPoints()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -792,8 +818,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getAvePersonalPoints() >= p2.getAvePersonalPoints()){
+			if(p1.getAvePersonalPoints() > p2.getAvePersonalPoints()){
 				result = 1;
+			} else if(p1.getAvePersonalPoints() == p2.getAvePersonalPoints()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -815,8 +843,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getEfficiency() >= p2.getEfficiency()){
+			if(p1.getEfficiency() > p2.getEfficiency()){
 				result = 1;
+			} else if(p1.getEfficiency() == p2.getEfficiency()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -838,8 +868,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getGmSc() >= p2.getGmSc()){
+			if(p1.getGmSc() > p2.getGmSc()){
 				result = 1;
+			} else if(p1.getGmSc() == p2.getGmSc()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -861,8 +893,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getTrueShootingPercentage() >= p2.getTrueShootingPercentage()){
+			if(p1.getTrueShootingPercentage() > p2.getTrueShootingPercentage()){
 				result = 1;
+			} else if(p1.getTrueShootingPercentage() == p2.getTrueShootingPercentage()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -884,8 +918,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getShootingEfficiency() >= p2.getShootingEfficiency()){
+			if(p1.getShootingEfficiency() > p2.getShootingEfficiency()){
 				result = 1;
+			} else if(p1.getShootingEfficiency() == p2.getShootingEfficiency()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -907,8 +943,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getReboundRate() >= p2.getReboundRate()){
+			if(p1.getReboundRate() > p2.getReboundRate()){
 				result = 1;
+			} else if(p1.getReboundRate() == p2.getReboundRate()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -930,8 +968,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getOffensiveReboundRate() >= p2.getOffensiveReboundRate()){
+			if(p1.getOffensiveReboundRate() > p2.getOffensiveReboundRate()){
 				result = 1;
+			} else if(p1.getOffensiveReboundRate() == p2.getOffensiveReboundRate()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -953,8 +993,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getDefensiveReboundRate() >= p2.getDefensiveReboundRate()){
+			if(p1.getDefensiveReboundRate() > p2.getDefensiveReboundRate()){
 				result = 1;
+			} else if(p1.getDefensiveReboundRate() == p2.getDefensiveReboundRate()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -976,8 +1018,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getAssistRate() >= p2.getAssistRate()){
+			if(p1.getAssistRate() > p2.getAssistRate()){
 				result = 1;
+			} else if(p1.getAssistRate() == p2.getAssistRate()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -999,8 +1043,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getStealRate() >= p2.getStealRate()){
+			if(p1.getStealRate() > p2.getStealRate()){
 				result = 1;
+			} else if(p1.getStealRate() == p2.getStealRate()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -1022,8 +1068,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getBlockRate() >= p2.getBlockRate()){
+			if(p1.getBlockRate() > p2.getBlockRate()){
 				result = 1;
+			} else if(p1.getBlockRate() == p2.getBlockRate()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -1045,8 +1093,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getTurnoverRate() >= p2.getTurnoverRate()){
+			if(p1.getTurnoverRate() > p2.getTurnoverRate()){
 				result = 1;
+			} else if(p1.getTurnoverRate() == p2.getTurnoverRate()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -1068,8 +1118,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getUseRate() >= p2.getUseRate()){
+			if(p1.getUseRate() > p2.getUseRate()){
 				result = 1;
+			} else if(p1.getUseRate() == p2.getUseRate()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -1091,8 +1143,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getRecentPointAdvance() >= p2.getRecentPointAdvance()){
+			if(p1.getRecentPointAdvance() > p2.getRecentPointAdvance()){
 				result = 1;
+			} else if(p1.getRecentPointAdvance() == p2.getRecentPointAdvance()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -1114,8 +1168,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getRecentAssistAdvance() >= p2.getRecentAssistAdvance()){
+			if(p1.getRecentAssistAdvance() > p2.getRecentAssistAdvance()){
 				result = 1;
+			} else if(p1.getRecentAssistAdvance() == p2.getRecentAssistAdvance()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -1137,8 +1193,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getRecentReboundAdvance() >= p2.getRecentReboundAdvance()){
+			if(p1.getRecentReboundAdvance() > p2.getRecentReboundAdvance()){
 				result = 1;
+			} else if(p1.getRecentReboundAdvance() == p2.getRecentReboundAdvance()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -1160,8 +1218,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getAveScoreNum() >= p2.getAveScoreNum()){
+			if(p1.getAveScoreNum() > p2.getAveScoreNum()){
 				result = 1;
+			} else if(p1.getAveScoreNum() == p2.getAveScoreNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -1183,8 +1243,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getAveShootNum() >= p2.getAveShootNum()){
+			if(p1.getAveShootNum() > p2.getAveShootNum()){
 				result = 1;
+			} else if(p1.getAveShootNum() == p2.getAveShootNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -1206,8 +1268,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getAveThreePointerScoreNum() >= p2.getAveThreePointerScoreNum()){
+			if(p1.getAveThreePointerScoreNum() > p2.getAveThreePointerScoreNum()){
 				result = 1;
+			} else if(p1.getAveThreePointerScoreNum() == p2.getAveThreePointerScoreNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -1229,8 +1293,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getAveThreePointerShootNum() >= p2.getAveThreePointerShootNum()){
+			if(p1.getAveThreePointerShootNum() > p2.getAveThreePointerShootNum()){
 				result = 1;
+			} else if(p1.getAveThreePointerShootNum() == p2.getAveThreePointerShootNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -1252,8 +1318,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getAveFreeThrowScoreNum() >= p2.getAveFreeThrowScoreNum()){
+			if(p1.getAveFreeThrowScoreNum() > p2.getAveFreeThrowScoreNum()){
 				result = 1;
+			} else if(p1.getAveFreeThrowScoreNum() == p2.getAveFreeThrowScoreNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;
@@ -1275,8 +1343,10 @@ public class ComparePlayer {
 			int result = -1;
 			PlayerVO p1 = (PlayerVO) o1;
 			PlayerVO p2 = (PlayerVO) o2;
-			if(p1.getAveThreePointerShootNum() >= p2.getAveThreePointerShootNum()){
+			if(p1.getAveThreePointerShootNum() > p2.getAveThreePointerShootNum()){
 				result = 1;
+			} else if(p1.getAveThreePointerShootNum() == p2.getAveThreePointerShootNum()){
+				result = 0;
 			}
 			if(!b){
 				result = -result;

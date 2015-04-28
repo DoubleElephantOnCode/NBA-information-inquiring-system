@@ -470,7 +470,8 @@ public class ShowPlayerDataModel {
 	 */
 	public void selectProgressPlayer(final int selectItem, final int selectNum) {
 
-		ReadMatchData.readMatch.setCurrentView(new SelectProgressPlayer(selectItem, selectNum));
+		ReadMatchData.readMatch.setCurrentView(new SelectProgressPlayer(
+				selectItem, selectNum));
 
 		new Waiting() {
 
@@ -498,11 +499,11 @@ public class ShowPlayerDataModel {
 		}.execute();
 	}
 
-	public class SelectProgressPlayer implements ShowView{
-		
+	public class SelectProgressPlayer implements ShowView {
+
 		private int selectItem = 0;
 		private int selectNum = 0;
-		
+
 		public SelectProgressPlayer(int selectItem, int selectNum) {
 			this.selectItem = selectItem;
 			this.selectNum = selectNum;
@@ -510,9 +511,8 @@ public class ShowPlayerDataModel {
 
 		@Override
 		public void changeData() {
-			ArrayList<PlayerVO> playerList = SelectPlayer
-					.selectProgressPlayer(PlayerList.players, selectItem,
-							selectNum);
+			ArrayList<PlayerVO> playerList = SelectPlayer.selectProgressPlayer(
+					PlayerList.players, selectItem, selectNum);
 			// 照片列表
 			String[] picPath = new String[selectNum];
 			for (int i = 0; i < picPath.length; i++) {
@@ -527,10 +527,9 @@ public class ShowPlayerDataModel {
 			Main.setProgressGreatPlayerPanel(picPath, playerContents);
 
 		}
-		
-		
+
 	}
-	
+
 	/**
 	 * 显示一个球员的详细信息
 	 */
@@ -546,11 +545,10 @@ public class ShowPlayerDataModel {
 
 				try {
 					PlayerVO player = PlayerList.findAPlayer(name);
-					ArrayList<PlayerDataPerMatchVO> matchDataList = player
-							.getDataPerMatchList();
-					// ArrayList<PlayerDataPerMatchVO> matchDataList =
-					// SelectMatch.selectMatchByDate(
-					// player.getDataPerMatchList(), startDate, endDate);
+					// ArrayList<PlayerDataPerMatchVO> matchDataList = player
+					// .getDataPerMatchList();
+					ArrayList<PlayerDataPerMatchVO> matchDataList = SelectMatch.selectMatchByDate(
+									player.getDataPerMatchList(), startDate, endDate);
 					PlayerDataPerMatchVO matchData = matchDataList.get(0);
 
 					String[][] content = new String[matchDataList.size()][PlayerList
@@ -568,12 +566,9 @@ public class ShowPlayerDataModel {
 					for (int i = 0; i < dateList.length; i++) {
 						dateList[i] = matchDataList.get(i).getMatchDate();
 					}
-
-					view.singlePlayerPanel.TestFrame testFrame = new TestFrame();
-
-					view.singlePlayerPanel.TestFrame.back.setSinglePlayerPanel(
-							player.getPortrait(), player.getAction(), null,
-							content, dateList,
+					
+					Main.setSinglePlayerPanel(player.getPortrait(), player.getAction(),
+							player.getBasicPlayerInfo(), content, dateList,
 							PlayerList.getHeadForSinglePlayer());
 
 				} catch (Exception e) {
@@ -604,8 +599,9 @@ public class ShowPlayerDataModel {
 				PlayerVO player = PlayerList.findAPlayer(name);
 				// ArrayList<PlayerDataPerMatchVO> matchDataList = player
 				// .getDataPerMatchList();
-				ArrayList<PlayerDataPerMatchVO> matchDataList = SelectMatch.selectMatchByDate(
-						player.getDataPerMatchList(), startDate, endDate);
+				ArrayList<PlayerDataPerMatchVO> matchDataList = SelectMatch
+						.selectMatchByDate(player.getDataPerMatchList(),
+								startDate, endDate);
 				PlayerDataPerMatchVO matchData = matchDataList.get(0);
 
 				String[][] content = new String[matchDataList.size()][PlayerList
@@ -623,12 +619,9 @@ public class ShowPlayerDataModel {
 				for (int i = 0; i < dateList.length; i++) {
 					dateList[i] = matchDataList.get(i).getMatchDate();
 				}
-
-				view.singlePlayerPanel.TestFrame testFrame = new TestFrame();
-
-				view.singlePlayerPanel.TestFrame.back.setSinglePlayerPanel(
-						player.getPortrait(), player.getAction(), null,
-						content, dateList, PlayerList.getHeadForSinglePlayer());
+				Main.setSinglePlayerPanel(player.getPortrait(), player.getAction(),
+						player.getBasicPlayerInfo(), content, dateList,
+						PlayerList.getHeadForSinglePlayer());
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -637,51 +630,5 @@ public class ShowPlayerDataModel {
 
 	}
 
-	public static void main(String[] args) {
-		ReadTeamData readTeam = new ReadTeamData();
-		readTeam.readTeamData();
-
-		ReadPlayerData readPlayer = new ReadPlayerData();
-		readPlayer.readPlayerData();
-
-		ReadMatchData readMatch = new ReadMatchData();
-		readMatch.readMatchData();
-
-		PlayerVO player = PlayerList.findAPlayer("Kobe Bryant");
-		ArrayList<PlayerDataPerMatchVO> matchDataList = player
-				.getDataPerMatchList();
-		// ArrayList<PlayerDataPerMatchVO> matchDataList =
-		// SelectMatch.selectMatchByDate(
-		// player.getDataPerMatchList(), startDate, endDate);
-		PlayerDataPerMatchVO matchData = matchDataList.get(0);
-
-		String[][] content = new String[matchDataList.size()][PlayerList
-				.getHeadForSinglePlayer().length];
-		// 给要显示的表格填上内容
-		for (int i = 0; i < matchDataList.size(); i++) {
-			matchData = matchDataList.get(i);
-			String[] s = matchData.getMatchInfo();
-			for (int j = 0; j < s.length; j++) {
-				content[i][j] = s[j];
-			}
-		}
-		// 行表头，显示日期
-		String[] dateList = new String[matchDataList.size()];
-		for (int i = 0; i < dateList.length; i++) {
-			dateList[i] = matchDataList.get(i).getMatchDate();
-		}
-
-		view.singlePlayerPanel.TestFrame testFrame = new TestFrame();
-
-		String[][] info = player.getBasicPlayerInfo();
-		String portait = player.getPortrait();
-		String action = player.getAction();
-		System.out.println(portait);
-		System.out.println(action);
-		System.out.println("info : " + info.length);
-
-		testFrame.back.setSinglePlayerPanel(portait, action, info, content,
-				dateList, PlayerList.getHeadForSinglePlayer());
-	}
 
 }

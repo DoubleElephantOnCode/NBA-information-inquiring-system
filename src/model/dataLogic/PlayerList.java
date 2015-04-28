@@ -198,21 +198,5 @@ public class PlayerList {
 		Collections.sort(playerList, c.comparator[i]);	
 		return playerList;
 	}
-	
-	
-//	/**
-//	 * 按照条件筛选出前50个球员
-//	 * @param i
-//	 */
-//	public static ArrayList<PlayerVO> selectPlayer(int i){
-//		SelectPlayer selectPlayer = new SelectPlayer(i, players);
-//		players = selectPlayer.sortAndselectPlayer();
-//		
-//		ArrayList<PlayerVO> playerAfterSelect = new ArrayList<PlayerVO>(selectNum);
-//		for (int j = 0; j < selectNum; j++) {
-//			playerAfterSelect.add(players.get(i));
-//		}
-//		
-//		return playerAfterSelect;
-//	}
+
 }
