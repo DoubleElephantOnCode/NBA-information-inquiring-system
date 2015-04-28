@@ -441,11 +441,25 @@ public class PlayerVO {
 
 	}
 
-	public PlayerVO(PlayerDataPerMatchVO matchData) {
+	public PlayerVO(PlayerDataPerMatchVO matchData, PlayerVO player) {
 		// 当天热点球员： 依据筛选条件（筛选条件包括但不仅限于以下几个方面：得分，篮板，助攻，盖帽，抢断）从今日参加
 		// 比赛的所有球员中筛选出前 5 名球员（按照降序排列进行筛选），并对球员的信息进行展示，球员展示信息包括但不仅限
 		// 于以下几个方面：球员名称，所属球队，球员位置，球员比赛数据等
 		// TODO 为了当日热点球员查询设置的构造方法
+
+		this.name = player.getName();
+		this.number = player.getNumber();
+		this.position = player.getPosition();
+		this.height = player.getHeight();
+		this.weight = player.getWeight();
+		this.birthday = player.getBirthday();
+		this.age = player.getAge();
+		this.exp = player.getExp();
+		this.school = player.getSchool();
+		this.action = player.getAction();
+		this.portrait = player.getPortrait();
+		this.teamName = player.getTeamName();
+		
 		if (matchData.isDoubleDouble()) {
 			this.doubleDouble++;
 		}
@@ -578,9 +592,14 @@ public class PlayerVO {
 	 */
 	public void calAllRate() {
 		// TODO 计算各种率
+		if(entryNum == 0){
+			return;
+		}
 
 		// 赛季投篮命中率
-		scoreRate = scoreNum / shootNum;
+		if(shootNum != 0.0){
+			scoreRate = scoreNum / shootNum;
+		}
 		// 赛季三分命中率
 		if (threePointerShootNum != 0.0) {
 			threePointScoreRate = threePointerScoreNum / threePointerShootNum;
@@ -601,11 +620,15 @@ public class PlayerVO {
 				+ aveStealNum + 0.7 * aveAssistNum + 0.7 * aveBlockNum
 				- aveTurnoverNum;
 		// 真实命中率: 得分÷(2×(投篮出手数+0.44×罚球出手数))
-		trueShootingPercentage = avePersonalPoints
+		if((aveShootNum + 0.44 * aveFreeThrowShootNum) != 0.0){
+			trueShootingPercentage = avePersonalPoints
 				/ (2 * (aveShootNum + 0.44 * aveFreeThrowShootNum));
+		}
 		// 投篮效率： (投篮命中数+0.5×三分命中数)÷投篮出手数
-		shootingEfficiency = (aveScoreNum + 0.5 * aveThreePointerScoreNum)
+		if(aveShootNum != 0.0){
+			shootingEfficiency = (aveScoreNum + 0.5 * aveThreePointerScoreNum)
 				/ aveShootNum;
+		}
 		// 篮板率：球员篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总篮板+对手总篮板)
 		reboundRate = totalReboundsNum
 				* (timeOfAllPlayers.getTimeByMinute() / 5)
@@ -633,14 +656,19 @@ public class PlayerVO {
 		blockRate = blockNum * (timeOfAllPlayers.getTimeByMinute() / 5)
 				/ totalMinutes.getTimeByMinute() / oppTwoPointShootNum;
 		// 失误率：球员失误数÷(球员两分球出手次数+0.44×球员罚球次数+球员失误数)
-		turnoverRate = turnoverNum
-				/ ((shootNum - threePointerShootNum) + 0.44 * freeThrowShootNum + turnoverNum);
+		if(((shootNum - threePointerShootNum) + 0.44 * freeThrowShootNum + turnoverNum) != 0.0){
+			turnoverRate = turnoverNum
+					/ ((shootNum - threePointerShootNum) + 0.44 * freeThrowShootNum + turnoverNum);
+		}
 		// 使用率：(球员出手次数+0.44×球员罚球次数+球员失误次数)×(球队所有球员上场时间÷5)÷
 		// 球员上场时间÷(球队所有总球员出手次数+0.44×球队所有球员罚球次数+球队所有球员失误次数)
-		useRate = (shootNum + 0.44 * freeThrowShootNum + turnoverNum)
-				* (timeOfAllPlayers.getTimeByMinute() / 5)
-				/ totalMinutes.getTimeByMinute()
-				/ (allShootNum + 0.44 * allFreeThrowShootNum + allTurnoverNum);
+		if(totalMinutes.getTimeByMinute() != 0.0 &&
+				(allShootNum + 0.44 * allFreeThrowShootNum + allTurnoverNum) != 0.0){
+			useRate = (shootNum + 0.44 * freeThrowShootNum + turnoverNum)
+					* (timeOfAllPlayers.getTimeByMinute() / 5)
+					/ totalMinutes.getTimeByMinute()
+					/ (allShootNum + 0.44 * allFreeThrowShootNum + allTurnoverNum);
+		}
 
 	}
 
@@ -649,7 +677,10 @@ public class PlayerVO {
 	 */
 	public void calAveData() {
 		double matchNum = dataPerMatchList.size();
-
+		if(matchNum == 0){
+			return;
+		}
+		
 		aveMinutes = MyPresentTime.toTimeFormat(totalMinutes.getTimeByMinute()
 				/ matchNum);
 		aveScoreNum = scoreNum / matchNum;
@@ -757,20 +788,42 @@ public class PlayerVO {
 	}
 
 	/**
-	 * 获取基本球员信息 姓名, 所属球队, 位置, 号码, 生日, 身高, 体重, 年龄, 球龄, 毕业学校 , 平均得分, 平均篮板, 平均助攻
-	 * 
+	 * 获取基本球员信息
+	 * 姓名, 所属球队, 位置, 号码, 生日, 年龄,
+	 * 身高, 体重, 球龄, 毕业学校 , 平均得分, 平均篮板, 平均助攻
 	 * @return
 	 */
-	public String[] getBasicPlayerInfo() {
+	public String[][] getBasicPlayerInfo() {
 		// TODO 获取基本球员信息
-		String[] s = new String[] { this.name, this.teamName, this.position,
-				this.number, this.birthday, "Height: " + this.height + "m",
-				"Weight: " + this.weight + "磅", "Age: " + this.age,
-				"Exp:" + this.exp, "School:" + this.school,
-				"场均得分: " + this.avePersonalPoints,
-				"场均篮板: " + this.aveTotalReboundsNum,
-				"场均助攻: " + this.aveAssistNum };
-		return s;
+		int rowSize = 6;
+		String[] basicInfo1 = new String[]{
+				this.name, this.teamName, this.position, "号码:" + this.number
+		};
+		String[] basicInfo2 = new String[]{
+				"", this.birthday, "年龄:" + this.age, ""
+		};
+		String[] head1 = new String[]{
+				"身高(m)", "体重(磅)", "球龄", "毕业学校"
+		};
+		String[] head2 = new String[]{
+				 "场均得分", "场均篮板", "场均助攻", ""
+		};
+		String[] infoAndData1 = new String[]{
+				this.height, this.weight, this.exp, this.school
+		};
+		String[] infoAndData2 = new String[]{
+				toString(this.avePersonalPoints), toString(this.aveTotalReboundsNum), 
+				toString(this.aveAssistNum), ""
+		};
+		String[][] content = new String[rowSize][basicInfo1.length];
+		content[0] = basicInfo1;
+		content[1] = basicInfo2;
+		content[2] = head1;
+		content[3] = infoAndData1;
+		content[4] = head2;
+		content[5] = infoAndData2;
+		
+		return content;
 	}
 
 	/**
@@ -842,7 +895,7 @@ public class PlayerVO {
 				toString(aveStealNum), toString(this.freeThrowScoreRate * 100)
 		};
 		
-		String[][] content = new String[rowSize][head.length];
+		String[][] content = new String[rowSize][basicInfo.length];
 		content[0] = basicInfo;
 		if (isSeason) {// 赛季热点
 			
@@ -945,9 +998,12 @@ public class PlayerVO {
 		String[] temp = height.split("-");
 		double inch = Double.parseDouble(temp[0]) * 12
 				+ Double.parseDouble(temp[1]);
-		String meter = Double.toString(inch * 0.0254);
+//		String meter = Double.toString(inch * 0.0254);
+		DecimalFormat df = new DecimalFormat("#.00");
+		String meter = df.format(inch * 0.0254);
 		return meter;
 	}
+	
 
 	public String getAction() {
 		return action;

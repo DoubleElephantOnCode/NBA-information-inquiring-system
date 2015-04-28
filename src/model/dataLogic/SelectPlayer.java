@@ -112,14 +112,16 @@ public class SelectPlayer {
 				if(matchDataList.size() != 0){
 					PlayerDataPerMatchVO latestMatchData =
 							matchDataList.get(matchDataList.size() - 1);
-					//TODO 输出以观察正确性
-					System.out.println(pvo.getName());
-					System.out.println("当前日期：" + ReadMatchData.getCurrentDate());
-					System.out.println("最后一场比赛日期：" + latestMatchData.getMatchDate());
 					
 					if(ReadMatchData.getCurrentDate().equals( latestMatchData.getMatchDate() )){
+						//TODO 输出以观察正确性
+						System.out.println(pvo.getName());
+						System.out.println("当前日期：" + ReadMatchData.getCurrentDate());
+						System.out.println("最后一场比赛日期：" + latestMatchData.getMatchDate());
+						
 						//如果最后一场比赛的日期是当前日期
-						PlayerVO player = new PlayerVO(latestMatchData);
+						PlayerVO player = new PlayerVO(latestMatchData, pvo);
+						
 						tempPlayers.add(player);
 					}
 				}
