@@ -229,7 +229,7 @@ public class ObserverTheData extends Thread{
 	 */
 	public void readMatchFile(File file,int yearOfStart){
 		
-
+		System.out.println(file.getPath());
 		
 		BufferedReader reader = null;
 		try{

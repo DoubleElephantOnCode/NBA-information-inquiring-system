@@ -9,7 +9,8 @@ import view.mainFrame.Waiting;
 import vo.TeamVO;
 
 public class ShowTeamDataModel implements ShowView{
-
+	int i = 0; 
+	boolean isPositiveSequence = true;
 	
 	public void showTeamTable(){
 		ReadMatchData.readMatch.setCurrentView(this);
@@ -59,6 +60,9 @@ public class ShowTeamDataModel implements ShowView{
 	
 	public void sortTeamTable(final int i,final boolean isPositiveSequence){
 		
+		this.i = i;
+		this.isPositiveSequence = isPositiveSequence;
+		ReadMatchData.readMatch.setCurrentView(this);
 		new Waiting(){
 			@Override
 			protected Void doInBackground() throws Exception {
@@ -89,7 +93,7 @@ public class ShowTeamDataModel implements ShowView{
 	@Override
 	public void changeData() {
 		// TODO Auto-generated method stub
-		
+		TeamList.sortTeam(i, isPositiveSequence);
 		new Waiting(){
 			@Override
 			protected Void doInBackground() throws Exception {
