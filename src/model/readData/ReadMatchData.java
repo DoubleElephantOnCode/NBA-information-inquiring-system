@@ -58,9 +58,13 @@ public class ReadMatchData {
 		t.start();
 	}
 	
+	/**
+	 * 当前日期
+	 * @return
+	 */
 	public static String getCurrentDate(){
-		//TODO
-		return "2013-04-16"; 
+		
+		return readMatch.latestDate; 
 	}
 	
 	/**
