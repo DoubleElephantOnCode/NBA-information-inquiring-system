@@ -190,10 +190,10 @@ public class InformationCenterPanel extends JPanel{
 		this.updateUI();
 	}
 	
-	public void setMatchPanel(java.io.File team1, String[][] content1, String[] headListForRow1, String[] headListForColumn1,
-			java.io.File team2, String[][] content2, String[] headListForRow2, String[] headListForColumn2){
+	public void setMatchPanel(java.io.File team1, String[][] content1, String[] headListForRow1, String[] headListForColumn1, String teamName1, 
+			java.io.File team2, String[][] content2, String[] headListForRow2, String[] headListForColumn2, String teamName2){
 		removeInformationPanel();
-		matchPanel = new MatchPanel(team1, content1, headListForRow1, headListForColumn1, team2, content2, headListForRow2, headListForColumn2);
+		matchPanel = new MatchPanel(team1, content1, headListForRow1, headListForColumn1, teamName1, team2, content2, headListForRow2, headListForColumn2, teamName2);
 		this.add(matchPanel, 0);
 		panelBox.setSelectedIndex(6);
 		this.updateUI();

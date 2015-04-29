@@ -50,7 +50,7 @@ public class TestFrame {
 		
 //		back.setSinglePlayerPanel("E:\\课件\\软件工程与计算\\大二下学期\\data\\迭代一数据\\players\\portrait\\LeBron James.png", "E:\\课件\\软件工程与计算\\大二下学期\\data\\迭代一数据\\players\\action\\LeBron James.png", null, content, headListForRow, headListForColumn);
 		java.io.File team = new java.io.File(teamPath);
-		p = new MatchPanel(team, content, headListForRow, headListForColumn, team, content, headListForRow, headListForColumn);
+//		p = new MatchPanel(team, content, headListForRow, headListForColumn, team, content, headListForRow, headListForColumn);
 		
 		back.add(p, 0);
 		

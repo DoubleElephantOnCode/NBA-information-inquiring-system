@@ -141,4 +141,9 @@ public class SinglePlayerPanel extends JPanel{
 		this.setLocation(SizeAndLocationAndFont.singlePlayerPanelLocationX, SizeAndLocationAndFont.singlePlayerPanelLocationY);
 	}
 	
+	public static void initialTime(){
+		Begin = TimeSetting.begin;
+		End = TimeSetting.end;
+	}
+	
 }

@@ -119,4 +119,9 @@ public class SingleTeamPanel extends JPanel{
 		this.setOpaque(false);
 	}
 	
+	public static void initialTime(){
+		Begin = TimeSetting.begin;
+		End = TimeSetting.end;
+	}
+	
 }
