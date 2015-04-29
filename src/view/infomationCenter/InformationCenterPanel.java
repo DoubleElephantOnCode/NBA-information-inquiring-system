@@ -141,33 +141,33 @@ public class InformationCenterPanel extends JPanel{
 		this.setLocation(0, 0);
 	}
 	
-	public void setHotPlayerTodayPanel(String[] picPath, String[][][] playerContents){
+	public void setHotPlayerTodayPanel(String[] picPath, String[][][] playerContents, String[] playerNames){
 		removeInformationPanel();
-		hotPlayerPanel = new HotPlayerPanel(picPath, playerContents, 0);//当日
+		hotPlayerPanel = new HotPlayerPanel(picPath, playerContents, playerNames, 0);//当日
 		this.add(hotPlayerPanel, 0);
 		panelBox.setSelectedIndex(1);
 		this.updateUI();
 	}
 	
-	public void setHotPlayerThisYearPanel(String[] picPath, String[][][] playerContents){
+	public void setHotPlayerThisYearPanel(String[] picPath, String[][][] playerContents, String[] playerNames){
 		removeInformationPanel();
-		hotPlayerPanel = new HotPlayerPanel(picPath, playerContents, 1);//赛季
+		hotPlayerPanel = new HotPlayerPanel(picPath, playerContents, playerNames, 1);//赛季
 		this.add(hotPlayerPanel, 0);
 		panelBox.setSelectedIndex(0);
 		this.updateUI();
 	}
 	
-	public void setProgressGreatPlayerPanel(String[] picPath, String[][][] playerContents){
+	public void setProgressGreatPlayerPanel(String[] picPath, String[][][] playerContents, String[] playerNames){
 		removeInformationPanel();
-		hotPlayerPanel = new HotPlayerPanel(picPath, playerContents, 2);//进步最快
+		hotPlayerPanel = new HotPlayerPanel(picPath, playerContents, playerNames, 2);//进步最快
 		this.add(hotPlayerPanel, 0);
 		panelBox.setSelectedIndex(2);
 		this.updateUI();
 	}
 	
-	public void setHotTeamPanel(java.io.File[] teamPics, String[][][] teamContents){
+	public void setHotTeamPanel(java.io.File[] teamPics, String[][][] teamContents, String[] teamNames){
 		removeInformationPanel();
-		hotTeamPanel = new HotTeamPanel(teamPics, teamContents);
+		hotTeamPanel = new HotTeamPanel(teamPics, teamContents, teamNames);
 		this.add(hotTeamPanel, 0);
 		panelBox.setSelectedIndex(3);
 		this.updateUI();

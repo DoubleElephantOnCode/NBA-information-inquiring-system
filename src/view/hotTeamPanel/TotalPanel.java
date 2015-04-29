@@ -22,7 +22,7 @@ public class TotalPanel extends JPanel{
 	
 	int num;
 	
-	public TotalPanel(java.io.File[] teamPics, String[][][] hotTeamContents){
+	public TotalPanel(java.io.File[] teamPics, String[][][] hotTeamContents, String[] teamNames){
 		num = hotTeamContents.length;
 		
 		choiceHotTeam = new SelectPanel(choiceWidth, choiceHeight, item);
@@ -45,7 +45,7 @@ public class TotalPanel extends JPanel{
 		
 		hotTeamPanel = new OneHotTeamPanel[num];
 		for(int i = 0; i < num; i++){
-			hotTeamPanel[i] = new OneHotTeamPanel(teamPics[i], hotTeamContents[i]);
+			hotTeamPanel[i] = new OneHotTeamPanel(teamPics[i], hotTeamContents[i], teamNames[i]);
 			hotTeamPanel[i].setLocation(0, i*(SizeAndLocationAndFont.hotTeamPhotoHeight+5) + SizeAndLocationAndFont.hotTeamSelectPanelLocationY + choiceHeight + 5);
 			this.add(hotTeamPanel[i]);
 		}

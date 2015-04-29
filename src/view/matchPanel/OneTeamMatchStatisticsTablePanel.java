@@ -3,6 +3,7 @@ package view.matchPanel;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
@@ -14,11 +15,14 @@ import javax.swing.SwingConstants;
 
 import view.File;
 import view.SizeAndLocationAndFont;
+import view.TimeSetting;
+import view.singlePlayerPanel.SinglePlayerPanel;
 import view.tablePanel.BarInColumnPanel;
 import view.tablePanel.BarInRowPanel;
 import view.tablePanel.HeadListForColumnPanel;
 import view.tablePanel.HeadListForRowPanel;
 import view.tablePanel.TablePanel;
+import control.ShowPlayerController;
 
 public class OneTeamMatchStatisticsTablePanel extends JPanel{
 
@@ -219,6 +223,11 @@ public class OneTeamMatchStatisticsTablePanel extends JPanel{
 				hpC.moveToIndex(p.pointerColumn);
 			}
 		});
+		
+		//TODO 跳转至球员个人信息界面
+		for(int i = 0; i < hpR.getTotalRow(); i++){
+			hpR.addMouseListenerTo(i, new PlayerHeadListForRowListener(i));
+		}
 	}
 	
 	private JLabel setJLabelWithIcon(String IconPath, int width, int height){
@@ -327,6 +336,36 @@ public class OneTeamMatchStatisticsTablePanel extends JPanel{
 		p.updateUI();
 		hpR.updateUI();
 		bcp.updateUI();
+		
+		//TODO 跳转至球员个人信息界面
+		for(int i = 0; i < hpR.getTotalRow(); i++){
+			hpR.addMouseListenerTo(i, new PlayerHeadListForRowListener(i));
+		}
+	}
+	
+	class PlayerHeadListForRowListener implements MouseListener{
+		int i;
+		public PlayerHeadListForRowListener(int index){
+			i = index;
+		}
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			SinglePlayerPanel.initialTime();
+			new ShowPlayerController().showSinglePlayerInfo(hpR.getText(i), TimeSetting.startDate, TimeSetting.endDate);
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {}
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {}
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {}
+		
 	}
 	
 }

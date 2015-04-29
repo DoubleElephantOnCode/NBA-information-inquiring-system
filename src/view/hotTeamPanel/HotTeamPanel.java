@@ -13,9 +13,9 @@ public class HotTeamPanel extends JPanel{
 	
 	int pointerH;
 	
-	public HotTeamPanel(java.io.File[] teamPics, String[][][] teamContents){
+	public HotTeamPanel(java.io.File[] teamPics, String[][][] teamContents, String[] teamNames){
 		
-		total = new TotalPanel(teamPics, teamContents);
+		total = new TotalPanel(teamPics, teamContents, teamNames);
 		total.setLocation(0, 0);
 		
 		pointerH = 0;

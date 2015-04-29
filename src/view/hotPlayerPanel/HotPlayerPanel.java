@@ -13,9 +13,9 @@ public class HotPlayerPanel extends JPanel{
 	
 	int pointerH;
 	
-	public HotPlayerPanel(String[] picPath, String[][][] playerContents, int type){//1为当日热点球员,2为赛季热点球员,其他为进步最快球员
+	public HotPlayerPanel(String[] picPath, String[][][] playerContents, String[] playerNames, int type){//1为当日热点球员,2为赛季热点球员,其他为进步最快球员
 		
-		total = new TotalPanel(picPath, playerContents, type);
+		total = new TotalPanel(picPath, playerContents, playerNames, type);
 		total.setLocation(0, 0);
 		
 		pointerH = 0;

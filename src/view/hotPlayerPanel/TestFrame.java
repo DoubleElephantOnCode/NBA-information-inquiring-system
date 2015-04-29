@@ -45,7 +45,7 @@ public class TestFrame {
 		for(int i = 0; i < 5; i++){
 			arrpng[i] = png;
 		}
-		p = new HotPlayerPanel(arrpng, content, 1);
+//		p = new HotPlayerPanel(arrpng, content, 1);
 		
 		back.add(p, 0);
 		

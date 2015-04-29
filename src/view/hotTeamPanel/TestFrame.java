@@ -45,7 +45,7 @@ public class TestFrame {
 		for(int i = 0; i < 5; i++){
 			arrsvg[i] = new java.io.File(svgFile);
 		}
-		p = new HotTeamPanel(arrsvg, content);
+//		p = new HotTeamPanel(arrsvg, content);
 		
 		back.add(p, 0);
 		

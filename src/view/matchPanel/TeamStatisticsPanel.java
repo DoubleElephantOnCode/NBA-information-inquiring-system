@@ -3,6 +3,7 @@ package view.matchPanel;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import view.SVGLabel;
@@ -15,6 +16,7 @@ public class TeamStatisticsPanel extends JPanel{
 	String name;
 	
 	SVGLabel team;
+	JLabel listening;
 	
 	OneTeamMatchStatisticsTablePanel statisticsPanel;
 	
@@ -23,7 +25,12 @@ public class TeamStatisticsPanel extends JPanel{
 		
 		team = new SVGLabel(svg, SizeAndLocationAndFont.teamStatisticsPanelSVGLabelWidth, SizeAndLocationAndFont.teamStatisticsPanelSVGLabelHeight);
 		team.setLocation(0, 0);
-		team.addMouseListener(new MouseListener(){
+		listening = new JLabel();
+		listening.setSize(SizeAndLocationAndFont.teamStatisticsPanelSVGLabelWidth, SizeAndLocationAndFont.teamStatisticsPanelSVGLabelHeight);
+		listening.setOpaque(false);
+		listening.setLocation(0, 0);
+		
+		listening.addMouseListener(new MouseListener(){
 
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -47,6 +54,7 @@ public class TeamStatisticsPanel extends JPanel{
 		statisticsPanel = new OneTeamMatchStatisticsTablePanel(content, headListForRow, headListForColumn);
 		
 		this.add(team);
+		this.add(listening, 0);
 		this.add(statisticsPanel);
 		
 		this.setOpaque(false);

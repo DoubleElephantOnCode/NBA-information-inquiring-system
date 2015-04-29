@@ -150,7 +150,7 @@ public class Main {
 	public static void setHotPlayerTodayPanel(String[] picPath, String[][][] playerContents, String[] playerNames){
 		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(1);//当日热点球员
 		InformationCenterPanel.formerPanel = 1;
-		informationCenterPanel.setHotPlayerTodayPanel(picPath, playerContents);
+		informationCenterPanel.setHotPlayerTodayPanel(picPath, playerContents, playerNames);
 		startPanel.setVisible(false);
 		removeAllPanel();
 		mainFrame.add(informationCenterPanel);
@@ -160,7 +160,7 @@ public class Main {
 	public static void setHotPlayerThisYearPanel(String[] picPath, String[][][] playerContents, String[] playerNames){
 		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(0);//赛季热点球员
 		InformationCenterPanel.formerPanel = 0;
-		informationCenterPanel.setHotPlayerThisYearPanel(picPath, playerContents);
+		informationCenterPanel.setHotPlayerThisYearPanel(picPath, playerContents, playerNames);
 		startPanel.setVisible(false);
 		removeAllPanel();
 		mainFrame.add(informationCenterPanel);
@@ -170,7 +170,7 @@ public class Main {
 	public static void setProgressGreatPlayerPanel(String[] picPath, String[][][] playerContents, String[] playerNames){
 		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(2);//进步最快球员
 		InformationCenterPanel.formerPanel = 2;
-		informationCenterPanel.setProgressGreatPlayerPanel(picPath, playerContents);
+		informationCenterPanel.setProgressGreatPlayerPanel(picPath, playerContents, playerNames);
 		startPanel.setVisible(false);
 		removeAllPanel();
 		mainFrame.add(informationCenterPanel);
@@ -180,7 +180,7 @@ public class Main {
 	public static void setHotTeamPanel(java.io.File[] teamPics, String[][][] teamContents, String[] teamNames){
 		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(3);//赛季热点球队
 		InformationCenterPanel.formerPanel = 3;
-		informationCenterPanel.setHotTeamPanel(teamPics, teamContents);
+		informationCenterPanel.setHotTeamPanel(teamPics, teamContents, teamNames);
 		startPanel.setVisible(false);
 		removeAllPanel();
 		mainFrame.add(informationCenterPanel);

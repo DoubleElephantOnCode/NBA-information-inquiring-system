@@ -25,7 +25,7 @@ public class TotalPanel extends JPanel{
 	
 	int num;
 	
-	public TotalPanel(String[] picHotPlayerTodayPath, String[][][] hotPlayerTodayContents, int type){
+	public TotalPanel(String[] picHotPlayerTodayPath, String[][][] hotPlayerTodayContents, String[] playerNames, int type){
 		num = hotPlayerTodayContents.length;
 		
 		if(type == 0){
@@ -62,7 +62,7 @@ public class TotalPanel extends JPanel{
 		
 		hotPlayerPanel = new OneHotPlayerPanel[num];
 		for(int i = 0; i < num; i++){
-			hotPlayerPanel[i] = new OneHotPlayerPanel(picHotPlayerTodayPath[i], hotPlayerTodayContents[i]);
+			hotPlayerPanel[i] = new OneHotPlayerPanel(picHotPlayerTodayPath[i], hotPlayerTodayContents[i], playerNames[i]);
 			hotPlayerPanel[i].setLocation(0, i*(SizeAndLocationAndFont.hotPlayerPhotoHeight+5) + SizeAndLocationAndFont.hotPlayerSelectPanelLocationY + choiceHeight + 5);
 			this.add(hotPlayerPanel[i]);
 		}

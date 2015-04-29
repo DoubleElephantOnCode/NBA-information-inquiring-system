@@ -1,6 +1,8 @@
 package view.hotPlayerPanel;
 
 import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -8,9 +10,13 @@ import javax.swing.JPanel;
 
 import view.File;
 import view.SizeAndLocationAndFont;
+import view.TimeSetting;
+import view.singlePlayerPanel.SinglePlayerPanel;
 import view.tablePanel.TablePanel;
+import control.ShowPlayerController;
 
 public class OneHotPlayerPanel extends JPanel{
+	String name;
 	
 	static ImageIcon table_cell_light, table_cell_dark;
 	
@@ -28,7 +34,9 @@ public class OneHotPlayerPanel extends JPanel{
 	
 	int row, column;
 	
-	public OneHotPlayerPanel(String playerPicPath, String[][] content){
+	public OneHotPlayerPanel(String playerPicPath, String[][] content, String playerName){
+		name = playerName;
+		
 		row = content.length;
 		column = content[0].length;
 		
@@ -68,6 +76,27 @@ public class OneHotPlayerPanel extends JPanel{
 		photo_fg.setLocation(0, 0);
 		photo_bg.setLocation(0, 0);
 		infoPanel.setLocation(photoWidth, 0);
+		
+		photo_fg.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent arg0) {}
+			
+			@Override
+			public void mousePressed(MouseEvent arg0) {}
+			
+			@Override
+			public void mouseExited(MouseEvent arg0) {}
+			
+			@Override
+			public void mouseEntered(MouseEvent arg0) {}
+			
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				SinglePlayerPanel.initialTime();
+				new ShowPlayerController().showSinglePlayerInfo(name, TimeSetting.startDate, TimeSetting.endDate);
+			}
+		});
 		
 		this.add(photo_bg);
 		this.add(photo_fg, 0);
