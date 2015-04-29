@@ -337,12 +337,6 @@ public class PlayerDataPerMatchVO {
 	 */
 	public String[] getMatchInfo(){
 		
-		System.out.println("对阵球队：" + this.rivalTeam);
-		System.out.println("三分命中率：" + this.threePointScoreRate);
-		System.out.println("罚球命中率：" + this.freeThrowScoreRate);
-		System.out.println("投篮命中率：" + this.scoreRate);
-		
-		
 		//TODO 获得单场比赛的信息
 		String[] s = new String[]{
 				this.rivalTeam, isInStartingLineup(this.isStarting),
