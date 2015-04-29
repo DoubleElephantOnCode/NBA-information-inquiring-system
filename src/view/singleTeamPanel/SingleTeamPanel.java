@@ -24,7 +24,7 @@ public class SingleTeamPanel extends JPanel{
 	static String NAME = "队名", SHORTNAME = "简写", STATE = "所在州", AREA = "赛区", ZONE = "方位", HOME = "主场", 
 			FOUND = "成立年";
 	
-	static Date Begin = TimeSetting.begin, End = TimeSetting.end;
+	public static Date Begin = TimeSetting.begin, End = TimeSetting.end;
 	
 	String name, shortname, state, area, zone, home, found;
 	

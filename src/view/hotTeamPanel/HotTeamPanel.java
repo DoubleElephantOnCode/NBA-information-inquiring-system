@@ -49,4 +49,8 @@ public class HotTeamPanel extends JPanel{
 		});
 	}
 	
+	public int getFormerIndex(){
+		return total.formerIndex;
+	}
+	
 }

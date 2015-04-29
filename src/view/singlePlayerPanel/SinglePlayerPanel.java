@@ -24,7 +24,7 @@ public class SinglePlayerPanel extends JPanel{
 			BIRTH = "生日", AGE = "年龄", EXP = "球龄", SCHOOL = "毕业院校",
 			AVGSCORE = "平均得分", AVGBOARD = "平均篮板", AVGASS = "平均助攻";
 	
-	static Date Begin = TimeSetting.begin, End = TimeSetting.end;
+	public static Date Begin = TimeSetting.begin, End = TimeSetting.end;
 	
 	JLabel photo1;//静态半身照
 	JLabel photo2;//静态运动照

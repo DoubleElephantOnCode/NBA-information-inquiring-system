@@ -1,5 +1,8 @@
 package view.mainFrame.GoForwardOrBackward;
 
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -13,6 +16,8 @@ public class GoForwardOrBackwardPanel extends JPanel{
 	
 	JLabel goForward, goBackward, goForwardEnter, goBackwardEnter;
 	
+	public static HistoryList history = new HistoryList();
+	
 	public GoForwardOrBackwardPanel(){
 		goForward = Main.setJLabelWithIcon(File.file + File.goForward + File.PNG, SizeAndLocationAndFont.goForwardWidth, SizeAndLocationAndFont.goForwardHeight);
 		goForwardEnter = Main.setJLabelWithIcon(File.file + File.goForward + File.enter + File.PNG, SizeAndLocationAndFont.goForwardWidth, SizeAndLocationAndFont.goForwardHeight);
@@ -20,12 +25,42 @@ public class GoForwardOrBackwardPanel extends JPanel{
 		goBackward = Main.setJLabelWithIcon(File.file + File.goBackward + File.PNG, SizeAndLocationAndFont.goBackwardWidth, SizeAndLocationAndFont.goBackwardHeight);
 		goBackwardEnter = Main.setJLabelWithIcon(File.file + File.goBackward + File.enter + File.PNG, SizeAndLocationAndFont.goBackwardWidth, SizeAndLocationAndFont.goBackwardHeight);
 		
-		goForward.addMouseListener(new LabelUsualListener(goForward, goForwardEnter));
-		goForwardEnter.addMouseListener(new LabelEnterListener(goForward, goForwardEnter));
+		goForward.addMouseListener(new LabelUsualListener(goForward, goForwardEnter){
+			public void mouseEntered(MouseEvent e) {
+				if(!history.isLast() && !history.isEmpty()){
+					super.mouseEntered(e);
+				}
+			}
+		});
+		goForwardEnter.addMouseListener(new LabelEnterListener(goForward, goForwardEnter){
+			public void mouseClicked(MouseEvent e) {
+				history.goForwardPanel();
+			}
+			public void mouseEntered(MouseEvent e) {
+				if(!history.isLast() && !history.isEmpty()){
+					super.mouseEntered(e);
+				}
+			}
+		});
 		goForwardEnter.setVisible(false);
 		
-		goBackward.addMouseListener(new LabelUsualListener(goBackward, goBackwardEnter));
-		goBackwardEnter.addMouseListener(new LabelEnterListener(goBackward, goBackwardEnter));
+		goBackward.addMouseListener(new LabelUsualListener(goBackward, goBackwardEnter){
+			public void mouseEntered(MouseEvent e) {
+				if(!history.isFirst() && !history.isEmpty()){
+					super.mouseEntered(e);
+				}
+			}
+		});
+		goBackwardEnter.addMouseListener(new LabelEnterListener(goBackward, goBackwardEnter){
+			public void mouseClicked(MouseEvent e) {
+				history.goBackwardPanel();
+			}
+			public void mouseEntered(MouseEvent e) {
+				if(!history.isFirst() && !history.isEmpty()){
+					super.mouseEntered(e);
+				}
+			}
+		});
 		goBackwardEnter.setVisible(false);
 		
 		goBackward.setLocation(0, 0);

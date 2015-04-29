@@ -9,5 +9,6 @@ public enum Type {
 	hotTeam,
 	hotPlayerToday,
 	hotPlayerThisYear,
-	progressGreatPlayer
+	progressGreatPlayer,
+	match
 }
