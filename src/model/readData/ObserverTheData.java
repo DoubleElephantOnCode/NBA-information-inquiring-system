@@ -24,7 +24,7 @@ public class ObserverTheData extends Thread{
 	public int NUM = 0;
 	
 	int greatestIndex = 0;
-	public String latestDate = "2013-10-29";
+	public String latestDate = "2012-10-29";
 	
 	ArrayList<String> latestMatches = new ArrayList<String>();  //0位置的是同日期中字典序排最后的比赛
 	
@@ -275,7 +275,7 @@ public class ObserverTheData extends Thread{
 	 */
 	public void readMatchFile(File file,int yearOfStart){
 		
-		System.out.println(file.getPath());
+
 		
 		BufferedReader reader = null;
 		try{
