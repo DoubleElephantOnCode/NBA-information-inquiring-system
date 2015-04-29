@@ -11,7 +11,7 @@ import control.ShowTeamController;
 
 public class TotalPanel extends JPanel{
 	
-	static String[] item = {"场均得分", "场均篮板", "场均助攻", "场均盖帽", "场均抢断", "三分命中率", "投篮命中率", "罚球命中率"};
+	static String[] item = {"胜率", "场均得分", "场均篮板", "场均助攻", "场均盖帽", "场均抢断", "三分命中率", "投篮命中率", "罚球命中率"};
 	static int formerIndex = 0;
 	SelectPanel choiceHotTeam;
 	

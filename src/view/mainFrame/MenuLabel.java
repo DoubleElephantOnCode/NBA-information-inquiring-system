@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import view.File;
+import view.SizeAndLocationAndFont;
+import view.mainFrame.GoForwardOrBackward.GoForwardOrBackwardPanel;
 import view.startView.StartPanel;
 import control.ChangePageController;
 
@@ -15,15 +17,15 @@ public class MenuLabel {
 	JLabel menu;
 	JLabel menuEnter;
 	
-	int width = 100, height = 50;
+	int width = SizeAndLocationAndFont.menuLabelWidth, height = SizeAndLocationAndFont.menuLabelHeight;
 	
 	ArrayList<JPanel> pList;
 	
 	public MenuLabel(){
 		menu = Main.setJLabelWithIcon(File.file + File.menu + File.PNG, width, height);
 		menuEnter = Main.setJLabelWithIcon(File.file + File.menu + File.enter + File.PNG, width, height);
-		menu.setLocation(25, 20);
-		menuEnter.setLocation(25, 20);
+		menu.setLocation(SizeAndLocationAndFont.menuLabelLocationX, SizeAndLocationAndFont.menuLabelLocationY);
+		menuEnter.setLocation(SizeAndLocationAndFont.menuLabelLocationX, SizeAndLocationAndFont.menuLabelLocationY);
 		menuEnter.setVisible(false);
 		
 		menu.setOpaque(false);
@@ -47,6 +49,8 @@ public class MenuLabel {
 				
 				StartPanel.exit = new ExitLabel();
 				StartPanel.exit.addToPanel(StartPanel.self);
+				StartPanel.goForwardOrBackward = new GoForwardOrBackwardPanel();
+				StartPanel.goForwardOrBackward.addToPanel(StartPanel.self);
 				
 				
 				if(StartPanel.background == null){

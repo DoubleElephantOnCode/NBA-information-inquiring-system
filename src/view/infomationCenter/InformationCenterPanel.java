@@ -16,6 +16,7 @@ import view.mainFrame.ExitLabel;
 import view.mainFrame.LabelEnterListener;
 import view.mainFrame.Main;
 import view.mainFrame.MenuLabel;
+import view.mainFrame.GoForwardOrBackward.GoForwardOrBackwardPanel;
 import view.matchPanel.MatchPanel;
 import view.searchPanel.SearchPanel;
 import view.selectedPanel.SelectPanel;
@@ -35,6 +36,7 @@ public class InformationCenterPanel extends JPanel{
 	static JLabel background;
 	static ExitLabel exit = StartPanel.exit;
 	static MenuLabel menu = StartPanel.menu;
+	static GoForwardOrBackwardPanel goForwardOrBackward = StartPanel.goForwardOrBackward;
 	
 	static SearchPanel searchPlayer;
 	
@@ -63,6 +65,8 @@ public class InformationCenterPanel extends JPanel{
 		exit.addToPanel(this);
 		if(menu == null) menu = new MenuLabel();
 		menu.addToPanel(this);
+		if(goForwardOrBackward == null) goForwardOrBackward = new GoForwardOrBackwardPanel();
+		goForwardOrBackward.addToPanel(this);
 		
 		searchPlayer = new SearchPanel(SizeAndLocationAndFont.searchPlayerPanelWidth, SizeAndLocationAndFont.searchPlayerPanelHeight);
 		searchPlayer.setLocation(SizeAndLocationAndFont.searchPlayerPanelLocationX, SizeAndLocationAndFont.searchPlayerPanelLocationY);
@@ -208,6 +212,8 @@ public class InformationCenterPanel extends JPanel{
 		exit.addToPanel(this);
 		if(menu == null) menu = new MenuLabel();
 		menu.addToPanel(this);
+		if(goForwardOrBackward == null) goForwardOrBackward = new GoForwardOrBackwardPanel();
+		goForwardOrBackward.addToPanel(this);
 	}
 	
 	private void removeInformationPanel(){

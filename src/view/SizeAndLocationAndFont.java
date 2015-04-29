@@ -6,6 +6,18 @@ import java.awt.Font;
 public class SizeAndLocationAndFont {
 	static public int frameWidth = 1200, frameHeight = 650;
 	
+	static public int exitLabelWidth = 30, exitLabelHeight = 30;
+	static public int exitLabelLocationX = frameWidth-exitLabelWidth-25, exitLabelLocationY = 25;
+	
+	static public int menuLabelWidth = 100, menuLabelHeight = 50;
+	static public int menuLabelLocationX = 25, menuLabelLocationY = 20;
+	
+	static public int goForwardOrBackwardPanelWidth = 120, goForwardOrBackwardPanelHeight = 30;
+	static public int goForwardWidth = 55, goForwardHeight = 30;
+	static public int goBackwardWidth = 55, goBackwardHeight = 30;
+	static public int goForwardOrBackwardPanelLocationX = exitLabelLocationX-50-goForwardOrBackwardPanelWidth,
+			goForwardOrBackwardPanelLocationY = exitLabelLocationY;
+	
 	//搜索框参数
 	static public int searchPanelWidth = 300, searchPanelHeight = 35,
 			searchPanelLocationX = 780, searchPanelLocationY = 130;

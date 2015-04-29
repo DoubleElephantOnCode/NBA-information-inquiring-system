@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import view.File;
+import view.SizeAndLocationAndFont;
 
 
 public class ExitLabel {
@@ -13,13 +14,13 @@ public class ExitLabel {
 	static JLabel exit;
 	static JLabel exitEnter;
 	
-	int width = 30, height = 30;
+	int width = SizeAndLocationAndFont.exitLabelWidth, height = SizeAndLocationAndFont.exitLabelHeight;
 	
 	public ExitLabel(){
 		exit = Main.setJLabelWithIcon(File.file + File.exit + File.PNG, width, height);
 		exitEnter = Main.setJLabelWithIcon(File.file + File.exit + File.enter + File.PNG, width, height);
-		exit.setLocation(Main.width - width - 25, 25);
-		exitEnter.setLocation(Main.width - width - 25, 25);
+		exit.setLocation(SizeAndLocationAndFont.exitLabelLocationX, SizeAndLocationAndFont.exitLabelLocationY);
+		exitEnter.setLocation(SizeAndLocationAndFont.exitLabelLocationX, SizeAndLocationAndFont.exitLabelLocationY);
 		exitEnter.setVisible(false);
 		
 		exit.setOpaque(false);
