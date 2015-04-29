@@ -36,7 +36,7 @@ public class ShowMatchDataModel {
 					String[] column = matchVO.getInfoForColumn();
 					
 					Main.setMatchPanel(hometeamPicture, homeContent, homerow, column,homeTeam,
-							awayteamPicture, awayContent, awayrow, column,awayTeam);
+							awayteamPicture, awayContent, awayrow, column,awayTeam,date);
 					
 					
 				}catch(Exception e){
