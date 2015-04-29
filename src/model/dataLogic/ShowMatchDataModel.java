@@ -2,14 +2,19 @@ package model.dataLogic;
 
 import java.io.File;
 
+import model.readData.ReadMatchData;
 import view.mainFrame.Main;
 import view.mainFrame.Waiting;
 import vo.MatchVO;
 import vo.TeamVO;
 
+
 public class ShowMatchDataModel {
 	public void showMatchTable(final String date,final String homeTeam,final String awayTeam){
-		new Waiting(){
+		ReadMatchData.readMatch.setCurrentView(null);
+		
+		new Waiting(){	
+				
 			@Override
 			protected Void doInBackground() throws Exception {
 				super.doInBackground();
