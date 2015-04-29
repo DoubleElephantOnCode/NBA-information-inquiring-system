@@ -44,18 +44,18 @@ public class HistoryList {
 	
 	public void goForwardPanel(){
 		if(!isLast() && !isEmpty()){
-			pointer++;
-			list.get(pointer).openThePanel();
+			list.get(++pointer).openThePanel();
 			inWay = true;
 		}
+		System.out.println(pointer);
 	}
 	
 	public void goBackwardPanel(){
 		if(!isFirst() && !isEmpty()){
-			pointer--;
-			list.get(pointer).openThePanel();
+			list.get(--pointer).openThePanel();
 			inWay = true;
 		}
+		System.out.println(pointer);
 	}
 	
 }

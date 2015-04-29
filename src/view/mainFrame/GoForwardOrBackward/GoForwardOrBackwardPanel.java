@@ -35,6 +35,10 @@ public class GoForwardOrBackwardPanel extends JPanel{
 		goForwardEnter.addMouseListener(new LabelEnterListener(goForward, goForwardEnter){
 			public void mouseClicked(MouseEvent e) {
 				history.goForwardPanel();
+				if(history.isLast() || history.isEmpty()){
+					this.usual.setVisible(true);
+					this.enter.setVisible(false);
+				}
 			}
 			public void mouseEntered(MouseEvent e) {
 				if(!history.isLast() && !history.isEmpty()){
@@ -54,6 +58,10 @@ public class GoForwardOrBackwardPanel extends JPanel{
 		goBackwardEnter.addMouseListener(new LabelEnterListener(goBackward, goBackwardEnter){
 			public void mouseClicked(MouseEvent e) {
 				history.goBackwardPanel();
+				if(history.isFirst() || history.isEmpty()){
+					this.usual.setVisible(true);
+					this.enter.setVisible(false);
+				}
 			}
 			public void mouseEntered(MouseEvent e) {
 				if(!history.isFirst() && !history.isEmpty()){
