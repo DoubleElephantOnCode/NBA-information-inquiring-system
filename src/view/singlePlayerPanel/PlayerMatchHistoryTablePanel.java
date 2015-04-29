@@ -3,6 +3,7 @@ package view.singlePlayerPanel;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
@@ -12,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import control.ShowMatchController;
 import view.File;
 import view.SizeAndLocationAndFont;
 import view.tablePanel.BarInColumnPanel;
@@ -67,8 +69,11 @@ public class PlayerMatchHistoryTablePanel extends JPanel{
 	
 	Color fontColor = Color.black;
 	
-	public PlayerMatchHistoryTablePanel(String[][] content, String[] headListForRow, String[] headListForColumn){
-
+	String selfTeam;
+	
+	public PlayerMatchHistoryTablePanel(String[][] content, String[] headListForRow, String[] headListForColumn, String selfTeam){
+		this.selfTeam = selfTeam;
+		
 		contentInTable = content;
 		this.headListForColumn = headListForColumn;
 		this.headListForRow = headListForRow;
@@ -220,6 +225,11 @@ public class PlayerMatchHistoryTablePanel extends JPanel{
 				hpC.moveToIndex(p.pointerColumn);
 			}
 		});
+		
+		//添加点击时间进入对阵信息界面 TODO
+		for(int i = 0; i < hpR.getTotalRow(); i++){
+			hpR.addMouseListenerTo(i, new MatchHeadListListener(i));
+		}
 	}
 	
 	private JLabel setJLabelWithIcon(String IconPath, int width, int height){
@@ -328,5 +338,29 @@ public class PlayerMatchHistoryTablePanel extends JPanel{
 		p.updateUI();
 		hpR.updateUI();
 		bcp.updateUI();
+		
+		//添加点击时间进入对阵信息界面 TODO
+		for(int i = 0; i < hpR.getTotalRow(); i++){
+			hpR.addMouseListenerTo(i, new MatchHeadListListener(i));
+		}
+	}
+	
+	class MatchHeadListListener implements MouseListener{
+		int i;
+		public MatchHeadListListener(int index){
+			i = index;
+		}
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			new ShowMatchController().showMatchTable(hpR.getText(i), selfTeam, p.getText(i, 1));
+		}
+		@Override
+		public void mouseEntered(MouseEvent arg0) {}
+		@Override
+		public void mouseExited(MouseEvent arg0) {}
+		@Override
+		public void mousePressed(MouseEvent arg0) {}
+		@Override
+		public void mouseReleased(MouseEvent arg0) {}
 	}
 }

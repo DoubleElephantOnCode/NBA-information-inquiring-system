@@ -44,7 +44,7 @@ public class SinglePlayerPanel extends JPanel{
 	TimeSelectPanel begin, end;
 	JLabel checkByTime, checkByTimeEnter;
 	
-	
+	String selfTeam;//所属球队
 	
 	int width = SizeAndLocationAndFont.singlePlayerPanelWidth, height = SizeAndLocationAndFont.singlePlayerPanelHeight;
 	int photo1W = SizeAndLocationAndFont.playerPhoto_1Width, photo1H = SizeAndLocationAndFont.playerPhoto_1Height;
@@ -55,7 +55,7 @@ public class SinglePlayerPanel extends JPanel{
 	
 	public SinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[][] info, String[][] content, String[] headListForRow, String[] headListForColumn, String playerName){
 		name = playerName;
-		
+		selfTeam = info[0][1];
 		photo1BG = new ImageIcon(File.file + File.table_cell2_light + File.PNG);
 		photo1BG.setImage(photo1BG.getImage().getScaledInstance(photo1W, personalInfoHeight, Image.SCALE_DEFAULT));
 		photo1_bg = new JLabel(photo1BG);
@@ -122,7 +122,7 @@ public class SinglePlayerPanel extends JPanel{
 		checkByTimeEnter.setLocation(SizeAndLocationAndFont.checkByTimeLabelLocationX, SizeAndLocationAndFont.checkByTimeLabelLocationY);
 		checkByTimeEnter.setVisible(false);
 		
-		matchHistory = new PlayerMatchHistoryTablePanel(content, headListForRow, headListForColumn);
+		matchHistory = new PlayerMatchHistoryTablePanel(content, headListForRow, headListForColumn, selfTeam);
 		
 		this.add(photo1_bg);
 		this.add(photo1, 0);
