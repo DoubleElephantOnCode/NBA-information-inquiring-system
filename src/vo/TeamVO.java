@@ -668,11 +668,11 @@ public class TeamVO {
 	
 	public String[][] toStringArrayForHotTeam(){
 		String[][] s = new String[][]{
-			{name,location,competion,homeCourt,buildTime,"","",""},
-			{"场均得分","场均篮板 ","场均助攻","场均盖帽 ","场均抢断","三分命中率 ","投篮命中率","罚球命中率"	},
+			{name,location,competion,homeCourt,buildTime,"","",changeFormat(totalWinningRate*100)},
+			{"场均得分","场均篮板 ","场均助攻","场均盖帽 ","场均抢断","三分命中率% ","投篮命中率%","罚球命中率%"	},
 			{changeFormat(aveScore),changeFormat(aveTotalReboundsNum),changeFormat(aveAssistNum),
-				changeFormat(aveBlockNum),changeFormat(aveStealNum),changeFormat(totalThreePointRate),
-				changeFormat(totalScoreRate),changeFormat(totalFreeThrowRate)}
+				changeFormat(aveBlockNum),changeFormat(aveStealNum),changeFormat(totalThreePointRate*100),
+				changeFormat(totalScoreRate*100),changeFormat(totalFreeThrowRate*100)}
 		};
 		return s;
 	}
