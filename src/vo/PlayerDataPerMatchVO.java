@@ -339,7 +339,7 @@ public class PlayerDataPerMatchVO {
 		
 		//TODO 获得单场比赛的信息
 		String[] s = new String[]{
-				this.rivalTeam, isInStartingLineup(this.isStarting),
+				this.matchDate, this.rivalTeam, isInStartingLineup(this.isStarting),
 				(int)personalPoints + "", (int)assistNum + "", (int)totalReboundsNum + "",
 				(int)blockNum + "", (int)stealNum + "", (int)turnoverNum + "", (int)foulNum + "",
 				(int)threePointerScoreNum + "", toString(this.threePointScoreRate * 100),

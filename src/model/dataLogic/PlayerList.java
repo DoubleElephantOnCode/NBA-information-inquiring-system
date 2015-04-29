@@ -118,7 +118,7 @@ public class PlayerList {
 	 */
 	public static String[] getHeadForSinglePlayer(){
 		String[] s = new String[]{
-				"对阵球队", "是否首发", "得分", "助攻", "篮板", "盖帽", "抢断", "失误", "犯规",
+				"比赛日期", "对阵球队", "是否首发", "得分", "助攻", "篮板", "盖帽", "抢断", "失误", "犯规",
 				"三分命中数", "三分命中率%", "罚球命中数", "罚球命中率%", "投篮命中率%"
 		};
 		return s;
