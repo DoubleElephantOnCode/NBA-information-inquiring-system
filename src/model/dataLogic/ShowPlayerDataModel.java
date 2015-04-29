@@ -574,27 +574,43 @@ public class ShowPlayerDataModel {
 
 				try {
 					PlayerVO player = PlayerList.findAPlayer(name);
-					// ArrayList<PlayerDataPerMatchVO> matchDataList = player
-					// .getDataPerMatchList();
+					if(player.getName().equalsIgnoreCase("")){
+						Main.failedToFindPlayer();
+						return null;
+					}
 					ArrayList<PlayerDataPerMatchVO> matchDataList = SelectMatch.selectMatchByDate(
 									player.getDataPerMatchList(), startDate, endDate);
-					PlayerDataPerMatchVO matchData = matchDataList.get(0);
+					PlayerDataPerMatchVO matchData = new PlayerDataPerMatchVO();
 
 					String[][] content = new String[matchDataList.size()][PlayerList
 							.getHeadForSinglePlayer().length];
 					// 给要显示的表格填上内容
-					for (int i = 0; i < matchDataList.size(); i++) {
-						matchData = matchDataList.get(i);
-						String[] s = matchData.getMatchInfo();
-						for (int j = 0; j < s.length; j++) {
-							content[i][j] = s[j];
+					if(matchDataList.size() == 0){
+						content = new String[1][1];
+						content[0][0] = "";
+					} else {
+						for (int i = 0; i < matchDataList.size(); i++) {
+							matchData = matchDataList.get(i);
+							String[] s = matchData.getMatchInfo();
+							for (int j = 0; j < s.length; j++) {
+								content[i][j] = s[j];
+							}
 						}
 					}
+
 					// 行表头，显示日期
 					String[] dateList = new String[matchDataList.size()];
-					for (int i = 0; i < dateList.length; i++) {
-						dateList[i] = matchDataList.get(i).getMatchDate();
+					if(matchDataList.size() == 0){
+						dateList = new String[6];
+						for (int i = 0; i < dateList.length; i++) {
+							dateList[i] = " ";
+						}
+					} else {
+						for (int i = 0; i < dateList.length; i++) {
+							dateList[i] = matchDataList.get(i).getMatchDate();
+						}
 					}
+
 					
 					Main.setSinglePlayerPanel(player.getPortrait(), player.getAction(),
 							player.getBasicPlayerInfo(), content, dateList,
@@ -626,12 +642,15 @@ public class ShowPlayerDataModel {
 		public void changeData() {
 			try {
 				PlayerVO player = PlayerList.findAPlayer(name);
-				// ArrayList<PlayerDataPerMatchVO> matchDataList = player
-				// .getDataPerMatchList();
+				if(player.getName().equalsIgnoreCase("")){
+					Main.failedToFindPlayer();
+					return;
+				}
+
 				ArrayList<PlayerDataPerMatchVO> matchDataList = SelectMatch
 						.selectMatchByDate(player.getDataPerMatchList(),
 								startDate, endDate);
-				PlayerDataPerMatchVO matchData = matchDataList.get(0);
+				PlayerDataPerMatchVO matchData = new PlayerDataPerMatchVO();
 
 				String[][] content = new String[matchDataList.size()][PlayerList
 						.getHeadForSinglePlayer().length];

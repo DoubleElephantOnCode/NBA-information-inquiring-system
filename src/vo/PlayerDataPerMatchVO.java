@@ -331,7 +331,7 @@ public class PlayerDataPerMatchVO {
 	
 	/**
 	 * 获得单场比赛的信息
-	 * 比赛日期, 对阵球队, 是否首发, 得分, 助攻, 篮板, 盖帽, 抢断, 失误, 犯规,
+	 * 对阵球队, 是否首发, 得分, 助攻, 篮板, 盖帽, 抢断, 失误, 犯规,
 	 * 三分命中数, 三分命中率, 罚球命中数, 罚球命中率, 投篮命中率
 	 * @return
 	 */
@@ -345,7 +345,7 @@ public class PlayerDataPerMatchVO {
 		
 		//TODO 获得单场比赛的信息
 		String[] s = new String[]{
-				this.matchDate, this.rivalTeam, isInStartingLineup(this.isStarting),
+				this.rivalTeam, isInStartingLineup(this.isStarting),
 				(int)personalPoints + "", (int)assistNum + "", (int)totalReboundsNum + "",
 				(int)blockNum + "", (int)stealNum + "", (int)turnoverNum + "", (int)foulNum + "",
 				(int)threePointerScoreNum + "", toString(this.threePointScoreRate * 100),

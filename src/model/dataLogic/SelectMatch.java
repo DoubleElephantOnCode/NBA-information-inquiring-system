@@ -27,9 +27,10 @@ public class SelectMatch {
 			ArrayList<PlayerDataPerMatchVO> matchList, String startDate, String endDate){
 		
 		ArrayList<PlayerDataPerMatchVO> newMatchList = new ArrayList<PlayerDataPerMatchVO>();
-		PlayerDataPerMatchVO matchData = matchList.get(0);
+		PlayerDataPerMatchVO matchData = new PlayerDataPerMatchVO();
+
 		
-		for (int i = 0; i < matchList.size(); i++) {
+		for (int i = matchList.size() - 1; i >= 0; i--) {
 			matchData = matchList.get(i);
 			if(matchData.getMatchDate().compareTo(startDate) >= 0 &&
 					matchData.getMatchDate().compareTo(endDate) <= 0){
