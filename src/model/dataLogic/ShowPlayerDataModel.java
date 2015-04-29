@@ -377,9 +377,14 @@ public class ShowPlayerDataModel {
 							playerContents[i] = playerList.get(i)
 									.getHotPlayerInfo(isSeason, selectItem);
 						}
+						//姓名列表
+						String[] playerNames = new String[selectNum];
+						for (int i = 0; i < playerNames.length; i++) {
+							playerNames[i] = playerList.get(i).getName();
+						}
 
 						// TODO 调用界面层方法，重设界面
-						Main.setHotPlayerTodayPanel(picPath, playerContents);
+						Main.setHotPlayerTodayPanel(picPath, playerContents, playerNames);
 
 					} else { // 筛选的是赛季热点球员
 
@@ -395,9 +400,13 @@ public class ShowPlayerDataModel {
 							playerContents[i] = playerList.get(i)
 									.getHotPlayerInfo(isSeason, selectItem);
 						}
-
+						//姓名列表
+						String[] playerNames = new String[selectNum];
+						for (int i = 0; i < playerNames.length; i++) {
+							playerNames[i] = playerList.get(i).getName();
+						}
 						// TODO 调用界面层方法，重设界面
-						Main.setHotPlayerThisYearPanel(picPath, playerContents);
+						Main.setHotPlayerThisYearPanel(picPath, playerContents, playerNames);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -437,9 +446,15 @@ public class ShowPlayerDataModel {
 						playerContents[i] = playerList.get(i).getHotPlayerInfo(
 								isSeason, selectItem);
 					}
+					//姓名列表
+					String[] playerNames = new String[selectNum];
+					for (int i = 0; i < playerNames.length; i++) {
+						playerNames[i] = playerList.get(i).getName();
+					}
 
 					// TODO 调用界面层方法，重设界面
-					Main.setHotPlayerTodayPanel(picPath, playerContents);
+					Main.setHotPlayerTodayPanel(picPath, playerContents, playerNames);
+					
 
 				} else { // 筛选的是赛季热点球员
 
@@ -455,9 +470,14 @@ public class ShowPlayerDataModel {
 						playerContents[i] = playerList.get(i).getHotPlayerInfo(
 								isSeason, selectItem);
 					}
+					//姓名列表
+					String[] playerNames = new String[selectNum];
+					for (int i = 0; i < playerNames.length; i++) {
+						playerNames[i] = playerList.get(i).getName();
+					}
 
 					// TODO 调用界面层方法，重设界面
-					Main.setHotPlayerThisYearPanel(picPath, playerContents);
+					Main.setHotPlayerThisYearPanel(picPath, playerContents, playerNames);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -489,9 +509,14 @@ public class ShowPlayerDataModel {
 				for (int i = 0; i < selectNum; i++) {
 					playerContents[i] = playerList.get(i).getProgressInfo();
 				}
+				//姓名列表
+				String[] playerNames = new String[selectNum];
+				for (int i = 0; i < playerNames.length; i++) {
+					playerNames[i] = playerList.get(i).getName();
+				}
 
 				// TODO 调用界面层方法
-				Main.setProgressGreatPlayerPanel(picPath, playerContents);
+				Main.setProgressGreatPlayerPanel(picPath, playerContents, playerNames);
 
 				return null;
 			}
@@ -522,9 +547,13 @@ public class ShowPlayerDataModel {
 			for (int i = 0; i < selectNum; i++) {
 				playerContents[i] = playerList.get(i).getProgressInfo();
 			}
-
+			//姓名列表
+			String[] playerNames = new String[selectNum];
+			for (int i = 0; i < playerNames.length; i++) {
+				playerNames[i] = playerList.get(i).getName();
+			}
 			// TODO 调用界面层方法
-			Main.setProgressGreatPlayerPanel(picPath, playerContents);
+			Main.setProgressGreatPlayerPanel(picPath, playerContents, playerNames);
 
 		}
 
