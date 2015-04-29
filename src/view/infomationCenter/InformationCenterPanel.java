@@ -7,6 +7,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.sun.javafx.scene.control.SelectedCellsMap;
+
 import view.File;
 import view.SizeAndLocationAndFont;
 import view.TimeSetting;
@@ -173,9 +175,9 @@ public class InformationCenterPanel extends JPanel{
 		this.updateUI();
 	}
 	
-	public void setSinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[][] info, String[][] content, String[] headListForRow, String[] headListForColumn){
+	public void setSinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[][] info, String[][] content, String[] headListForRow, String[] headListForColumn, String playerName){
 		removeInformationPanel();
-		singlePlayerPanel = new SinglePlayerPanel(pathOfPhoto1, pathOfPhoto2, info, content, headListForRow, headListForColumn);
+		singlePlayerPanel = new SinglePlayerPanel(pathOfPhoto1, pathOfPhoto2, info, content, headListForRow, headListForColumn, playerName);
 		this.add(singlePlayerPanel, 0);
 		panelBox.setSelectedIndex(4);
 		singlePlayerPanel.updateUI();

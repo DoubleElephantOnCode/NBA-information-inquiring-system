@@ -1,6 +1,8 @@
 package view.singlePlayerPanel;
 
 import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -8,17 +10,21 @@ import javax.swing.JPanel;
 
 import view.File;
 import view.SizeAndLocationAndFont;
+import view.TimeSetting;
 import view.mainFrame.LabelEnterListener;
 import view.mainFrame.LabelUsualListener;
 import view.mainFrame.Main;
 import view.tablePanel.TablePanel;
 import view.timeSelectPanel.TimeSelectPanel;
+import control.ShowPlayerController;
 
 public class SinglePlayerPanel extends JPanel{
 	
 	static String NAME = "姓名", NUMBER = "球衣号码", POSITION = "位置", TALL = "身高", WEIGHT = "体重",
 			BIRTH = "生日", AGE = "年龄", EXP = "球龄", SCHOOL = "毕业院校",
 			AVGSCORE = "平均得分", AVGBOARD = "平均篮板", AVGASS = "平均助攻";
+	
+	static Date Begin = TimeSetting.begin, End = TimeSetting.end;
 	
 	JLabel photo1;//静态半身照
 	JLabel photo2;//静态运动照
@@ -38,6 +44,8 @@ public class SinglePlayerPanel extends JPanel{
 	TimeSelectPanel begin, end;
 	JLabel checkByTime, checkByTimeEnter;
 	
+	
+	
 	int width = SizeAndLocationAndFont.singlePlayerPanelWidth, height = SizeAndLocationAndFont.singlePlayerPanelHeight;
 	int photo1W = SizeAndLocationAndFont.playerPhoto_1Width, photo1H = SizeAndLocationAndFont.playerPhoto_1Height;
 	int photo2W = SizeAndLocationAndFont.playerPhoto_2Width, photo2H = SizeAndLocationAndFont.playerPhoto_2Height;
@@ -45,7 +53,9 @@ public class SinglePlayerPanel extends JPanel{
 	int personalInfoWidth = SizeAndLocationAndFont.singlePlayerInfoTableWidth, 
 			personalInfoHeight = SizeAndLocationAndFont.singlePlayerInfoTableHeight;
 	
-	public SinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[][] info, String[][] content, String[] headListForRow, String[] headListForColumn){
+	public SinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[][] info, String[][] content, String[] headListForRow, String[] headListForColumn, String playerName){
+		name = playerName;
+		
 		photo1BG = new ImageIcon(File.file + File.table_cell2_light + File.PNG);
 		photo1BG.setImage(photo1BG.getImage().getScaledInstance(photo1W, personalInfoHeight, Image.SCALE_DEFAULT));
 		photo1_bg = new JLabel(photo1BG);
@@ -95,11 +105,18 @@ public class SinglePlayerPanel extends JPanel{
 		end = new TimeSelectPanel(SizeAndLocationAndFont.endTimePanelWidth, SizeAndLocationAndFont.endTimePanelHeight, 2010, 2015);
 		end.setLocation(SizeAndLocationAndFont.endTimePanelLocationX, SizeAndLocationAndFont.endTimePanelLocationY);
 		
+		begin.setDate(Begin);
+		end.setDate(End);
+		
 		checkByTime = Main.setJLabelWithIcon(File.file + File.checkByTime + File.PNG, SizeAndLocationAndFont.checkByTimeLabelWidth, SizeAndLocationAndFont.checkByTimeLabelHeight);
 		checkByTimeEnter = Main.setJLabelWithIcon(File.file + File.checkByTime + File.enter + File.PNG, SizeAndLocationAndFont.checkByTimeLabelWidth, SizeAndLocationAndFont.checkByTimeLabelHeight);
 		checkByTime.addMouseListener(new LabelUsualListener(checkByTime, checkByTimeEnter));
 		checkByTimeEnter.addMouseListener(new LabelEnterListener(checkByTime, checkByTimeEnter){
-			//TODO 重写click按钮
+			public void mouseClicked(MouseEvent e) {
+				Begin = begin.getDate();
+				End = end.getDate();
+				new ShowPlayerController().showSinglePlayerInfo(name, TimeSetting.sdf.format(Begin), TimeSetting.sdf.format(End));
+			}
 		});
 		checkByTime.setLocation(SizeAndLocationAndFont.checkByTimeLabelLocationX, SizeAndLocationAndFont.checkByTimeLabelLocationY);
 		checkByTimeEnter.setLocation(SizeAndLocationAndFont.checkByTimeLabelLocationX, SizeAndLocationAndFont.checkByTimeLabelLocationY);
