@@ -17,11 +17,13 @@ public class HistoryList {
 	public void add(InformationForHistory item){
 		if(inWay){//由前进后退进入的不需要add
 			inWay = false;
-			return;
 		}
-		clearAfterPointer();
-		list.add(item);
-		pointer++;
+		else{
+			clearAfterPointer();
+			list.add(item);
+			pointer++;
+		}
+		
 	}
 	
 	public void clearAfterPointer(){
@@ -44,18 +46,16 @@ public class HistoryList {
 	
 	public void goForwardPanel(){
 		if(!isLast() && !isEmpty()){
-			list.get(++pointer).openThePanel();
 			inWay = true;
+			list.get(++pointer).openThePanel();
 		}
-		System.out.println(pointer);
 	}
 	
 	public void goBackwardPanel(){
 		if(!isFirst() && !isEmpty()){
-			list.get(--pointer).openThePanel();
 			inWay = true;
+			list.get(--pointer).openThePanel();
 		}
-		System.out.println(pointer);
 	}
 	
 }
