@@ -569,7 +569,7 @@ public class ShowPlayerDataModel {
 					
 					Main.setSinglePlayerPanel(player.getPortrait(), player.getAction(),
 							player.getBasicPlayerInfo(), content, dateList,
-							PlayerList.getHeadForSinglePlayer());
+							PlayerList.getHeadForSinglePlayer(), player.getName());
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -621,7 +621,7 @@ public class ShowPlayerDataModel {
 				}
 				Main.setSinglePlayerPanel(player.getPortrait(), player.getAction(),
 						player.getBasicPlayerInfo(), content, dateList,
-						PlayerList.getHeadForSinglePlayer());
+						PlayerList.getHeadForSinglePlayer(), player.getName());
 
 			} catch (Exception e) {
 				e.printStackTrace();

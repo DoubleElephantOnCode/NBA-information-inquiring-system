@@ -7,8 +7,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.sun.javafx.scene.control.SelectedCellsMap;
-
 import view.File;
 import view.SizeAndLocationAndFont;
 import view.TimeSetting;
