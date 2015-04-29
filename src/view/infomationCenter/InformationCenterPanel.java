@@ -46,11 +46,11 @@ public class InformationCenterPanel extends JPanel{
 	
 	static int index = 0;
 	
-	static HotPlayerPanel hotPlayerPanel;
-	static HotTeamPanel hotTeamPanel;
-	static SinglePlayerPanel singlePlayerPanel;
-	static SingleTeamPanel singleTeamPanel;
-	static MatchPanel matchPanel;
+	public static HotPlayerPanel hotPlayerPanel;
+	public static HotTeamPanel hotTeamPanel;
+	public static SinglePlayerPanel singlePlayerPanel;
+	public static SingleTeamPanel singleTeamPanel;
+	public static MatchPanel matchPanel;
 	
 	public static int formerPanel = 0;
 	

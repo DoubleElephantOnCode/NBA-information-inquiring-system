@@ -16,7 +16,11 @@ import model.readData.ReadPlayerData;
 import model.readData.ReadTeamData;
 import view.SVGLabel;
 import view.SizeAndLocationAndFont;
+import view.TimeSetting;
+import view.Type;
 import view.infomationCenter.InformationCenterPanel;
+import view.mainFrame.GoForwardOrBackward.GoForwardOrBackwardPanel;
+import view.mainFrame.GoForwardOrBackward.InformationForHistory;
 import view.playerCount.PlayerCountPanel;
 import view.startView.StartPanel;
 import view.teamCount.TeamCountPanel;
@@ -112,6 +116,9 @@ public class Main {
 		removeAllPanel();
 		mainFrame.add(teamCountPanel);
 		mainFrame.repaint();
+		InformationForHistory info = new InformationForHistory(Type.teamCount);
+		info.setTeamCount();
+		GoForwardOrBackwardPanel.history.add(info);
 	}
 	/**
 	 * 重置球队统计表格中数据，只能修改行数据
@@ -137,6 +144,9 @@ public class Main {
 		removeAllPanel();
 		mainFrame.add(playerCountPanel);
 		mainFrame.repaint();
+		InformationForHistory info = new InformationForHistory(Type.playerCount);
+		info.setPlayerCount();
+		GoForwardOrBackwardPanel.history.add(info);
 	}
 	/**
 	 * 重置球员统计表中的数据，只能修改行数据
@@ -156,6 +166,9 @@ public class Main {
 		removeAllPanel();
 		mainFrame.add(informationCenterPanel);
 		mainFrame.repaint();
+		InformationForHistory info = new InformationForHistory(Type.hotPlayerToday);
+		info.setHotPlayerToday(informationCenterPanel.hotPlayerPanel.getFormerIndex());
+		GoForwardOrBackwardPanel.history.add(info);
 	}
 	
 	public static void setHotPlayerThisYearPanel(String[] picPath, String[][][] playerContents, String[] playerNames){
@@ -167,6 +180,9 @@ public class Main {
 		removeAllPanel();
 		mainFrame.add(informationCenterPanel);
 		mainFrame.repaint();
+		InformationForHistory info = new InformationForHistory(Type.hotPlayerThisYear);
+		info.setHotPlayerThisYear(informationCenterPanel.hotPlayerPanel.getFormerIndex());
+		GoForwardOrBackwardPanel.history.add(info);
 	}
 	
 	public static void setProgressGreatPlayerPanel(String[] picPath, String[][][] playerContents, String[] playerNames){
@@ -178,6 +194,9 @@ public class Main {
 		removeAllPanel();
 		mainFrame.add(informationCenterPanel);
 		mainFrame.repaint();
+		InformationForHistory info = new InformationForHistory(Type.progressGreatPlayer);
+		info.setProgressGreatPlayer(informationCenterPanel.hotPlayerPanel.getFormerIndex());
+		GoForwardOrBackwardPanel.history.add(info);
 	}
 	
 	public static void setHotTeamPanel(java.io.File[] teamPics, String[][][] teamContents, String[] teamNames){
@@ -189,6 +208,9 @@ public class Main {
 		removeAllPanel();
 		mainFrame.add(informationCenterPanel);
 		mainFrame.repaint();
+		InformationForHistory info = new InformationForHistory(Type.hotTeam);
+		info.setHotTeam(informationCenterPanel.hotTeamPanel.getFormerIndex());
+		GoForwardOrBackwardPanel.history.add(info);
 	}
 	
 	public static void setSinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[][] info, String[][] content, String[] headListForRow, String[] headListForColumn, String playerName){
@@ -200,6 +222,9 @@ public class Main {
 		removeAllPanel();
 		mainFrame.add(informationCenterPanel);
 		mainFrame.repaint();
+		InformationForHistory in = new InformationForHistory(Type.singlePlayer);
+		in.setSinglePlayer(playerName, TimeSetting.sdf.format(informationCenterPanel.singlePlayerPanel.Begin), TimeSetting.sdf.format(informationCenterPanel.singlePlayerPanel.End));
+		GoForwardOrBackwardPanel.history.add(in);
 	}
 	
 	public static void setSingleTeamPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn, String teamName){
@@ -211,10 +236,13 @@ public class Main {
 		removeAllPanel();
 		mainFrame.add(informationCenterPanel);
 		mainFrame.repaint();
+		InformationForHistory in = new InformationForHistory(Type.singleTeam);
+		in.setSingleTeam(teamName, informationCenterPanel.singleTeamPanel.Begin, informationCenterPanel.singleTeamPanel.End);
+		GoForwardOrBackwardPanel.history.add(in);
 	}
 	
 	public static void setMatchPanel(java.io.File team1, String[][] content1, String[] headListForRow1, String[] headListForColumn1, String teamName1, 
-			java.io.File team2, String[][] content2, String[] headListForRow2, String[] headListForColumn2, String teamName2){
+			java.io.File team2, String[][] content2, String[] headListForRow2, String[] headListForColumn2, String teamName2, String date){
 		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(6);//对阵信息
 		informationCenterPanel.addMenuAndExit();
 		InformationCenterPanel.formerPanel = 6;
@@ -224,6 +252,9 @@ public class Main {
 		removeAllPanel();
 		mainFrame.add(informationCenterPanel);
 		mainFrame.repaint();
+		InformationForHistory info = new InformationForHistory(Type.match);
+		info.setMatch(date, teamName1, teamName2);
+		GoForwardOrBackwardPanel.history.add(info);
 	}
 	
 	public static void failedToFindPlayer(){//查找失败

@@ -7,8 +7,8 @@ import javax.swing.JLabel;
 
 public class LabelUsualListener implements MouseListener{
 
-	JLabel enter;
-	JLabel usual;
+	public JLabel enter;
+	public JLabel usual;
 	public LabelUsualListener(JLabel usual, JLabel enter){
 		this.enter = enter;
 		this.usual = usual;

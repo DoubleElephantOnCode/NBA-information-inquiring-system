@@ -49,4 +49,8 @@ public class HotPlayerPanel extends JPanel{
 		});
 	}
 	
+	public int getFormerIndex(){
+		return total.formerIndex;
+	}
+	
 }
