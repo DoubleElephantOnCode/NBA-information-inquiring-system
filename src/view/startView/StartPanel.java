@@ -13,6 +13,7 @@ import view.mainFrame.LabelEnterListener;
 import view.mainFrame.LabelUsualListener;
 import view.mainFrame.Main;
 import view.mainFrame.MenuLabel;
+import view.mainFrame.GoForwardOrBackward.GoForwardOrBackwardPanel;
 import control.ShowPlayerController;
 import control.ShowTeamController;
 
@@ -27,6 +28,7 @@ public class StartPanel extends JPanel{
 	
 	public static ExitLabel exit;
 	public static MenuLabel menu;
+	public static GoForwardOrBackwardPanel goForwardOrBackward;
 	
 	public static JLabel Quit;
 	public static JLabel QuitEnter;
@@ -66,6 +68,7 @@ public class StartPanel extends JPanel{
 		
 		exit = new ExitLabel();
 		menu = new MenuLabel();
+		goForwardOrBackward = new GoForwardOrBackwardPanel();
 		
 		Quit = Main.setJLabelWithIcon(File.file + File.quit + File.PNG, quitWidth, quitHeight);
 		QuitEnter = Main.setJLabelWithIcon(File.file + File.quit + File.enter + File.PNG, quitWidth, quitHeight);
@@ -108,6 +111,7 @@ public class StartPanel extends JPanel{
 		add(PlayerCountEnter, 0);
 		exit.addToPanel(this);
 		menu.addToPanel(this);
+		goForwardOrBackward.addToPanel(this);
 		
 		QuitEnter.setVisible(false);
 		TeamCountEnter.setVisible(false);

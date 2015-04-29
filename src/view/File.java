@@ -18,6 +18,10 @@ public class File {
 	
 	public static String quit = "quit";
 	
+	public static String goForward = "right";
+	
+	public static String goBackward = "left";
+	
 	public static String teamCount = "teamCount";
 	
 	public static String teamInfo = "teamInfo";

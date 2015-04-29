@@ -4,8 +4,6 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,6 +15,7 @@ import view.mainFrame.ExitLabel;
 import view.mainFrame.LabelEnterListener;
 import view.mainFrame.Main;
 import view.mainFrame.MenuLabel;
+import view.mainFrame.GoForwardOrBackward.GoForwardOrBackwardPanel;
 import view.searchPanel.SearchPanel;
 import view.selectedPanel.SelectPanel;
 import view.startView.StartPanel;
@@ -32,6 +31,7 @@ public class PlayerCountPanel extends JPanel{
 	
 	static ExitLabel exit = StartPanel.exit;
 	static MenuLabel menu = StartPanel.menu;
+	static GoForwardOrBackwardPanel goForwardOrBackward = StartPanel.goForwardOrBackward;
 	
 	static SearchPanel search;
 	
@@ -126,6 +126,8 @@ public class PlayerCountPanel extends JPanel{
 		exit.addToPanel(this);
 		if(menu == null) menu = new MenuLabel();
 		menu.addToPanel(this);
+		if(goForwardOrBackward == null) goForwardOrBackward = new GoForwardOrBackwardPanel();
+		goForwardOrBackward.addToPanel(this);
 		
 		search.searchEnter.addMouseListener(new LabelEnterListener(search.search, search.searchEnter){
 			public void mouseClicked(MouseEvent e) {
