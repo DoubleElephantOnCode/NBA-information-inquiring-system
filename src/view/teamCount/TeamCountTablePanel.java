@@ -16,6 +16,8 @@ import javax.swing.SwingConstants;
 import control.ShowTeamController;
 import view.File;
 import view.SizeAndLocationAndFont;
+import view.TimeSetting;
+import view.singleTeamPanel.SingleTeamPanel;
 import view.tablePanel.BarInColumnPanel;
 import view.tablePanel.BarInRowPanel;
 import view.tablePanel.HeadListForColumnPanel;
@@ -233,6 +235,11 @@ public class TeamCountTablePanel extends JPanel{
 				hpC.moveToIndex(p.pointerColumn);
 			}
 		});
+		//TODO 跳转
+		for(int i = 0; i < hpR.getTotalRow(); i++){
+			hpR.addMouseListenerTo(i, new GoToSingleTeamListener(i));
+			teamPic.addMouseListenerTo(i, new GoToSingleTeamListener(i));
+		}
 	}
 	
 	private JLabel setJLabelWithIcon(String IconPath, int width, int height){
@@ -294,6 +301,21 @@ public class TeamCountTablePanel extends JPanel{
 		public void mousePressed(MouseEvent arg0) {}
 		public void mouseReleased(MouseEvent arg0) {}
 		
+	}
+	
+	class GoToSingleTeamListener implements MouseListener{
+		int i;
+		public GoToSingleTeamListener(int index){
+			i = index;
+		}
+		public void mouseClicked(MouseEvent arg0) {
+			SingleTeamPanel.initialTime();
+			new ShowTeamController().showTeamFrame(hpR.getText(i), TimeSetting.begin, TimeSetting.end);
+		}
+		public void mouseEntered(MouseEvent arg0) {}
+		public void mouseExited(MouseEvent arg0) {}
+		public void mousePressed(MouseEvent arg0) {}
+		public void mouseReleased(MouseEvent arg0) {}
 	}
 	
 }

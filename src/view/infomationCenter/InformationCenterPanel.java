@@ -203,6 +203,13 @@ public class InformationCenterPanel extends JPanel{
 		searchPlayer.area.setText("输入球员名错误");
 	}
 	
+	public void addMenuAndExit(){
+		if(exit == null) exit = new ExitLabel();
+		exit.addToPanel(this);
+		if(menu == null) menu = new MenuLabel();
+		menu.addToPanel(this);
+	}
+	
 	private void removeInformationPanel(){
 		if(hotPlayerPanel != null) this.remove(hotPlayerPanel);
 		if(hotTeamPanel != null) this.remove(hotTeamPanel);

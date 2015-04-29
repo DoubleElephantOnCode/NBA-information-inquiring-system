@@ -15,6 +15,8 @@ import javax.swing.SwingConstants;
 
 import view.File;
 import view.SizeAndLocationAndFont;
+import view.TimeSetting;
+import view.singlePlayerPanel.SinglePlayerPanel;
 import view.tablePanel.BarInColumnPanel;
 import view.tablePanel.BarInRowPanel;
 import view.tablePanel.HeadListForColumnPanel;
@@ -228,6 +230,11 @@ public class PlayerCountTablePanel extends JPanel{
 				hpC.moveToIndex(p.pointerColumn);
 			}
 		});
+		
+		//跳转
+		for(int i = 0; i < hpR.getTotalRow(); i++){
+			hpR.addMouseListenerTo(i, new GoToSinglePlayerListener(i));
+		}
 	}
 	
 	private JLabel setJLabelWithIcon(String IconPath, int width, int height){
@@ -386,6 +393,26 @@ public class PlayerCountTablePanel extends JPanel{
 		p.updateUI();
 		hpR.updateUI();
 		bcp.updateUI();
+		
+		//跳转
+		for(int i = 0; i < hpR.getTotalRow(); i++){
+			hpR.addMouseListenerTo(i, new GoToSinglePlayerListener(i));
+		}
+	}
+	
+	class GoToSinglePlayerListener implements MouseListener{
+		int i;
+		public GoToSinglePlayerListener(int index){
+			i = index;
+		}
+		public void mouseClicked(MouseEvent arg0) {
+			SinglePlayerPanel.initialTime();
+			new ShowPlayerController().showSinglePlayerInfo(hpR.getText(i), TimeSetting.startDate, TimeSetting.endDate);
+		}
+		public void mouseEntered(MouseEvent arg0) {}
+		public void mouseExited(MouseEvent arg0) {}
+		public void mousePressed(MouseEvent arg0) {}
+		public void mouseReleased(MouseEvent arg0) {}
 	}
 	
 }
