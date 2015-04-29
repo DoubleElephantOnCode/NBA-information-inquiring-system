@@ -27,8 +27,13 @@ public class ShowHotTeamModel implements ShowView{
 					File[] fs = new  File[5];
 					TeamVO t;
 					String[][][] content= new String[5][3][8];
+					
+					String[] teamNames = new String[5];
 					for(int i = 0;i<5;i++){
 						t = teamVOList.get(i);
+						
+						teamNames[i] = t.abbreviation;
+						
 						fs[i] = new File(t.getPath());
 						String[][] s= t.toStringArrayForHotTeam();
 						for(int j = 0;j<3;j++){
@@ -38,7 +43,7 @@ public class ShowHotTeamModel implements ShowView{
 						}
 					}
 					
-					Main.setHotTeamPanel(fs, content);
+					Main.setHotTeamPanel(fs, content,teamNames);
 				}catch(Exception e){
 					e.printStackTrace();
 				}
@@ -62,8 +67,15 @@ public class ShowHotTeamModel implements ShowView{
 			File[] fs = new  File[5];
 			TeamVO t;
 			String[][][] content= new String[5][3][8];
+			
+			String[] teamNames = new String[5];
+			
 			for(int i = 0;i<5;i++){
 				t = teamVOList.get(i);
+				
+				teamNames[i] = t.abbreviation;
+				
+				
 				fs[i] = new File(t.getPath());
 				String[][] s= t.toStringArrayForHotTeam();
 				for(int j = 0;j<3;j++){
@@ -73,7 +85,7 @@ public class ShowHotTeamModel implements ShowView{
 				}
 			}
 			
-			Main.setHotTeamPanel(fs, content);
+			Main.setHotTeamPanel(fs, content,teamNames);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
