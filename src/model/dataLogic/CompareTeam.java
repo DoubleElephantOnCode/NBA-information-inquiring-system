@@ -60,7 +60,8 @@ public class CompareTeam {
 		new SortByAveStealNum(b),
 		new SortByTotalThreePointRate(b),
 		new SortByTotalScoreRate(b),
-		new SortByTotalFreeThrowRate(b)
+		new SortByTotalFreeThrowRate(b),
+		new SortByTotalWinningRate(b)
 	};
 	}
 	
