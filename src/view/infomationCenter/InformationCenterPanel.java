@@ -101,36 +101,9 @@ public class InformationCenterPanel extends JPanel{
 				case 1:new ShowPlayerController().showHotPlayerInfo(false, 5, 0); break;//当日热点球员
 				case 2:new ShowPlayerController().showProgressPlayerInfo(0, 5); break;//进步最快球员
 				case 3:new ShowTeamController().showHotTeamTable(0); break;//赛季热点球队
-				case 4:
-					if(singlePlayerPanel != null){
-						removeInformationPanel();
-						add(singlePlayerPanel, 0);
-						updateUI();
-					}
-					else{
-						panelBox.setSelectedIndex(formerPanel);
-					}
-					break;//球员信息
-				case 5:
-					if(singleTeamPanel != null){
-						removeInformationPanel();
-						add(singleTeamPanel, 0);
-						updateUI();
-					}
-					else{
-						panelBox.setSelectedIndex(formerPanel);
-					}
-					break;//球队信息
-				case 6:
-					if(matchPanel != null){
-						removeInformationPanel();
-						add(matchPanel, 0);
-						updateUI();
-					}
-					else{
-						panelBox.setSelectedIndex(formerPanel);
-					}
-					break;//对阵信息
+				case 4:panelBox.setSelectedIndex(formerPanel);break;//球员信息
+				case 5:panelBox.setSelectedIndex(formerPanel);break;//球队信息
+				case 6:panelBox.setSelectedIndex(formerPanel);break;//对阵信息
 				default:break;
 				}
 				formerPanel = panelBox.getSelectedIndex();
