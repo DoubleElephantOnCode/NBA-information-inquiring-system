@@ -9,9 +9,13 @@ import model.dataLogic.ShowMatchDataModel;
  */
 public class ShowMatchController {
 	ShowMatchDataModel showMatchDataModel;
-	public ShowMatchController(){
+	
+	
+	public ShowMatchController(boolean inWay){
 		showMatchDataModel = new ShowMatchDataModel();
 	}
+	
+	
 	public void showMatchTable(String date,String homeTeam,String awayTeam){
 		showMatchDataModel.showMatchTable(date,homeTeam,awayTeam);
 	}

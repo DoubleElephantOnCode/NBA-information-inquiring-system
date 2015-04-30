@@ -10,7 +10,9 @@ public class ShowTeamController {
 	ShowTeamDataModel showTeamModel;
 	SingleTeamModel singleTeamModel;
 	ShowHotTeamModel showHotTeamModel;
-	public ShowTeamController(){
+	
+	
+	public ShowTeamController(boolean inWay){
 		showTeamModel = new ShowTeamDataModel();
 		singleTeamModel = new SingleTeamModel();
 		showHotTeamModel = new ShowHotTeamModel();

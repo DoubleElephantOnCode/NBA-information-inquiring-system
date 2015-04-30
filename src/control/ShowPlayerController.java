@@ -12,7 +12,8 @@ public class ShowPlayerController {
 
 	ShowPlayerDataModel showPlayerModel;
 	
-	public ShowPlayerController() {
+	
+	public ShowPlayerController(boolean inWay) {
 		// TODO Auto-generated constructor stub
 		showPlayerModel = new ShowPlayerDataModel();
 	}
