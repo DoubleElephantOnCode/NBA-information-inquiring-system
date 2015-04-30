@@ -407,7 +407,7 @@ public class PlayerCountTablePanel extends JPanel{
 		}
 		public void mouseClicked(MouseEvent arg0) {
 			SinglePlayerPanel.initialTime();
-			new ShowPlayerController(false).showSinglePlayerInfo(hpR.getText(i), TimeSetting.startDate, TimeSetting.endDate);
+			new ShowPlayerController(true).showSinglePlayerInfo(hpR.getText(i), TimeSetting.startDate, TimeSetting.endDate);
 		}
 		public void mouseEntered(MouseEvent arg0) {}
 		public void mouseExited(MouseEvent arg0) {}
