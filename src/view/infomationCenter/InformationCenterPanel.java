@@ -190,11 +190,22 @@ public class InformationCenterPanel extends JPanel{
 	}
 	
 	private void removeInformationPanel(){
-		if(hotPlayerPanel != null) this.remove(hotPlayerPanel);
-		if(hotTeamPanel != null) this.remove(hotTeamPanel);
-		if(singlePlayerPanel != null) this.remove(singlePlayerPanel);
-		if(singleTeamPanel != null) this.remove(singleTeamPanel);
-		if(matchPanel != null) this.remove(matchPanel);
+//		if(hotPlayerPanel != null) this.remove(hotPlayerPanel);
+//		if(hotTeamPanel != null) this.remove(hotTeamPanel);
+//		if(singlePlayerPanel != null) this.remove(singlePlayerPanel);
+//		if(singleTeamPanel != null) this.remove(singleTeamPanel);
+//		if(matchPanel != null) this.remove(matchPanel);
+		this.removeAll();
+		this.add(background);
+		if(exit == null) exit = new ExitLabel();
+		exit.addToPanel(this);
+		if(menu == null) menu = new MenuLabel();
+		menu.addToPanel(this);
+		if(goForwardOrBackward == null) goForwardOrBackward = new GoForwardOrBackwardPanel();
+		goForwardOrBackward.addToPanel(this);
+		this.add(teamChosen, 0);
+		this.add(searchPlayer, 0);
+		this.add(panelBox, 0);
 	}
 	
 }

@@ -12,9 +12,11 @@ public class Waiting extends SwingWorker<Void, Void>{
 	static JPanel panel;
 	static JLabel label;
 	static int width = 127, height = 303;
+	static int count = 0;
 	
 	public Waiting(){
 		super();
+		count++;
 	}
 
 	@Override
@@ -32,7 +34,8 @@ public class Waiting extends SwingWorker<Void, Void>{
 			panel.setLayout(null);
 			panel.setBounds((Main.width-width)/2, (Main.height-height)/2, width, height);
 			panel.setOpaque(false);
-			Main.mainFrame.add(panel, 0);
+			if(count == 1)
+				Main.mainFrame.add(panel, 0);
 			panel.updateUI();
 	}
 	
@@ -40,6 +43,8 @@ public class Waiting extends SwingWorker<Void, Void>{
 	protected void done(){
 		Main.mainFrame.remove(panel);
 		Main.mainFrame.repaint();
+		count--;
+		if(count < 0) count = 0;
 		this.cancel(true);
 	}
 	
