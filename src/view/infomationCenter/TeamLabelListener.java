@@ -23,7 +23,7 @@ public class TeamLabelListener implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		new ShowTeamController().showTeamFrame(teamName, null, null);
+		new ShowTeamController(true).showTeamFrame(teamName, null, null);
 	}
 
 	@Override

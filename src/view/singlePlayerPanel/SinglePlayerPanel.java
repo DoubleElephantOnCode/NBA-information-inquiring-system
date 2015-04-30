@@ -115,7 +115,7 @@ public class SinglePlayerPanel extends JPanel{
 			public void mouseClicked(MouseEvent e) {
 				Begin = begin.getDate();
 				End = end.getDate();
-				new ShowPlayerController().showSinglePlayerInfo(name, TimeSetting.sdf.format(Begin), TimeSetting.sdf.format(End));
+				new ShowPlayerController(true).showSinglePlayerInfo(name, TimeSetting.sdf.format(Begin), TimeSetting.sdf.format(End));
 			}
 		});
 		checkByTime.setLocation(SizeAndLocationAndFont.checkByTimeLabelLocationX, SizeAndLocationAndFont.checkByTimeLabelLocationY);

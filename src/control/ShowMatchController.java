@@ -1,5 +1,6 @@
 package control;
 
+import view.mainFrame.GoForwardOrBackward.HistoryList;
 import model.dataLogic.ShowMatchDataModel;
 
 /**
@@ -13,6 +14,7 @@ public class ShowMatchController {
 	
 	public ShowMatchController(boolean inWay){
 		showMatchDataModel = new ShowMatchDataModel();
+		HistoryList.inWay = inWay;
 	}
 	
 	

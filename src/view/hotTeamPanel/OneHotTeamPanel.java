@@ -84,7 +84,7 @@ public class OneHotTeamPanel extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				SingleTeamPanel.initialTime();
-				new ShowTeamController().showTeamFrame(name, TimeSetting.begin, TimeSetting.end);
+				new ShowTeamController(true).showTeamFrame(name, TimeSetting.begin, TimeSetting.end);
 			}
 		});
 		

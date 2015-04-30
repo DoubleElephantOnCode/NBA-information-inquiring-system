@@ -2,6 +2,7 @@ package control;
 
 import java.util.Date;
 
+import view.mainFrame.GoForwardOrBackward.HistoryList;
 import model.dataLogic.ShowHotTeamModel;
 import model.dataLogic.ShowTeamDataModel;
 import model.dataLogic.SingleTeamModel;
@@ -16,6 +17,7 @@ public class ShowTeamController {
 		showTeamModel = new ShowTeamDataModel();
 		singleTeamModel = new SingleTeamModel();
 		showHotTeamModel = new ShowHotTeamModel();
+		HistoryList.inWay = inWay;
 	}
 	
 	public void showTeamTable(){

@@ -35,7 +35,7 @@ public class TotalPanel extends JPanel{
 				int t = choiceHotTeam.getSelectedIndex();
 				if(t == formerIndex) return;
 				formerIndex = t;
-				new ShowTeamController().showHotTeamTable(t);
+				new ShowTeamController(true).showHotTeamTable(t);
 			}
 			
 		});

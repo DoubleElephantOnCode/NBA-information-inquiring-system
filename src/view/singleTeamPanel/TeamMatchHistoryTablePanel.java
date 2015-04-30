@@ -349,7 +349,7 @@ public class TeamMatchHistoryTablePanel extends JPanel{
 		}
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
-			new ShowMatchController().showMatchTable(hpR.getText(i), p.getText(i, 0), p.getText(i, 1));
+			new ShowMatchController(true).showMatchTable(hpR.getText(i), p.getText(i, 0), p.getText(i, 1));
 		}
 		@Override
 		public void mouseEntered(MouseEvent arg0) {}

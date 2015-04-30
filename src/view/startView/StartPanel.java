@@ -151,22 +151,22 @@ public class StartPanel extends JPanel{
 		});
 		TeamCountEnter.addMouseListener(new LabelEnterListener(TeamCount, TeamCountEnter){
 			public void mouseClicked(MouseEvent e) {
-				new ShowTeamController().showTeamTable();
+				new ShowTeamController(true).showTeamTable();
 			}
 		});
 		TeamInfoEnter.addMouseListener(new LabelEnterListener(TeamInfo, TeamInfoEnter){
 			public void mouseClicked(MouseEvent e) {
-				new ShowTeamController().showHotTeamTable(0);;
+				new ShowTeamController(true).showHotTeamTable(0);;
 			}
 		});
 		PlayerCountEnter.addMouseListener(new LabelEnterListener(PlayerCount, PlayerCountEnter){
 			public void mouseClicked(MouseEvent e) {
-				new ShowPlayerController().showPlayerInfo("-ALL", "-ALL");
+				new ShowPlayerController(true).showPlayerInfo("-ALL", "-ALL");
 			}
 		});
 		PlayerInfoEnter.addMouseListener(new LabelEnterListener(PlayerInfo, PlayerInfoEnter){
 			public void mouseClicked(MouseEvent e) {
-				new ShowPlayerController().showHotPlayerInfo(true, 5, 0);
+				new ShowPlayerController(true).showHotPlayerInfo(true, 5, 0);
 			}
 		});
 		

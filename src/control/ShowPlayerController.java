@@ -1,5 +1,6 @@
 package control;
 
+import view.mainFrame.GoForwardOrBackward.HistoryList;
 import model.dataLogic.ShowPlayerDataModel;
 
 /**
@@ -16,6 +17,7 @@ public class ShowPlayerController {
 	public ShowPlayerController(boolean inWay) {
 		// TODO Auto-generated constructor stub
 		showPlayerModel = new ShowPlayerDataModel();
+		HistoryList.inWay = inWay;
 	}
 	
 	/**

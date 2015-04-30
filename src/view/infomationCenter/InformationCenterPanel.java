@@ -78,7 +78,7 @@ public class InformationCenterPanel extends JPanel{
 			public void mouseClicked(MouseEvent e) {
 				//TODO 查找事项
 				String temp = searchPlayer.getInputText();
-				new ShowPlayerController().showSinglePlayerInfo(temp, TimeSetting.startDate, TimeSetting.endDate);
+				new ShowPlayerController(true).showSinglePlayerInfo(temp, TimeSetting.startDate, TimeSetting.endDate);
 				panelBox.setSelectedIndex(4);
 			}
 		});
@@ -97,10 +97,10 @@ public class InformationCenterPanel extends JPanel{
 				if(formerPanel == panelBox.getSelectedIndex()) return;
 				
 				switch(panelBox.getSelectedIndex()){
-				case 0:new ShowPlayerController().showHotPlayerInfo(true, 5, 0); break;//赛季热点球员
-				case 1:new ShowPlayerController().showHotPlayerInfo(false, 5, 0); break;//当日热点球员
-				case 2:new ShowPlayerController().showProgressPlayerInfo(0, 5); break;//进步最快球员
-				case 3:new ShowTeamController().showHotTeamTable(0); break;//赛季热点球队
+				case 0:new ShowPlayerController(true).showHotPlayerInfo(true, 5, 0); break;//赛季热点球员
+				case 1:new ShowPlayerController(true).showHotPlayerInfo(false, 5, 0); break;//当日热点球员
+				case 2:new ShowPlayerController(true).showProgressPlayerInfo(0, 5); break;//进步最快球员
+				case 3:new ShowTeamController(true).showHotTeamTable(0); break;//赛季热点球队
 				case 4:panelBox.setSelectedIndex(formerPanel);break;//球员信息
 				case 5:panelBox.setSelectedIndex(formerPanel);break;//球队信息
 				case 6:panelBox.setSelectedIndex(formerPanel);break;//对阵信息

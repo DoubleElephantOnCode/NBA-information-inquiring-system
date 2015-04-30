@@ -7,7 +7,7 @@ public class HistoryList {
 	ArrayList<InformationForHistory> list;
 	int pointer = -1;
 	
-	public static boolean inWay = false;//点击方式为非前进后退为false, 是通过前进后退进入的为true
+	public static boolean inWay = false;//需要add的为true，否则为false
 	
 	public HistoryList(){
 		list = new ArrayList<InformationForHistory>();
@@ -15,13 +15,13 @@ public class HistoryList {
 	}
 	
 	public void add(InformationForHistory item){
-		if(inWay){//由前进后退进入的不需要add
-			inWay = false;
-		}
-		else{
+		if(inWay){//由用户点击响应的需要add
 			clearAfterPointer();
 			list.add(item);
 			pointer++;
+		}
+		else{
+			inWay = false;
 		}
 		
 	}

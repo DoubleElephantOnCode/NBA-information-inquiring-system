@@ -96,7 +96,7 @@ public class SingleTeamPanel extends JPanel{
 			public void mouseClicked(MouseEvent e) {
 				Begin = begin.getDate();
 				End = end.getDate();
-				new ShowTeamController().showTeamFrame(name, Begin, End);
+				new ShowTeamController(true).showTeamFrame(name, Begin, End);
 			}
 		});
 		checkByTime.setLocation(SizeAndLocationAndFont.checkByTimeLabelLocationX, SizeAndLocationAndFont.checkByTimeLabelLocationY);

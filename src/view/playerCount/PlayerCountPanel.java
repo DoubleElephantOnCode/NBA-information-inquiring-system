@@ -156,7 +156,7 @@ public class PlayerCountPanel extends JPanel{
 
 			public void actionPerformed(ActionEvent arg0) {
 				position.action();
-				new ShowPlayerController().selectByAreaOrPosition(
+				new ShowPlayerController(false).selectByAreaOrPosition(
 						position.getSelectedItem(), area.getSelectedItem());
 //				new ShowPlayerController().sortPlayer(position.getSelectedItem(), area.getSelectedItem(), table.selectedColumn, table.sort);
 			}
@@ -167,7 +167,7 @@ public class PlayerCountPanel extends JPanel{
 
 			public void actionPerformed(ActionEvent arg0) {
 				area.action();
-				new ShowPlayerController().selectByAreaOrPosition(
+				new ShowPlayerController(false).selectByAreaOrPosition(
 						position.getSelectedItem(), area.getSelectedItem());
 //				new ShowPlayerController().sortPlayer(position.getSelectedItem(), area.getSelectedItem(), table.selectedColumn, table.sort);
 			}

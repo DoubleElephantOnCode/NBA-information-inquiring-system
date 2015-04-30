@@ -94,7 +94,7 @@ public class OneHotPlayerPanel extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				SinglePlayerPanel.initialTime();
-				new ShowPlayerController().showSinglePlayerInfo(name, TimeSetting.startDate, TimeSetting.endDate);
+				new ShowPlayerController(true).showSinglePlayerInfo(name, TimeSetting.startDate, TimeSetting.endDate);
 			}
 		});
 		

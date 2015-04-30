@@ -287,11 +287,11 @@ public class TeamCountTablePanel extends JPanel{
 			}
 			if(times % 2 == 0) {
 				labelList[index][1].setIcon(sortUP);
-				new ShowTeamController().sortTeam(index, true);
+				new ShowTeamController(false).sortTeam(index, true);
 			}
 			else{
 				labelList[index][1].setIcon(sortDOWN);
-				new ShowTeamController().sortTeam(index, false);
+				new ShowTeamController(false).sortTeam(index, false);
 			}
 			//TODO 点击后调整排序方式，以此列排序，需要reset整个表格的行数据，发送给control，由model执行
 			
@@ -310,7 +310,7 @@ public class TeamCountTablePanel extends JPanel{
 		}
 		public void mouseClicked(MouseEvent arg0) {
 			SingleTeamPanel.initialTime();
-			new ShowTeamController().showTeamFrame(hpR.getText(i), TimeSetting.begin, TimeSetting.end);
+			new ShowTeamController(true).showTeamFrame(hpR.getText(i), TimeSetting.begin, TimeSetting.end);
 		}
 		public void mouseEntered(MouseEvent arg0) {}
 		public void mouseExited(MouseEvent arg0) {}

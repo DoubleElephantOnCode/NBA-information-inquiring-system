@@ -62,18 +62,17 @@ public class InformationForHistory {
 	}
 	
 	public void openThePanel(){
-		HistoryList.inWay = true;
 		switch(type){
 		case main: new ChangePageController().changePageToMainFrame();break;
-		case playerCount: new ShowPlayerController().showPlayerInfo("-ALL", "-ALL");break;
-		case teamCount: new ShowTeamController().showTeamTable();break;
-		case singlePlayer: new ShowPlayerController().showSinglePlayerInfo(playerName, beginDate, endDate);break;
-		case singleTeam: new ShowTeamController().showTeamFrame(teamName, Begin, End);break;
-		case hotTeam: new ShowTeamController().showHotTeamTable(choice);
-		case hotPlayerToday: new ShowPlayerController().showHotPlayerInfo(false, 5, choice);break;
-		case hotPlayerThisYear: new ShowPlayerController().showHotPlayerInfo(true, 5, choice);break;
-		case progressGreatPlayer: new ShowPlayerController().showProgressPlayerInfo(choice, 5);break;
-		case match: new ShowMatchController().showMatchTable(beginDate, teamName, team2);
+		case playerCount: new ShowPlayerController(false).showPlayerInfo("-ALL", "-ALL");break;
+		case teamCount: new ShowTeamController(false).showTeamTable();break;
+		case singlePlayer: new ShowPlayerController(false).showSinglePlayerInfo(playerName, beginDate, endDate);break;
+		case singleTeam: new ShowTeamController(false).showTeamFrame(teamName, Begin, End);break;
+		case hotTeam: new ShowTeamController(false).showHotTeamTable(choice);
+		case hotPlayerToday: new ShowPlayerController(false).showHotPlayerInfo(false, 5, choice);break;
+		case hotPlayerThisYear: new ShowPlayerController(false).showHotPlayerInfo(true, 5, choice);break;
+		case progressGreatPlayer: new ShowPlayerController(false).showProgressPlayerInfo(choice, 5);break;
+		case match: new ShowMatchController(false).showMatchTable(beginDate, teamName, team2);
 		default:break;
 		}
 	}

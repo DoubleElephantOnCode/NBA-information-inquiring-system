@@ -351,7 +351,7 @@ public class OneTeamMatchStatisticsTablePanel extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
 			SinglePlayerPanel.initialTime();
-			new ShowPlayerController().showSinglePlayerInfo(hpR.getText(i), TimeSetting.startDate, TimeSetting.endDate);
+			new ShowPlayerController(true).showSinglePlayerInfo(hpR.getText(i), TimeSetting.startDate, TimeSetting.endDate);
 		}
 
 		@Override

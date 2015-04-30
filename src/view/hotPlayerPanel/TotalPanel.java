@@ -52,9 +52,9 @@ public class TotalPanel extends JPanel{
 				if(t == formerIndex) return;
 				//TODO 改变选项
 				formerIndex = t;
-				if(formerType == 0) new ShowPlayerController().showHotPlayerInfo(false, 5, t);
-				else if(formerType == 1) new ShowPlayerController().showHotPlayerInfo(true, 5, t);
-				else if(formerType == 2) new ShowPlayerController().showProgressPlayerInfo(t, 5);
+				if(formerType == 0) new ShowPlayerController(true).showHotPlayerInfo(false, 5, t);
+				else if(formerType == 1) new ShowPlayerController(true).showHotPlayerInfo(true, 5, t);
+				else if(formerType == 2) new ShowPlayerController(true).showProgressPlayerInfo(t, 5);
 			}
 		});
 		

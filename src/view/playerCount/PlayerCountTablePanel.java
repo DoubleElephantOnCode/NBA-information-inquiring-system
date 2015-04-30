@@ -281,7 +281,7 @@ public class PlayerCountTablePanel extends JPanel{
 					}
 				}
 				labelList[index][1].setIcon(sortOUT);
-				new ShowPlayerController().sortAndSelectPlayer(PlayerCountPanel.position.getSelectedItem(), PlayerCountPanel.area.getSelectedItem(), index);
+				new ShowPlayerController(false).sortAndSelectPlayer(PlayerCountPanel.position.getSelectedItem(), PlayerCountPanel.area.getSelectedItem(), index);
 				selectedColumn = 0;
 			}
 			else if(arg0.getButton() == MouseEvent.BUTTON1){
@@ -301,7 +301,7 @@ public class PlayerCountTablePanel extends JPanel{
 					sort = false;
 					selectedColumn = index;
 				}
-				new ShowPlayerController().sortPlayer(PlayerCountPanel.position.getSelectedItem(), PlayerCountPanel.area.getSelectedItem(), selectedColumn, sort);
+				new ShowPlayerController(false).sortPlayer(PlayerCountPanel.position.getSelectedItem(), PlayerCountPanel.area.getSelectedItem(), selectedColumn, sort);
 			}
 			//TODO 点击后调整排序方式，以此列排序，需要reset整个表格的行数据，发送给control，由model执行
 		}
@@ -407,7 +407,7 @@ public class PlayerCountTablePanel extends JPanel{
 		}
 		public void mouseClicked(MouseEvent arg0) {
 			SinglePlayerPanel.initialTime();
-			new ShowPlayerController().showSinglePlayerInfo(hpR.getText(i), TimeSetting.startDate, TimeSetting.endDate);
+			new ShowPlayerController(false).showSinglePlayerInfo(hpR.getText(i), TimeSetting.startDate, TimeSetting.endDate);
 		}
 		public void mouseEntered(MouseEvent arg0) {}
 		public void mouseExited(MouseEvent arg0) {}
