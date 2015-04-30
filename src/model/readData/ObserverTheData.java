@@ -171,7 +171,6 @@ public class ObserverTheData extends Thread{
 				 
 				 if(showView!=null){
 					 showView.changeData();
-					 HistoryList.inWay = true;
 				 }
                  
 //				 System.out.println("greatest index is "+greatestIndex);
