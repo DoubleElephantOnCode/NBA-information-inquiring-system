@@ -62,6 +62,7 @@ public class InformationForHistory {
 	}
 	
 	public void openThePanel(){
+		HistoryList.inWay = true;
 		switch(type){
 		case main: new ChangePageController().changePageToMainFrame();break;
 		case playerCount: new ShowPlayerController().showPlayerInfo("-ALL", "-ALL");break;
