@@ -7,7 +7,7 @@ public class HistoryList {
 	ArrayList<InformationForHistory> list;
 	int pointer = -1;
 	
-	boolean inWay = false;//点击方式为非前进后退为false, 是通过前进后退进入的为true
+	public static boolean inWay = false;//点击方式为非前进后退为false, 是通过前进后退进入的为true
 	
 	public HistoryList(){
 		list = new ArrayList<InformationForHistory>();

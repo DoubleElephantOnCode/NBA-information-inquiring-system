@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import constant.FilePath;
+import view.mainFrame.GoForwardOrBackward.HistoryList;
 import vo.MatchDataPerPlayerVO;
 import vo.MatchVO;
 import vo.ScoreVO;
@@ -170,6 +171,7 @@ public class ObserverTheData extends Thread{
 				 
 				 if(showView!=null){
 					 showView.changeData();
+					 HistoryList.inWay = true;
 				 }
                  
 //				 System.out.println("greatest index is "+greatestIndex);
