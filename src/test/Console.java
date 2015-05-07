@@ -20,7 +20,7 @@ public class Console {
 	 * @param args
 	 */
 	public void execute(PrintStream out, String[] args) {
-		out.append("hello");
+		
 //		ReadTeamData readTeam;
 //		ReadPlayerData readPlayer;
 //		ReadMatchData readMatch;
@@ -33,11 +33,11 @@ public class Console {
 //
 //		readMatch = new ReadMatchData();
 //		readMatch.readMatchData();
-//
-//		out.append("hehe");
-//		TeamTestCommand t = new TeamTestCommand();
-//
-//		t.analysisCommand(out, args);
+
+		TeamTestCommand t = new TeamTestCommand();
+
+		
+		t.analysisCommand(out, args);
 
 	}
 

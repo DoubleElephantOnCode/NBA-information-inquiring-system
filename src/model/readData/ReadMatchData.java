@@ -40,10 +40,10 @@ public class ReadMatchData {
 			 }
 		 }
 		 for(int j = i;j<matches.length;j++){
-			 readMatchFile(matches[j],2013);
+			 readMatchFile(matches[j],2012);
 		 }
 		 for(int j = 0;j < i;j++){
-			 readMatchFile(matches[j],2013);
+			 readMatchFile(matches[j],2012);
 		 }
 		 
 		 TeamList.finishRead();

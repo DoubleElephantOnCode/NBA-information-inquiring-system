@@ -50,7 +50,9 @@ public class TeamTestCommand {
 	
 	public void analysisCommand(PrintStream out,String[] args){
 		
-	
+		
+		
+		
 		
 		for(int i = 1;i<args.length;){
 			i = analysisString(args,i);
@@ -66,7 +68,7 @@ public class TeamTestCommand {
 			ArrayList<TeamVO> teamVOList = TeamList.getTeamVOList();
 			for(int i = 0; i < num &&i < teamVOList.size();i++){
 				teamHotInfo = teamVOList.get(i).getHotInfo(stringField, field);
-				out.append(teamHotInfo.toString());
+				out.print(teamHotInfo.toString());
 			}
 		}else if(!isNormal){ //高阶数据
 
@@ -75,16 +77,15 @@ public class TeamTestCommand {
 			ArrayList<TeamVO> teamVOList = TeamList.getTeamVOList();
 			for(int i = 0; i < num &&i < teamVOList.size();i++){
 				teamHighInfo = teamVOList.get(i).getHighInfo();
-				out.append(teamHighInfo.toString());
+				out.print(teamHighInfo.toString());
 			}
 		}else {
-
 			
 			TeamList.sortTeam(normalField, isSequence);
 			ArrayList<TeamVO> teamVOList = TeamList.getTeamVOList();
 			for(int i = 0; i < num &&i < teamVOList.size();i++){
 				teamNormalInfo = teamVOList.get(i).getNormalInfo(isAvg);
-				out.append(teamNormalInfo.toString());
+				out.print(teamNormalInfo.toString());
 			}
 		}
 		
