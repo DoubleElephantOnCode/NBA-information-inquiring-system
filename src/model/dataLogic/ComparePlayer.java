@@ -22,7 +22,7 @@ public class ComparePlayer {
 	
 	Comparator[] comparator;
 	
-	public ComparePlayer(int i){
+	public ComparePlayer(int forProgress){
 		//TODO 为了筛选进步最快球员设定的方法
 		//降序排列
 		boolean isPositiveSequence = false;
@@ -43,6 +43,7 @@ public class ComparePlayer {
 //		 三分命中数、三分出手数、三分命中率、罚球命中数、罚球出手数、罚球命中率、进攻篮板数、防守篮板数、总篮板数、失误数、犯规数
 		
 		//得分、篮板、助攻、盖帽、抢断、命中率、三分命中率、罚球命中率
+		//0   1    2   3   4   5      6       7 
 		comparator = new Comparator[]{
 				new SortByAvePersonalPoints(isPositiveSequence),
 //				new SortByTotalReboundsNum(isPositiveSequence),

@@ -4,6 +4,10 @@ import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import test.data.PlayerHighInfo;
+import test.data.PlayerHotInfo;
+import test.data.PlayerKingInfo;
+import test.data.PlayerNormalInfo;
 import constant.FilePath;
 
 /**
@@ -87,7 +91,7 @@ public class PlayerVO {
 	/**
 	 * 球员年龄
 	 */
-	private String age;
+	private String age = "0";
 
 	/**
 	 * 球员球龄
@@ -1022,7 +1026,123 @@ public class PlayerVO {
 		return meter;
 	}
 	
-
+	
+	public PlayerNormalInfo getNormalAvgInfo(){
+		PlayerNormalInfo normalInfo = new PlayerNormalInfo();
+		normalInfo.setAge(Integer.parseInt(age));
+		normalInfo.setAssist(aveAssistNum);
+		normalInfo.setBlockShot(aveBlockNum);
+		normalInfo.setDefend(aveDefensiveReboundsNum);
+		normalInfo.setEfficiency(efficiency);
+		normalInfo.setFault(aveTurnoverNum);
+		normalInfo.setFoul(aveFoulNum);
+		normalInfo.setMinute(aveMinutes.getTimeByMinute());
+		normalInfo.setName(name);
+		normalInfo.setNumOfGame(entryNum);
+		normalInfo.setOffend(aveOffensiveReboundsNum);
+		normalInfo.setPenalty(aveFreeThrowScoreNum);
+		normalInfo.setPoint(avePersonalPoints);
+		normalInfo.setRebound(aveTotalReboundsNum);
+		normalInfo.setShot(aveShootNum);
+		normalInfo.setStart(startingNum);
+		normalInfo.setSteal(aveStealNum);
+		normalInfo.setTeamName(teamName);
+		normalInfo.setThree(aveThreePointerScoreNum);
+		return normalInfo;
+	}
+	
+	public PlayerNormalInfo getNormalAllInfo(){
+		PlayerNormalInfo normalInfo = new PlayerNormalInfo();
+		normalInfo.setAge(Integer.parseInt(age));
+		normalInfo.setAssist(assistNum);
+		normalInfo.setBlockShot(blockNum);
+		normalInfo.setDefend(defensiveReboundsNum);
+		normalInfo.setEfficiency(efficiency);
+		normalInfo.setFault(turnoverNum);
+		normalInfo.setFoul(foulNum);
+		normalInfo.setMinute(totalMinutes.getTimeByMinute());
+		normalInfo.setName(name);
+		normalInfo.setNumOfGame(entryNum);
+		normalInfo.setOffend(offensiveReboundsNum);
+		normalInfo.setPenalty(freeThrowScoreNum);
+		normalInfo.setPoint(personalPoints);
+		normalInfo.setRebound(totalReboundsNum);
+		normalInfo.setShot(shootNum);
+		normalInfo.setStart(startingNum);
+		normalInfo.setSteal(stealNum);
+		normalInfo.setTeamName(teamName);
+		normalInfo.setThree(threePointerScoreNum);
+		return normalInfo;
+	}
+	
+	public PlayerHighInfo getHighInfo(){
+		PlayerHighInfo highInfo = new PlayerHighInfo();
+		highInfo.setAssistEfficient(assistRate);
+		highInfo.setBlockShotEfficient(blockRate);
+		highInfo.setDefendReboundEfficient(defensiveReboundRate);
+		highInfo.setFaultEfficient(turnoverRate);
+		highInfo.setFrequency(useRate);
+		highInfo.setGmSc(GmSc);
+		highInfo.setLeague(competion);
+		highInfo.setName(name);
+		highInfo.setOffendReboundEfficient(offensiveReboundRate);
+		highInfo.setPosition(position);
+		highInfo.setRealShot(trueShootingPercentage);
+		highInfo.setReboundEfficient(reboundRate);
+		highInfo.setShotEfficient(shootingEfficiency);
+		highInfo.setStealEfficient(stealRate);
+		highInfo.setTeamName(teamName);
+		return highInfo;
+	}
+	
+	public PlayerKingInfo getKingInfo(String field){
+		PlayerKingInfo playerKingInfo = new PlayerKingInfo();
+		playerKingInfo.setField(field);
+		playerKingInfo.setName(this.name);
+		playerKingInfo.setPosition(this.position);
+		playerKingInfo.setTeamName(this.teamName);
+		playerKingInfo.setValue(this.getKingValue(field));
+		return playerKingInfo;
+	}
+	
+	private double getKingValue(String field){
+		switch (field) {
+		case "score": return this.avePersonalPoints;
+		case "rebound": return this.aveTotalReboundsNum;
+		case "assist": return this.aveAssistNum;
+		}
+		return 0.0;
+	}
+	
+	public PlayerHotInfo getHotInfo(String field){
+		PlayerHotInfo playerHotInfo = new PlayerHotInfo();
+		playerHotInfo.setField(field);
+		playerHotInfo.setName(this.name);
+		playerHotInfo.setPosition(this.position);
+		playerHotInfo.setTeamName(this.teamName);
+		playerHotInfo.setUpgradeRate(this.setProgressRate(field));
+		playerHotInfo.setValue(this.setHotValue(field));
+		return playerHotInfo;
+	}
+	
+	private double setProgressRate(String field){
+		switch (field) {
+		case "score": return this.recentPointAdvance; 
+		case "rebound": return this.recentReboundAdvance; 
+		case "assist": return this.recentAssistAdvance; 
+		}
+		return 0.0;
+	}
+	
+	private double setHotValue(String field){
+		switch (field) {
+		case "score": return this.avePersonalPoints; 
+		case "rebound": return this.aveTotalReboundsNum; 
+		case "assist": return this.aveAssistNum; 
+		}
+		return 0.0;
+	}
+	
 	public String getAction() {
 		return action;
 	}
