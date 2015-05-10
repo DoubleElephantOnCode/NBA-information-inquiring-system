@@ -21,23 +21,27 @@ public class Console {
 	 */
 	public void execute(PrintStream out, String[] args) {
 		
-//		ReadTeamData readTeam;
-//		ReadPlayerData readPlayer;
-//		ReadMatchData readMatch;
-//
-//		readTeam = new ReadTeamData();
-//		readTeam.readTeamData();
-//
-//		readPlayer = new ReadPlayerData();
-//		readPlayer.readPlayerData();
-//
-//		readMatch = new ReadMatchData();
-//		readMatch.readMatchData();
+		ReadTeamData readTeam;
+		ReadPlayerData readPlayer;
+		ReadMatchData readMatch;
 
-		TeamTestCommand t = new TeamTestCommand();
+		readTeam = new ReadTeamData();
+		readTeam.readTeamData();
 
+		readPlayer = new ReadPlayerData();
+		readPlayer.readPlayerData();
+
+		readMatch = new ReadMatchData();
+		readMatch.readMatchData();
+		if(args[0].equals("-team")){
+			TeamTestCommand t = new TeamTestCommand();
+			t.analysisCommand(out, args);
+		}else if(args[0].equals("-player")){
+			PlayerTestCommand t = new PlayerTestCommand();
+			t.analysisCommand(out, args);
+		}
 		
-		t.analysisCommand(out, args);
+		
 
 	}
 

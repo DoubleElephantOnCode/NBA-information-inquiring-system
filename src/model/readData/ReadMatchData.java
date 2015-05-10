@@ -22,7 +22,13 @@ public class ReadMatchData {
 	
 	public static ObserverTheData readMatch= null;
 	
+	private static boolean isIteratorOne = false;
+	
+	private static String currentDate;
+	
 	public void readMatchData(){
+		isIteratorOne = true;
+		
 		File matchFile = new File(FilePath.matchPath);
 		 File[] matches = matchFile.listFiles();
 		 
@@ -63,7 +69,9 @@ public class ReadMatchData {
 	 * @return
 	 */
 	public static String getCurrentDate(){
-		
+		if(isIteratorOne){
+			return currentDate;
+		}
 		return readMatch.latestDate; 
 	}
 	
@@ -85,6 +93,7 @@ public class ReadMatchData {
 			}else{
 				year = yearOfStart + 1 - datePadding;
 			}
+			currentDate = year+"-"+month+"-"+day;
 			Date timeOfMatch = new Date(year,month - 1,day);
 			String awayTeam = strings[1].split("-")[0];
 			String homeTeam = strings[1].split("-")[1];
