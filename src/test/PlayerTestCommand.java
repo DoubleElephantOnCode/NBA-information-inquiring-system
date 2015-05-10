@@ -126,15 +126,22 @@ public class PlayerTestCommand {
 	 */
 	public void analysisCommand(PrintStream out, String[] command) {
 		//解析分析命令
-		for (int i = 0; i < command.length;) {
+		
+		for (int i = 1; i < command.length;) {
 			i = analysisString(command, i);
 		}
 		
+		if(sortList.size() == 0){
+			SortFieldAndOrder defaultOrder = new SortFieldAndOrder(28, isPositiveSequence);
+			this.sortList.add(defaultOrder);
+		}
+
 		if(isAll){	//全部球员进行筛选
 			if(isBasic){	//基础数据
 				ArrayList<PlayerVO> playerList = SelectPlayer.selectPlayerForTest(
 						PlayerList.getPlayers(), position, league, age, sortList);
 				if(isAvg){	//场均数据
+					System.out.println("hehe1");
 					for (int i = 0; i < selectNum && i < playerList.size(); i++) {
 						playerNormalInfo = playerList.get(i).getNormalAvgInfo();
 						out.print(playerNormalInfo.toString());

@@ -37,9 +37,14 @@ public class SelectPlayer {
 		
 		String[] s1 = position.split("-");
 		String[] s2 = area.split("-");
-		
-		position = s1[1];
-		area = s2[1];
+		if(s1.length == 1 && s2.length == 1){
+			position = s1[0];
+			area = s2[0];
+		} else {
+			position = s1[1];
+			area = s2[1];
+		}
+
 		
 		System.out.println("pos = " + position);
 		System.out.println("are = " + area);
@@ -268,6 +273,10 @@ public class SelectPlayer {
 			String age, ArrayList<SortFieldAndOrder> sortFieldAndOrderList) {
 		// TODO 测试专用筛选方法
 
+//		for (int i = 0; i < array.length; i++) {
+//			
+//		}
+		
 		ArrayList<PlayerVO> players = new ArrayList<PlayerVO>();
 		ArrayList<Comparator<PlayerVO>> playerCmpList = setComparatorList(sortFieldAndOrderList);
 
