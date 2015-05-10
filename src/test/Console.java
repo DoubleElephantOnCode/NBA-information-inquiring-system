@@ -21,32 +21,29 @@ public class Console {
 	 * @param args
 	 */
 	public void execute(PrintStream out, String[] args) {
-		if(args[0].equals("--datasource")){
+		if (args[0].equals("--datasource")) {
 			FilePath.changePath(args[1]);
+			ReadTeamData readTeam;
+			ReadPlayerData readPlayer;
+			ReadMatchData readMatch;
+
+			readTeam = new ReadTeamData();
+			readTeam.readTeamData();
+
+			readPlayer = new ReadPlayerData();
+			readPlayer.readPlayerData();
+			readMatch = new ReadMatchData();
+			readMatch.readMatchData();
 			return;
 		}
-		
-		ReadTeamData readTeam;
-		ReadPlayerData readPlayer;
-		ReadMatchData readMatch;
 
-		readTeam = new ReadTeamData();
-		readTeam.readTeamData();
-
-		readPlayer = new ReadPlayerData();
-		readPlayer.readPlayerData();
-
-		readMatch = new ReadMatchData();
-		readMatch.readMatchData();
-		if(args[0].equals("-team")){
+		if (args[0].equals("-team")) {
 			TeamTestCommand t = new TeamTestCommand();
 			t.analysisCommand(out, args);
-		}else if(args[0].equals("-player")){
+		} else if (args[0].equals("-player")) {
 			PlayerTestCommand t = new PlayerTestCommand();
 			t.analysisCommand(out, args);
 		}
-		
-		
 
 	}
 
