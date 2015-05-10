@@ -144,11 +144,13 @@ public class PlayerTestCommand {
 					System.out.println("hehe1");
 					for (int i = 0; i < selectNum && i < playerList.size(); i++) {
 						playerNormalInfo = playerList.get(i).getNormalAvgInfo();
+						out.println(i+1);
 						out.print(playerNormalInfo.toString());
 					}
 				} else {
 					for (int i = 0; i < selectNum && i < playerList.size(); i++) {
 						playerNormalInfo = playerList.get(i).getNormalAllInfo();
+						out.println(i+1);
 						out.print(playerNormalInfo.toString());
 					}
 				}
@@ -157,6 +159,7 @@ public class PlayerTestCommand {
 						PlayerList.getPlayers(), position, league, age, sortList);
 				for (int i = 0; i < selectNum && i < playerList.size(); i++) {
 					playerHighInfo = playerList.get(i).getHighInfo();
+					out.println(i+1);
 					out.print(playerHighInfo.toString());
 				}
 			}
@@ -166,6 +169,7 @@ public class PlayerTestCommand {
 					PlayerList.getPlayers(), selectHotField);
 			for (int i = 0; i < kingOrHotNum && i < playerList.size(); i++) {
 				playerHotInfo = playerList.get(i).getHotInfo(hotField);
+				out.println(i+1);
 				out.print(playerHotInfo.toString());
 			}
 		} else {	//数据王球员筛选
@@ -173,6 +177,7 @@ public class PlayerTestCommand {
 					PlayerList.getPlayers(), isSeason, selectKingField);
 			for (int i = 0; i < kingOrHotNum && i < playerList.size(); i++) {
 				playerKingInfo = playerList.get(i).getKingInfo(kingField);
+				out.println(i+1);
 				out.print(playerKingInfo.toString());
 			}
 		}

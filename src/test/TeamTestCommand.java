@@ -67,6 +67,7 @@ public class TeamTestCommand {
 			TeamList.sortTeam(field, isSequence);
 			ArrayList<TeamVO> teamVOList = TeamList.getTeamVOList();
 			for(int i = 0; i < num &&i < teamVOList.size();i++){
+				out.println(i+1);
 				teamHotInfo = teamVOList.get(i).getHotInfo(stringField, field);
 				out.print(teamHotInfo.toString());
 			}
@@ -76,6 +77,7 @@ public class TeamTestCommand {
 			TeamList.sortTeam(highField, isSequence);
 			ArrayList<TeamVO> teamVOList = TeamList.getTeamVOList();
 			for(int i = 0; i < num &&i < teamVOList.size();i++){
+				out.println(i+1);
 				teamHighInfo = teamVOList.get(i).getHighInfo();
 				out.print(teamHighInfo.toString());
 			}
@@ -84,6 +86,7 @@ public class TeamTestCommand {
 			TeamList.sortTeam(normalField, isSequence);
 			ArrayList<TeamVO> teamVOList = TeamList.getTeamVOList();
 			for(int i = 0; i < num &&i < teamVOList.size();i++){
+				out.println(i+1);
 				teamNormalInfo = teamVOList.get(i).getNormalInfo(isAvg);
 				out.print(teamNormalInfo.toString());
 			}
