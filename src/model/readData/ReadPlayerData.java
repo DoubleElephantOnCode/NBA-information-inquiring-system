@@ -2,7 +2,9 @@ package model.readData;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
+import java.io.InputStreamReader;
 
 import model.dataLogic.PlayerList;
 import vo.PlayerVO;
@@ -34,8 +36,10 @@ public class ReadPlayerData {
 	 */
 	private String readAPlayer(File playerInfo){
 		String info = "";
+		InputStreamReader insReader =null;
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(playerInfo));
+			insReader =  new InputStreamReader(new FileInputStream(playerInfo) ,"UTF-8");
+			BufferedReader br = new BufferedReader(insReader);
 			String row = br.readLine();
 			while((row = br.readLine()) != null){
 				//处理读出的行

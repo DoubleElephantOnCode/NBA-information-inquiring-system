@@ -2,8 +2,9 @@ package model.readData;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import model.dataLogic.TeamList;
 import vo.TeamVO;
@@ -12,10 +13,13 @@ import constant.FilePath;
 public class ReadTeamData {
 	public void readTeamData(){
 		File teamFile = new File(FilePath.teamPath+"/teams");
+		InputStreamReader insReader =null;
 		BufferedReader reader = null;
+		String tempString=null;
 		try{
-			reader = new BufferedReader(new FileReader(teamFile));
-			String tempString = null;
+			insReader =  new InputStreamReader(new FileInputStream(teamFile) ,"UTF-8");
+			reader = new BufferedReader(insReader);
+			int i =0;
 			while((tempString = reader.readLine())!=null){
 				if(tempString.charAt(2)=='═'){
 					continue;
@@ -27,7 +31,7 @@ public class ReadTeamData {
 				TeamList.addTeamVO(teamVO);
 			}
 		}catch(IOException exception){
-			
+
 		}
 	}
 
