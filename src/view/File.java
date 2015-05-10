@@ -2,7 +2,7 @@ package view;
 
 public class File {
 	
-	public static String file = "D:\\image\\";
+	public static String file = "image\\";
 	
 	public static String PNG = ".png";
 	
