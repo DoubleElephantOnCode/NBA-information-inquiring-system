@@ -7,9 +7,18 @@ package constant;
  *
  */
 public class FilePath {
-	public static final String matchPath = "D:/data/matches";
-	public static final String playerActionPath = "D:/data/players/action/";
-	public static final String playerInfoPath = "D:/data/players/info";
-	public static final String playerPortaitPath = "D:/data/players/portrait/";
-	public static final String teamPath = "D:/data/teams";
+	public static  String path = "D:/data";
+	public static  String matchPath = path+"/matches";
+	public static  String playerActionPath = path+"/players/action/";
+	public static  String playerInfoPath = path+"/players/info";
+	public static  String playerPortaitPath = path+"/players/portrait/";
+	public static  String teamPath = path+"/teams";
+	public static  void changePath(String path2){
+		 path = path2;
+		 matchPath = path+"/matches";
+		 playerActionPath = path+"/players/action/";
+		 playerInfoPath = path+"/players/info";
+		 playerPortaitPath = path+"/players/portrait/";
+		 teamPath = path+"/teams";
+	}
 }

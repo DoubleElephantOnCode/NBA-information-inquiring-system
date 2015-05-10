@@ -2,6 +2,7 @@ package test;
 
 import java.io.PrintStream;
 
+import constant.FilePath;
 import model.readData.ReadMatchData;
 import model.readData.ReadPlayerData;
 import model.readData.ReadTeamData;
@@ -20,6 +21,10 @@ public class Console {
 	 * @param args
 	 */
 	public void execute(PrintStream out, String[] args) {
+		if(args[0].equals("--datasource")){
+			FilePath.changePath(args[1]);
+			return;
+		}
 		
 		ReadTeamData readTeam;
 		ReadPlayerData readPlayer;
