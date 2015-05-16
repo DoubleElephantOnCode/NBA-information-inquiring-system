@@ -244,20 +244,20 @@ public class MatchDataPerPlayerVO {
 			this.presentTime = new MyPresentTime(presentTime);
 		}
 				
-		this.scoreNum = Integer.parseInt(scoreNum);
-		this.shootNum = Integer.parseInt(shootNum);
-		this.threePointScoreNum = Integer.parseInt(threePointScoreNum);
-		this.threePointShootNum = Integer.parseInt(threePointShootNum);
-		this.freeThrowScoreNum = Integer.parseInt(freeThrowScoreNum);
-		this.freeThrowShootNum = Integer.parseInt(freeThrowShootNum);
-		this.offensiveReboundsNum = Integer.parseInt(offensiveReboundsNum);
-		this.defensiveReboundsNum = Integer.parseInt(defensiveReboundsNum);
-		this.totalReboundsNum = Integer.parseInt(totalReboundsNum);
-		this.assistNum = Integer.parseInt(assistNum);
-		this.stealNum = Integer.parseInt(stealNum);
-		this.blockNum = Integer.parseInt(blockNum);
-		this.turnoverNum = Integer.parseInt(turnoverNum);
-		this.foulNum = Integer.parseInt(foulNum);
+		this.scoreNum = toInt(scoreNum);
+		this.shootNum = toInt(shootNum);
+		this.threePointScoreNum = toInt(threePointScoreNum);
+		this.threePointShootNum = toInt(threePointShootNum);
+		this.freeThrowScoreNum = toInt(freeThrowScoreNum);
+		this.freeThrowShootNum = toInt(freeThrowShootNum);
+		this.offensiveReboundsNum =toInt(offensiveReboundsNum);
+		this.defensiveReboundsNum = toInt(defensiveReboundsNum);
+		this.totalReboundsNum = toInt(totalReboundsNum);
+		this.assistNum = toInt(assistNum);
+		this.stealNum = toInt(stealNum);
+		this.blockNum = toInt(blockNum);
+		this.turnoverNum = toInt(turnoverNum);
+		this.foulNum = toInt(foulNum);
 		//this.personalScore = Integer.parseInt(personalScore);
 		this.personalScore = this.threePointScoreNum * 3 + this.freeThrowScoreNum * 1 + (this.scoreNum - this.threePointScoreNum) * 2;
 		
@@ -268,11 +268,13 @@ public class MatchDataPerPlayerVO {
 	}
 	
 	public int toInt(String s){
-		if(s.equals("null")){
-			return 0;
-		}else{
-			return Integer.parseInt(s);
+		int t = 0;
+		try{
+			t = Integer.parseInt(s);
+		} catch(NumberFormatException e){
+			t = 0;
 		}
+		return t;
 	}
 
 	public String getTwoSides() {

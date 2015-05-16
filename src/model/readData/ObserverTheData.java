@@ -276,7 +276,7 @@ public class ObserverTheData extends Thread{
 	 */
 	public void readMatchFile(File file,int yearOfStart){
 		
-
+		System.out.println(file.getAbsolutePath());
 		
 		BufferedReader reader = null;
 		try{
@@ -320,6 +320,7 @@ public class ObserverTheData extends Thread{
 					isHome = true;
 					continue;
 				}
+
 				strings = tempString.split(";");
 				MatchDataPerPlayerVO mdppVO = null;
 				if(isHome){
