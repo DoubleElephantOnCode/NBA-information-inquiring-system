@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.InputStreamReader;
 
 import model.dataLogic.PlayerList;
+import model.sqlLogic.PlayerSQL;
 import vo.PlayerVO;
 import constant.FilePath;
 
@@ -18,9 +19,14 @@ import constant.FilePath;
  */
 public class ReadPlayerData {
 
+	/**
+	 * 链接球员的数据库
+	 */
+	private PlayerSQL playerDB;
 	
 	public ReadPlayerData() {
 		// TODO Auto-generated constructor stub
+		playerDB = new PlayerSQL();
 	}
 	
 	public void readPlayerData(){
@@ -44,6 +50,7 @@ public class ReadPlayerData {
 			while((row = br.readLine()) != null){
 				//处理读出的行
 				row = row.replace("║", "");
+				row = row + " ";
 				String[] temp = row.split("│");
 				temp[0] = temp[0].trim();
 				temp[1] = temp[1].trim();
@@ -69,6 +76,8 @@ public class ReadPlayerData {
 	private PlayerVO createAPlayer(String info){
 		String[] playerInfo = info.split(";");
 		PlayerVO player = new PlayerVO(playerInfo[0], playerInfo[1], playerInfo[2], playerInfo[3],
+				playerInfo[4], playerInfo[5], playerInfo[6], playerInfo[7], playerInfo[8]);
+		playerDB.insertPlayerInfo(playerInfo[0], playerInfo[1], playerInfo[2], playerInfo[3],
 				playerInfo[4], playerInfo[5], playerInfo[6], playerInfo[7], playerInfo[8]);
 		return player;
 	}

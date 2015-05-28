@@ -9,7 +9,8 @@ public class AutoTest {
 		Console c = new Console();
 		PrintStream s = System.out;
 		c.execute(s , new String[]{
-				"-team", "-all" ,"-total"
+				"-player"		
+				, "-all", "-n", "50", "-total"
 		});
 
 	}
