@@ -4,6 +4,7 @@ import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import sun.awt.windows.ThemeReader;
 import test.data.PlayerHighInfo;
 import test.data.PlayerHotInfo;
 import test.data.PlayerKingInfo;
@@ -502,7 +503,11 @@ public class PlayerVO {
 		this.name = name;
 		this.number = number;
 		this.position = position;
-		this.height = toMeter(height);
+		if(!height.contains("-")){
+			this.height = toMeter("0-0");
+		} else {
+			this.height = toMeter(height);
+		}
 		this.weight = weight;
 		this.birthday = birthday;
 		this.age = age;
