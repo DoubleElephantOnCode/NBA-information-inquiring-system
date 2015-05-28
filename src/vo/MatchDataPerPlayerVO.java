@@ -10,6 +10,15 @@ import java.util.Date;
  */
 public class MatchDataPerPlayerVO {
 	/**
+	 * 赛季
+	 */
+	public String season;
+	
+	/**
+	 * 是否是季后赛
+	 */
+	public boolean isPlayoff;
+	/**
 	 * 比赛时间
 	 */
 	public Date timeOfMatch;
@@ -589,6 +598,22 @@ public class MatchDataPerPlayerVO {
 			totalReboundsNum+"",assistNum+"",stealNum+"",blockNum+"",turnoverNum+"",foulNum+"",personalScore+""
 		};
 		return s;
+	}
+
+	public String getSeason() {
+		return season;
+	}
+
+	public void setSeason(String season) {
+		this.season = season;
+	}
+
+	public boolean isPlayoff() {
+		return isPlayoff;
+	}
+
+	public void setPlayoff(boolean isPlayoff) {
+		this.isPlayoff = isPlayoff;
 	}
 	
 	

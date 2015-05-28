@@ -14,6 +14,16 @@ import model.dataLogic.TeamList;
  */
 public class MatchVO {
 	/**
+	 * 赛季
+	 */
+	public String season;
+	
+	/**
+	 * 是否是季后赛
+	 */
+	public boolean isPlayoff;
+	
+	/**
 	 * 比赛时间
 	 */
 	public Date timeOfMatch;
@@ -246,9 +256,11 @@ public class MatchVO {
 	 * @param thirdScore
 	 * @param fourthScore
 	 */
-	public MatchVO(Date timeOfMatch, String awayTeam, String homeTeam,
+	public MatchVO(String season,boolean isPlayoff,Date timeOfMatch, String awayTeam, String homeTeam,
 			ScoreVO totalScore, ArrayList<ScoreVO> scoreVOList) {
 		super();
+		this.season = season;
+		this.isPlayoff = isPlayoff;
 		this.timeOfMatch = timeOfMatch;
 		this.awayTeam = awayTeam;
 		this.homeTeam = homeTeam;
@@ -383,6 +395,8 @@ public class MatchVO {
 		//TODO 尚未完成
 		//主队
 		for(MatchDataPerPlayerVO homePlayerData : homePlayerList){
+			homePlayerData.setSeason(season);
+			homePlayerData.setPlayoff(isPlayoff);
 			homePlayerData.setTimeOfMatch(timeOfMatch);
 			homePlayerData.setTimeOfAllPlayers(new MyPresentTime(
 					((scoreVOList.size() - 4) * 5 +48) * 5, 0));
@@ -404,6 +418,8 @@ public class MatchVO {
 		}
 		//客队
 		for(MatchDataPerPlayerVO awayPlayerData : awayPlayerList){
+			awayPlayerData.setSeason(season);
+			awayPlayerData.setPlayoff(isPlayoff);
 			awayPlayerData.setTimeOfMatch(timeOfMatch);
 			awayPlayerData.setTimeOfAllPlayers(new MyPresentTime(
 					((scoreVOList.size() - 4) * 5 +48) * 5, 0));

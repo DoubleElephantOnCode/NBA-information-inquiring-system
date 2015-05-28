@@ -289,15 +289,25 @@ public class ObserverTheData extends Thread{
 			int month = Integer.parseInt(strings[0].split("-")[0]);
 			int day = Integer.parseInt(strings[0].split("-")[1]);
 			int year = 0;
+			int startYear = Integer.parseInt(strings[3].split("-")[0]); //得到12 13 14 .。。。
 			if(month > 6){
-				year = yearOfStart - datePadding;
+				year = startYear - datePadding;
 			}else{
-				year = yearOfStart + 1 - datePadding;
+				year = startYear + 1 - datePadding;
 			}
 			Date timeOfMatch = new Date(year,month - 1,day);
 			String awayTeam = strings[1].split("-")[0];
 			String homeTeam = strings[1].split("-")[1];
 			ScoreVO totalScore = new ScoreVO(strings[2]);
+			
+			String season = strings[3];
+			boolean isPlayoff;
+			if(strings[4].equals("0")){
+				isPlayoff = false;
+			}else{
+				isPlayoff = true;
+			}
+			
 			
 			tempString = reader.readLine();
 			ArrayList<ScoreVO> scoreVOList = new ArrayList<ScoreVO>();
@@ -306,7 +316,7 @@ public class ObserverTheData extends Thread{
 				ScoreVO scoreVO = new ScoreVO(strings[i]);
 				scoreVOList.add(scoreVO);
 			}
-			MatchVO matchVO = new MatchVO(timeOfMatch, awayTeam, homeTeam, totalScore, scoreVOList);
+			MatchVO matchVO = new MatchVO(season,isPlayoff,timeOfMatch, awayTeam, homeTeam, totalScore, scoreVOList);
 			
 			tempString = reader.readLine();
 			boolean isHome = false;
