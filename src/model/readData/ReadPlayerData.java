@@ -26,7 +26,7 @@ public class ReadPlayerData {
 	
 	public ReadPlayerData() {
 		// TODO Auto-generated constructor stub
-		playerDB = new PlayerSQL();
+//		playerDB = new PlayerSQL();
 	}
 	
 	public void readPlayerData(){
@@ -77,11 +77,11 @@ public class ReadPlayerData {
 		String[] playerInfo = info.split(";");
 		PlayerVO player = new PlayerVO(playerInfo[0], playerInfo[1], playerInfo[2], playerInfo[3],
 				playerInfo[4], playerInfo[5], playerInfo[6], playerInfo[7], playerInfo[8]);
-		playerDB.insertPlayerInfo(playerInfo[0], playerInfo[1], playerInfo[2], playerInfo[3],
-				playerInfo[4], playerInfo[5], playerInfo[6], playerInfo[7], playerInfo[8]);
+//		playerDB.insertPlayerInfo(playerInfo[0], playerInfo[1], playerInfo[2], playerInfo[3],
+//				playerInfo[4], playerInfo[5], playerInfo[6], playerInfo[7], playerInfo[8]);
 		return player;
 	}
-//	
+	
 //	public static void main(String[] args) {
 //		ReadPlayerData r = new ReadPlayerData();
 //		r.readPlayerData();

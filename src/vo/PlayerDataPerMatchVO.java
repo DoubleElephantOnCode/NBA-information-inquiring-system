@@ -25,6 +25,15 @@ public class PlayerDataPerMatchVO {
 	 */
 	private String twoSides;
 	
+	/**
+	 * 所属赛季
+	 */
+	private String season;
+	
+	/**
+	 * 是否是季后赛
+	 */
+	private boolean isPlayoff;
 	
 	/**
 	 * 对手球队名
@@ -230,6 +239,8 @@ public class PlayerDataPerMatchVO {
 		this.teamName = matchData.getTeamName();
 		this.matchDate = sdf.format(matchData.getTimeOfMatch());
 		this.twoSides = matchData.getTwoSides();
+		this.season = matchData.getSeason();
+		this.isPlayoff = matchData.isPlayoff();
 		this.position = matchData.getPosition();
 		this.playTime = matchData.getPresentTime();
 		this.scoreNum = matchData.getScoreNum();
@@ -576,6 +587,18 @@ public class PlayerDataPerMatchVO {
 
 	public String getMatchDate() {
 		return matchDate;
+	}
+
+	public String getSeason() {
+		return season;
+	}
+
+	public boolean isPlayoff() {
+		return isPlayoff;
+	}
+
+	public String getRivalTeam() {
+		return rivalTeam;
 	}
 
 	

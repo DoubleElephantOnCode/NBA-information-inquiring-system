@@ -530,6 +530,22 @@ public class PlayerVO {
 		competion = matchData.getCompetion();
 		// 赛区内分区
 		partition = matchData.getPartition();
+		
+		//把一场比赛中的球员数据加到总数据中
+		addToTotal(pvo);
+
+		// 计算参赛场数
+		calEntryNum();
+		calAveData();
+		calAllRate();
+		calRecentAdvance();
+	}
+	
+	/**
+	 * 把一场比赛中的球员数据加到总数据中
+	 * @param pvo
+	 */
+	private void addToTotal(PlayerDataPerMatchVO pvo){
 		// 两双次数
 		if (pvo.isDoubleDouble()) {
 			doubleDouble++;
@@ -588,14 +604,65 @@ public class PlayerVO {
 		allShootNum += pvo.getAllShootNum();
 		allFreeThrowShootNum += pvo.getAllFreeThrowShootNum();
 		allTurnoverNum = pvo.getAllTurnoverNum();
-
-		// 计算参赛场数
-		calEntryNum();
-		calAveData();
-		calAllRate();
-		calRecentAdvance();
 	}
 
+	/**
+	 * 初始化所有总数据
+	 */
+	private void iniTotal(){
+		// 两双次数
+		doubleDouble = 0;
+
+		// 首发次数
+		startingNum = 0;
+		// 总上场时间
+		totalMinutes = new MyPresentTime(0);
+		// 总投篮命中数
+		scoreNum = 0;
+		// 总出手数
+		shootNum = 0;
+		// 总三分命中数
+		threePointerScoreNum = 0;
+		// 总三分出手数
+		threePointerShootNum = 0;
+		// 总罚球命中数
+		freeThrowScoreNum = 0;
+		// 总罚球出手数
+		freeThrowShootNum = 0;
+		// 总进攻篮板数
+		offensiveReboundsNum = 0;
+		// 总防守篮板数
+		defensiveReboundsNum = 0;
+		// 总篮板数
+		totalReboundsNum = 0;
+		// 总助攻数
+		assistNum = 0;
+		// 总抢断数
+		stealNum = 0;
+		// 总盖帽数
+		blockNum = 0;
+		// 总犯规数
+		turnoverNum = 0;
+		// 总失误数
+		foulNum = 0;
+		// 个人总得分
+		personalPoints = 0;
+
+		timeOfAllPlayers = new MyPresentTime(0);
+		allScoreNum = 0;
+		allReboundNum = 0;
+		allOffReboundNum = 0;
+		allDefReboundNum = 0;
+		allOpponentRebondNum = 0;
+		allOppOffReboundNum = 0;
+		allOppDefReboundNum = 0;
+		opponentAttackRound = 0;
+		oppTwoPointShootNum = 0;
+		allShootNum = 0;
+		allFreeThrowShootNum = 0;
+		allTurnoverNum = 0;
+	}
+	
 	/**
 	 * 计算各种率(所有场次)
 	 */
@@ -686,6 +753,33 @@ public class PlayerVO {
 	 */
 	public void calAveData() {
 		double matchNum = dataPerMatchList.size();
+		if(matchNum == 0){
+			return;
+		}
+		
+		aveMinutes = MyPresentTime.toTimeFormat(totalMinutes.getTimeByMinute()
+				/ matchNum);
+		aveScoreNum = scoreNum / matchNum;
+		aveShootNum = shootNum / matchNum;
+		aveThreePointerScoreNum = threePointerScoreNum / matchNum;
+		aveThreePointerShootNum = threePointerShootNum / matchNum;
+		aveFreeThrowScoreNum = freeThrowScoreNum / matchNum;
+		aveFreeThrowShootNum = freeThrowShootNum / matchNum;
+		aveOffensiveReboundsNum = offensiveReboundsNum / matchNum;
+		aveDefensiveReboundsNum = defensiveReboundsNum / matchNum;
+		aveTotalReboundsNum = totalReboundsNum / matchNum;
+		aveAssistNum = assistNum / matchNum;
+		aveStealNum = stealNum / matchNum;
+		aveBlockNum = blockNum / matchNum;
+		aveTurnoverNum = turnoverNum / matchNum;
+		aveFoulNum = foulNum / matchNum;
+		avePersonalPoints = personalPoints / matchNum;
+	}
+	
+	/**
+	 * 计算场均数据
+	 */
+	public void calAveData(int matchNum) {
 		if(matchNum == 0){
 			return;
 		}
@@ -1146,6 +1240,47 @@ public class PlayerVO {
 		case "assist": return this.aveAssistNum; 
 		}
 		return 0.0;
+	}
+	
+
+	/**
+	 * 计算任意赛季的数据
+	 * @param season 哪个赛季"XX-XX"
+	 * @param isOnlyPlayoff 是否只统计季后赛信息（true就只统计季后赛信息）
+	 */
+	public void calSeasonData(String season, boolean isOnlyPlayoff){
+		//TODO 计算任意赛季的数据
+		ArrayList<PlayerDataPerMatchVO> matchDataList = new ArrayList<PlayerDataPerMatchVO>();
+		//把符合条件的比赛数据加入到list内
+		for (int i = 0; i < dataPerMatchList.size(); i++) {
+			if(dataPerMatchList.get(i).getSeason().equals(season)){
+				if(isOnlyPlayoff){
+					if(dataPerMatchList.get(i).isPlayoff()){
+						matchDataList.add(dataPerMatchList.get(i));
+					}
+				} else {
+					matchDataList.add(dataPerMatchList.get(i));
+				}
+			}
+		}
+		entryNum = matchDataList.size();
+		//清空总数据
+		iniTotal();
+		//计算总数据
+		calTotalData(matchDataList);
+		calAveData(matchDataList.size());
+		calAllRate();
+	}
+	
+	/**
+	 * 计算某个赛季(或一段时间)的总数据
+	 * @param matchDataList
+	 */
+	public void calTotalData(ArrayList<PlayerDataPerMatchVO> matchDataList){
+		//TODO 计算某个赛季(或一段时间)的总数据
+		for (int i = 0; i < matchDataList.size(); i++) {
+			addToTotal(matchDataList.get(i));
+		}
 	}
 	
 	public String getAction() {
