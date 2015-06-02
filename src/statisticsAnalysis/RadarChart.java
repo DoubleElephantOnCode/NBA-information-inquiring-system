@@ -6,6 +6,8 @@ import java.awt.GradientPaint;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.axis.NumberTickUnit;
 import org.jfree.chart.plot.PolarPlot;
 import org.jfree.chart.renderer.DefaultPolarItemRenderer;
 import org.jfree.data.xy.XYSeries;
@@ -37,8 +39,13 @@ public class RadarChart {
 		xyseriescollection.addSeries(series);
 	}
 	
-	public ChartPanel getChartPanel(){
-		jfreechart = ChartFactory.createPolarChart(title, xyseriescollection, true, false, false);
+	public ChartPanel getChartPanel(Color c, boolean colorEx){
+		jfreechart = ChartFactory.createPolarChart(title, xyseriescollection, colorEx, false, false);
+		PolarPlot polarplot = (PolarPlot) jfreechart.getPlot();
+		polarplot.setBackgroundPaint(c);
+		polarplot.setAngleGridlinesVisible(false);
+		((NumberAxis)polarplot.getAxis()).setTickUnit(new NumberTickUnit(0.1));
+		((NumberAxis)polarplot.getAxis()).setVisible(false);
 		p = new ChartPanel(jfreechart);
 		return p;
 	}
