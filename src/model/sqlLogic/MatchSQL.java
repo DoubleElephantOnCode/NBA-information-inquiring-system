@@ -206,11 +206,11 @@ public class MatchSQL {
 		 
 		 Collections.sort(fileList, new Com());
 		 for(int i=0;i<fileList.size();i++){
-			 readAMatch(fileList.get(i));
+			 readAMatch(fileList.get(i),i);
 		 }
 	}
 	
-	public void readAMatch(File file){
+	public void readAMatch(File file,int num){
 		System.out.println(file.getAbsolutePath());
 		InputStreamReader insReader =null;
 		BufferedReader reader = null;
@@ -248,8 +248,8 @@ public class MatchSQL {
 			String scoreList = tempString;
 			
 			try{
-				String sql = "INSERT INTO `school`.`match` (`matchDate`, `team`, `totalScore`, `season`, `isPayoff`, `scoreList`) VALUES " +
-						"('" + matchDate + "', '" + team + "', '" + totalScore + "', '" + season +
+				String sql = "INSERT INTO `school`.`match` (`number`, `matchDate`, `team`, `totalScore`, `season`, `isPayoff`, `scoreList`) VALUES " +
+						"('" +(num+"") + "', '" + matchDate + "', '" + team + "', '" + totalScore + "', '" + season +
 						"', '" + isPayoff + "', '" + scoreList +"')";
 				Statement statement= conn.createStatement();	
 				 statement.executeUpdate(sql);
@@ -304,7 +304,7 @@ public class MatchSQL {
 
 	public void createMatchTable(){
 		try {
-			String sql = "CREATE TABLE `school`.`match` (`matchDate` VARCHAR(10) NOT NULL,`team` VARCHAR(45) NOT NULL,`totalScore` VARCHAR(10) NULL,`season` VARCHAR(8) NULL,`isPayoff` VARCHAR(3) NULL,`scoreList` VARCHAR(90) NULL,PRIMARY KEY (`matchDate`, `team`))";
+			String sql = "CREATE TABLE `school`.`match` (`number` VARCHAR(10) NOT NULL,`matchDate` VARCHAR(10) NOT NULL,`team` VARCHAR(45) NOT NULL,`totalScore` VARCHAR(10) NULL,`season` VARCHAR(8) NULL,`isPayoff` VARCHAR(3) NULL,`scoreList` VARCHAR(90) NULL,PRIMARY KEY (`number`))";
 			Statement statement= conn.createStatement();
 		
 			 statement.execute(sql);
