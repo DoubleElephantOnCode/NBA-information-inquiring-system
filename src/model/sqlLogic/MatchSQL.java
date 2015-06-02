@@ -124,7 +124,6 @@ public class MatchSQL {
 			
 				String selectSql = " WHERE matchDate = '" + timeOfMatchStr + "' AND team ='" + team+ "';";
 				String sql = playerInfoSql + selectSql;
-				System.out.println(sql);
 				ResultSet rst = statement2.executeQuery(sql);
 				while (rst.next()){
 					MatchDataPerPlayerVO mdppVO = null;

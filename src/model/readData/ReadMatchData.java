@@ -27,6 +27,11 @@ public class ReadMatchData {
 	private static String currentDate;
 	
 	public void readMatchData(){
+		
+		ObserverTheData t = new ObserverTheData();
+		 readMatch = t;
+		
+		
 		isIteratorOne = true;
 		
 		File matchFile = new File(FilePath.matchPath);
@@ -77,6 +82,9 @@ public class ReadMatchData {
 	
 	
 	public void readMatchDataBySQL(){
+		ObserverTheData t = new ObserverTheData();
+		 readMatch = t;
+		
 		
 		MatchSQL matchSQL = new MatchSQL();
 		matchSQL.readAllMatch();
