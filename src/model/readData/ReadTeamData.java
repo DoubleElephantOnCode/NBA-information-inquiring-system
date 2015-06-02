@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import model.dataLogic.TeamList;
+import model.sqlLogic.TeamSQL;
 import vo.TeamVO;
 import constant.FilePath;
 
@@ -33,6 +34,11 @@ public class ReadTeamData {
 		}catch(IOException exception){
 
 		}
+	}
+	
+	public void readTeamDataBySQL(){
+		TeamSQL teamSQL = new TeamSQL();
+		teamSQL.readTeam();
 	}
 
 }

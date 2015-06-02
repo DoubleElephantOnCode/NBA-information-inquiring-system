@@ -10,9 +10,9 @@ import java.util.Date;
 import model.dataLogic.MatchList;
 import model.dataLogic.PlayerList;
 import model.dataLogic.TeamList;
+import model.sqlLogic.MatchSQL;
 import vo.MatchDataPerPlayerVO;
 import vo.MatchVO;
-import vo.PlayerDataPerMatchVO;
 import vo.ScoreVO;
 import constant.FilePath;
 
@@ -74,6 +74,14 @@ public class ReadMatchData {
 		}
 		return readMatch.latestDate; 
 	}
+	
+	
+	public void readMatchDataBySQL(){
+		
+		MatchSQL matchSQL = new MatchSQL();
+		matchSQL.readAllMatch();
+	}
+	
 	
 	/**
 	 * 读取一个match文件的数据
