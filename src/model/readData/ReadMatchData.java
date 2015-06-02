@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 import model.dataLogic.MatchList;
@@ -41,21 +43,77 @@ public class ReadMatchData {
 		// for(File file:matches){
 		//	 readMatchFile(file);
 		// }
-		 int i = 0;
-		 for(i = 0;i < matches.length;i++){
-			 String path = matches[i].getPath();
-			 String fileName = path.substring(FilePath.matchPath.length()+1);
-			 int month = Integer.parseInt(fileName.substring(6, 8));
-			 if(month > 6){
-				 break;
-			 }
+		 
+		 
+		 
+		 
+		 
+//		 int i = 0;
+//		 for(i = 0;i < matches.length;i++){
+//			 String path = matches[i].getPath();
+//			 String fileName = path.substring(FilePath.matchPath.length()+1);
+//			 int month = Integer.parseInt(fileName.substring(6, 8));
+//			 if(month > 6){
+//				 break;
+//			 }
+//		 }
+//		 for(int j = i;j<matches.length;j++){
+//			 readMatchFile(matches[j],2012);
+//		 }
+//		 for(int j = 0;j < i;j++){
+//			 readMatchFile(matches[j],2012);
+//		 }
+		 ArrayList<File> fileList = new ArrayList<File>();
+		 
+		 for(int i=0;i<matches.length;i++){
+			 fileList.add(matches[i]);
+		}
+		 class Com implements Comparator{
+
+			@Override
+			public int compare(Object arg0, Object arg1) {
+				// TODO Auto-generated method stub
+				File f1=(File)arg0;
+				String season1 = f1.getName().split("_")[0];
+				String date1 = f1.getName().split("_")[1];
+				int year1 = Integer.parseInt(season1.split("-")[0]);
+				int month1 = Integer.parseInt(date1.split("-")[0]);
+				if(month1<8){
+					year1++;
+				}
+				int day1 = Integer.parseInt(date1.split("-")[1]);
+				
+				File f2=(File)arg1;
+				String season2 = f2.getName().split("_")[0];
+				String date2 = f2.getName().split("_")[1];
+				int year2 = Integer.parseInt(season2.split("-")[0]);
+				int month2 = Integer.parseInt(date2.split("-")[0]);
+				if(month2 < 8 ){
+					year2++;
+				}
+				int day2 = Integer.parseInt(date1.split("-")[1]);
+				
+				
+				if(year1==year2&&month1==month2&&day1==day2){
+					return 0;
+				}
+				if(year1>year2||year1==year2&&month1>month2||year1==year2&&month1==month2&&day1>day2){
+					return 1;
+				}else{
+					return -1;
+				}
+			}
+			 
 		 }
-		 for(int j = i;j<matches.length;j++){
-			 readMatchFile(matches[j],2012);
+		 
+		 Collections.sort(fileList, new Com());
+		 for(int i=0;i<fileList.size();i++){
+			 readMatchFile(fileList.get(i));
 		 }
-		 for(int j = 0;j < i;j++){
-			 readMatchFile(matches[j],2012);
-		 }
+		 
+		 
+		 
+		 
 		 
 		 TeamList.finishRead();
 	}
@@ -94,7 +152,7 @@ public class ReadMatchData {
 	/**
 	 * 读取一个match文件的数据
 	 */
-	public void readMatchFile(File file,int yearOfStart){
+	public void readMatchFile(File file){
 		BufferedReader reader = null;
 		try{
 			reader = new BufferedReader(new FileReader(file));

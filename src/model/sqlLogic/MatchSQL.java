@@ -97,22 +97,22 @@ public class MatchSQL {
 			
 			while (rs.next()){
 				//TODO 
-				timeOfMatchStr = rs.getString(1);
+				timeOfMatchStr = rs.getString(2);
 				String[] date = timeOfMatchStr.split("-");
 				timeOfMatch = new Date(Integer.parseInt(date[0])-1900, Integer.parseInt(date[1])-1, Integer.parseInt(date[2]));
-				team = rs.getString(2);
+				team = rs.getString(3);
 				awayTeam = team.split("-")[0];
 				homeTeam = team.split("-")[1];
-				totalScoreStr = rs.getString(3);
+				totalScoreStr = rs.getString(4);
 				totalScore = new ScoreVO(totalScoreStr);
-				season = rs.getString(4);
-				isPayoffStr = rs.getString(5);
+				season = rs.getString(5);
+				isPayoffStr = rs.getString(6);
 				if(isPayoffStr.equals("0")){
 					isPayoff = false;
 				}else{
 					isPayoff = true;
 				}
-				scoreVOListStr = rs.getString(6);
+				scoreVOListStr = rs.getString(7);
 				String[] splitScore = scoreVOListStr.split(";");
 				scoreVOList = new ArrayList<ScoreVO>(splitScore.length);
 				for(int i=0;i<splitScore.length;i++){
@@ -249,7 +249,7 @@ public class MatchSQL {
 			
 			try{
 				String sql = "INSERT INTO `school`.`match` (`number`, `matchDate`, `team`, `totalScore`, `season`, `isPayoff`, `scoreList`) VALUES " +
-						"('" +(num+"") + "', '" + matchDate + "', '" + team + "', '" + totalScore + "', '" + season +
+						"('" +num + "', '" + matchDate + "', '" + team + "', '" + totalScore + "', '" + season +
 						"', '" + isPayoff + "', '" + scoreList +"')";
 				Statement statement= conn.createStatement();	
 				 statement.executeUpdate(sql);
@@ -304,7 +304,7 @@ public class MatchSQL {
 
 	public void createMatchTable(){
 		try {
-			String sql = "CREATE TABLE `school`.`match` (`number` VARCHAR(10) NOT NULL,`matchDate` VARCHAR(10) NOT NULL,`team` VARCHAR(45) NOT NULL,`totalScore` VARCHAR(10) NULL,`season` VARCHAR(8) NULL,`isPayoff` VARCHAR(3) NULL,`scoreList` VARCHAR(90) NULL,PRIMARY KEY (`number`))";
+			String sql = "CREATE TABLE `school`.`match` (`number` INT NOT NULL,`matchDate` VARCHAR(10) NOT NULL,`team` VARCHAR(45) NOT NULL,`totalScore` VARCHAR(10) NULL,`season` VARCHAR(8) NULL,`isPayoff` VARCHAR(3) NULL,`scoreList` VARCHAR(90) NULL,PRIMARY KEY (`number`))";
 			Statement statement= conn.createStatement();
 		
 			 statement.execute(sql);
