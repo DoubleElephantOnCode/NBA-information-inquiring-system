@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import statisticsAnalysis.playerAbility.PlayerRadarChartPanel;
 import view.File;
 import view.SizeAndLocationAndFont;
 import view.TimeSetting;
@@ -43,6 +44,8 @@ public class SinglePlayerPanel extends JPanel{
 	
 	TimeSelectPanel begin, end;
 	JLabel checkByTime, checkByTimeEnter;
+	
+	PlayerRadarChartPanel radarChart;
 	
 	String selfTeam;//所属球队
 	
@@ -81,6 +84,11 @@ public class SinglePlayerPanel extends JPanel{
 		photo2 = new JLabel(photo2FG);
 		photo2.setSize(photo2W, photo2H);
 		photo2.setLocation(0, SizeAndLocationAndFont.playerMatchHistoryTableLocationY + photo2_bg.getHeight() - photo2H);
+		
+		radarChart = new PlayerRadarChartPanel(25, 10, 8, 2, 2);
+		radarChart.p.setSize(SizeAndLocationAndFont.singlePlayerRadarChartWidth, SizeAndLocationAndFont.singlePlayerRadarChartHeight);
+		radarChart.p.setLocation(photo1W+personalInfoWidth, 0);
+		this.add(radarChart.p);
 		
 		tableCellDeep = new ImageIcon(File.file + File.table_cell2_deep + File.PNG);
 		tableCellLight = new ImageIcon(File.file + File.table_cell2_light + File.PNG);
