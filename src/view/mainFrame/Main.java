@@ -56,7 +56,7 @@ public class Main {
 		readPlayer.readPlayerData();
 		
 		readMatch = new ReadMatchData();
-		readMatch.readMatchDataForTwo();
+		readMatch.readMatchData();
 		
 		mainFrame.setLayout(null);
 		mainFrame.setUndecorated(true);
