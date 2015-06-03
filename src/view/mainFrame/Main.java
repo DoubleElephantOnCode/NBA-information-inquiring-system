@@ -223,7 +223,7 @@ public class Main {
 		mainFrame.add(informationCenterPanel);
 		mainFrame.repaint();
 		InformationForHistory in = new InformationForHistory(Type.singlePlayer);
-		in.setSinglePlayer(playerName, TimeSetting.sdf.format(informationCenterPanel.singlePlayerPanel.Begin), TimeSetting.sdf.format(informationCenterPanel.singlePlayerPanel.End));
+		in.setSinglePlayer(playerName, TimeSetting.sdf.format(informationCenterPanel.singlePlayerPanel.spp.Begin), TimeSetting.sdf.format(informationCenterPanel.singlePlayerPanel.spp.End));
 		GoForwardOrBackwardPanel.history.add(in);
 	}
 	

@@ -20,6 +20,7 @@ import view.mainFrame.GoForwardOrBackward.GoForwardOrBackwardPanel;
 import view.matchPanel.MatchPanel;
 import view.searchPanel.SearchPanel;
 import view.selectedPanel.SelectPanel;
+import view.singlePlayerPanel.SinglePlayerCamera;
 import view.singlePlayerPanel.SinglePlayerPanel;
 import view.singleTeamPanel.SingleTeamPanel;
 import view.startView.StartPanel;
@@ -48,7 +49,7 @@ public class InformationCenterPanel extends JPanel{
 	
 	public static HotPlayerPanel hotPlayerPanel;
 	public static HotTeamPanel hotTeamPanel;
-	public static SinglePlayerPanel singlePlayerPanel;
+	public static SinglePlayerCamera singlePlayerPanel;
 	public static SingleTeamPanel singleTeamPanel;
 	public static MatchPanel matchPanel;
 	
@@ -152,7 +153,7 @@ public class InformationCenterPanel extends JPanel{
 	
 	public void setSinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[][] info, String[][] content, String[] headListForRow, String[] headListForColumn, String playerName){
 		removeInformationPanel();
-		singlePlayerPanel = new SinglePlayerPanel(pathOfPhoto1, pathOfPhoto2, info, content, headListForRow, headListForColumn, playerName);
+		singlePlayerPanel = new SinglePlayerCamera(pathOfPhoto1, pathOfPhoto2, info, content, headListForRow, headListForColumn, playerName);
 		this.add(singlePlayerPanel, 0);
 		panelBox.setSelectedIndex(4);
 		singlePlayerPanel.updateUI();

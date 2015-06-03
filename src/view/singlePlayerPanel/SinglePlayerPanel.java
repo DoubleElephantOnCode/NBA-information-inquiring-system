@@ -8,6 +8,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.jfree.chart.ChartPanel;
+
+import statisticsAnalysis.TimeSeriesChart;
 import statisticsAnalysis.playerAbility.PlayerRadarChartPanel;
 import view.File;
 import view.SizeAndLocationAndFont;
@@ -15,6 +18,7 @@ import view.TimeSetting;
 import view.mainFrame.LabelEnterListener;
 import view.mainFrame.LabelUsualListener;
 import view.mainFrame.Main;
+import view.selectedPanel.SelectPanel;
 import view.tablePanel.TablePanel;
 import view.timeSelectPanel.TimeSelectPanel;
 import control.ShowPlayerController;
@@ -24,6 +28,8 @@ public class SinglePlayerPanel extends JPanel{
 	static String NAME = "姓名", NUMBER = "球衣号码", POSITION = "位置", TALL = "身高", WEIGHT = "体重",
 			BIRTH = "生日", AGE = "年龄", EXP = "球龄", SCHOOL = "毕业院校",
 			AVGSCORE = "平均得分", AVGBOARD = "平均篮板", AVGASS = "平均助攻";
+	
+	static String[] choiceItem = {"得分", "篮板", "助攻", "抢断", "盖帽", "失误", "犯规", "三分命中率", "投篮命中率"};
 	
 	public static Date Begin = TimeSetting.begin, End = TimeSetting.end;
 	
@@ -46,6 +52,8 @@ public class SinglePlayerPanel extends JPanel{
 	JLabel checkByTime, checkByTimeEnter;
 	
 	PlayerRadarChartPanel radarChart;
+	TimeSeriesChart lineChart;
+	SelectPanel choice;
 	
 	String selfTeam;//所属球队
 	
@@ -84,11 +92,10 @@ public class SinglePlayerPanel extends JPanel{
 		photo2 = new JLabel(photo2FG);
 		photo2.setSize(photo2W, photo2H);
 		photo2.setLocation(0, SizeAndLocationAndFont.playerMatchHistoryTableLocationY + photo2_bg.getHeight() - photo2H);
-		
+		//TODO
 		radarChart = new PlayerRadarChartPanel(25, 10, 8, 2, 2);
 		radarChart.p.setSize(SizeAndLocationAndFont.singlePlayerRadarChartWidth, SizeAndLocationAndFont.singlePlayerRadarChartHeight);
 		radarChart.p.setLocation(photo1W+personalInfoWidth, 0);
-		this.add(radarChart.p);
 		
 		tableCellDeep = new ImageIcon(File.file + File.table_cell2_deep + File.PNG);
 		tableCellLight = new ImageIcon(File.file + File.table_cell2_light + File.PNG);
@@ -132,6 +139,15 @@ public class SinglePlayerPanel extends JPanel{
 		
 		matchHistory = new PlayerMatchHistoryTablePanel(content, headListForRow, headListForColumn, selfTeam);
 		
+		//TODO
+		lineChart = new TimeSeriesChart(null, "得分", "时间");
+		ChartPanel lineChartPanel = lineChart.getChartPanel();
+		lineChartPanel.setLocation(SizeAndLocationAndFont.playerMatchHistoryLineChartLocationX, SizeAndLocationAndFont.playerMatchHistoryLineChartLocationY);
+		lineChartPanel.setSize(SizeAndLocationAndFont.playerMatchHistoryLineChartWidth, SizeAndLocationAndFont.playerMatchHistoryLineChartHeight);
+		
+		choice = new SelectPanel(SizeAndLocationAndFont.playerMatchHistoryChartChoiceWidth, SizeAndLocationAndFont.playerMatchHistoryChartChoiceHeight, choiceItem);
+		choice.setLocation(SizeAndLocationAndFont.playerMatchHistoryChartChoiceLocationX, SizeAndLocationAndFont.playerMatchHistoryChartChoiceLocationY);
+		
 		this.add(photo1_bg);
 		this.add(photo1, 0);
 		this.add(photo2_bg);
@@ -142,6 +158,10 @@ public class SinglePlayerPanel extends JPanel{
 		this.add(checkByTime);
 		this.add(checkByTimeEnter, 0);
 		this.add(matchHistory);
+		
+		this.add(radarChart.p);
+		this.add(choice);
+		this.add(lineChartPanel);
 		
 		this.setLayout(null);
 		this.setOpaque(false);

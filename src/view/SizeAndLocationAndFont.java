@@ -98,7 +98,7 @@ public class SizeAndLocationAndFont {
 	static public int panelBoxLocationX = 850, panelBoxLocationY = 585;
 	
 	//单个球员查看面板设置参数
-	static public int singlePlayerPanelWidth = 850, singlePlayerPanelHeight = 430;
+	static public int singlePlayerPanelWidth = 850, singlePlayerPanelHeight = 670;
 	static public int singlePlayerPanelLocationX = 153, singlePlayerPanelLocationY = 148;
 	
 	static public int playerPhoto_1Width = 115, playerPhoto_1Height = 92;//半身照片
@@ -112,9 +112,15 @@ public class SizeAndLocationAndFont {
 	static public int playerMatchHistoryPanelWidth = singlePlayerPanelWidth-playerPhoto_2Width, playerMatchHistoryPanelHeight = 270;
 	static public int playerMatchHistoryTableWidth = 600, playerMatchHistoryTableHeight = 228;
 	static public int playerMatchHistoryTablePageRow = 6, playerMatchHistoryTablePageColumn = 6;//列表显示行应当为偶数
-	static public int playerMatchHistoryTableLocationX = playerPhoto_2Width, playerMatchHistoryTableLocationY = singlePlayerPanelHeight-playerMatchHistoryPanelHeight;
+	static public int playerMatchHistoryTableLocationX = playerPhoto_2Width, playerMatchHistoryTableLocationY = 430-playerMatchHistoryPanelHeight;
 	static public int playerMatchHistoryHeadListForRowWidth = 120;
 	static public int playerMatchHistoryHeadListForColumnHeight = 30;
+	
+	static public int playerMatchHistoryChartChoiceWidth = 150, playerMatchHistoryChartChoiceHeight = 28;
+	static public int playerMatchHistoryChartChoiceLocationX = 10, playerMatchHistoryChartChoiceLocationY = 440;
+	
+	static public int playerMatchHistoryLineChartWidth = 850, playerMatchHistoryLineChartHeight = 200;
+	static public int playerMatchHistoryLineChartLocationX = 0, playerMatchHistoryLineChartLocationY = 470;
 	
 	//单个球员面板camera参数
 	static public int singlePlayerCameraWidth = 850, singlePlayerCameraHeight = 430;
