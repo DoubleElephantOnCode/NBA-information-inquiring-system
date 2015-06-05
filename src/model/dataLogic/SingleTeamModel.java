@@ -34,12 +34,13 @@ public class SingleTeamModel implements ShowView{
 			}
 		}
 		
+		double[] ability = teamVO.getAbilityArray();
 		
 		String[] headListForRow = new String[content.length];
 		for(int i = 0;i<content.length;i++){
 			headListForRow[i] = content[i][0];
 		}
-		Main.setSingleTeamPanel(svgFile, infoName, info, realContent, headListForRow, headListForColumn,teamName);
+		Main.setSingleTeamPanel(svgFile, infoName, info, realContent, headListForRow, headListForColumn,teamName,ability);
 	}
 
 	@Override
@@ -59,11 +60,12 @@ public class SingleTeamModel implements ShowView{
 			}
 		}
 		
+		double[] ability = teamVO.getAbilityArray();
 		
 		String[] headListForRow = new String[content.length];
 		for(int i = 0;i<content.length;i++){
 			headListForRow[i] = content[i][0];
 		}
-		Main.setSingleTeamPanel(svgFile, infoName, info, realContent, headListForRow, headListForColumn,teamName);
+		Main.setSingleTeamPanel(svgFile, infoName, info, realContent, headListForRow, headListForColumn,teamName,ability);
 	}
 }

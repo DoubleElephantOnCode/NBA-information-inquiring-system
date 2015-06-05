@@ -708,6 +708,14 @@ public class TeamVO {
 		return content;
 	}
 	
+	/**
+	 * 得分 篮板 助攻 抢断 盖帽  都是平均数
+	 * @return
+	 */
+	public double[] getAbilityArray(){
+		double[] ability = new double[]{aveScore,aveTotalReboundsNum,aveAssistNum,aveStealNum,aveBlockNum};
+		return ability;
+	}
 	
 	public String changeFormat(double d){
 		DecimalFormat df = new DecimalFormat("#.00");
