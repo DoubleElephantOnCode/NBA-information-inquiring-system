@@ -134,12 +134,12 @@ public class SizeAndLocationAndFont {
 	static public int teamPicLocationX = 0, teamPicLocationY = 0;
 	
 	static public int singleTeamRadarChartWidth = 170, singleTeamRadarChartHeight = 120;//同表格高度
-	static public int singleTeamInfoTableWidth = singleTeamPanelWidth-teamPicWidth, singleTeamInfoTableHeight = teamPicHeight;
+	static public int singleTeamInfoTableWidth = singleTeamPanelWidth-teamPicWidth-singleTeamRadarChartWidth, singleTeamInfoTableHeight = teamPicHeight;
 	
 	static public int teamMatchHistoryPanelWidth = singleTeamPanelWidth, teamMatchHistoryPanelHeight = 270;
 	static public int teamMatchHistoryTableWidth = 600, teamMatchHistoryTableHeight = 240;
 	static public int teamMatchHistoryTablePageRow = 6, teamMatchHistoryTablePageColumn = 3;//列表显示行应当为偶数
-	static public int teamMatchHistoryTableLocationX = 0, teamMatchHistoryTableLocationY = singlePlayerPanelHeight-teamMatchHistoryPanelHeight;
+	static public int teamMatchHistoryTableLocationX = 0, teamMatchHistoryTableLocationY = 430-teamMatchHistoryPanelHeight;
 	static public int teamMatchHistoryHeadListForRowWidth = 220;
 	static public int teamMatchHistoryHeadListForColumnHeight = 30;
 	

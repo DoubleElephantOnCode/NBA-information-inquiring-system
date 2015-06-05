@@ -28,7 +28,7 @@ public class ShowTeamController {
 		showTeamModel.sortTeamTable(i, isPositiveSequence);
 	}
 	
-	public void showTeamFrame(String teamName, Date begin,Date end){
+	public void showTeamFrame(String teamName, Date begin,Date end, String chartItem){
 		singleTeamModel.showTeam(teamName,begin,end);
 	}
 	

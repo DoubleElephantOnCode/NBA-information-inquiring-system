@@ -3,6 +3,7 @@ package view.mainFrame.GoForwardOrBackward;
 import java.util.Date;
 
 import view.Type;
+import view.singleTeamPanel.SingleTeamPanel;
 import control.ChangePageController;
 import control.ShowMatchController;
 import control.ShowPlayerController;
@@ -67,7 +68,7 @@ public class InformationForHistory {
 		case playerCount: new ShowPlayerController(false).showPlayerInfo("-ALL", "-ALL");break;
 		case teamCount: new ShowTeamController(false).showTeamTable();break;
 		case singlePlayer: new ShowPlayerController(false).showSinglePlayerInfo(playerName, beginDate, endDate);break;
-		case singleTeam: new ShowTeamController(false).showTeamFrame(teamName, Begin, End);break;
+		case singleTeam: new ShowTeamController(false).showTeamFrame(teamName, Begin, End, SingleTeamPanel.chartItem);break;
 		case hotTeam: new ShowTeamController(false).showHotTeamTable(choice);
 		case hotPlayerToday: new ShowPlayerController(false).showHotPlayerInfo(false, 5, choice);break;
 		case hotPlayerThisYear: new ShowPlayerController(false).showHotPlayerInfo(true, 5, choice);break;

@@ -14,6 +14,9 @@ import javax.swing.JLabel;
 import model.readData.ReadMatchData;
 import model.readData.ReadPlayerData;
 import model.readData.ReadTeamData;
+
+import org.jfree.data.time.TimeSeries;
+
 import view.SVGLabel;
 import view.SizeAndLocationAndFont;
 import view.TimeSetting;
@@ -227,11 +230,11 @@ public class Main {
 		GoForwardOrBackwardPanel.history.add(in);
 	}
 	
-	public static void setSingleTeamPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn, String teamName, double[] ability){
+	public static void setSingleTeamPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn, String teamName, double[] ability, TimeSeries series){
 		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(5);//球队信息
 		informationCenterPanel.addMenuAndExit();
 		InformationCenterPanel.formerPanel = 5;
-		informationCenterPanel.setSingleTeamPanel(svgFile, infoName, info, content, headListForRow, headListForColumn, teamName, ability);
+		informationCenterPanel.setSingleTeamPanel(svgFile, infoName, info, content, headListForRow, headListForColumn, teamName, ability, series);
 		startPanel.setVisible(false);
 		removeAllPanel();
 		mainFrame.add(informationCenterPanel);

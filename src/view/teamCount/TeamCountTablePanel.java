@@ -310,7 +310,7 @@ public class TeamCountTablePanel extends JPanel{
 		}
 		public void mouseClicked(MouseEvent arg0) {
 			SingleTeamPanel.initialTime();
-			new ShowTeamController(true).showTeamFrame(hpR.getText(i), TimeSetting.begin, TimeSetting.end);
+			new ShowTeamController(true).showTeamFrame(hpR.getText(i), TimeSetting.begin, TimeSetting.end, SingleTeamPanel.chartItem);
 		}
 		public void mouseEntered(MouseEvent arg0) {}
 		public void mouseExited(MouseEvent arg0) {}

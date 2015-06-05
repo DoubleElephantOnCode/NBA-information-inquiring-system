@@ -1,6 +1,8 @@
 package view.singlePlayerPanel;
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.Date;
 
@@ -30,6 +32,8 @@ public class SinglePlayerPanel extends JPanel{
 			AVGSCORE = "平均得分", AVGBOARD = "平均篮板", AVGASS = "平均助攻";
 	
 	static String[] choiceItem = {"得分", "篮板", "助攻", "抢断", "盖帽", "失误", "犯规", "三分命中率", "投篮命中率"};
+	
+	static double[] abilityWeight = {30D, 15D, 10D, 3D, 3D};
 	
 	public static Date Begin = TimeSetting.begin, End = TimeSetting.end;
 	
@@ -93,7 +97,7 @@ public class SinglePlayerPanel extends JPanel{
 		photo2.setSize(photo2W, photo2H);
 		photo2.setLocation(0, SizeAndLocationAndFont.playerMatchHistoryTableLocationY + photo2_bg.getHeight() - photo2H);
 		//TODO
-		radarChart = new PlayerRadarChartPanel(25, 10, 8, 2, 2);
+		radarChart = new PlayerRadarChartPanel(ability[0], ability[1], ability[2], ability[3], ability[4]);
 		radarChart.p.setSize(SizeAndLocationAndFont.singlePlayerRadarChartWidth, SizeAndLocationAndFont.singlePlayerRadarChartHeight);
 		radarChart.p.setLocation(photo1W+personalInfoWidth, 0);
 		
@@ -148,6 +152,19 @@ public class SinglePlayerPanel extends JPanel{
 		choice = new SelectPanel(SizeAndLocationAndFont.playerMatchHistoryChartChoiceWidth, SizeAndLocationAndFont.playerMatchHistoryChartChoiceHeight, choiceItem);
 		choice.setLocation(SizeAndLocationAndFont.playerMatchHistoryChartChoiceLocationX, SizeAndLocationAndFont.playerMatchHistoryChartChoiceLocationY);
 		
+		choice.box.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String item = choice.getSelectedItem();
+				int index = getHeadListIndex(item);
+				if(index > 0){
+					
+					choice.action();
+				}
+			}
+		});
+		
 		this.add(photo1_bg);
 		this.add(photo1, 0);
 		this.add(photo2_bg);
@@ -172,6 +189,15 @@ public class SinglePlayerPanel extends JPanel{
 	public static void initialTime(){
 		Begin = TimeSetting.begin;
 		End = TimeSetting.end;
+	}
+	
+	private int getHeadListIndex(String item){
+		for(int i = 0; i < matchHistory.headListForColumn.length; i++){
+			if(matchHistory.headListForColumn[i].equals(item)){
+				return i;
+			}
+		}
+		return -1;
 	}
 	
 }

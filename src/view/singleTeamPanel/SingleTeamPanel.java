@@ -9,9 +9,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.jfree.chart.ChartPanel;
+import org.jfree.data.time.TimeSeries;
 
 import statisticsAnalysis.TimeSeriesChart;
-import statisticsAnalysis.playerAbility.PlayerRadarChartPanel;
+import statisticsAnalysis.teamAbility.TeamRadarChartPanel;
 import view.File;
 import view.SVGLabel;
 import view.SizeAndLocationAndFont;
@@ -31,6 +32,8 @@ public class SingleTeamPanel extends JPanel{
 	
 	static String[] choiceItem = {"得分", "篮板", "助攻", "抢断", "盖帽", "失误", "犯规", "三分命中率", "投篮命中率"};
 	
+	public static String chartItem = choiceItem[0];
+	
 	public static Date Begin = TimeSetting.begin, End = TimeSetting.end;
 	
 	String name, shortname, state, area, zone, home, found;
@@ -45,7 +48,7 @@ public class SingleTeamPanel extends JPanel{
 	TimeSelectPanel begin, end;
 	JLabel checkByTime, checkByTimeEnter;
 	
-	PlayerRadarChartPanel radarChart;
+	TeamRadarChartPanel radarChart;
 	TimeSeriesChart lineChart;
 	SelectPanel choice;
 	
@@ -57,7 +60,7 @@ public class SingleTeamPanel extends JPanel{
 	int teamInfoWidth = SizeAndLocationAndFont.singleTeamInfoTableWidth, 
 			teamInfoHeight = SizeAndLocationAndFont.singleTeamInfoTableHeight;
 	
-	public SingleTeamPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn, String teamName, double[] ability){
+	public SingleTeamPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn, String teamName, double[] ability, TimeSeries series){
 		name = teamName;
 		
 		teamPic = new SVGLabel(svgFile, teamPicWidth, teamPicHeight);
@@ -69,7 +72,7 @@ public class SingleTeamPanel extends JPanel{
 		if(infoName == null) infoName = new String[7];
 		
 		teamInfo = new TablePanel(4, 7, 4, 7, teamInfoWidth, teamInfoHeight);
-		teamInfo.setLocation(SizeAndLocationAndFont.teamPicLocationX+SizeAndLocationAndFont.teamPicLabelWidth, SizeAndLocationAndFont.teamPicLocationY);
+		teamInfo.setLocation(SizeAndLocationAndFont.teamPicWidth, SizeAndLocationAndFont.teamPicLocationY);
 		tableCellDeep.setImage(tableCellDeep.getImage().getScaledInstance(teamInfoWidth / 7, teamInfoHeight / 2, Image.SCALE_DEFAULT));
 		tableCellLight.setImage(tableCellLight.getImage().getScaledInstance(teamInfoWidth / 7, teamInfoHeight / 2, Image.SCALE_DEFAULT));
 		
@@ -91,7 +94,7 @@ public class SingleTeamPanel extends JPanel{
 		}
 		
 		//TODO
-		radarChart = new PlayerRadarChartPanel(25, 10, 8, 2, 2);
+		radarChart = new TeamRadarChartPanel(ability[0], ability[1], ability[2], ability[3], ability[4]);
 		radarChart.p.setSize(SizeAndLocationAndFont.singleTeamRadarChartWidth, SizeAndLocationAndFont.singleTeamRadarChartHeight);
 		radarChart.p.setLocation(teamPicWidth+teamInfoWidth, 0);
 		
@@ -112,7 +115,7 @@ public class SingleTeamPanel extends JPanel{
 			public void mouseClicked(MouseEvent e) {
 				Begin = begin.getDate();
 				End = end.getDate();
-				new ShowTeamController(true).showTeamFrame(name, Begin, End);
+				new ShowTeamController(true).showTeamFrame(name, Begin, End, chartItem);
 			}
 		});
 		checkByTime.setLocation(SizeAndLocationAndFont.checkByTimeLabelLocationX, SizeAndLocationAndFont.checkByTimeLabelLocationY);
@@ -137,6 +140,10 @@ public class SingleTeamPanel extends JPanel{
 		this.add(checkByTime);
 		this.add(checkByTimeEnter, 0);
 		this.add(matchHistory);
+		
+		this.add(radarChart.p);
+		this.add(choice);
+		this.add(lineChartPanel);
 		
 		this.setLayout(null);
 		this.setSize(width, height);

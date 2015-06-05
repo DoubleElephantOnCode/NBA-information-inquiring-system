@@ -7,6 +7,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.jfree.data.time.TimeSeries;
+
 import view.File;
 import view.SizeAndLocationAndFont;
 import view.TimeSetting;
@@ -22,7 +24,6 @@ import view.searchPanel.SearchPanel;
 import view.selectedPanel.SelectPanel;
 import view.singlePlayerPanel.SinglePlayerCamera;
 import view.singleTeamPanel.SingleTeamCamera;
-import view.singleTeamPanel.SingleTeamPanel;
 import view.startView.StartPanel;
 import control.ShowPlayerController;
 import control.ShowTeamController;
@@ -160,9 +161,9 @@ public class InformationCenterPanel extends JPanel{
 		this.updateUI();
 	}
 	
-	public void setSingleTeamPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn, String teamName, double[] ability){
+	public void setSingleTeamPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn, String teamName, double[] ability, TimeSeries series){
 		removeInformationPanel();
-		singleTeamPanel = new SingleTeamCamera(svgFile, infoName, info, content, headListForRow, headListForColumn, teamName, ability);
+		singleTeamPanel = new SingleTeamCamera(svgFile, infoName, info, content, headListForRow, headListForColumn, teamName, ability, series);
 		this.add(singleTeamPanel, 0);
 		panelBox.setSelectedIndex(5);
 		this.updateUI();
