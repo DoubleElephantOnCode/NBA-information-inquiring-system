@@ -1,6 +1,8 @@
 package view.singleTeamPanel;
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.Date;
 
@@ -33,6 +35,7 @@ public class SingleTeamPanel extends JPanel{
 	static String[] choiceItem = {"得分", "净胜分", "篮板", "前场篮板", "后场篮板", "助攻", "抢断", "盖帽", "失误", "犯规", "三分命中率", "投篮命中率", "罚球命中率"};
 	
 	public static String chartItem = choiceItem[0];
+	static int chartItemIndex = 0;
 	
 	public static Date Begin = TimeSetting.begin, End = TimeSetting.end;
 	
@@ -133,6 +136,21 @@ public class SingleTeamPanel extends JPanel{
 		
 		choice = new SelectPanel(SizeAndLocationAndFont.teamMatchHistoryChartChoiceWidth, SizeAndLocationAndFont.teamMatchHistoryChartChoiceHeight, choiceItem);
 		choice.setLocation(SizeAndLocationAndFont.teamMatchHistoryChartChoiceLocationX, SizeAndLocationAndFont.teamMatchHistoryChartChoiceLocationY);
+		choice.setSelectedIndex(chartItemIndex);
+		choice.box.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				choice.action();
+				String t = choice.getSelectedItem();
+				int tindex = choice.getSelectedIndex();
+				if(tindex != chartItemIndex){
+					chartItem = t;
+					chartItemIndex = tindex;
+					new ShowTeamController(true).showTeamFrame(name, Begin, End, chartItem);
+				}
+			}
+		});
 		
 		this.add(teamPic);
 		this.add(teamInfo);

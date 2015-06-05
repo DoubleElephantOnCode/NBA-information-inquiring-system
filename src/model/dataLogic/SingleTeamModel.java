@@ -16,7 +16,7 @@ public class SingleTeamModel implements ShowView{
 	public Date end;
 	public String chartItem;
 	
-	public void showTeam(String teamName, Date begin,Date end,String chartItemm){
+	public void showTeam(String teamName, Date begin,Date end,String chartItem){
 		
 		this.teamName = teamName;
 		this.begin = begin;

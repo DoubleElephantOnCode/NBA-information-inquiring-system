@@ -558,7 +558,7 @@ public class MatchVO {
 						return totalScore.latter;
 					else 
 						return totalScore.former;
-		case "净胜球":
+		case "净胜分":
 					if(teamName.equals(homeTeam)) 
 						return totalScore.latter-totalScore.former;
 					else 

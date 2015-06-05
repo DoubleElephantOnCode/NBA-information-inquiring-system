@@ -721,7 +721,7 @@ public class TeamVO {
 	}
 	
 	public TimeSeries getTimeSeries(String chartItem,Date begin,Date end){
-		TimeSeries timeSeries = new TimeSeries(chartItem);
+		TimeSeries timeSeries = new TimeSeries("item");
 		if(begin==null){
 			for(int i=0;i<matchVOList.size();i++){
 				MatchVO matchVO = matchVOList.get(i);
