@@ -611,10 +611,11 @@ public class ShowPlayerDataModel {
 						}
 					}
 
+					double[] ability = player.getAbility();
 					
 					Main.setSinglePlayerPanel(player.getPortrait(), player.getAction(),
 							player.getBasicPlayerInfo(), content, dateList,
-							PlayerList.getHeadForSinglePlayer(), player.getName());
+							PlayerList.getHeadForSinglePlayer(), player.getName(), ability);
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -667,9 +668,12 @@ public class ShowPlayerDataModel {
 				for (int i = 0; i < dateList.length; i++) {
 					dateList[i] = matchDataList.get(i).getMatchDate();
 				}
+				
+				double[] ability = player.getAbility();
+				
 				Main.setSinglePlayerPanel(player.getPortrait(), player.getAction(),
 						player.getBasicPlayerInfo(), content, dateList,
-						PlayerList.getHeadForSinglePlayer(), player.getName());
+						PlayerList.getHeadForSinglePlayer(), player.getName(), ability);
 
 			} catch (Exception e) {
 				e.printStackTrace();

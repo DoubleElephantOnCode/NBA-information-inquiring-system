@@ -235,6 +235,7 @@ public class PlayerDataPerMatchVO {
 		// TODO Auto-generated constructor stub
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		
+		this.season = matchData.getSeason();
 		this.playerName = matchData.getPlayerName();
 		this.teamName = matchData.getTeamName();
 		this.matchDate = sdf.format(matchData.getTimeOfMatch());
