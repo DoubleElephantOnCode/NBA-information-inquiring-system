@@ -125,7 +125,8 @@ public class SingleTeamPanel extends JPanel{
 		matchHistory = new TeamMatchHistoryTablePanel(content, headListForRow, headListForColumn);
 		
 		//TODO
-		lineChart = new TimeSeriesChart(null, "得分", "时间");
+		lineChart = new TimeSeriesChart(null, chartItem, "时间");
+		lineChart.add(series);
 		ChartPanel lineChartPanel = lineChart.getChartPanel();
 		lineChartPanel.setLocation(SizeAndLocationAndFont.teamMatchHistoryLineChartLocationX, SizeAndLocationAndFont.teamMatchHistoryLineChartLocationY);
 		lineChartPanel.setSize(SizeAndLocationAndFont.teamMatchHistoryLineChartWidth, SizeAndLocationAndFont.teamMatchHistoryLineChartHeight);
