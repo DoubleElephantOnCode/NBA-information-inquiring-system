@@ -237,7 +237,7 @@ public class Main {
 		mainFrame.add(informationCenterPanel);
 		mainFrame.repaint();
 		InformationForHistory in = new InformationForHistory(Type.singleTeam);
-		in.setSingleTeam(teamName, informationCenterPanel.singleTeamPanel.Begin, informationCenterPanel.singleTeamPanel.End);
+		in.setSingleTeam(teamName, informationCenterPanel.singleTeamPanel.stp.Begin, informationCenterPanel.singleTeamPanel.stp.End);
 		GoForwardOrBackwardPanel.history.add(in);
 	}
 	

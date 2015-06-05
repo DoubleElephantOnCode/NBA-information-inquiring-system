@@ -21,7 +21,7 @@ import view.matchPanel.MatchPanel;
 import view.searchPanel.SearchPanel;
 import view.selectedPanel.SelectPanel;
 import view.singlePlayerPanel.SinglePlayerCamera;
-import view.singlePlayerPanel.SinglePlayerPanel;
+import view.singleTeamPanel.SingleTeamCamera;
 import view.singleTeamPanel.SingleTeamPanel;
 import view.startView.StartPanel;
 import control.ShowPlayerController;
@@ -50,7 +50,7 @@ public class InformationCenterPanel extends JPanel{
 	public static HotPlayerPanel hotPlayerPanel;
 	public static HotTeamPanel hotTeamPanel;
 	public static SinglePlayerCamera singlePlayerPanel;
-	public static SingleTeamPanel singleTeamPanel;
+	public static SingleTeamCamera singleTeamPanel;
 	public static MatchPanel matchPanel;
 	
 	public static int formerPanel = 0;
@@ -162,7 +162,7 @@ public class InformationCenterPanel extends JPanel{
 	
 	public void setSingleTeamPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn, String teamName){
 		removeInformationPanel();
-		singleTeamPanel = new SingleTeamPanel(svgFile, infoName, info, content, headListForRow, headListForColumn, teamName);
+		singleTeamPanel = new SingleTeamCamera(svgFile, infoName, info, content, headListForRow, headListForColumn, teamName);
 		this.add(singleTeamPanel, 0);
 		panelBox.setSelectedIndex(5);
 		this.updateUI();

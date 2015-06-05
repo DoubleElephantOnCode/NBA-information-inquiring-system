@@ -127,12 +127,13 @@ public class SizeAndLocationAndFont {
 	static public int singlePlayerCameraLocationX = 153, singlePlayerCameraLocationY = 148;
 	
 	//单个球队查看面板设置参数
-	static public int singleTeamPanelWidth = 850, singleTeamPanelHeight = 430;
-	static public int singleTeamPanelLocationX = 153, singleTeamPanelLocationY = 148;
+	static public int singleTeamPanelWidth = 850, singleTeamPanelHeight = 670;
+	static public int singleTeamPanelLocationX = 0, singleTeamPanelLocationY = 0;
 	
 	static public int teamPicWidth = 115, teamPicHeight = 120;
 	static public int teamPicLocationX = 0, teamPicLocationY = 0;
 	
+	static public int singleTeamRadarChartWidth = 170, singleTeamRadarChartHeight = 120;//同表格高度
 	static public int singleTeamInfoTableWidth = singleTeamPanelWidth-teamPicWidth, singleTeamInfoTableHeight = teamPicHeight;
 	
 	static public int teamMatchHistoryPanelWidth = singleTeamPanelWidth, teamMatchHistoryPanelHeight = 270;
@@ -141,6 +142,12 @@ public class SizeAndLocationAndFont {
 	static public int teamMatchHistoryTableLocationX = 0, teamMatchHistoryTableLocationY = singlePlayerPanelHeight-teamMatchHistoryPanelHeight;
 	static public int teamMatchHistoryHeadListForRowWidth = 220;
 	static public int teamMatchHistoryHeadListForColumnHeight = 30;
+	
+	static public int teamMatchHistoryChartChoiceWidth = 150, teamMatchHistoryChartChoiceHeight = 28;
+	static public int teamMatchHistoryChartChoiceLocationX = 10, teamMatchHistoryChartChoiceLocationY = 440;
+	
+	static public int teamMatchHistoryLineChartWidth = 850, teamMatchHistoryLineChartHeight = 200;
+	static public int teamMatchHistoryLineChartLocationX = 0, teamMatchHistoryLineChartLocationY = 470;
 	
 	//单个球队面板camera参数
 	static public int singleTeamCameraWidth = 850, singleTeamCameraHeight = 430;

@@ -8,6 +8,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.jfree.chart.ChartPanel;
+
+import statisticsAnalysis.TimeSeriesChart;
+import statisticsAnalysis.playerAbility.PlayerRadarChartPanel;
 import view.File;
 import view.SVGLabel;
 import view.SizeAndLocationAndFont;
@@ -15,6 +19,7 @@ import view.TimeSetting;
 import view.mainFrame.LabelEnterListener;
 import view.mainFrame.LabelUsualListener;
 import view.mainFrame.Main;
+import view.selectedPanel.SelectPanel;
 import view.tablePanel.TablePanel;
 import view.timeSelectPanel.TimeSelectPanel;
 import control.ShowTeamController;
@@ -23,6 +28,8 @@ public class SingleTeamPanel extends JPanel{
 
 	static String NAME = "队名", SHORTNAME = "简写", STATE = "所在州", AREA = "赛区", ZONE = "方位", HOME = "主场", 
 			FOUND = "成立年";
+	
+	static String[] choiceItem = {"得分", "篮板", "助攻", "抢断", "盖帽", "失误", "犯规", "三分命中率", "投篮命中率"};
 	
 	public static Date Begin = TimeSetting.begin, End = TimeSetting.end;
 	
@@ -37,6 +44,10 @@ public class SingleTeamPanel extends JPanel{
 	
 	TimeSelectPanel begin, end;
 	JLabel checkByTime, checkByTimeEnter;
+	
+	PlayerRadarChartPanel radarChart;
+	TimeSeriesChart lineChart;
+	SelectPanel choice;
 	
 	int width = SizeAndLocationAndFont.singleTeamPanelWidth, height = SizeAndLocationAndFont.singleTeamPanelHeight;
 	
@@ -79,6 +90,11 @@ public class SingleTeamPanel extends JPanel{
 			teamInfo.setContent(temp);
 		}
 		
+		//TODO
+		radarChart = new PlayerRadarChartPanel(25, 10, 8, 2, 2);
+		radarChart.p.setSize(SizeAndLocationAndFont.singleTeamRadarChartWidth, SizeAndLocationAndFont.singleTeamRadarChartHeight);
+		radarChart.p.setLocation(teamPicWidth+teamInfoWidth, 0);
+		
 		begin = new TimeSelectPanel(SizeAndLocationAndFont.beginTimePanelWidth, SizeAndLocationAndFont.beginTimePanelHeight, TimeSetting.beginYear, TimeSetting.endYear);
 		begin.setLocation(SizeAndLocationAndFont.beginTimePanelLocationX, SizeAndLocationAndFont.beginTimePanelLocationY);
 		
@@ -104,6 +120,15 @@ public class SingleTeamPanel extends JPanel{
 		checkByTimeEnter.setVisible(false);
 		
 		matchHistory = new TeamMatchHistoryTablePanel(content, headListForRow, headListForColumn);
+		
+		//TODO
+		lineChart = new TimeSeriesChart(null, "得分", "时间");
+		ChartPanel lineChartPanel = lineChart.getChartPanel();
+		lineChartPanel.setLocation(SizeAndLocationAndFont.teamMatchHistoryLineChartLocationX, SizeAndLocationAndFont.teamMatchHistoryLineChartLocationY);
+		lineChartPanel.setSize(SizeAndLocationAndFont.teamMatchHistoryLineChartWidth, SizeAndLocationAndFont.teamMatchHistoryLineChartHeight);
+		
+		choice = new SelectPanel(SizeAndLocationAndFont.teamMatchHistoryChartChoiceWidth, SizeAndLocationAndFont.teamMatchHistoryChartChoiceHeight, choiceItem);
+		choice.setLocation(SizeAndLocationAndFont.teamMatchHistoryChartChoiceLocationX, SizeAndLocationAndFont.teamMatchHistoryChartChoiceLocationY);
 		
 		this.add(teamPic);
 		this.add(teamInfo);
