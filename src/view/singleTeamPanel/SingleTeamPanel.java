@@ -30,7 +30,7 @@ public class SingleTeamPanel extends JPanel{
 	static String NAME = "队名", SHORTNAME = "简写", STATE = "所在州", AREA = "赛区", ZONE = "方位", HOME = "主场", 
 			FOUND = "成立年";
 	
-	static String[] choiceItem = {"得分", "篮板", "助攻", "抢断", "盖帽", "失误", "犯规", "三分命中率", "投篮命中率"};
+	static String[] choiceItem = {"得分", "净胜分", "篮板", "前场篮板", "后场篮板", "助攻", "抢断", "盖帽", "失误", "犯规", "三分命中率", "投篮命中率", "罚球命中率"};
 	
 	public static String chartItem = choiceItem[0];
 	
