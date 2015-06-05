@@ -10,8 +10,8 @@ import view.SizeAndLocationAndFont;
 public class SinglePlayerCamera extends JPanel{
 	public SinglePlayerPanel spp;
 	int locationY = 0;
-	public SinglePlayerCamera(String pathOfPhoto1, String pathOfPhoto2, String[][] info, String[][] content, String[] headListForRow, String[] headListForColumn, String playerName){
-		spp = new SinglePlayerPanel(pathOfPhoto1, pathOfPhoto2, info, content, headListForRow, headListForColumn, playerName);
+	public SinglePlayerCamera(String pathOfPhoto1, String pathOfPhoto2, String[][] info, String[][] content, String[] headListForRow, String[] headListForColumn, String playerName, double[] ability){
+		spp = new SinglePlayerPanel(pathOfPhoto1, pathOfPhoto2, info, content, headListForRow, headListForColumn, playerName, ability);
 		spp.setLocation(0, locationY);
 		this.addMouseWheelListener(new MouseWheelListener(){
 

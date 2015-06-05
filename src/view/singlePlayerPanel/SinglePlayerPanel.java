@@ -64,7 +64,7 @@ public class SinglePlayerPanel extends JPanel{
 	int personalInfoWidth = SizeAndLocationAndFont.singlePlayerInfoTableWidth, 
 			personalInfoHeight = SizeAndLocationAndFont.singlePlayerInfoTableHeight;
 	
-	public SinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[][] info, String[][] content, String[] headListForRow, String[] headListForColumn, String playerName){
+	public SinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[][] info, String[][] content, String[] headListForRow, String[] headListForColumn, String playerName, double[] ability){
 		name = playerName;
 		selfTeam = info[0][1];
 		photo1BG = new ImageIcon(File.file + File.table_cell2_light + File.PNG);

@@ -213,11 +213,11 @@ public class Main {
 		GoForwardOrBackwardPanel.history.add(info);
 	}
 	
-	public static void setSinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[][] info, String[][] content, String[] headListForRow, String[] headListForColumn, String playerName){
+	public static void setSinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[][] info, String[][] content, String[] headListForRow, String[] headListForColumn, String playerName, double[] ability){
 		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(4);//球员信息
 		informationCenterPanel.addMenuAndExit();
 		InformationCenterPanel.formerPanel = 4;
-		informationCenterPanel.setSinglePlayerPanel(pathOfPhoto1, pathOfPhoto2, info, content, headListForRow, headListForColumn, playerName);
+		informationCenterPanel.setSinglePlayerPanel(pathOfPhoto1, pathOfPhoto2, info, content, headListForRow, headListForColumn, playerName, ability);
 		startPanel.setVisible(false);
 		removeAllPanel();
 		mainFrame.add(informationCenterPanel);

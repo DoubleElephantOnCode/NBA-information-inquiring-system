@@ -151,9 +151,9 @@ public class InformationCenterPanel extends JPanel{
 		this.updateUI();
 	}
 	
-	public void setSinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[][] info, String[][] content, String[] headListForRow, String[] headListForColumn, String playerName){
+	public void setSinglePlayerPanel(String pathOfPhoto1, String pathOfPhoto2, String[][] info, String[][] content, String[] headListForRow, String[] headListForColumn, String playerName, double[] ability){
 		removeInformationPanel();
-		singlePlayerPanel = new SinglePlayerCamera(pathOfPhoto1, pathOfPhoto2, info, content, headListForRow, headListForColumn, playerName);
+		singlePlayerPanel = new SinglePlayerCamera(pathOfPhoto1, pathOfPhoto2, info, content, headListForRow, headListForColumn, playerName, ability);
 		this.add(singlePlayerPanel, 0);
 		panelBox.setSelectedIndex(4);
 		singlePlayerPanel.updateUI();

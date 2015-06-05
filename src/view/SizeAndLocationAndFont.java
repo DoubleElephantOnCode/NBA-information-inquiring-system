@@ -142,6 +142,10 @@ public class SizeAndLocationAndFont {
 	static public int teamMatchHistoryHeadListForRowWidth = 220;
 	static public int teamMatchHistoryHeadListForColumnHeight = 30;
 	
+	//单个球队面板camera参数
+	static public int singleTeamCameraWidth = 850, singleTeamCameraHeight = 430;
+	static public int singleTeamCameraLocationX = 153, singleTeamCameraLocationY = 148;
+	
 	//查询热点球员参数
 	static public int hotPlayerPhotoWidth = 114, hotPlayerPhotoHeight = 86;
 	static public int hotPlayerInfoPanelWidth = 739, hotPlayerInfoPanelHeight = hotPlayerPhotoHeight;
