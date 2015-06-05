@@ -57,7 +57,7 @@ public class SingleTeamPanel extends JPanel{
 	int teamInfoWidth = SizeAndLocationAndFont.singleTeamInfoTableWidth, 
 			teamInfoHeight = SizeAndLocationAndFont.singleTeamInfoTableHeight;
 	
-	public SingleTeamPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn, String teamName){
+	public SingleTeamPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn, String teamName, double[] ability){
 		name = teamName;
 		
 		teamPic = new SVGLabel(svgFile, teamPicWidth, teamPicHeight);

@@ -160,9 +160,9 @@ public class InformationCenterPanel extends JPanel{
 		this.updateUI();
 	}
 	
-	public void setSingleTeamPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn, String teamName){
+	public void setSingleTeamPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn, String teamName, double[] ability){
 		removeInformationPanel();
-		singleTeamPanel = new SingleTeamCamera(svgFile, infoName, info, content, headListForRow, headListForColumn, teamName);
+		singleTeamPanel = new SingleTeamCamera(svgFile, infoName, info, content, headListForRow, headListForColumn, teamName, ability);
 		this.add(singleTeamPanel, 0);
 		panelBox.setSelectedIndex(5);
 		this.updateUI();

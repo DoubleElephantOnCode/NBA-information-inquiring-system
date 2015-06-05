@@ -11,8 +11,8 @@ public class SingleTeamCamera extends JPanel{
 
 	public SingleTeamPanel stp;
 	int locationY = 0;
-	public SingleTeamCamera(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn, String teamName){
-		stp = new SingleTeamPanel(svgFile, infoName, info, content, headListForRow, headListForColumn, teamName);
+	public SingleTeamCamera(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn, String teamName, double[] ability){
+		stp = new SingleTeamPanel(svgFile, infoName, info, content, headListForRow, headListForColumn, teamName, ability);
 		stp.setLocation(0, 0);
 		this.addMouseWheelListener(new MouseWheelListener(){
 

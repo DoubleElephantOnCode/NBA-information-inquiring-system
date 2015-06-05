@@ -34,7 +34,7 @@ public class TestFrame {
 	
 	public static void teamInfoPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn){
 		back.remove(p);
-		p = new SingleTeamPanel(svgFile, infoName, info, content, headListForRow, headListForColumn, "MIA");
+//		p = new SingleTeamPanel(svgFile, infoName, info, content, headListForRow, headListForColumn, "MIA");
 		back.add(p, 0);
 		back.updateUI();
 	}
@@ -70,7 +70,7 @@ public class TestFrame {
 		f.setBackground(Color.red);
 		
 		File teamPic = new File("E:\\课件\\软件工程与计算\\大二下学期\\data\\迭代一数据\\teams\\CLE.svg");
-		p = new SingleTeamPanel(teamPic, null, null, content, headListForRow, headListForColumn, "MIA");
+//		p = new SingleTeamPanel(teamPic, null, null, content, headListForRow, headListForColumn, "MIA");
 		
 		back.add(p, 0);
 		

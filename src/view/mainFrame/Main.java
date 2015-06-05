@@ -227,11 +227,11 @@ public class Main {
 		GoForwardOrBackwardPanel.history.add(in);
 	}
 	
-	public static void setSingleTeamPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn, String teamName){
+	public static void setSingleTeamPanel(java.io.File svgFile, String[] infoName, String[] info, String[][] content, String[] headListForRow, String[] headListForColumn, String teamName, double[] ability){
 		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(5);//球队信息
 		informationCenterPanel.addMenuAndExit();
 		InformationCenterPanel.formerPanel = 5;
-		informationCenterPanel.setSingleTeamPanel(svgFile, infoName, info, content, headListForRow, headListForColumn, teamName);
+		informationCenterPanel.setSingleTeamPanel(svgFile, infoName, info, content, headListForRow, headListForColumn, teamName, ability);
 		startPanel.setVisible(false);
 		removeAllPanel();
 		mainFrame.add(informationCenterPanel);
