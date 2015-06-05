@@ -1283,6 +1283,20 @@ public class PlayerVO {
 		}
 	}
 	
+	/**
+	 * 获取球员场均得分、篮板、助攻、抢断、盖帽
+	 * @return
+	 */
+	public double[] getAbility(){
+		double[] ability = new double[5];
+		ability[0] = this.avePersonalPoints;
+		ability[1] = this.aveTotalReboundsNum;
+		ability[2] = this.aveAssistNum;
+		ability[3] = this.aveStealNum;
+		ability[4] = this.aveBlockNum;
+		return ability;
+	}
+	
 	public String getAction() {
 		return action;
 	}
