@@ -5,6 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.jfree.data.time.Day;
+import org.jfree.data.time.TimeSeries;
+
 import test.data.TeamHighInfo;
 import test.data.TeamHotInfo;
 import test.data.TeamNormalInfo;
@@ -716,6 +719,30 @@ public class TeamVO {
 		double[] ability = new double[]{aveScore,aveTotalReboundsNum,aveAssistNum,aveStealNum,aveBlockNum};
 		return ability;
 	}
+	
+	public TimeSeries getTimeSeries(String chartItem,Date begin,Date end){
+		TimeSeries timeSeries = new TimeSeries(chartItem);
+		if(begin==null){
+			for(int i=0;i<matchVOList.size();i++){
+				MatchVO matchVO = matchVOList.get(i);
+				Date date = matchVO.getTimeOfMatch();
+				double value = matchVO.getValueByChartItem(chartItem,abbreviation);
+				timeSeries.add(new Day(date), value);			
+			}
+		}else{
+			for(int i=0;i<matchVOList.size();i++){
+				MatchVO matchVO = matchList.get(i);
+				if(matchVO.timeOfMatch.after(begin)&&matchVO.timeOfMatch.before(end)){
+					Date date = matchVO.getTimeOfMatch();
+					double value = matchVO.getValueByChartItem(chartItem,abbreviation);
+					timeSeries.add(new Day(date), value);	
+				}
+			}
+		}
+		
+		return timeSeries;
+	}
+	
 	
 	public String changeFormat(double d){
 		DecimalFormat df = new DecimalFormat("#.00");

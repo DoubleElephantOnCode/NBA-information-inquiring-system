@@ -43,6 +43,8 @@ public class MatchVO {
 	 */
 	public ScoreVO totalScore;
 	
+ 
+	
 	/**
 	 * 比分列表
 	 */
@@ -543,6 +545,82 @@ public class MatchVO {
 			}
 		}
 		return content;
+	}
+	
+	/**
+	 * "得分", "净胜分", "篮板", "前场篮板", "后场篮板", "助攻", "抢断", "盖帽", "失误", "犯规", "三分命中率", "投篮命中率", "罚球命中率"
+	 * @param chartItem
+	 * @return
+	 */
+	public double getValueByChartItem(String chartItem,String teamName){
+		switch(chartItem){
+		case "得分": if(teamName.equals(homeTeam)) 
+						return totalScore.latter;
+					else 
+						return totalScore.former;
+		case "净胜球":
+					if(teamName.equals(homeTeam)) 
+						return totalScore.latter-totalScore.former;
+					else 
+						return totalScore.former-totalScore.latter;
+		case "篮板":
+					if(teamName.equals(homeTeam)) 
+						return homeTotalReboundsNum;
+					else 
+						return awayTotalReboundsNum;
+		case "前场篮板":
+			if(teamName.equals(homeTeam)) 
+				return homeTotalOffensiveReboundsNum;
+			else 
+				return awayTotalOffensiveReboundsNum;
+		case "后场篮板":
+			if(teamName.equals(homeTeam)) 
+				return homeTotalDefensiveReboundsNum;
+			else 
+				return awayTotalDefensiveReboundsNum;
+		case "助攻":
+			if(teamName.equals(homeTeam)) 
+				return homeTotalAssistNum;
+			else 
+				return awayTotalAssistNum;
+		case "抢断":
+			if(teamName.equals(homeTeam)) 
+				return homeTotalStealNum;
+			else 
+				return awayTotalStealNum;
+		case "盖帽":
+			if(teamName.equals(homeTeam)) 
+				return homeTotalBlockNum;
+			else 
+				return awayTotalBlockNum;
+		case "失误":
+			if(teamName.equals(homeTeam)) 
+				return homeTotalTurnoverNum;
+			else 
+				return awayTotalTurnoverNum;
+		case "犯规":
+			if(teamName.equals(homeTeam)) 
+				return homeTotalFoulNum;
+			else 
+				return awayTotalFoulNum;
+		case "三分命中率":
+			if(teamName.equals(homeTeam)) 
+				return (double)homeTotalThreePointScoreNum/(double)homeTotalThreePointShootNum;
+			else 
+				return (double)awayTotalThreePointScoreNum/(double)awayTotalThreePointShootNum;
+		case "投篮命中率":
+			if(teamName.equals(homeTeam)) 
+				return (double)homeTotalScoreNum/(double)homeTotalShootNum;
+			else 
+				return (double)awayTotalScoreNum/(double)awayTotalShootNum;
+		case "罚球命中率":
+			if(teamName.equals(homeTeam)) 
+				return (double)homeTotalFreeThrowScoreNum/(double)homeTotalFreeThrowShootNum;
+			else 
+				return (double)awayTotalFreeThrowScoreNum/(double)awayTotalFreeThrowShootNum;
+		}
+		System.out.println("error in MatchVO getValueByChartItem");
+		return 0;
 	}
 	
 	public Date getTimeOfMatch() {

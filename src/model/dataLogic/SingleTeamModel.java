@@ -4,6 +4,9 @@ import java.io.File;
 import java.util.Date;
 
 import model.readData.ReadMatchData;
+
+import org.jfree.data.time.TimeSeries;
+
 import view.mainFrame.Main;
 import vo.TeamVO;
 
@@ -11,12 +14,14 @@ public class SingleTeamModel implements ShowView{
 	public String teamName;
 	public Date begin;
 	public Date end;
+	public String chartItem;
 	
-	public void showTeam(String teamName, Date begin,Date end){
+	public void showTeam(String teamName, Date begin,Date end,String chartItemm){
 		
 		this.teamName = teamName;
 		this.begin = begin;
 		this.end = end;
+		this.chartItem = chartItem;
 		
 		ReadMatchData.readMatch.setCurrentView(this);
 		
@@ -35,12 +40,14 @@ public class SingleTeamModel implements ShowView{
 		}
 		
 		double[] ability = teamVO.getAbilityArray();
+		TimeSeries timeSeries = teamVO.getTimeSeries(chartItem,begin,end);
+		
 		
 		String[] headListForRow = new String[content.length];
 		for(int i = 0;i<content.length;i++){
 			headListForRow[i] = content[i][0];
 		}
-		Main.setSingleTeamPanel(svgFile, infoName, info, realContent, headListForRow, headListForColumn,teamName,ability);
+		Main.setSingleTeamPanel(svgFile, infoName, info, realContent, headListForRow, headListForColumn,teamName,ability,timeSeries);
 	}
 
 	@Override
@@ -61,11 +68,12 @@ public class SingleTeamModel implements ShowView{
 		}
 		
 		double[] ability = teamVO.getAbilityArray();
+		TimeSeries timeSeries = teamVO.getTimeSeries(chartItem,begin,end);
 		
 		String[] headListForRow = new String[content.length];
 		for(int i = 0;i<content.length;i++){
 			headListForRow[i] = content[i][0];
 		}
-		Main.setSingleTeamPanel(svgFile, infoName, info, realContent, headListForRow, headListForColumn,teamName,ability);
+		Main.setSingleTeamPanel(svgFile, infoName, info, realContent, headListForRow, headListForColumn,teamName,ability,timeSeries);
 	}
 }

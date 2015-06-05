@@ -29,7 +29,7 @@ public class ShowTeamController {
 	}
 	
 	public void showTeamFrame(String teamName, Date begin,Date end, String chartItem){
-		singleTeamModel.showTeam(teamName,begin,end);
+		singleTeamModel.showTeam(teamName,begin,end,chartItem);
 	}
 	
 	public void showHotTeamTable(int i){
