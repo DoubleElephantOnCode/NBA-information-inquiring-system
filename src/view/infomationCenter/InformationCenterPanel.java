@@ -20,6 +20,7 @@ import view.mainFrame.Main;
 import view.mainFrame.MenuLabel;
 import view.mainFrame.GoForwardOrBackward.GoForwardOrBackwardPanel;
 import view.matchPanel.MatchPanel;
+import view.playerCompare.PlayerCompareCamera;
 import view.searchPanel.SearchPanel;
 import view.selectedPanel.SelectPanel;
 import view.singlePlayerPanel.SinglePlayerCamera;
@@ -30,7 +31,7 @@ import control.ShowTeamController;
 
 public class InformationCenterPanel extends JPanel{
 	
-	static String[] items = {"赛季热点球员", "当日热点球员", "进步最快球员", "赛季热点球队", "球员信息", "球队信息", "对阵信息"};
+	static String[] items = {"赛季热点球员", "当日热点球员", "进步最快球员", "赛季热点球队", "球员信息", "球队信息", "对阵信息", "球员比较"};
 	
 	int width = SizeAndLocationAndFont.frameWidth,
 			height = SizeAndLocationAndFont.frameHeight;
@@ -53,6 +54,7 @@ public class InformationCenterPanel extends JPanel{
 	public static SinglePlayerCamera singlePlayerPanel;
 	public static SingleTeamCamera singleTeamPanel;
 	public static MatchPanel matchPanel;
+	public static PlayerCompareCamera playerComparePanel = new PlayerCompareCamera();
 	
 	public static int formerPanel = 0;
 	
@@ -106,6 +108,10 @@ public class InformationCenterPanel extends JPanel{
 				case 4:panelBox.setSelectedIndex(formerPanel);break;//球员信息
 				case 5:panelBox.setSelectedIndex(formerPanel);break;//球队信息
 				case 6:panelBox.setSelectedIndex(formerPanel);break;//对阵信息
+				case 7:
+					panelBox.setSelectedIndex(7);formerPanel = 7;
+					setPlayerComparePanel();
+					break;//球员比较 TODO
 				default:break;
 				}
 				formerPanel = panelBox.getSelectedIndex();
@@ -180,6 +186,13 @@ public class InformationCenterPanel extends JPanel{
 	
 	public void setFailedToFindPlayer(){
 		searchPlayer.area.setText("输入球员名错误");
+	}
+	
+	public void setPlayerComparePanel(){
+		removeInformationPanel();
+		this.add(playerComparePanel, 0);
+		panelBox.setSelectedIndex(7);
+		this.updateUI();
 	}
 	
 	public void addMenuAndExit(){

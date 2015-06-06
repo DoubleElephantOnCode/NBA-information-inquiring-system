@@ -186,4 +186,44 @@ public class SizeAndLocationAndFont {
 	
 	static public int matchPanelWidth = 853, matchPanelHeight = 432;
 	static public int matchPanelLocationX = 153, matchPanelLocationY = 148;
+	
+	//球员比较面板参数设置
+	static public int playerComparePanelWidth = 853, playerComparePanelHeight = 600;
+	static public int playerComparePanelLocationX = 0, playerComparePanelLocationY = 0;
+	
+	static public int playerComparePanelSelectPlayer_1_TeamWidth = 100, playerComparePanelSelectPlayer_1_TeamHeight = 28;
+	static public int playerComparePanelSelectPlayer_1_TeamLocationX = 0, playerComparePanelSelectPlayer_1_TeamLocationY = 0;
+	static public int playerComparePanelSelectPlayer_1_NameWidth = 200, playerComparePanelSelectPlayer_1_NameHeight = 28;
+	static public int playerComparePanelSelectPlayer_1_NameLocationX = 110, playerComparePanelSelectPlayer_1_NameLocationY = 0;
+	
+	static public int playerComparePanelSelectPlayer_2_TeamWidth = 100, playerComparePanelSelectPlayer_2_TeamHeight = 28;
+	static public int playerComparePanelSelectPlayer_2_TeamLocationX = 543, playerComparePanelSelectPlayer_2_TeamLocationY = 0;
+	static public int playerComparePanelSelectPlayer_2_NameWidth = 200, playerComparePanelSelectPlayer_2_NameHeight = 28;
+	static public int playerComparePanelSelectPlayer_2_NameLocationX = 653, playerComparePanelSelectPlayer_2_NameLocationY = 0;
+	
+	static public int playerComparePanelPhotoWidth = 115, playerComparePanelPhotoHeight = 92;
+	static public int playerComparePanelPhoto_1LocationX = 0, playerComparePanelPhoto_1LocationY = 35;
+	static public int playerComparePanelPhoto_2LocationX = 500, playerComparePanelPhoto_2LocationY = 35;
+	
+	static public int playerComparePanelSelectSeasonWidth = 100, playerComparePanelSelectSeasonHeight = 28;
+	static public int playerComparePanelSelectSeasonLocationX = 0, playerComparePanelSelectSeasonLocationY = 245;
+	
+	static public int playerComparePanelSelectAfterWidth = 100, playerComparePanelSelectAfterHeight = playerComparePanelSelectSeasonHeight;
+	static public int playerComparePanelSelectAfterLocationX = 110, playerComparePanelSelectAfterLocationY = playerComparePanelSelectSeasonLocationY;
+	
+	static public int playerComparePanelSelectChartContentWidth = 120, playerComparePanelSelectChartContentHeight = playerComparePanelSelectSeasonHeight;
+	static public int playerComparePanelSelectChartContentLocationX = 240, playerComparePanelSelectChartContentLocationY = playerComparePanelSelectSeasonLocationY;
+	
+	static public int playerComparePanelSelectTypeWidth = 100, playerComparePanelSelectTypeHeight = playerComparePanelSelectSeasonHeight;
+	static public int playerComparePanelSelectTypeLocationX = 370, playerComparePanelSelectTypeLocationY = playerComparePanelSelectSeasonLocationY;
+	
+	static public int playerComparePanelRadarChartWidth = 300, playerComparePanelRadarChartHeight = 200;
+	static public int playerComparePanelRadarChartLocationX = 326, playerComparePanelRadarChartLocationY = 35;
+	
+	static public int playerComparePanelChart_2Width = 850, playerComparePanelChart_2Height = 300;
+	static public int playerComparePanelChart_2LocationX = 0, playerComparePanelChart_2LocationY = 275;
+	
+	//球员比较界面Camera
+	static public int playerCompareCameraWidth = 853, playerCompareCameraHeight = 432;
+	static public int playerCompareCameraLocationX = 153, playerCompareCameraLocationY = 148;
 }
