@@ -386,6 +386,29 @@ public class PlayerDataPerMatchVO {
 		return dd.toString();
 	}
 	
+	/**
+	 * 	"得分", "篮板", "助攻", "盖帽", "抢断", "犯规", "失误", "投篮命中率", "三分命中率", "罚球命中率", "上场时间"
+	 * @param index
+	 * @return
+	 */
+	public double getForStatistic(int index){
+		switch (index) {
+		case 0: return this.personalPoints;
+		case 1: return this.totalReboundsNum;
+		case 2: return this.assistNum;
+		case 3: return this.blockNum;
+		case 4: return this.stealNum;
+		case 5: return this.foulNum;
+		case 6: return this.turnoverNum;
+		case 7: return this.scoreRate;
+		case 8: return this.threePointScoreRate;
+		case 9: return this.freeThrowScoreRate; 
+		case 10: return this.playTime.getTimeByMinute();
+		default: break;
+		}
+		return 0;
+	}
+	
 	public double getStealNum() {
 		return stealNum;
 	}

@@ -1252,18 +1252,23 @@ public class PlayerVO {
 	 * 计算任意赛季的数据
 	 * @param season 哪个赛季"XX-XX"
 	 * @param isOnlyPlayoff 是否只统计季后赛信息（true就只统计季后赛信息）
+	 * @param isOnlyRegular 是否只统计常规赛信息（true就只统计常规赛信息）
 	 */
-	public void calSeasonData(String season, boolean isOnlyPlayoff){
+	public void calSeasonData(String season, boolean isOnlyPlayoff, boolean isOnlyRegular){
 		//TODO 计算任意赛季的数据
 		ArrayList<PlayerDataPerMatchVO> matchDataList = new ArrayList<PlayerDataPerMatchVO>();
 		//把符合条件的比赛数据加入到list内
 		for (int i = 0; i < dataPerMatchList.size(); i++) {
 			if(dataPerMatchList.get(i).getSeason().equals(season)){
-				if(isOnlyPlayoff){
+				if(isOnlyPlayoff){	//只统计季后赛
 					if(dataPerMatchList.get(i).isPlayoff()){
 						matchDataList.add(dataPerMatchList.get(i));
 					}
-				} else {
+				} else if(isOnlyRegular){	//只统计常规赛
+					if(!dataPerMatchList.get(i).isPlayoff()){
+						matchDataList.add(dataPerMatchList.get(i));
+					}
+				} else {	//常规赛+季后赛
 					matchDataList.add(dataPerMatchList.get(i));
 				}
 			}

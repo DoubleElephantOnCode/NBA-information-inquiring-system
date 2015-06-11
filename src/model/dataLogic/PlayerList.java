@@ -23,6 +23,14 @@ public class PlayerList {
 	 * 所有球员列表
 	 */
 	static ArrayList<PlayerVO> players = new ArrayList<PlayerVO>();
+	
+	/**
+	 * 两个球员比较内容
+	 */
+	static String[] compareIndex = new String[]{
+		"得分", "篮板", "助攻", "盖帽", "抢断", "犯规", "失误", "投篮命中率", "三分命中率", "罚球命中率",
+		"上场时间"
+	};
 
 	// /**
 	// * 筛选出的球员数量
@@ -127,6 +135,7 @@ public class PlayerList {
 				"投篮命中率%" };
 		return s;
 	}
+	
 
 	// /**
 	// * 获取筛选依据

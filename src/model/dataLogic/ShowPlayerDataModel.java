@@ -1,13 +1,15 @@
 package model.dataLogic;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import model.readData.ReadMatchData;
-import model.readData.ReadPlayerData;
-import model.readData.ReadTeamData;
+
+import org.jfree.data.time.Day;
+import org.jfree.data.time.TimeSeries;
+
 import view.mainFrame.Main;
 import view.mainFrame.Waiting;
-import view.singlePlayerPanel.TestFrame;
 import vo.PlayerDataPerMatchVO;
 import vo.PlayerVO;
 
@@ -690,7 +692,108 @@ public class ShowPlayerDataModel {
 		}
 
 	}
+	
+	/**
+	 * 
+	 * @param playerName 球员姓名
+	 * @param index 第几个球员
+	 */
+	public void showAPlayer(final String playerName, final int index){
+		new Waiting() {
+			@Override
+			protected Void doInBackground() throws Exception {
+				super.doInBackground();
 
+				try {
+					PlayerVO player = PlayerList.findAPlayer(playerName);
+					Main.setPlayerCmp_player(player.getPortrait(), player.getEvaluate(), index);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				return null;
+			}
+
+		}.execute();
+	}
+
+	/**
+	 * 球员统计、对比
+	 * @param name1 球员1
+	 * @param name2 球员2
+	 * @param season 哪个赛季
+	 * @param after 是否季后赛——0：全部；1：常规赛；2：季后赛
+	 * @param index 哪一项
+	 * @param type 类型——0：折线图；1：箱型图
+	 */
+	public void playerStatistic(final String name1, final  String name2, final String season,
+			final int after, final int index, final int type){
+		new Waiting() {
+			@Override
+			protected Void doInBackground() throws Exception {
+				super.doInBackground();
+				//折线图
+				TimeSeries series1 = new TimeSeries(name1);
+				TimeSeries series2 = new TimeSeries(name2);
+				//箱型图
+				ArrayList<Double> dataForBox1 = new ArrayList<Double>();
+				ArrayList<Double> dataForBox2 = new ArrayList<Double>();
+				
+				series1.add(new Day(new Date()), 1);
+				//是否只是季后赛
+				boolean isOnlyPlayoff = false;
+				//是否只是季后赛
+				boolean isOnlyRegular = false;
+				
+				if(after == 1){
+					isOnlyRegular = true;
+				}
+				if(after == 2){
+					isOnlyPlayoff = true;
+				}
+				
+				try {
+					
+					PlayerVO player1 = PlayerList.findAPlayer(name1);
+					PlayerVO player2 = PlayerList.findAPlayer(name2);
+					
+					player1.calSeasonData(season, isOnlyPlayoff, isOnlyRegular);
+					player2.calSeasonData(season, isOnlyPlayoff, isOnlyRegular);
+					
+					for (int i = 0; i < player1.getDataPerMatchList().size(); i++) {
+						PlayerDataPerMatchVO matchData = player1.getDataPerMatchList().get(i);
+						if(matchData.getSeason().equals(season)){
+							series1.add(new Day(new Date(
+									matchData.getMatchDate())), matchData.getForStatistic(index));
+							dataForBox1.add(matchData.getForStatistic(index));
+						}
+					}
+					for (int i = 0; i < player2.getDataPerMatchList().size(); i++) {
+						PlayerDataPerMatchVO matchData = player2.getDataPerMatchList().get(i);
+						if(matchData.getSeason().equals(season)){
+							series2.add(new Day(new Date(
+									matchData.getMatchDate())), matchData.getForStatistic(index));
+							dataForBox2.add(matchData.getForStatistic(index));
+						}
+					}
+					
+					if(type == 0){	//折线图
+						Main.setPlayerCmp_setTimeSeriesChart(series1, series2);
+					} else {	//箱型图
+						Main.setPlayerCmp_setBoxChart(name1, dataForBox1, name2, dataForBox2);
+					}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				return null;
+			}
+
+		}.execute();
+
+	}
+	
 
 
 }
