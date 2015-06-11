@@ -386,5 +386,27 @@ public class SelectPlayer {
 		}
 		return true;
 	}
+	
+	/**
+	 * 根据球队名筛选球员
+	 * @param playerList
+	 * @param teamName
+	 * @return
+	 */
+	public static String[] selectByTeam(String teamName){
+		ArrayList<PlayerVO> players = new ArrayList<PlayerVO>();
+		
+		for (int i = 0; i < PlayerList.players.size(); i++) {
+			if(PlayerList.players.get(i).getTeamName().equalsIgnoreCase(teamName)){
+				players.add(PlayerList.players.get(i));
+			}
+		}
+		String[] playerName = new String[players.size()];
+		for (int i = 0; i < playerName.length; i++) {
+			playerName[i] = players.get(i).getName();
+		}
+		
+		return playerName;
+	}
 
 }

@@ -377,14 +377,15 @@ public class ShowPlayerDataModel {
 							playerContents[i] = playerList.get(i)
 									.getHotPlayerInfo(isSeason, selectItem);
 						}
-						//姓名列表
+						// 姓名列表
 						String[] playerNames = new String[selectNum];
 						for (int i = 0; i < playerNames.length; i++) {
 							playerNames[i] = playerList.get(i).getName();
 						}
 
 						// TODO 调用界面层方法，重设界面
-						Main.setHotPlayerTodayPanel(picPath, playerContents, playerNames);
+						Main.setHotPlayerTodayPanel(picPath, playerContents,
+								playerNames);
 
 					} else { // 筛选的是赛季热点球员
 
@@ -400,13 +401,14 @@ public class ShowPlayerDataModel {
 							playerContents[i] = playerList.get(i)
 									.getHotPlayerInfo(isSeason, selectItem);
 						}
-						//姓名列表
+						// 姓名列表
 						String[] playerNames = new String[selectNum];
 						for (int i = 0; i < playerNames.length; i++) {
 							playerNames[i] = playerList.get(i).getName();
 						}
 						// TODO 调用界面层方法，重设界面
-						Main.setHotPlayerThisYearPanel(picPath, playerContents, playerNames);
+						Main.setHotPlayerThisYearPanel(picPath, playerContents,
+								playerNames);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -446,15 +448,15 @@ public class ShowPlayerDataModel {
 						playerContents[i] = playerList.get(i).getHotPlayerInfo(
 								isSeason, selectItem);
 					}
-					//姓名列表
+					// 姓名列表
 					String[] playerNames = new String[selectNum];
 					for (int i = 0; i < playerNames.length; i++) {
 						playerNames[i] = playerList.get(i).getName();
 					}
 
 					// TODO 调用界面层方法，重设界面
-					Main.setHotPlayerTodayPanel(picPath, playerContents, playerNames);
-					
+					Main.setHotPlayerTodayPanel(picPath, playerContents,
+							playerNames);
 
 				} else { // 筛选的是赛季热点球员
 
@@ -470,14 +472,15 @@ public class ShowPlayerDataModel {
 						playerContents[i] = playerList.get(i).getHotPlayerInfo(
 								isSeason, selectItem);
 					}
-					//姓名列表
+					// 姓名列表
 					String[] playerNames = new String[selectNum];
 					for (int i = 0; i < playerNames.length; i++) {
 						playerNames[i] = playerList.get(i).getName();
 					}
 
 					// TODO 调用界面层方法，重设界面
-					Main.setHotPlayerThisYearPanel(picPath, playerContents, playerNames);
+					Main.setHotPlayerThisYearPanel(picPath, playerContents,
+							playerNames);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -509,14 +512,15 @@ public class ShowPlayerDataModel {
 				for (int i = 0; i < selectNum; i++) {
 					playerContents[i] = playerList.get(i).getProgressInfo();
 				}
-				//姓名列表
+				// 姓名列表
 				String[] playerNames = new String[selectNum];
 				for (int i = 0; i < playerNames.length; i++) {
 					playerNames[i] = playerList.get(i).getName();
 				}
 
 				// TODO 调用界面层方法
-				Main.setProgressGreatPlayerPanel(picPath, playerContents, playerNames);
+				Main.setProgressGreatPlayerPanel(picPath, playerContents,
+						playerNames);
 
 				return null;
 			}
@@ -547,13 +551,14 @@ public class ShowPlayerDataModel {
 			for (int i = 0; i < selectNum; i++) {
 				playerContents[i] = playerList.get(i).getProgressInfo();
 			}
-			//姓名列表
+			// 姓名列表
 			String[] playerNames = new String[selectNum];
 			for (int i = 0; i < playerNames.length; i++) {
 				playerNames[i] = playerList.get(i).getName();
 			}
 			// TODO 调用界面层方法
-			Main.setProgressGreatPlayerPanel(picPath, playerContents, playerNames);
+			Main.setProgressGreatPlayerPanel(picPath, playerContents,
+					playerNames);
 
 		}
 
@@ -574,18 +579,19 @@ public class ShowPlayerDataModel {
 
 				try {
 					PlayerVO player = PlayerList.findAPlayer(name);
-					if(player.getName().equalsIgnoreCase("")){
+					if (player.getName().equalsIgnoreCase("")) {
 						Main.failedToFindPlayer();
 						return null;
 					}
-					ArrayList<PlayerDataPerMatchVO> matchDataList = SelectMatch.selectMatchByDate(
-									player.getDataPerMatchList(), startDate, endDate);
+					ArrayList<PlayerDataPerMatchVO> matchDataList = SelectMatch
+							.selectMatchByDate(player.getDataPerMatchList(),
+									startDate, endDate);
 					PlayerDataPerMatchVO matchData = new PlayerDataPerMatchVO();
 
 					String[][] content = new String[matchDataList.size()][PlayerList
 							.getHeadForSinglePlayer().length];
 					// 给要显示的表格填上内容
-					if(matchDataList.size() == 0){
+					if (matchDataList.size() == 0) {
 						content = new String[1][1];
 						content[0][0] = "";
 					} else {
@@ -600,7 +606,7 @@ public class ShowPlayerDataModel {
 
 					// 行表头，显示日期
 					String[] dateList = new String[matchDataList.size()];
-					if(matchDataList.size() == 0){
+					if (matchDataList.size() == 0) {
 						dateList = new String[6];
 						for (int i = 0; i < dateList.length; i++) {
 							dateList[i] = " ";
@@ -612,10 +618,12 @@ public class ShowPlayerDataModel {
 					}
 
 					double[] ability = player.getAbility();
-					
-					Main.setSinglePlayerPanel(player.getPortrait(), player.getAction(),
-							player.getBasicPlayerInfo(), content, dateList,
-							PlayerList.getHeadForSinglePlayer(), player.getName(), ability);
+
+					Main.setSinglePlayerPanel(player.getPortrait(),
+							player.getAction(), player.getBasicPlayerInfo(),
+							content, dateList,
+							PlayerList.getHeadForSinglePlayer(),
+							player.getName(), ability);
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -643,7 +651,7 @@ public class ShowPlayerDataModel {
 		public void changeData() {
 			try {
 				PlayerVO player = PlayerList.findAPlayer(name);
-				if(player.getName().equalsIgnoreCase("")){
+				if (player.getName().equalsIgnoreCase("")) {
 					Main.failedToFindPlayer();
 					return;
 				}
@@ -668,12 +676,13 @@ public class ShowPlayerDataModel {
 				for (int i = 0; i < dateList.length; i++) {
 					dateList[i] = matchDataList.get(i).getMatchDate();
 				}
-				
+
 				double[] ability = player.getAbility();
-				
-				Main.setSinglePlayerPanel(player.getPortrait(), player.getAction(),
-						player.getBasicPlayerInfo(), content, dateList,
-						PlayerList.getHeadForSinglePlayer(), player.getName(), ability);
+
+				Main.setSinglePlayerPanel(player.getPortrait(),
+						player.getAction(), player.getBasicPlayerInfo(),
+						content, dateList, PlayerList.getHeadForSinglePlayer(),
+						player.getName(), ability);
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -681,6 +690,7 @@ public class ShowPlayerDataModel {
 		}
 
 	}
+
 
 
 }

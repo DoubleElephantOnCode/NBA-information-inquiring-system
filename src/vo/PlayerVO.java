@@ -4,7 +4,7 @@ import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-import sun.awt.windows.ThemeReader;
+import statisticsAnalysis.evaluation.PlayerEvaluator;
 import test.data.PlayerHighInfo;
 import test.data.PlayerHotInfo;
 import test.data.PlayerKingInfo;
@@ -441,6 +441,11 @@ public class PlayerVO {
 	 * 球队所有球员失误数
 	 */
 	private double allTurnoverNum = 0;
+	
+	/**
+	 * 球员评价
+	 */
+	PlayerEvaluator evaluator = new PlayerEvaluator();
 
 	public PlayerVO() {
 
@@ -1295,6 +1300,17 @@ public class PlayerVO {
 		ability[3] = this.aveStealNum;
 		ability[4] = this.aveBlockNum;
 		return ability;
+	}
+	
+	/**
+	 * 获得该球员评价
+	 * @return
+	 */
+	public int getEvaluate(){
+		return evaluator.doEvaluating(this.position, this.avePersonalPoints,
+				this.aveTotalReboundsNum, this.aveAssistNum, this.aveStealNum, this.aveBlockNum,
+				this.aveTurnoverNum, this.aveFoulNum, this.aveMinutes.getTimeByMinute(),
+				this.scoreRate);
 	}
 	
 	public String getAction() {
