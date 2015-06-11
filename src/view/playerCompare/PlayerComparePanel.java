@@ -38,7 +38,7 @@ public class PlayerComparePanel extends JPanel{
 	static SelectPanel season, after, chartType, chartContent;
 	static SelectPanel team1, player1, team2, player2;
 	
-	static JLabel player_1, player_2;
+	static JLabel player_1, player_2, score1, score2;
 	
 	static String[] SEASON = {"11-12", "12-13", "13-14", "14-15"},
 			AFTER = {"常规赛", "季后赛"},
@@ -54,19 +54,19 @@ public class PlayerComparePanel extends JPanel{
 		set();
 	}
 	
-	public PlayerComparePanel(String player_1Pic, double[] ability_1, String player_1Name, TimeSeries series1,
-			String player_2Pic, double[] ability_2, String player_2Name, TimeSeries series2){
-		setTimeSeriesPanel(series1, series2);
-		setRadarChart(ability_1, player_1Name, ability_2, player_2Name);
-	}
+//	public PlayerComparePanel(String player_1Pic, double[] ability_1, String player_1Name, TimeSeries series1,
+//			String player_2Pic, double[] ability_2, String player_2Name, TimeSeries series2){
+//		setTimeSeriesPanel(series1, series2);
+//		setRadarChart(ability_1, player_1Name, ability_2, player_2Name);
+//	}
 	
-	public PlayerComparePanel(String player_1Pic, double[] ability_1, String player_1Name, ArrayList<Double> list1,
-			String player_2Pic, double[] ability_2, String player_2Name, ArrayList<Double> list2){
-		setBoxPanel(player_1Name, list1, player_2Name, list2);
-		setRadarChart(ability_1, player_1Name, ability_2, player_2Name);
-	}
+//	public PlayerComparePanel(String player_1Pic, double[] ability_1, String player_1Name, ArrayList<Double> list1,
+//			String player_2Pic, double[] ability_2, String player_2Name, ArrayList<Double> list2){
+//		setBoxPanel(player_1Name, list1, player_2Name, list2);
+//		setRadarChart(ability_1, player_1Name, ability_2, player_2Name);
+//	}
 	
-	public void setPlayerPic(String playerPic, int index){
+	public void setPlayerPic(String playerPic, int score, int index){
 		if(index == 1){
 			if(player_1 != null) this.remove(player_1);
 			player_1 = setJLabelWithIcon(playerPic, SizeAndLocationAndFont.playerComparePanelPhotoWidth, SizeAndLocationAndFont.playerComparePanelPhotoHeight);

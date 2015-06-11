@@ -6,6 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -258,6 +259,57 @@ public class Main {
 		InformationForHistory info = new InformationForHistory(Type.match);
 		info.setMatch(date, teamName1, teamName2);
 		GoForwardOrBackwardPanel.history.add(info);
+	}
+	/**WHJ
+	 * 球员对比时设置球员照片以及球员评分
+	 * @param playerPic 照片路径
+	 * @param score 球员评分
+	 * @param index 球员1或者球员2，只有1或者2有效
+	 */
+	public static void setPlayerCmp_player(String playerPic, int score, int index){
+		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(7);//球员对比
+		InformationCenterPanel.formerPanel = 7;
+		informationCenterPanel.playerComparePanel.pcp.setPlayerPic(playerPic, score, index);
+		startPanel.setVisible(false);
+		removeAllPanel();
+		mainFrame.add(informationCenterPanel);
+		mainFrame.repaint();
+	}
+	/**WHJ
+	 * 球员对比的能力值雷达图
+	 * @param player1
+	 * @param ability1
+	 * @param player2
+	 * @param ability2
+	 */
+	public static void setPlayerCmp_setRadarChart(String player1, double[] ability1, String player2, double[] ability2){
+		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(7);//球员对比
+		InformationCenterPanel.formerPanel = 7;
+		informationCenterPanel.playerComparePanel.pcp.setRadarChart(ability1, player1, ability2, player2);
+		startPanel.setVisible(false);
+		removeAllPanel();
+		mainFrame.add(informationCenterPanel);
+		mainFrame.repaint();
+	}
+	
+	public static void setPlayerCmp_setTimeSeriesChart(TimeSeries series1, TimeSeries series2){
+		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(7);//球员对比
+		InformationCenterPanel.formerPanel = 7;
+		informationCenterPanel.playerComparePanel.pcp.setTimeSeriesPanel(series1, series2);
+		startPanel.setVisible(false);
+		removeAllPanel();
+		mainFrame.add(informationCenterPanel);
+		mainFrame.repaint();
+	}
+	
+	public static void setPlayerCmp_setBoxChart(String player_1Name, ArrayList<Double> list1, String player_2Name, ArrayList<Double> list2){
+		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(7);//球员对比
+		InformationCenterPanel.formerPanel = 7;
+		informationCenterPanel.playerComparePanel.pcp.setBoxPanel(player_1Name, list1, player_2Name, list2);
+		startPanel.setVisible(false);
+		removeAllPanel();
+		mainFrame.add(informationCenterPanel);
+		mainFrame.repaint();
 	}
 	
 	public static void failedToFindPlayer(){//查找失败
