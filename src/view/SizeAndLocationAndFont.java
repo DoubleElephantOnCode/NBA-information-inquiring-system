@@ -209,7 +209,7 @@ public class SizeAndLocationAndFont {
 	
 	static public int playerComparePanelPhotoWidth = 115, playerComparePanelPhotoHeight = 92;
 	static public int playerComparePanelPhoto_1LocationX = 0, playerComparePanelPhoto_1LocationY = 35;
-	static public int playerComparePanelPhoto_2LocationX = 500, playerComparePanelPhoto_2LocationY = 35;
+	static public int playerComparePanelPhoto_2LocationX = 735, playerComparePanelPhoto_2LocationY = 35;
 	
 	static public int playerComparePanelSelectSeasonWidth = 100, playerComparePanelSelectSeasonHeight = 28;
 	static public int playerComparePanelSelectSeasonLocationX = 0, playerComparePanelSelectSeasonLocationY = 245;
