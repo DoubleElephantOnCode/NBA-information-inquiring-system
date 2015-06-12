@@ -47,4 +47,23 @@ public class TimeSeriesChart {
 		p = new ChartPanel(jfreeChart, true);
 		return p;
 	}
+	
+	public JFreeChart getJFreeChart(){
+		JFreeChart jfreeChart = ChartFactory.createTimeSeriesChart(title, x_name, y_name, xydataset, true, true, true);
+		XYPlot xyplot = (XYPlot) jfreeChart.getPlot();
+		DateAxis dateaxis = (DateAxis) xyplot.getDomainAxis();
+// 		dateaxis.setDateFormatOverride(new SimpleDateFormat("MMM-yyyy"));
+		dateaxis.setLabelFont(new Font("黑体",Font.BOLD,14));         //水平底部标题
+		dateaxis.setTickLabelFont(new Font("宋体",Font.BOLD,12));  //垂直标题
+		ValueAxis rangeAxis=xyplot.getRangeAxis();//获取柱状
+		rangeAxis.setLabelFont(new Font("黑体",Font.BOLD,15));
+		jfreeChart.getLegend().setItemFont(new Font("黑体", Font.BOLD, 15));
+		return jfreeChart;
+	}
+	
+	public static void setRange(JFreeChart jfreeChart, Date lower, Date up){
+		XYPlot xyplot = (XYPlot) jfreeChart.getPlot();
+		DateAxis dateaxis = (DateAxis) xyplot.getDomainAxis();
+		dateaxis.setRange(lower, up);
+	}
 }

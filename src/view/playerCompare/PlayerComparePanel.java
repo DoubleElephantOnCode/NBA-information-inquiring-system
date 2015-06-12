@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -13,21 +14,23 @@ import javax.swing.JPanel;
 import model.dataLogic.SelectPlayer;
 
 import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.xy.XYSeries;
 
-import control.PlayerStatisticController;
 import statisticsAnalysis.RadarChart;
 import statisticsAnalysis.TimeSeriesChart;
 import statisticsAnalysis.playerCompare.SingleAbilityCmp;
 import view.SizeAndLocationAndFont;
 import view.Team;
 import view.selectedPanel.SelectPanel;
+import control.PlayerStatisticController;
 
 public class PlayerComparePanel extends JPanel{
 	static String chart;
 	static int Type;
 	static String Season = Team.SEASON[0];
+	static int s = 0;
 	
 	static boolean p1 = false, p2 = false;
 	static String PLAYER1, PLAYER2;
@@ -89,10 +92,20 @@ public class PlayerComparePanel extends JPanel{
 		if(radar != null) this.remove(radar);
 		XYSeries s1 = new XYSeries(player_1Name), s2 = new XYSeries(player_2Name);
 		rc = new RadarChart(null, ability_1.length);
-		for(int i = 0; i < ability_1.length; i++){
-			s1.add(i*rc.angle, ability_1[i]);
-			s2.add(i*rc.angle, ability_2[i]);
-		}
+//		for(int i = 0; i < ability_1.length; i++){
+//			s1.add(i*rc.angle, ability_1[i]);
+//			s2.add(i*rc.angle, ability_2[i]);
+//		}
+		s1.add(0*rc.angle, ability_1[0]/30D);
+		s2.add(0*rc.angle, ability_2[0]/30D);
+		s1.add(rc.angle, ability_1[1]/15D);
+		s2.add(rc.angle, ability_2[1]/15D);
+		s1.add(2*rc.angle, ability_1[2]/10D);
+		s2.add(2*rc.angle, ability_2[2]/10D);
+		s1.add(3*rc.angle, ability_1[3]/3D);
+		s2.add(3*rc.angle, ability_2[3]/3D);
+		s1.add(4*rc.angle, ability_1[4]/3D);
+		s2.add(4*rc.angle, ability_2[4]/3D);
 		rc.add(s1);
 		rc.add(s2);
 		radar = rc.getChartPanel(Color.LIGHT_GRAY, true);
@@ -107,7 +120,13 @@ public class PlayerComparePanel extends JPanel{
 		tsc = new TimeSeriesChart(null, "时间", chart);
 		tsc.add(series1);
 		tsc.add(series2);
-		p = tsc.getChartPanel();
+//		p = tsc.getChartPanel();
+//		p.setSize(SizeAndLocationAndFont.playerComparePanelChart_2Width, SizeAndLocationAndFont.playerComparePanelChart_2Height);
+//		p.setLocation(SizeAndLocationAndFont.playerComparePanelChart_2LocationX, SizeAndLocationAndFont.playerComparePanelChart_2LocationY);
+//		this.add(p);
+		JFreeChart c = tsc.getJFreeChart();
+		TimeSeriesChart.setRange(c, new Date(111+s, 9, 20), new Date(112+s, 6, 30));
+		p = new ChartPanel(c, true);
 		p.setSize(SizeAndLocationAndFont.playerComparePanelChart_2Width, SizeAndLocationAndFont.playerComparePanelChart_2Height);
 		p.setLocation(SizeAndLocationAndFont.playerComparePanelChart_2LocationX, SizeAndLocationAndFont.playerComparePanelChart_2LocationY);
 		this.add(p);
@@ -143,6 +162,7 @@ public class PlayerComparePanel extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				season.action();
 				Season = season.getSelectedItem();
+				s = season.getSelectedIndex();
 				setChart_2();
 			}
 		});
