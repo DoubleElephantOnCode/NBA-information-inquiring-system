@@ -5,9 +5,13 @@ import java.util.Date;
 
 import model.readData.ReadMatchData;
 
+import org.jfree.data.time.Day;
 import org.jfree.data.time.TimeSeries;
 
 import view.mainFrame.Main;
+import vo.MatchVO;
+import vo.PlayerDataPerMatchVO;
+import vo.PlayerVO;
 import vo.TeamVO;
 
 public class SingleTeamModel implements ShowView{
@@ -40,7 +44,15 @@ public class SingleTeamModel implements ShowView{
 		}
 		
 		double[] ability = teamVO.getAbilityArray();
+		
+		
+		
 		TimeSeries timeSeries = teamVO.getTimeSeries(chartItem,begin,end);
+		
+		
+		
+		
+		
 		
 		
 		String[] headListForRow = new String[content.length];
