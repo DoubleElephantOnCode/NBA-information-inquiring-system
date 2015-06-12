@@ -2,6 +2,7 @@ package vo;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 
@@ -49,6 +50,11 @@ public class PlayerDataPerMatchVO {
 	 * 比赛日期
 	 */
 	private String matchDate;
+	
+	/**
+	 * 比赛日期（Date类型）
+	 */
+	private Date date;
 	
 	/**
 	 * 上场位置
@@ -239,6 +245,7 @@ public class PlayerDataPerMatchVO {
 		this.playerName = matchData.getPlayerName();
 		this.teamName = matchData.getTeamName();
 		this.matchDate = sdf.format(matchData.getTimeOfMatch());
+		this.date = matchData.getTimeOfMatch();
 		this.twoSides = matchData.getTwoSides();
 		this.season = matchData.getSeason();
 		this.isPlayoff = matchData.isPlayoff();
@@ -623,6 +630,10 @@ public class PlayerDataPerMatchVO {
 
 	public String getRivalTeam() {
 		return rivalTeam;
+	}
+
+	public Date getDate() {
+		return date;
 	}
 
 	

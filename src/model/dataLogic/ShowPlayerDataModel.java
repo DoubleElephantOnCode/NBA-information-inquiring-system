@@ -771,14 +771,19 @@ public class ShowPlayerDataModel {
 			PlayerVO player1 = PlayerList.findAPlayer(name1);
 			PlayerVO player2 = PlayerList.findAPlayer(name2);
 
+			System.out.println(player1.getDataPerMatchList().get(0).getSeason());
+			System.out.println(player2.getDataPerMatchList().get(0).getSeason());
+			System.out.println(season);
+			
 			player1.calSeasonData(season, isOnlyPlayoff, isOnlyRegular);
 			player2.calSeasonData(season, isOnlyPlayoff, isOnlyRegular);
 
 			for (int i = 0; i < player1.getDataPerMatchList().size(); i++) {
-				PlayerDataPerMatchVO matchData = player1.getDataPerMatchList()
-						.get(i);
+				PlayerDataPerMatchVO matchData = player1.getDataPerMatchList().get(i);
 				if (matchData.getSeason().equals(season)) {
-					series1.add(new Day(new Date(matchData.getMatchDate())),
+					System.out.println(season + matchData.getSeason());
+					System.out.println(matchData.getMatchDate());
+					series1.add(new Day(matchData.getDate()),
 							matchData.getForStatistic(index));
 					dataForBox1.add(matchData.getForStatistic(index));
 				}
@@ -787,11 +792,13 @@ public class ShowPlayerDataModel {
 				PlayerDataPerMatchVO matchData = player2.getDataPerMatchList()
 						.get(i);
 				if (matchData.getSeason().equals(season)) {
-					series2.add(new Day(new Date(matchData.getMatchDate())),
+//					System.out.println(season);
+					series2.add(new Day(matchData.getDate()),
 							matchData.getForStatistic(index));
 					dataForBox2.add(matchData.getForStatistic(index));
 				}
 			}
+			
 
 			if (type == 0) { // 折线图
 				Main.setPlayerCmp_setTimeSeriesChart(series1, series2);
