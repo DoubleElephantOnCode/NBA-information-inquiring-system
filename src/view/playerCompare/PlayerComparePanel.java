@@ -137,11 +137,12 @@ public class PlayerComparePanel extends JPanel{
 		chartContent = new SelectPanel(SizeAndLocationAndFont.playerComparePanelSelectChartContentWidth, SizeAndLocationAndFont.playerComparePanelSelectChartContentHeight, CHARTCONTENT);
 		chartContent.setLocation(SizeAndLocationAndFont.playerComparePanelSelectChartContentLocationX, SizeAndLocationAndFont.playerComparePanelSelectChartContentLocationY);
 		
-season.box.addActionListener(new ActionListener() {
+		season.box.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				season.action();
+				Season = season.getSelectedItem();
 				setChart_2();
 			}
 		});
