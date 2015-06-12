@@ -79,6 +79,12 @@ public class SizeAndLocationAndFont {
 	
 	static public int teamPicLabelWidth = 96, teamPicLabelHeight = 59;
 	
+	static public int teamCountSelectSeasonWidth = 200, teamCountSelectSeasonHeight = 35;
+	static public int teamCountSelectSeasonLocationX = 100, teamCountSelectSeasonLocationY = 130;
+	
+	static public int teamCountSelectAfterWidth = 200, teamCountSelectAfterHeight = 35;
+	static public int teamCountSelectAfterLocationX = 400, teamCountSelectAfterLocationY = 130;
+	
 	//信息中心界面参数
 	//球员搜索框参数
 	static public int searchPlayerPanelWidth = 213, searchPlayerPanelHeight = 28;

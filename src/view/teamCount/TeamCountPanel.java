@@ -1,6 +1,7 @@
 package view.teamCount;
 
-import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
@@ -8,12 +9,14 @@ import javax.swing.JPanel;
 
 import view.File;
 import view.SizeAndLocationAndFont;
+import view.Team;
 import view.mainFrame.ExitLabel;
 import view.mainFrame.LabelEnterListener;
 import view.mainFrame.Main;
 import view.mainFrame.MenuLabel;
 import view.mainFrame.GoForwardOrBackward.GoForwardOrBackwardPanel;
 import view.searchPanel.SearchPanel;
+import view.selectedPanel.SelectPanel;
 import view.startView.StartPanel;
 
 public class TeamCountPanel extends JPanel{
@@ -30,6 +33,7 @@ public class TeamCountPanel extends JPanel{
 	static GoForwardOrBackwardPanel goForwardOrBackward = StartPanel.goForwardOrBackward;
 	
 	static SearchPanel search;
+	static SelectPanel season, isAfter;
 	
 	public TeamCountPanel(String[][] content, String[] team, String[] headListForColumn, JLabel[] pic){
 		
@@ -43,9 +47,17 @@ public class TeamCountPanel extends JPanel{
 		search.area.setFont(SizeAndLocationAndFont.searchPanelFont);
 		search.area.setCaretColor(table.fontColor);
 		
+		season = new SelectPanel(SizeAndLocationAndFont.teamCountSelectSeasonWidth, SizeAndLocationAndFont.teamCountSelectSeasonHeight, Team.SEASON);
+		season.setLocation(SizeAndLocationAndFont.teamCountSelectSeasonLocationX, SizeAndLocationAndFont.teamCountSelectSeasonLocationY);
+		
+		isAfter = new SelectPanel(SizeAndLocationAndFont.teamCountSelectAfterWidth, SizeAndLocationAndFont.teamCountSelectAfterHeight, Team.ISAFTER);
+		isAfter.setLocation(SizeAndLocationAndFont.teamCountSelectAfterLocationX, SizeAndLocationAndFont.teamCountSelectSeasonLocationY);
+		
 		add(background);
 		add(table, 0);
 		add(search, 0);
+		add(season, 0);
+		add(isAfter, 0);
 		
 		if(exit == null) exit = new ExitLabel();
 		exit.addToPanel(this);
@@ -75,6 +87,22 @@ public class TeamCountPanel extends JPanel{
 					table.bcp.setPosition(table.p.pointerRow);
 					table.teamPic.moveToIndex(table.p.pointerRow);
 				}
+			}
+		});
+		
+		season.box.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				season.action();
+			}
+		});
+		
+		isAfter.box.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				isAfter.action();
 			}
 		});
 		

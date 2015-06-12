@@ -10,10 +10,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import model.dataLogic.SelectPlayer;
+
 import org.jfree.chart.ChartPanel;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.xy.XYSeries;
 
+import control.PlayerStatisticController;
 import statisticsAnalysis.RadarChart;
 import statisticsAnalysis.TimeSeriesChart;
 import statisticsAnalysis.playerCompare.SingleAbilityCmp;
@@ -23,7 +26,8 @@ import view.selectedPanel.SelectPanel;
 
 public class PlayerComparePanel extends JPanel{
 	static String chart;
-	static int type;
+	static int Type;
+	static String Season = Team.SEASON[0];
 	
 	static boolean p1 = false, p2 = false;
 	static String PLAYER1, PLAYER2;
@@ -40,12 +44,12 @@ public class PlayerComparePanel extends JPanel{
 	
 	static JLabel player_1, player_2, score1, score2;
 	
-	static String[] SEASON = {"11-12", "12-13", "13-14", "14-15"},
-			AFTER = {"常规赛", "季后赛"},
-			CHARTTYPE = {"稳定性", "发挥状态"},
+	static String[] SEASON = Team.SEASON,
+			AFTER = Team.ISAFTER,
+			CHARTTYPE = {"折线图", "箱形图"},
 			CHARTCONTENT = {"得分", "篮板", "助攻", "抢断", "盖帽", "失误", "犯规"},
 			TEAM = Team.TEAM,
-			TEANEN = Team.TEAMEN;
+			TEAMEN = Team.TEAMEN;
 	
 	
 	public PlayerComparePanel(){
@@ -71,13 +75,13 @@ public class PlayerComparePanel extends JPanel{
 			if(player_1 != null) this.remove(player_1);
 			player_1 = setJLabelWithIcon(playerPic, SizeAndLocationAndFont.playerComparePanelPhotoWidth, SizeAndLocationAndFont.playerComparePanelPhotoHeight);
 			player_1.setLocation(SizeAndLocationAndFont.playerComparePanelPhoto_1LocationX, SizeAndLocationAndFont.playerComparePanelPhoto_1LocationY);
-			this.add(player_1);
+			this.add(player_1, 0);
 		}
 		else if(index == 2){
 			if(player_2 != null) this.remove(player_2);
 			player_2 = setJLabelWithIcon(playerPic, SizeAndLocationAndFont.playerComparePanelPhotoWidth, SizeAndLocationAndFont.playerComparePanelPhotoHeight);
 			player_2.setLocation(SizeAndLocationAndFont.playerComparePanelPhoto_2LocationX, SizeAndLocationAndFont.playerComparePanelPhoto_2LocationY);
-			this.add(player_2);
+			this.add(player_2, 0);
 		}
 	}
 	
@@ -133,6 +137,42 @@ public class PlayerComparePanel extends JPanel{
 		chartContent = new SelectPanel(SizeAndLocationAndFont.playerComparePanelSelectChartContentWidth, SizeAndLocationAndFont.playerComparePanelSelectChartContentHeight, CHARTCONTENT);
 		chartContent.setLocation(SizeAndLocationAndFont.playerComparePanelSelectChartContentLocationX, SizeAndLocationAndFont.playerComparePanelSelectChartContentLocationY);
 		
+season.box.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				season.action();
+				setChart_2();
+			}
+		});
+		
+		after.box.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				after.action();
+				setChart_2();
+			}
+		});
+		
+		chartContent.box.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				chartContent.action();
+				setChart_2();
+			}
+		});
+		
+		chartType.box.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				chartType.action();
+				setChart_2();
+			}
+		});
+		
 		this.add(season);
 		this.add(after);
 		this.add(chartContent);
@@ -158,7 +198,8 @@ public class PlayerComparePanel extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				team1.action();
 				int s = team1.getSelectedIndex();
-				
+				p1 = false;
+				player1.setItems(SelectPlayer.selectByTeam(TEAMEN[s]));
 			}
 		});
 		
@@ -168,7 +209,34 @@ public class PlayerComparePanel extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				team2.action();
 				int s = team2.getSelectedIndex();
-				
+				p2 = false;
+				player2.setItems(SelectPlayer.selectByTeam(TEAMEN[s]));
+			}
+		});
+		
+		player1.box.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				player1.action();
+				PLAYER1 = player1.getSelectedItem();
+				p1 = true;
+				new PlayerStatisticController().showPlayer(PLAYER1, 1);
+				setAbilityChart();
+				setChart_2();
+			}
+		});
+		
+		player2.box.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				player2.action();
+				PLAYER2 = player2.getSelectedItem();
+				p2 = true;
+				new PlayerStatisticController().showPlayer(PLAYER2, 2);
+				setAbilityChart();
+				setChart_2();
 			}
 		});
 		
@@ -183,6 +251,18 @@ public class PlayerComparePanel extends JPanel{
 		this.setSize(SizeAndLocationAndFont.playerComparePanelWidth, SizeAndLocationAndFont.playerComparePanelHeight);
 		this.setLayout(null);
 		this.setLocation(SizeAndLocationAndFont.playerComparePanelLocationX, SizeAndLocationAndFont.playerComparePanelLocationY);
+	}
+	
+	private void setAbilityChart(){
+		if(p1&&p2){//两个球员选定
+			new PlayerStatisticController().showPlayerAbility(PLAYER1, PLAYER2, Season);
+		}
+	}
+	
+	private void setChart_2(){
+		if(p1&&p2){
+			new PlayerStatisticController().playerStatistic(PLAYER1, PLAYER2, Season, after.getSelectedIndex(), chartContent.getSelectedIndex(), chartType.getSelectedIndex());
+		}
 	}
 	
 	private static JLabel setJLabelWithIcon(String IconPath, int width, int height){
