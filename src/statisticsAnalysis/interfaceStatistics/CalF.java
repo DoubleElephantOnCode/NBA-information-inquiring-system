@@ -67,7 +67,7 @@ public class CalF {
 	}
 	double fdist(double x, int free1,int  free2)
 	{
-	        int m, n;
+	        double m, n;
 	        if (x <= 0) return 0;
 	        if (free1 <= 0 || free2 <= 0) System.out.println( "freedegree must >0");
 	        m = free1;
@@ -82,7 +82,7 @@ public class CalF {
 	        if (p < 0 || p > 1) System.out.println( "p must be probability in fdistinv!");
 	        if (p == 0) return 0;
 	        double xup;
-	        int n1, n2;
+	        double n1, n2;
 	        n1 = free1;
 	        n2 = free2;
 	        double e, dev;
@@ -100,7 +100,7 @@ public class CalF {
 	        double x2;
 	        x2 = xup;
 	        if (p > 1 - 1e-8) return x2;
-	        int x1 = 0;
+	        double x1 = 0;
 	        double xacc = 1e-12;
 	        int JMAX = 400;
 	        int j;
@@ -132,8 +132,8 @@ public class CalF {
 	
 	public static void main(String[] args){
 		CalF c = new CalF();
-		System.out.println(c.fdistinv(0.05, 65, 65));
 		System.out.println(c.fdistinv(0.95, 65, 65));
+		System.out.println(c.fdistinv(0.05, 65, 65));
 
 	}
 }
