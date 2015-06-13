@@ -47,6 +47,24 @@ public class TeamList {
 		}
 	}
 	
+
+	
+	public static void updateDataBySeasonAndPlayoff(String season,int isPlayoff){
+		if(isPlayoff==0){
+			for(TeamVO teamVO:teamVOList){
+				teamVO.updateDataBySeasonAndPlayoff(season);
+			}
+		}else if(isPlayoff==1){
+			for(TeamVO teamVO:teamVOList){
+				teamVO.updateDataBySeasonAndPlayoff(season,false);
+			}
+		}else if(isPlayoff==2){
+			for(TeamVO teamVO:teamVOList){
+				teamVO.updateDataBySeasonAndPlayoff(season,true);
+			}
+		}
+	}
+	
 	public static ArrayList<TeamVO> getTeamVOList(){
 		return teamVOList;
 	}

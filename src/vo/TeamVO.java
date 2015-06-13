@@ -596,6 +596,33 @@ public class TeamVO {
 		calRate();
 		
 	}
+	
+	public void init(){
+		winningNum = 0;
+		totalScoreNum = 0;
+		totalShootNum = 0;
+		totalThreePointScoreNum = 0;
+		totalThreePointShootNum = 0;
+		totalFreeThrowScoreNum = 0;
+		totalFreeThrowShootNum = 0;
+		totalOffensiveReboundsNum = 0;
+		totalDefensiveReboundsNum = 0;
+		totalTotalReboundsNum = 0;
+		totalAssistNum = 0;
+		totalStealNum = 0;
+		totalBlockNum = 0;
+		totalTurnoverNum = 0;
+		totalFoulNum = 0;
+		totalScore = 0;
+		
+		totalOpponentScore = 0;
+		totalOpponentOffensiveReboundsNum = 0;
+		totalOpponentDefensiveReboundsNum = 0;
+		totalOpponentShootNum = 0;
+		totalOpponentFreeThrowShootNum = 0;
+		totalOpponentScoreNum = 0;
+		totalOpponentTurnoverNum = 0;
+	}
 
 	
 	/**
@@ -828,6 +855,165 @@ public class TeamVO {
 		case 33: d = aveOffensiveReboundsNum;return d;
 		}
 		return d;
+	}
+	
+	public void updateDataBySeasonAndPlayoff(String season,boolean isPlayoff){
+		init();
+		for(int i=0;i<matchList.size();i++){
+			MatchVO matchVO = matchList.get(i);
+			if(matchVO.season.equals(season)&&matchVO.isPlayoff==isPlayoff){
+				if(abbreviation.equals(matchVO.getAwayTeam())||matchVO.getAwayTeam().equals(oldName)){
+					matchNum++;
+					if(matchVO.getTotalScore().former > matchVO.getTotalScore().latter){
+						winningNum++;
+					}
+					totalScoreNum += matchVO.getAwayTotalScoreNum();
+					totalShootNum += matchVO.getAwayTotalShootNum();
+					totalThreePointScoreNum += matchVO.getAwayTotalThreePointScoreNum();
+					totalThreePointShootNum += matchVO.getAwayTotalThreePointShootNum();
+					totalFreeThrowScoreNum += matchVO.getAwayTotalFreeThrowScoreNum();
+					totalFreeThrowShootNum += matchVO.getAwayTotalFreeThrowShootNum();
+					totalOffensiveReboundsNum += matchVO.getAwayTotalOffensiveReboundsNum();
+					totalDefensiveReboundsNum += matchVO.getAwayTotalDefensiveReboundsNum();
+					totalTotalReboundsNum += matchVO.getAwayTotalReboundsNum();
+					totalAssistNum += matchVO.getAwayTotalAssistNum();
+					totalStealNum += matchVO.getAwayTotalStealNum();
+					totalBlockNum += matchVO.getAwayTotalBlockNum();
+					totalTurnoverNum += matchVO.getAwayTotalTurnoverNum();
+					totalFoulNum += matchVO.getAwayTotalFoulNum();
+					totalScore += matchVO.getTotalScore().former;
+					
+					//关于总进攻回合的计算有疑问  暂时采用第二种方法  通过总的数据来计算 而不是通过进攻回合累加
+					//totalAttackRound += matchVO.getAwayAttackRound();
+					//totalDefensiveRound += matchVO.getAwayDefensiveRound();
+					
+					totalOpponentScore += matchVO.getTotalScore().latter;
+					totalOpponentOffensiveReboundsNum += matchVO.getHomeTotalOffensiveReboundsNum();
+					totalOpponentDefensiveReboundsNum += matchVO.getHomeTotalDefensiveReboundsNum();
+					totalOpponentShootNum += matchVO.getHomeTotalShootNum();
+					totalOpponentFreeThrowShootNum += matchVO.getHomeTotalFreeThrowShootNum();
+					totalOpponentScoreNum += matchVO.getHomeTotalScoreNum();
+					totalOpponentTurnoverNum += matchVO.getHomeTotalTurnoverNum();
+					
+					
+				}else if(abbreviation.equals(matchVO.getHomeTeam())||matchVO.getHomeTeam().equals(oldName)){
+					if(matchVO.getTotalScore().former < matchVO.getTotalScore().latter){
+						winningNum++;
+					}
+					totalScoreNum += matchVO.getHomeTotalScoreNum();
+					totalShootNum += matchVO.getHomeTotalShootNum();
+					totalThreePointScoreNum += matchVO.getHomeTotalThreePointScoreNum();
+					totalThreePointShootNum += matchVO.getHomeTotalThreePointShootNum();
+					totalFreeThrowScoreNum += matchVO.getHomeTotalFreeThrowScoreNum();
+					totalFreeThrowShootNum += matchVO.getHomeTotalFreeThrowShootNum();
+					totalOffensiveReboundsNum += matchVO.getHomeTotalOffensiveReboundsNum();
+					totalDefensiveReboundsNum += matchVO.getHomeTotalDefensiveReboundsNum();
+					totalTotalReboundsNum += matchVO.getHomeTotalReboundsNum();
+					totalAssistNum += matchVO.getHomeTotalAssistNum();
+					totalStealNum += matchVO.getHomeTotalStealNum();
+					totalBlockNum += matchVO.getHomeTotalBlockNum();
+					totalTurnoverNum += matchVO.getHomeTotalTurnoverNum();
+					totalFoulNum += matchVO.getHomeTotalFoulNum();
+					totalScore += matchVO.getTotalScore().latter;
+					
+					//关于总进攻回合的计算有疑问  暂时采用第二种方法  通过总的数据来计算 而不是通过进攻回合累加
+					//totalAttackRound += matchVO.getHomeAttackRound();
+					//totalDefensiveRound += matchVO.getHomeDefensiveRound();
+					
+					totalOpponentScore += matchVO.getTotalScore().former;
+					totalOpponentOffensiveReboundsNum += matchVO.getAwayTotalOffensiveReboundsNum();
+					totalOpponentDefensiveReboundsNum += matchVO.getAwayTotalDefensiveReboundsNum();
+					totalOpponentShootNum += matchVO.getAwayTotalShootNum();
+					totalOpponentFreeThrowShootNum += matchVO.getAwayTotalFreeThrowShootNum();
+					totalOpponentScoreNum += matchVO.getAwayTotalScoreNum();
+					totalOpponentTurnoverNum += matchVO.getAwayTotalTurnoverNum();
+				}else{
+					System.out.println("error in TeamVO addMatchVO");
+				}
+			}
+		}
+		
+		calData();
+	}
+	
+	
+	public void updateDataBySeasonAndPlayoff(String season){
+		init();
+		for(int i=0;i<matchList.size();i++){
+			MatchVO matchVO = matchList.get(i);
+			if(matchVO.season.equals(season)){
+				if(abbreviation.equals(matchVO.getAwayTeam())||matchVO.getAwayTeam().equals(oldName)){
+					matchNum++;
+					if(matchVO.getTotalScore().former > matchVO.getTotalScore().latter){
+						winningNum++;
+					}
+					totalScoreNum += matchVO.getAwayTotalScoreNum();
+					totalShootNum += matchVO.getAwayTotalShootNum();
+					totalThreePointScoreNum += matchVO.getAwayTotalThreePointScoreNum();
+					totalThreePointShootNum += matchVO.getAwayTotalThreePointShootNum();
+					totalFreeThrowScoreNum += matchVO.getAwayTotalFreeThrowScoreNum();
+					totalFreeThrowShootNum += matchVO.getAwayTotalFreeThrowShootNum();
+					totalOffensiveReboundsNum += matchVO.getAwayTotalOffensiveReboundsNum();
+					totalDefensiveReboundsNum += matchVO.getAwayTotalDefensiveReboundsNum();
+					totalTotalReboundsNum += matchVO.getAwayTotalReboundsNum();
+					totalAssistNum += matchVO.getAwayTotalAssistNum();
+					totalStealNum += matchVO.getAwayTotalStealNum();
+					totalBlockNum += matchVO.getAwayTotalBlockNum();
+					totalTurnoverNum += matchVO.getAwayTotalTurnoverNum();
+					totalFoulNum += matchVO.getAwayTotalFoulNum();
+					totalScore += matchVO.getTotalScore().former;
+					
+					//关于总进攻回合的计算有疑问  暂时采用第二种方法  通过总的数据来计算 而不是通过进攻回合累加
+					//totalAttackRound += matchVO.getAwayAttackRound();
+					//totalDefensiveRound += matchVO.getAwayDefensiveRound();
+					
+					totalOpponentScore += matchVO.getTotalScore().latter;
+					totalOpponentOffensiveReboundsNum += matchVO.getHomeTotalOffensiveReboundsNum();
+					totalOpponentDefensiveReboundsNum += matchVO.getHomeTotalDefensiveReboundsNum();
+					totalOpponentShootNum += matchVO.getHomeTotalShootNum();
+					totalOpponentFreeThrowShootNum += matchVO.getHomeTotalFreeThrowShootNum();
+					totalOpponentScoreNum += matchVO.getHomeTotalScoreNum();
+					totalOpponentTurnoverNum += matchVO.getHomeTotalTurnoverNum();
+					
+					
+				}else if(abbreviation.equals(matchVO.getHomeTeam())||matchVO.getHomeTeam().equals(oldName)){
+					if(matchVO.getTotalScore().former < matchVO.getTotalScore().latter){
+						winningNum++;
+					}
+					totalScoreNum += matchVO.getHomeTotalScoreNum();
+					totalShootNum += matchVO.getHomeTotalShootNum();
+					totalThreePointScoreNum += matchVO.getHomeTotalThreePointScoreNum();
+					totalThreePointShootNum += matchVO.getHomeTotalThreePointShootNum();
+					totalFreeThrowScoreNum += matchVO.getHomeTotalFreeThrowScoreNum();
+					totalFreeThrowShootNum += matchVO.getHomeTotalFreeThrowShootNum();
+					totalOffensiveReboundsNum += matchVO.getHomeTotalOffensiveReboundsNum();
+					totalDefensiveReboundsNum += matchVO.getHomeTotalDefensiveReboundsNum();
+					totalTotalReboundsNum += matchVO.getHomeTotalReboundsNum();
+					totalAssistNum += matchVO.getHomeTotalAssistNum();
+					totalStealNum += matchVO.getHomeTotalStealNum();
+					totalBlockNum += matchVO.getHomeTotalBlockNum();
+					totalTurnoverNum += matchVO.getHomeTotalTurnoverNum();
+					totalFoulNum += matchVO.getHomeTotalFoulNum();
+					totalScore += matchVO.getTotalScore().latter;
+					
+					//关于总进攻回合的计算有疑问  暂时采用第二种方法  通过总的数据来计算 而不是通过进攻回合累加
+					//totalAttackRound += matchVO.getHomeAttackRound();
+					//totalDefensiveRound += matchVO.getHomeDefensiveRound();
+					
+					totalOpponentScore += matchVO.getTotalScore().former;
+					totalOpponentOffensiveReboundsNum += matchVO.getAwayTotalOffensiveReboundsNum();
+					totalOpponentDefensiveReboundsNum += matchVO.getAwayTotalDefensiveReboundsNum();
+					totalOpponentShootNum += matchVO.getAwayTotalShootNum();
+					totalOpponentFreeThrowShootNum += matchVO.getAwayTotalFreeThrowShootNum();
+					totalOpponentScoreNum += matchVO.getAwayTotalScoreNum();
+					totalOpponentTurnoverNum += matchVO.getAwayTotalTurnoverNum();
+				}else{
+					System.out.println("error in TeamVO addMatchVO");
+				}
+			}
+		}
+		
+		calData();
 	}
 	
 	

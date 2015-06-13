@@ -35,4 +35,8 @@ public class ShowTeamController {
 	public void showHotTeamTable(int i){
 		showHotTeamModel.showTeamTable(i);
 	}
+	
+	public void chooseSeasonAndIsPlayOff(String season,int isPlayoff){
+		showTeamModel.chooseSeasonAndPlayoff(season, isPlayoff);
+	}
 }

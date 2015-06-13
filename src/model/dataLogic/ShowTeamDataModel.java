@@ -58,6 +58,33 @@ public class ShowTeamDataModel implements ShowView{
 		
 	}
 	
+	/**
+	 * 
+	 * @param season
+	 * @param isPlayoff  0代表全部，1代表常规赛，2代表季后赛
+	 */
+	public void chooseSeasonAndPlayoff(String season,int isPlayoff){
+		
+		TeamList.updateDataBySeasonAndPlayoff(season, isPlayoff);
+		
+		ArrayList<TeamVO> teamVOList = TeamList.getTeamVOList();
+		File[] fs = new  File[teamVOList.size()];
+		TeamVO t = teamVOList.get(0);
+		String[][] content = new String[teamVOList.size()][TeamList.getHeadListForColumn().length];
+		for(int h = 0;h<teamVOList.size();h++){
+			t=teamVOList.get(h);
+			String[] s = t.toStringArray();
+			fs[h] = new File(t.getPath());
+			for(int j=0;j<s.length;j++){
+				content[h][j] = s[j];
+			}
+		}
+		String[] row = TeamList.getHeadListForRow();
+		
+		
+		Main.resetTeamCountPanel(content, row,fs);
+	}
+	
 	public void sortTeamTable(final int i,final boolean isPositiveSequence){
 		
 		this.i = i;
