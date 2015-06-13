@@ -45,7 +45,7 @@ public class PlayerComparePanel extends JPanel{
 	static SelectPanel season, after, chartType, chartContent;
 	static SelectPanel team1, player1, team2, player2;
 	
-	static JLabel player_1, player_2, score1, score2;
+	static JLabel player_1, player_2, score_1, score_2;
 	
 	static String[] SEASON = Team.SEASON,
 			AFTER = Team.ISAFTER,
@@ -79,23 +79,40 @@ public class PlayerComparePanel extends JPanel{
 			player_1 = setJLabelWithIcon(playerPic, SizeAndLocationAndFont.playerComparePanelPhotoWidth, SizeAndLocationAndFont.playerComparePanelPhotoHeight);
 			player_1.setLocation(SizeAndLocationAndFont.playerComparePanelPhoto_1LocationX, SizeAndLocationAndFont.playerComparePanelPhoto_1LocationY);
 			this.add(player_1, 0);
+			
+			if(score_1 != null) this.remove(score_1);
+			score_1 = new JLabel(Integer.toString(score), JLabel.CENTER);
+			score_1.setSize(SizeAndLocationAndFont.playerComparePanelScoreLabelWidth, SizeAndLocationAndFont.playerComparePanelScoreLabelHeight);
+			score_1.setLocation(SizeAndLocationAndFont.playerComparePanelScore_1LabelLocationX, SizeAndLocationAndFont.playerComparePanelScore_1LabelLocationY);
+			score_1.setOpaque(false);
+			score_1.setFont(SizeAndLocationAndFont.scoreFont);
+			score_1.setVisible(true);
+			score_1.setForeground(Color.white);
+			this.add(score_1, 0);
 		}
 		else if(index == 2){
 			if(player_2 != null) this.remove(player_2);
 			player_2 = setJLabelWithIcon(playerPic, SizeAndLocationAndFont.playerComparePanelPhotoWidth, SizeAndLocationAndFont.playerComparePanelPhotoHeight);
 			player_2.setLocation(SizeAndLocationAndFont.playerComparePanelPhoto_2LocationX, SizeAndLocationAndFont.playerComparePanelPhoto_2LocationY);
 			this.add(player_2, 0);
+			
+			if(score_2 != null) this.remove(score_2);
+			score_2 = new JLabel(Integer.toString(score), JLabel.CENTER);
+			score_2.setSize(SizeAndLocationAndFont.playerComparePanelScoreLabelWidth, SizeAndLocationAndFont.playerComparePanelScoreLabelHeight);
+			score_2.setLocation(SizeAndLocationAndFont.playerComparePanelScore_2LabelLocationX, SizeAndLocationAndFont.playerComparePanelScore_2LabelLocationY);
+			score_2.setOpaque(false);
+			score_2.setFont(SizeAndLocationAndFont.scoreFont);
+			score_2.setVisible(true);
+			score_2.setForeground(Color.white);
+			this.add(score_2, 0);
 		}
 	}
 	
 	public void setRadarChart(double[] ability_1, String player_1Name, double[] ability_2, String player_2Name){
 		if(radar != null) this.remove(radar);
+		if(ability_1.length != ability_2.length || ability_1.length != 5) return;
 		XYSeries s1 = new XYSeries(player_1Name), s2 = new XYSeries(player_2Name);
 		rc = new RadarChart(null, ability_1.length);
-//		for(int i = 0; i < ability_1.length; i++){
-//			s1.add(i*rc.angle, ability_1[i]);
-//			s2.add(i*rc.angle, ability_2[i]);
-//		}
 		s1.add(0*rc.angle, ability_1[0]/30D);
 		s2.add(0*rc.angle, ability_2[0]/30D);
 		s1.add(rc.angle, ability_1[1]/15D);
@@ -164,6 +181,7 @@ public class PlayerComparePanel extends JPanel{
 				Season = season.getSelectedItem();
 				s = season.getSelectedIndex();
 				setChart_2();
+				setAbilityChart();
 			}
 		});
 		
@@ -242,6 +260,7 @@ public class PlayerComparePanel extends JPanel{
 				player1.action();
 				PLAYER1 = player1.getSelectedItem();
 				p1 = true;
+				if(PLAYER1 == null) p1 = false;
 				new PlayerStatisticController().showPlayer(PLAYER1, 1);
 				setAbilityChart();
 				setChart_2();
@@ -255,6 +274,7 @@ public class PlayerComparePanel extends JPanel{
 				player2.action();
 				PLAYER2 = player2.getSelectedItem();
 				p2 = true;
+				if(PLAYER2 == null) p2 = false;
 				new PlayerStatisticController().showPlayer(PLAYER2, 2);
 				setAbilityChart();
 				setChart_2();
@@ -275,13 +295,13 @@ public class PlayerComparePanel extends JPanel{
 	}
 	
 	private void setAbilityChart(){
-		if(p1&&p2){//两个球员选定
+		if(p1&&p2&&(!PLAYER1.equals(PLAYER2))){//两个球员选定
 			new PlayerStatisticController().showPlayerAbility(PLAYER1, PLAYER2, Season);
 		}
 	}
 	
 	private void setChart_2(){
-		if(p1&&p2){
+		if(p1&&p2&&(!PLAYER1.equals(PLAYER2))){
 			new PlayerStatisticController().playerStatistic(PLAYER1, PLAYER2, Season, after.getSelectedIndex(), chartContent.getSelectedIndex(), chartType.getSelectedIndex());
 		}
 	}
