@@ -43,5 +43,38 @@ public class Calculate {
 		return c.fdistinv(1-alpha, free1, free2);
 	}
 	
+	public int compareAve(ArrayList<Double> dataArr1,ArrayList<Double> dataArr2){
+		double ave1 = calAve(dataArr1);
+		double ave2 = calAve(dataArr2);
+		
+		double var1 = calVar(dataArr1);
+		double var2 = calVar(dataArr2);
+		
+		double temp = Math.sqrt(var1/(double)dataArr1.size()+var2/(double)dataArr2.size());
+		double low = ave1 - ave2 + temp*getN(alpha/2.0);
+		double high = ave1 - ave2 + temp*getN(alpha/2.0);
+		
+		if(low>0){
+			return 1;
+		}else if(high<0){
+			return -1;
+		}else{
+			return 0;
+		}
+	}
+	
+	public double getN(double alpha){
+		if(alpha == 0.05){
+			return 1.64485;
+		}else if(alpha == 0.025){
+			return 1.95996;
+		}else if(alpha == 0.10){
+			return 1.28155;
+		}
+		System.out.println("error in Calculate getN");
+		return 0 ;
+		
+	}
+	
 	
 }
