@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import control.ShowTeamController;
 import view.File;
 import view.SizeAndLocationAndFont;
 import view.Team;
@@ -95,6 +96,7 @@ public class TeamCountPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				season.action();
+				new ShowTeamController(false).chooseSeasonAndIsPlayOff(season.getSelectedItem(), isAfter.getSelectedIndex());
 			}
 		});
 		
@@ -103,6 +105,7 @@ public class TeamCountPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				isAfter.action();
+				new ShowTeamController(false).chooseSeasonAndIsPlayOff(season.getSelectedItem(), isAfter.getSelectedIndex());
 			}
 		});
 		
