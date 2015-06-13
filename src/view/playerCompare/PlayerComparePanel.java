@@ -131,7 +131,7 @@ public class PlayerComparePanel extends JPanel{
 		this.add(radar);
 	}
 	
-	public void setTimeSeriesPanel(TimeSeries series1, TimeSeries series2){
+	public void setTimeSeriesPanel(TimeSeries series1, TimeSeries series2, int v1, int v2){//TODO
 		if(p != null)
 			this.remove(p);
 		tsc = new TimeSeriesChart(null, "时间", chart);
@@ -142,14 +142,14 @@ public class PlayerComparePanel extends JPanel{
 //		p.setLocation(SizeAndLocationAndFont.playerComparePanelChart_2LocationX, SizeAndLocationAndFont.playerComparePanelChart_2LocationY);
 //		this.add(p);
 		JFreeChart c = tsc.getJFreeChart();
-		TimeSeriesChart.setRange(c, new Date(111+s, 9, 20), new Date(112+s, 6, 30));
+		TimeSeriesChart.setRange(c, new Date(112+s, 9, 20), new Date(113+s, 6, 30));
 		p = new ChartPanel(c, true);
 		p.setSize(SizeAndLocationAndFont.playerComparePanelChart_2Width, SizeAndLocationAndFont.playerComparePanelChart_2Height);
 		p.setLocation(SizeAndLocationAndFont.playerComparePanelChart_2LocationX, SizeAndLocationAndFont.playerComparePanelChart_2LocationY);
 		this.add(p);
 	}
 	
-	public void setBoxPanel(String player_1Name, ArrayList<Double> list1, String player_2Name, ArrayList<Double> list2){
+	public void setBoxPanel(String player_1Name, ArrayList<Double> list1, String player_2Name, ArrayList<Double> list2, int v1, int v2){//TODO
 		if(p != null)
 			this.remove(p);
 		sac = new SingleAbilityCmp(chart, player_1Name, list1, player_2Name, list2);

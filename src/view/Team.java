@@ -12,7 +12,7 @@ public class Team {
 											"MEM", "MIA", "MIL", "MIN", "NOP", "NYK", "OKC",
 											"ORL", "PHI", "PHX", "POR", "SAC", "SAS", "TOR", "UTA", "WAS"};
 	
-	public final static String[] SEASON = {"11-12", "12-13", "13-14", "14-15"};
+	public final static String[] SEASON = {"12-13", "13-14", "14-15"};
 	
 	public final static String[] ISAFTER = {"全部", "常规赛", "季后赛"};
 	

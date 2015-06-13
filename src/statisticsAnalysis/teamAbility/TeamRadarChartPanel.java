@@ -14,11 +14,11 @@ public class TeamRadarChartPanel {
 	public TeamRadarChartPanel(double score, double board, double assistant, double steal, double block){
 		RadarChart chart = new RadarChart(null, 5);
 		XYSeries s = new XYSeries("team");
-		s.add(0, score/120D);
-		s.add(chart.angle, board/50D);
-		s.add(chart.angle*2, assistant/30D);
-		s.add(chart.angle*3, steal/10D);
-		s.add(chart.angle*4, block/8D);
+		s.add(0, (score-90D)/30D);
+		s.add(chart.angle, (board-30D)/20D);
+		s.add(chart.angle*2, (assistant-20D)/10D);
+		s.add(chart.angle*3, (steal-7D)/3D);
+		s.add(chart.angle*4, (block-3D)/5D);
 		chart.add(s);
 		p = chart.getChartPanel(Color.LIGHT_GRAY, false);
 	}
