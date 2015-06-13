@@ -10,10 +10,9 @@ import statisticsAnalysis.BoxChart;
 
 public class SingleAbilityCmp {
 	BoxChart chart;
-	String title;
 	String x_name, y_name;
 	
-	public SingleAbilityCmp(String ability, String player1, ArrayList<Double> list1,String player2, ArrayList<Double> list2){
+	public SingleAbilityCmp(String title, String ability, String player1, ArrayList<Double> list1,String player2, ArrayList<Double> list2){
 		
 		chart = new BoxChart(title, x_name, y_name);
 		BoxAndWhiskerItem item1 = BoxAndWhiskerCalculator.calculateBoxAndWhiskerStatistics(list1);
@@ -23,7 +22,7 @@ public class SingleAbilityCmp {
 	}
 	
 	public ChartPanel getChartPanel(){
-		return chart.getChartPanel();
+		return chart.getChartPanel(false);
 	}
 	
 }

@@ -31,6 +31,7 @@ public class PlayerComparePanel extends JPanel{
 	static int Type;
 	static String Season = Team.SEASON[0];
 	static int s = 0;
+	static int content = 0;
 	
 	static boolean p1 = false, p2 = false;
 	static String PLAYER1, PLAYER2;
@@ -50,7 +51,7 @@ public class PlayerComparePanel extends JPanel{
 	static String[] SEASON = Team.SEASON,
 			AFTER = Team.ISAFTER,
 			CHARTTYPE = {"折线图", "箱形图"},
-			CHARTCONTENT = {"得分", "篮板", "助攻", "抢断", "盖帽", "失误", "犯规"},
+			CHARTCONTENT = {"得分", "篮板", "助攻", "盖帽", "抢断", "犯规", "失误", "投篮命中率", "三分命中率", "罚球命中率", "上场时间"},
 			TEAM = Team.TEAM,
 			TEAMEN = Team.TEAMEN;
 	
@@ -134,7 +135,8 @@ public class PlayerComparePanel extends JPanel{
 	public void setTimeSeriesPanel(TimeSeries series1, TimeSeries series2, int v1, int v2){//TODO
 		if(p != null)
 			this.remove(p);
-		tsc = new TimeSeriesChart(null, "时间", chart);
+		
+		tsc = new TimeSeriesChart(PLAYER1+CHARTCONTENT[content]+"稳定性"+getResult(v1)+PLAYER2+"\n"+PLAYER1+CHARTCONTENT[content]+"能力"+getResult(v2)+PLAYER2, "时间", chart);
 		tsc.add(series1);
 		tsc.add(series2);
 //		p = tsc.getChartPanel();
@@ -152,7 +154,7 @@ public class PlayerComparePanel extends JPanel{
 	public void setBoxPanel(String player_1Name, ArrayList<Double> list1, String player_2Name, ArrayList<Double> list2, int v1, int v2){//TODO
 		if(p != null)
 			this.remove(p);
-		sac = new SingleAbilityCmp(chart, player_1Name, list1, player_2Name, list2);
+		sac = new SingleAbilityCmp(PLAYER1+CHARTCONTENT[content]+"稳定性"+getResult(v1)+PLAYER2+"\n"+PLAYER1+CHARTCONTENT[content]+"能力"+getResult(v2)+PLAYER2, chart, player_1Name, list1, player_2Name, list2);
 		p = sac.getChartPanel();
 		
 		p.setSize(SizeAndLocationAndFont.playerComparePanelChart_2Width, SizeAndLocationAndFont.playerComparePanelChart_2Height);
@@ -199,6 +201,7 @@ public class PlayerComparePanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				chartContent.action();
+				content = chartContent.getSelectedIndex();
 				setChart_2();
 			}
 		});
@@ -313,6 +316,26 @@ public class PlayerComparePanel extends JPanel{
 		label.setSize(width, height);
 		label.setOpaque(false);
 		return label;
+	}
+	
+	private enum R{
+		显著高于,
+		显著低于,
+		不显著高于,
+		不明确
+	}
+	
+	private String getResult(int v){
+		switch(v){
+		case 1:
+			return R.显著高于.toString();
+		case -1:
+			return R.显著低于.toString();
+		case 0:
+			return R.不显著高于.toString();
+		default:
+			return R.不明确.toString();
+		}
 	}
 	
 }
