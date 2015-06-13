@@ -598,6 +598,7 @@ public class TeamVO {
 	}
 	
 	public void init(){
+		matchNum = 0;
 		winningNum = 0;
 		totalScoreNum = 0;
 		totalShootNum = 0;
@@ -897,6 +898,7 @@ public class TeamVO {
 					
 					
 				}else if(abbreviation.equals(matchVO.getHomeTeam())||matchVO.getHomeTeam().equals(oldName)){
+					matchNum++;
 					if(matchVO.getTotalScore().former < matchVO.getTotalScore().latter){
 						winningNum++;
 					}
@@ -977,6 +979,7 @@ public class TeamVO {
 					
 					
 				}else if(abbreviation.equals(matchVO.getHomeTeam())||matchVO.getHomeTeam().equals(oldName)){
+					matchNum++;
 					if(matchVO.getTotalScore().former < matchVO.getTotalScore().latter){
 						winningNum++;
 					}
