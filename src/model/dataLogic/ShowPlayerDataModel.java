@@ -775,22 +775,22 @@ public class ShowPlayerDataModel {
 			System.out.println(player2.getDataPerMatchList().get(0).getSeason());
 			System.out.println(season);
 			
-			player1.calSeasonData(season, isOnlyPlayoff, isOnlyRegular);
-			player2.calSeasonData(season, isOnlyPlayoff, isOnlyRegular);
+			ArrayList<PlayerDataPerMatchVO> matchList1 = player1.calSeasonData(
+					season, isOnlyPlayoff, isOnlyRegular);
+			ArrayList<PlayerDataPerMatchVO> matchList2 = player2.calSeasonData(season, isOnlyPlayoff, isOnlyRegular);
 
-			for (int i = 0; i < player1.getDataPerMatchList().size(); i++) {
-				PlayerDataPerMatchVO matchData = player1.getDataPerMatchList().get(i);
+			for (int i = 0; i < matchList1.size(); i++) {
+				PlayerDataPerMatchVO matchData = matchList1.get(i);
 				if (matchData.getSeason().equals(season)) {
-					System.out.println(season + matchData.getSeason());
-					System.out.println(matchData.getMatchDate());
+//					System.out.println(season + matchData.getSeason());
+//					System.out.println(matchData.getMatchDate());
 					series1.add(new Day(matchData.getDate()),
 							matchData.getForStatistic(index));
 					dataForBox1.add(matchData.getForStatistic(index));
 				}
 			}
-			for (int i = 0; i < player2.getDataPerMatchList().size(); i++) {
-				PlayerDataPerMatchVO matchData = player2.getDataPerMatchList()
-						.get(i);
+			for (int i = 0; i < matchList2.size(); i++) {
+				PlayerDataPerMatchVO matchData = matchList2.get(i);
 				if (matchData.getSeason().equals(season)) {
 //					System.out.println(season);
 					series2.add(new Day(matchData.getDate()),
