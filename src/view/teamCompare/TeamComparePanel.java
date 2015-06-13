@@ -69,7 +69,7 @@ public class TeamComparePanel extends JPanel{
 	
 	public TeamComparePanel(java.io.File teamPic1, double[] ability_1, String team_1Name, ArrayList<Double> list1,
 			java.io.File teamPic2, double[] ability_2, String team_2Name, ArrayList<Double> list2){
-		sac = new SingleAbilityCmp(chart, team_1Name, list1, team_2Name, list2);
+		sac = new SingleAbilityCmp(null, chart, team_1Name, list1, team_2Name, list2);
 		p = sac.getChartPanel();
 		
 		p.setSize(SizeAndLocationAndFont.playerComparePanelChart_2Width, SizeAndLocationAndFont.playerComparePanelChart_2Height);

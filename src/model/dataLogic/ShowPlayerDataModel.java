@@ -8,6 +8,7 @@ import model.readData.ReadMatchData;
 import org.jfree.data.time.Day;
 import org.jfree.data.time.TimeSeries;
 
+import statisticsAnalysis.interfaceStatistics.Calculate;
 import view.mainFrame.Main;
 import view.mainFrame.Waiting;
 import vo.PlayerDataPerMatchVO;
@@ -746,6 +747,8 @@ public class ShowPlayerDataModel {
 			final String season, final int after, final int index,
 			final int type) {
 
+		Calculate cal = new Calculate();
+		
 		// 折线图
 		TimeSeries series1 = new TimeSeries(name1);
 		TimeSeries series2 = new TimeSeries(name2);
@@ -775,22 +778,23 @@ public class ShowPlayerDataModel {
 			System.out.println(player2.getDataPerMatchList().get(0).getSeason());
 			System.out.println(season);
 			
-			player1.calSeasonData(season, isOnlyPlayoff, isOnlyRegular);
-			player2.calSeasonData(season, isOnlyPlayoff, isOnlyRegular);
+			ArrayList<PlayerDataPerMatchVO> matchList1 = player1.calSeasonData(
+					season, isOnlyPlayoff, isOnlyRegular);
+			ArrayList<PlayerDataPerMatchVO> matchList2 = player2.calSeasonData(season, isOnlyPlayoff, isOnlyRegular);
 
-			for (int i = 0; i < player1.getDataPerMatchList().size(); i++) {
-				PlayerDataPerMatchVO matchData = player1.getDataPerMatchList().get(i);
+			
+			for (int i = 0; i < matchList1.size(); i++) {
+				PlayerDataPerMatchVO matchData = matchList1.get(i);
 				if (matchData.getSeason().equals(season)) {
-					System.out.println(season + matchData.getSeason());
-					System.out.println(matchData.getMatchDate());
+//					System.out.println(season + matchData.getSeason());
+//					System.out.println(matchData.getMatchDate());
 					series1.add(new Day(matchData.getDate()),
 							matchData.getForStatistic(index));
 					dataForBox1.add(matchData.getForStatistic(index));
 				}
 			}
-			for (int i = 0; i < player2.getDataPerMatchList().size(); i++) {
-				PlayerDataPerMatchVO matchData = player2.getDataPerMatchList()
-						.get(i);
+			for (int i = 0; i < matchList2.size(); i++) {
+				PlayerDataPerMatchVO matchData = matchList2.get(i);
 				if (matchData.getSeason().equals(season)) {
 //					System.out.println(season);
 					series2.add(new Day(matchData.getDate()),
@@ -799,12 +803,14 @@ public class ShowPlayerDataModel {
 				}
 			}
 			
+			int var = cal.compareVar(dataForBox1, dataForBox2);
+			int ave = cal.compareAve(dataForBox1, dataForBox2);
 
 			if (type == 0) { // 折线图
-				Main.setPlayerCmp_setTimeSeriesChart(series1, series2);
+				Main.setPlayerCmp_setTimeSeriesChart(series1, series2, var, ave);
 			} else { // 箱型图
 				Main.setPlayerCmp_setBoxChart(name1, dataForBox1, name2,
-						dataForBox2);
+						dataForBox2, var, ave);
 			}
 
 		} catch (Exception e) {

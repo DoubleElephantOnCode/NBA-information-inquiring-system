@@ -211,6 +211,11 @@ public class SizeAndLocationAndFont {
 	static public int playerComparePanelPhoto_1LocationX = 0, playerComparePanelPhoto_1LocationY = 35;
 	static public int playerComparePanelPhoto_2LocationX = 735, playerComparePanelPhoto_2LocationY = 35;
 	
+	static public int playerComparePanelScoreLabelWidth = 115, playerComparePanelScoreLabelHeight = 100;
+	static public int playerComparePanelScore_1LabelLocationX = 0, playerComparePanelScore_1LabelLocationY = 127;
+	static public int playerComparePanelScore_2LabelLocationX = 735, playerComparePanelScore_2LabelLocationY = 127;
+	static public Font scoreFont = new Font("Console", Font.BOLD, 60);
+	
 	static public int playerComparePanelSelectSeasonWidth = 100, playerComparePanelSelectSeasonHeight = 28;
 	static public int playerComparePanelSelectSeasonLocationX = 0, playerComparePanelSelectSeasonLocationY = 245;
 	
@@ -223,8 +228,8 @@ public class SizeAndLocationAndFont {
 	static public int playerComparePanelSelectTypeWidth = 100, playerComparePanelSelectTypeHeight = playerComparePanelSelectSeasonHeight;
 	static public int playerComparePanelSelectTypeLocationX = 370, playerComparePanelSelectTypeLocationY = playerComparePanelSelectSeasonLocationY;
 	
-	static public int playerComparePanelRadarChartWidth = 300, playerComparePanelRadarChartHeight = 200;
-	static public int playerComparePanelRadarChartLocationX = 326, playerComparePanelRadarChartLocationY = 35;
+	static public int playerComparePanelRadarChartWidth = 280, playerComparePanelRadarChartHeight = 200;
+	static public int playerComparePanelRadarChartLocationX = 300, playerComparePanelRadarChartLocationY = 35;
 	
 	static public int playerComparePanelChart_2Width = 850, playerComparePanelChart_2Height = 300;
 	static public int playerComparePanelChart_2LocationX = 0, playerComparePanelChart_2LocationY = 275;

@@ -292,20 +292,20 @@ public class Main {
 		mainFrame.repaint();
 	}
 	
-	public static void setPlayerCmp_setTimeSeriesChart(TimeSeries series1, TimeSeries series2){
+	public static void setPlayerCmp_setTimeSeriesChart(TimeSeries series1, TimeSeries series2, int v1, int v2){
 		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(7);//球员对比
 		InformationCenterPanel.formerPanel = 7;
-		informationCenterPanel.playerComparePanel.pcp.setTimeSeriesPanel(series1, series2);
+		informationCenterPanel.playerComparePanel.pcp.setTimeSeriesPanel(series1, series2, v1, v2);
 		startPanel.setVisible(false);
 		removeAllPanel();
 		mainFrame.add(informationCenterPanel);
 		mainFrame.repaint();
 	}
 	
-	public static void setPlayerCmp_setBoxChart(String player_1Name, ArrayList<Double> list1, String player_2Name, ArrayList<Double> list2){
+	public static void setPlayerCmp_setBoxChart(String player_1Name, ArrayList<Double> list1, String player_2Name, ArrayList<Double> list2, int v1, int v2){
 		if(informationCenterPanel == null) informationCenterPanel = new InformationCenterPanel(7);//球员对比
 		InformationCenterPanel.formerPanel = 7;
-		informationCenterPanel.playerComparePanel.pcp.setBoxPanel(player_1Name, list1, player_2Name, list2);
+		informationCenterPanel.playerComparePanel.pcp.setBoxPanel(player_1Name, list1, player_2Name, list2, v1, v2);
 		startPanel.setVisible(false);
 		removeAllPanel();
 		mainFrame.add(informationCenterPanel);

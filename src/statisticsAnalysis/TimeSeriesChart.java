@@ -43,7 +43,9 @@ public class TimeSeriesChart {
 		ValueAxis rangeAxis=xyplot.getRangeAxis();//获取柱状
 		rangeAxis.setLabelFont(new Font("黑体",Font.BOLD,15));
 		jfreeChart.getLegend().setItemFont(new Font("黑体", Font.BOLD, 15));
-//		jfreeChart.getTitle().setFont(new Font("宋体",Font.BOLD,20));//设置标题字体
+		if(jfreeChart.getTitle() != null){
+			jfreeChart.getTitle().setFont(new Font("宋体",Font.BOLD,20));//设置标题字体
+		}
 		p = new ChartPanel(jfreeChart, true);
 		return p;
 	}
@@ -58,6 +60,9 @@ public class TimeSeriesChart {
 		ValueAxis rangeAxis=xyplot.getRangeAxis();//获取柱状
 		rangeAxis.setLabelFont(new Font("黑体",Font.BOLD,15));
 		jfreeChart.getLegend().setItemFont(new Font("黑体", Font.BOLD, 15));
+		if(jfreeChart.getTitle() != null){
+			jfreeChart.getTitle().setFont(new Font("宋体",Font.BOLD,20));//设置标题字体
+		}
 		return jfreeChart;
 	}
 	

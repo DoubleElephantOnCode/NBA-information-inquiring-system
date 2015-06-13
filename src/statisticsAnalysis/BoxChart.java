@@ -1,5 +1,7 @@
 package statisticsAnalysis;
 
+import java.awt.Font;
+
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -26,10 +28,13 @@ public class BoxChart {
 		dataset.add(item, type, x_value);
 	}
 	
-	public ChartPanel getChartPanel(){
-		JFreeChart jfreechart = ChartFactory.createBoxAndWhiskerChart(title, categoryAxisLabel, valueAxisLabel, dataset, true);
-		p = new ChartPanel(jfreechart, true);
+	public ChartPanel getChartPanel(boolean e){
+		JFreeChart jfreeChart = ChartFactory.createBoxAndWhiskerChart(title, categoryAxisLabel, valueAxisLabel, dataset, e);
 		
+		if(jfreeChart.getTitle() != null){
+			jfreeChart.getTitle().setFont(new Font("宋体",Font.BOLD,20));//设置标题字体
+		}
+		p = new ChartPanel(jfreeChart, true);
 		return p;
 	}
 	
