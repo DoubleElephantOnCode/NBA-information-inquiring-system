@@ -35,6 +35,10 @@ public class SinglePlayerPanel extends JPanel{
 	
 	static double[] abilityWeight = {30D, 15D, 10D, 3D, 3D};
 	
+	static JLabel[] a = {new JLabel("得分"), new JLabel("篮板"), new JLabel("助攻"), new JLabel("抢断"), new JLabel("盖帽")};
+	static int[] ax = {75, 135, 100, 45, 20};
+	static int[] ay = {-15, 25, 80, 80, 25};
+	
 	public static Date Begin = TimeSetting.begin, End = TimeSetting.end;
 	
 	JLabel photo1;//静态半身照
@@ -100,6 +104,13 @@ public class SinglePlayerPanel extends JPanel{
 		radarChart = new PlayerRadarChartPanel(ability[0], ability[1], ability[2], ability[3], ability[4]);
 		radarChart.p.setSize(SizeAndLocationAndFont.singlePlayerRadarChartWidth, SizeAndLocationAndFont.singlePlayerRadarChartHeight);
 		radarChart.p.setLocation(photo1W+personalInfoWidth, 0);
+		radarChart.p.setLayout(null);
+		for(int i = 0; i < 5; i++){
+			a[i].setOpaque(false);
+			a[i].setSize(50, 50);
+			a[i].setLocation(ax[i], ay[i]);
+			radarChart.p.add(a[i], 0);
+		}
 		
 		tableCellDeep = new ImageIcon(File.file + File.table_cell2_deep + File.PNG);
 		tableCellLight = new ImageIcon(File.file + File.table_cell2_light + File.PNG);

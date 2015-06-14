@@ -37,6 +37,10 @@ public class SingleTeamPanel extends JPanel{
 	public static String chartItem = choiceItem[0];
 	static int chartItemIndex = 0;
 	
+	static JLabel[] a = {new JLabel("得分"), new JLabel("篮板"), new JLabel("助攻"), new JLabel("抢断"), new JLabel("盖帽")};
+	static int[] ax = {75, 135, 100, 45, 20};
+	static int[] ay = {-15, 25, 80, 80, 25};
+	
 	public static Date Begin = TimeSetting.begin, End = TimeSetting.end;
 	
 	String name, shortname, state, area, zone, home, found;
@@ -100,6 +104,13 @@ public class SingleTeamPanel extends JPanel{
 		radarChart = new TeamRadarChartPanel(ability[0], ability[1], ability[2], ability[3], ability[4]);
 		radarChart.p.setSize(SizeAndLocationAndFont.singleTeamRadarChartWidth, SizeAndLocationAndFont.singleTeamRadarChartHeight);
 		radarChart.p.setLocation(teamPicWidth+teamInfoWidth, 0);
+		radarChart.p.setLayout(null);
+		for(int i = 0; i < 5; i++){
+			a[i].setOpaque(false);
+			a[i].setSize(50, 50);
+			a[i].setLocation(ax[i], ay[i]);
+			radarChart.p.add(a[i], 0);
+		}
 		
 		begin = new TimeSelectPanel(SizeAndLocationAndFont.beginTimePanelWidth, SizeAndLocationAndFont.beginTimePanelHeight, TimeSetting.beginYear, TimeSetting.endYear);
 		begin.setLocation(SizeAndLocationAndFont.beginTimePanelLocationX, SizeAndLocationAndFont.beginTimePanelLocationY);
