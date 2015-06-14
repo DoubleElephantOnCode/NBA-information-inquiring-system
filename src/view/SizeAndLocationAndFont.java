@@ -104,7 +104,7 @@ public class SizeAndLocationAndFont {
 	static public int panelBoxLocationX = 850, panelBoxLocationY = 585;
 	
 	//单个球员查看面板设置参数
-	static public int singlePlayerPanelWidth = 850, singlePlayerPanelHeight = 670;
+	static public int singlePlayerPanelWidth = 850, singlePlayerPanelHeight = 430;
 	static public int singlePlayerPanelLocationX = 153, singlePlayerPanelLocationY = 148;
 	
 	static public int playerPhoto_1Width = 115, playerPhoto_1Height = 92;//半身照片

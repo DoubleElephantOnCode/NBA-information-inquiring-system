@@ -48,6 +48,10 @@ public class PlayerComparePanel extends JPanel{
 	
 	static JLabel player_1, player_2, score_1, score_2;
 	
+	static JLabel[] a = {new JLabel("得分"), new JLabel("篮板"), new JLabel("助攻"), new JLabel("抢断"), new JLabel("盖帽")};
+	static int[] ax = {130, 200, 175, 85, 50};
+	static int[] ay = {-10, 40, 120, 120, 40};
+	
 	static String[] SEASON = Team.SEASON,
 			AFTER = Team.ISAFTER,
 			CHARTTYPE = {"折线图", "箱形图"},
@@ -129,6 +133,14 @@ public class PlayerComparePanel extends JPanel{
 		radar = rc.getChartPanel(Color.LIGHT_GRAY, true);
 		radar.setSize(SizeAndLocationAndFont.playerComparePanelRadarChartWidth, SizeAndLocationAndFont.playerComparePanelRadarChartHeight);
 		radar.setLocation(SizeAndLocationAndFont.playerComparePanelRadarChartLocationX, SizeAndLocationAndFont.playerComparePanelRadarChartLocationY);
+		radar.setLayout(null);
+		for(int i = 0; i < 5; i++){
+			a[i].setOpaque(false);
+			a[i].setSize(50, 50);
+			a[i].setLocation(ax[i], ay[i]);
+			radar.add(a[i], 0);
+		}
+		
 		this.add(radar);
 	}
 	
