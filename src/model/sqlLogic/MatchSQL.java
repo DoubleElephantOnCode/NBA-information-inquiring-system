@@ -32,7 +32,7 @@ public class MatchSQL {
 	/**
 	 * URL指向要访问的数据库名scutcs
 	 */
-	private static String url = "jdbc:mysql://127.0.0.1:3306/school";
+	private static String url = "jdbc:mysql://127.0.0.1:3306/NBA";
 
 	/**
 	 * MySQL配置时的用户名
@@ -42,7 +42,7 @@ public class MatchSQL {
 	/**
 	 * MySQL配置时的密码
 	 */
-	private static String password = "123456";
+	private static String password = "951012";
 
 	/**
 	 * 链接数据库
@@ -76,8 +76,8 @@ public class MatchSQL {
 	 * 从数据库中读取比赛信息
 	 */
 	public void readAllMatch(){
-		String matchSql = "select * from school.match";
-		String playerInfoSql = "select * from school.playerinfo";
+		String matchSql = "select * from nba.match";
+		String playerInfoSql = "select * from nba.playerinfo";
 		try{
 			Statement statement= conn.createStatement();
 			Statement statement2 = conn.createStatement();
@@ -248,7 +248,7 @@ public class MatchSQL {
 			String scoreList = tempString;
 			
 			try{
-				String sql = "INSERT INTO `school`.`match` (`number`, `matchDate`, `team`, `totalScore`, `season`, `isPayoff`, `scoreList`) VALUES " +
+				String sql = "INSERT INTO `nba`.`match` (`number`, `matchDate`, `team`, `totalScore`, `season`, `isPayoff`, `scoreList`) VALUES " +
 						"('" +num + "', '" + matchDate + "', '" + team + "', '" + totalScore + "', '" + season +
 						"', '" + isPayoff + "', '" + scoreList +"')";
 				Statement statement= conn.createStatement();	
@@ -270,7 +270,7 @@ public class MatchSQL {
 				}
 				strings = tempString.split(";");
 
-				String sql = "INSERT INTO `school`.`playerInfo` (  `matchDate` ,`team`,  `isHomeTeam` ,  `playerName`,  `position`, `playTime` ,  `scoreNum` ,  `shootNum`,  `threeScoreNum`,  `threeShootNum` ,  `freeScoreNum` ,  `freeShootNum` ,  `oppReboundNum`,  `defReboundNum`,  `totalReboundNum`,  `assistNum` ,  `stealNum`,  `blockNum` ,  `turnoverNum`,  `foulNum`,  `personalPoints`) VALUES ";
+				String sql = "INSERT INTO `nba`.`playerInfo` (  `matchDate` ,`team`,  `isHomeTeam` ,  `playerName`,  `position`, `playTime` ,  `scoreNum` ,  `shootNum`,  `threeScoreNum`,  `threeShootNum` ,  `freeScoreNum` ,  `freeShootNum` ,  `oppReboundNum`,  `defReboundNum`,  `totalReboundNum`,  `assistNum` ,  `stealNum`,  `blockNum` ,  `turnoverNum`,  `foulNum`,  `personalPoints`) VALUES ";
 				String playerInfo;
 				strings[0] = dealWithString(strings[0]);
 				if(isHome){										
@@ -304,7 +304,7 @@ public class MatchSQL {
 
 	public void createMatchTable(){
 		try {
-			String sql = "CREATE TABLE `school`.`match` (`number` INT NOT NULL,`matchDate` VARCHAR(10) NOT NULL,`team` VARCHAR(45) NOT NULL,`totalScore` VARCHAR(10) NULL,`season` VARCHAR(8) NULL,`isPayoff` VARCHAR(3) NULL,`scoreList` VARCHAR(90) NULL,PRIMARY KEY (`number`))";
+			String sql = "CREATE TABLE `nba`.`match` (`number` INT NOT NULL,`matchDate` VARCHAR(10) NOT NULL,`team` VARCHAR(45) NOT NULL,`totalScore` VARCHAR(10) NULL,`season` VARCHAR(8) NULL,`isPayoff` VARCHAR(3) NULL,`scoreList` VARCHAR(90) NULL,PRIMARY KEY (`number`))";
 			Statement statement= conn.createStatement();
 		
 			 statement.execute(sql);
@@ -316,7 +316,7 @@ public class MatchSQL {
 	
 	public void createPlayerInfoTable(){
 		try {
-			String sql = "CREATE TABLE `school`.`playerinfo` (  `matchDate` VARCHAR(45) NOT NULL,  `team` VARCHAR(10) NOT NULL, `isHomeTeam` VARCHAR(45) NOT NULL,  `playerName` VARCHAR(100) NOT NULL,  `position` VARCHAR(45) NOT NULL, `playTime` VARCHAR(45) NOT NULL,  `scoreNum` VARCHAR(45) NOT NULL,  `shootNum` VARCHAR(45) NOT NULL,  `threeScoreNum` VARCHAR(45) NOT NULL,  `threeShootNum` VARCHAR(45) NOT NULL,  `freeScoreNum` VARCHAR(45) NOT NULL,  `freeShootNum` VARCHAR(45) NOT NULL,  `oppReboundNum` VARCHAR(45) NOT NULL,  `defReboundNum` VARCHAR(45) NOT NULL,  `totalReboundNum` VARCHAR(45) NOT NULL,  `assistNum` VARCHAR(45) NOT NULL,  `stealNum` VARCHAR(45) NOT NULL,  `blockNum` VARCHAR(45) NOT NULL,  `turnoverNum` VARCHAR(45) NOT NULL,  `foulNum` VARCHAR(45) NOT NULL,  `personalPoints` VARCHAR(45) NOT NULL)";
+			String sql = "CREATE TABLE `nba`.`playerinfo` (  `matchDate` VARCHAR(45) NOT NULL,  `team` VARCHAR(10) NOT NULL, `isHomeTeam` VARCHAR(45) NOT NULL,  `playerName` VARCHAR(100) NOT NULL,  `position` VARCHAR(45) NOT NULL, `playTime` VARCHAR(45) NOT NULL,  `scoreNum` VARCHAR(45) NOT NULL,  `shootNum` VARCHAR(45) NOT NULL,  `threeScoreNum` VARCHAR(45) NOT NULL,  `threeShootNum` VARCHAR(45) NOT NULL,  `freeScoreNum` VARCHAR(45) NOT NULL,  `freeShootNum` VARCHAR(45) NOT NULL,  `oppReboundNum` VARCHAR(45) NOT NULL,  `defReboundNum` VARCHAR(45) NOT NULL,  `totalReboundNum` VARCHAR(45) NOT NULL,  `assistNum` VARCHAR(45) NOT NULL,  `stealNum` VARCHAR(45) NOT NULL,  `blockNum` VARCHAR(45) NOT NULL,  `turnoverNum` VARCHAR(45) NOT NULL,  `foulNum` VARCHAR(45) NOT NULL,  `personalPoints` VARCHAR(45) NOT NULL)";
 			Statement statement= conn.createStatement();
 		
 			 statement.execute(sql);
@@ -327,8 +327,8 @@ public class MatchSQL {
 	}
 	
 	public void deleteAll(){
-		String sqlCommand = "truncate table school.match";
-		String sqlCommand2 = "truncate table school.playerinfo";
+		String sqlCommand = "truncate table nba.match";
+		String sqlCommand2 = "truncate table nba.playerinfo";
 		Statement statement;
 		try {
 			statement = conn.createStatement();	

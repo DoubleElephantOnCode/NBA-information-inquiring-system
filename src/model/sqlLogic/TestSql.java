@@ -36,6 +36,9 @@ public class TestSql {
 //
 //		}
 		matchSql.readMatches();
+	
+		
+	//	teamSql.readTeamInfoToSql();
 
 
 	}

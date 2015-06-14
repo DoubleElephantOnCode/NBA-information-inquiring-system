@@ -24,7 +24,7 @@ public class TeamSQL {
 	/**
 	 * URL指向要访问的数据库名scutcs
 	 */
-	private static String url = "jdbc:mysql://127.0.0.1:3306/school";
+	private static String url = "jdbc:mysql://127.0.0.1:3306/nba";
 
 	/**
 	 * MySQL配置时的用户名
@@ -34,7 +34,7 @@ public class TeamSQL {
 	/**
 	 * MySQL配置时的密码
 	 */
-	private static String password = "123456";
+	private static String password = "951012";
 
 	/**
 	 * 链接数据库
@@ -100,7 +100,7 @@ public class TeamSQL {
 			}
 		}
 		// 要执行的SQL语句
-        String sql = "INSERT INTO `school`.`team` (`teamName`, `Abbreviation`, `location`, `competion`, `partition`, `homecourt`, `buildtime`) VALUES ";
+        String sql = "INSERT INTO `nba`.`team` (`teamName`, `Abbreviation`, `location`, `competion`, `partition`, `homecourt`, `buildtime`) VALUES ";
 		String TeamInfo = "('" + name + "', '" + abbreviation + "', '" + location + "', '" + competion +
 				"', '" + partition + "', '" + homeCourt + "', '" + buildTime +  "')";
         
@@ -115,7 +115,7 @@ public class TeamSQL {
 	}
 	
 	public void deletAll(){
-		String sqlCommand = "truncate table school.team";
+		String sqlCommand = "truncate table nba.team";
 		Statement statement;
 		try {
 			statement = conn.createStatement();	
@@ -128,7 +128,7 @@ public class TeamSQL {
 	}
 	
 	public void readTeam(){
-		String sqlCommand = "select * from school.team";
+		String sqlCommand = "select * from nba.team";
 		try{
 			Statement statement= conn.createStatement();
 			ResultSet rs = statement.executeQuery(sqlCommand);
