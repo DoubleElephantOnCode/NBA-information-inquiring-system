@@ -132,7 +132,7 @@ public class ReadMatchData {
 	 * @return
 	 */
 	public static String getCurrentDate(){
-		return "2015-5-9";
+		return "2015-05-09";
 		/**
 		if(isIteratorOne){
 			return currentDate;
