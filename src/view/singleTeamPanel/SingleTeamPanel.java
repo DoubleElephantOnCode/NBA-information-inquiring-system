@@ -107,6 +107,7 @@ public class SingleTeamPanel extends JPanel{
 		radarChart.p.setLayout(null);
 		for(int i = 0; i < 5; i++){
 			a[i].setOpaque(false);
+			
 			a[i].setSize(50, 50);
 			a[i].setLocation(ax[i], ay[i]);
 			radarChart.p.add(a[i], 0);
