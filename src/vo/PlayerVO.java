@@ -711,31 +711,49 @@ public class PlayerVO {
 				/ aveShootNum;
 		}
 		// 篮板率：球员篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总篮板+对手总篮板)
-		reboundRate = totalReboundsNum
-				* (timeOfAllPlayers.getTimeByMinute() / 5)
-				/ totalMinutes.getTimeByMinute()
-				/ (allReboundNum + allOpponentRebondNum);
+		if(totalMinutes.getTimeByMinute() != 0.0 && (allReboundNum + allOpponentRebondNum) != 0.0){
+			reboundRate = totalReboundsNum
+					* (timeOfAllPlayers.getTimeByMinute() / 5)
+					/ totalMinutes.getTimeByMinute()
+					/ (allReboundNum + allOpponentRebondNum);
+		}
+
 		// 进攻篮板率：球员进攻篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总进攻篮板+对手总进攻篮板)
-		offensiveReboundRate = offensiveReboundsNum
-				* (timeOfAllPlayers.getTimeByMinute() / 5)
-				/ totalMinutes.getTimeByMinute()
-				/ (allOffReboundNum + allOppOffReboundNum);
+		if(totalMinutes.getTimeByMinute() != 0.0 && (allOffReboundNum + allOppOffReboundNum)!= 0.0){
+			offensiveReboundRate = offensiveReboundsNum
+					* (timeOfAllPlayers.getTimeByMinute() / 5)
+					/ totalMinutes.getTimeByMinute()
+					/ (allOffReboundNum + allOppOffReboundNum);
+		}
+
 		// 防守篮板率：球员防守篮板数×(球队所有球员上场时间÷5)÷球员上场时间÷(球队总防守篮板+对手总防守篮板)
-		defensiveReboundRate = defensiveReboundsNum
-				* (timeOfAllPlayers.getTimeByMinute() / 5)
-				/ totalMinutes.getTimeByMinute()
-				/ (allDefReboundNum + allOppDefReboundNum);
+		if(totalMinutes.getTimeByMinute() != 0.0 && (allDefReboundNum + allOppDefReboundNum) != 0.0){
+			defensiveReboundRate = defensiveReboundsNum
+					* (timeOfAllPlayers.getTimeByMinute() / 5)
+					/ totalMinutes.getTimeByMinute()
+					/ (allDefReboundNum + allOppDefReboundNum);
+		}
+
 		// 助攻率：球员助攻数÷(球员上场时间÷(球队所有球员上场时间÷5)×球队总进球数-球员进球数)
-		assistRate = assistNum
-				/ (totalMinutes.getTimeByMinute()
-						/ (timeOfAllPlayers.getTimeByMinute() / 5)
-						* allScoreNum - scoreNum);
+		if(totalMinutes.getTimeByMinute() != 0.0){
+			assistRate = assistNum
+					/ (totalMinutes.getTimeByMinute()
+							/ (timeOfAllPlayers.getTimeByMinute() / 5)
+							* allScoreNum - scoreNum);
+		}
+
 		// 抢断率：球员抢断数×(球队所有球员上场时间÷5)÷球员上场时间÷对手进攻次数
-		stealRate = stealNum * (timeOfAllPlayers.getTimeByMinute() / 5)
-				/ totalMinutes.getTimeByMinute() / opponentAttackRound;
+		if(totalMinutes.getTimeByMinute() != 0.0 && opponentAttackRound != 0.0){
+			stealRate = stealNum * (timeOfAllPlayers.getTimeByMinute() / 5)
+					/ totalMinutes.getTimeByMinute() / opponentAttackRound;
+		}
+
 		// 盖帽率：球员盖帽数×(球队所有球员上场时间÷5)÷球员上场时间÷对手两分球出手次数
-		blockRate = blockNum * (timeOfAllPlayers.getTimeByMinute() / 5)
-				/ totalMinutes.getTimeByMinute() / oppTwoPointShootNum;
+		if(totalMinutes.getTimeByMinute() != 0.0 && oppTwoPointShootNum != 0.0){
+			blockRate = blockNum * (timeOfAllPlayers.getTimeByMinute() / 5)
+					/ totalMinutes.getTimeByMinute() / oppTwoPointShootNum;
+		}
+
 		// 失误率：球员失误数÷(球员两分球出手次数+0.44×球员罚球次数+球员失误数)
 		if(((shootNum - threePointerShootNum) + 0.44 * freeThrowShootNum + turnoverNum) != 0.0){
 			turnoverRate = turnoverNum
@@ -1108,6 +1126,7 @@ public class PlayerVO {
 	 * @return
 	 */
 	private String toString(double d) {
+//		System.out.println("d = " + d);
 		DecimalFormat df = new DecimalFormat("#.00");
 		String s = df.format(d);
 		Double dd = new Double(s);

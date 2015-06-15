@@ -6,7 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import model.dataLogic.PlayerList;
+import model.dataLogic.TeamList;
 import model.readData.ReadPlayerData;
+import vo.PlayerVO;
+import vo.TeamVO;
 
 public class PlayerSQL {
 
@@ -128,6 +132,23 @@ public class PlayerSQL {
 		}
 		return s;
 	}
+	
+	public void addPlayers(){
+		String sqlCommand = "select * from nba.players";
+		try{
+			Statement statement= conn.createStatement();
+			ResultSet rs = statement.executeQuery(sqlCommand);
+			while (rs.next()){
+				//TODO 改成加到TeamList中
+				PlayerVO player = new PlayerVO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
+						rs.getString(5),rs.getString(6),rs.getString(7), rs.getString(8), rs.getString(9));
+				PlayerList.addPlayer(player);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
 	
 	public void createPlayerTable(){
 		String sqlCmd = "CREATE TABLE `nba`.`new_table` ("

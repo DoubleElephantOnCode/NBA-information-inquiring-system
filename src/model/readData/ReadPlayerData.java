@@ -35,6 +35,11 @@ public class ReadPlayerData {
 		for(File player : playerInfo){
 			PlayerList.addPlayer(createAPlayer(readAPlayer(player)));
 		}
+//		playerDB.addPlayers();
+	}
+	
+	public void readPlayerDataFromDB(){
+		playerDB.addPlayers();
 	}
 
 	/**
